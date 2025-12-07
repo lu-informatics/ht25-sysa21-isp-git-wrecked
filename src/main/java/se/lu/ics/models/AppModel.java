@@ -1,17 +1,17 @@
 package se.lu.ics.models;
 
 public class AppModel {
- private VechicleRegister vechicleRegister;
+ private VehicleRegister vehicleRegister;
  private ServiceHistoryEntry serviceHistoryEntry;
  private WorkshopRegister workshopRegister;
 
- public ApppModel(){
-    this.vechicleRegister = new VechicleRegister();
+ public AppModel(){
+    this.vehicleRegister = new VehicleRegister();
     this.serviceHistoryEntry = new ServiceHistoryEntry();
     this.workshopRegister = new WorkshopRegister();
  }
-public VechicleRegister getVechicleRegister(){
-    return vechicleRegister;
+public VehicleRegister getVehicleRegister(){
+    return vehicleRegister;
  } 
  public ServiceHistoryEntry getServiceHistoryEntry(){
     return serviceHistoryEntry;
