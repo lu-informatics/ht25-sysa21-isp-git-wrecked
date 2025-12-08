@@ -1,21 +1,23 @@
 package se.lu.ics.models;
 
+import java.time.LocalDate;
+
 public class ModelIntegrationTest {
     public static void main(String[] args) {
         VehicleRegister vehicleRegister = new VehicleRegister();
         WorkshopRegister workshopRegister = new WorkshopRegister();
-        Vehicle vehicle1 = new Vehicle("Lund", 6, "Mediumtruck", "Ferrari");
-        Vehicle vehicle2 = new Vehicle("Malmö", 12, "Van", "Lamborghini");
-        Vehicle vehicle3 = new Vehicle("Stockholm",8, "Largetruck", "Porsche");
+        Vehicle vehicle1 = new Vehicle("Lund", 6, MEDIUM_TRUCK, "Ferrari");
+        Vehicle vehicle2 = new Vehicle("Malmö", 12, VAN, "Lamborghini");
+        Vehicle vehicle3 = new Vehicle("Stockholm",8, LARGE_TRUCK, "Porsche");
 
         Workshop workshop1 = new Workshop("AutoFix", isInternal, "Bilvägen 1");
         Workshop workshop2 = new Workshop("CarCare", isExternal, "Motorvägen 5");
 
         MaintenanceSchedule schedule1 = new MaintenanceSchedule(LocalDate.of(2024, 7, 15), "Oil Change");
         MaintenanceSchedule schedule2 = new MaintenanceSchedule(LocalDate.of(2024, 8, 20), "Tire Rotation");
-        
-        ServiceHistoryEntry entry1 = new ServiceHistoryEntry("Engine noise", 250.0, LocalDate.of(2024, 6, 10));
-        ServiceHistoryEntry entry2 = new ServiceHistoryEntry("Brake replacement", 400.0, LocalDate.of(2024, 5, 5));
+
+        ServiceHistoryEntry entry1 = new ServiceHistoryEntry("Brake issues", 250.0, LocalDate.of(2024, 6, 10));
+        ServiceHistoryEntry entry2 = new ServiceHistoryEntry("Engine noise", 400.0, LocalDate.of(2024, 5, 5));
 
         vehicleRegister.addVehicle(vehicle1);
         vehicleRegister.addVehicle(vehicle2);
@@ -32,6 +34,12 @@ public class ModelIntegrationTest {
 
         workshop1.addSchedule(schedule1);
         workshop2.addSchedule(schedule2);
+
+        entry1.addServiceActivity("Replace brake pads");
+        entry1.addServiceActivity("Cleaned brake system");
+        entry2.addServiceActivity("Replaced engine oil");
+
+
         
         System.out.println("Vehicles in Register:");
         for (Vehicle v : vehicleRegister.getAllVehicles()) { 
@@ -41,10 +49,14 @@ public class ModelIntegrationTest {
         for (Workshop w : workshopRegister.getAllWorkshops()) {
             System.out.println(w.getName());
         }
-        System.out.println("Service History Entries:");
+        System.out.println("Service History Entries for all vehicles:");
         for (Vehicle v : vehicleRegister.getAllVehicles()) {
             for (ServiceHistoryEntry e : v.getServiceHistory()) {
                 System.out.println(e.getProblemDescription() + " Cost: " + e.getCost() + " Date: " + e.getDate());
+        }
+        System.out.println("Service History Entries for vehicle " + vehicle1.getName() + ":");
+        for (ServiceHistoryEntry e : vehicle1.getServiceHistory()) {
+            System.out.println(e.getProblemDescription() + " Cost: " + e.getCost() + " Date: " + e.getDate());
         }
         System.out.println("Maintenance Schedules:");
         for (Vehicle v: vehicleRegister.getAllVehicles()){
@@ -71,5 +83,38 @@ public class ModelIntegrationTest {
             for (String part : e.getPartsReplaced()) {
                 System.out.println(part);
             }
-            
+        System.out.println("Service history for workshop " + workshop1.getName() + ":");
+        for (ServiceHistoryEntry e : workshop1.getServiceHistoryEntries()) {
+            System.out.println(e.getProblemDescription() + " for vehicle " + vehicle1.getName());
         }
+        System.out.println("Total cost of services for vehicle " + vehicle2.getName() + ": " + vehicle2.getTotalCost());
+        }
+        System.out.println("Total cost of services for all vehicles:"){
+        for (Vehicle v : vehicleRegister.getAllVehicles()) {
+            System.out.println("Vehicle " + v.getName() + ": " + v.getTotalCost());
+        }
+        double avgCost=vehicleRegister.calculateAvarageCost();
+
+        System.out.println("Average cost of vehicle maintenance:" + avgCost); // Lös denna 
+         }
+
+        vehicleRegister.removeVehicle(vehicle3.getVin());
+        System.out.println("Vehicles after removal:" + vehicleRegister.getAllVehicles());
+        }
+        workshopRegister.removeWorkshop(workshop2.getName());
+        System.out.println("Workshops after removal:" + workshopRegister.getAllWorkshops());
+        }
+        vehicle1.removeServiceHistoryEntry(entry1);
+        System.out.println("Service history after removal:" + vehicle1.getServiceHistory());
+        }
+        vehicle2.removeMaintenanceSchedule();
+        System.out.println("Maintenance schedule after removal:" + vehicle2.getMaintenanceSchedule());
+
+
+
+
+
+        
+        
+        }
+    }
