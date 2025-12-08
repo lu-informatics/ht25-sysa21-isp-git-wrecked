@@ -6,7 +6,7 @@ public class WorkshopRegister {
     private ArrayList<Workshop> workshops;
 
     public WorkshopRegister() {
-            this.workshops = new ArrayList<>();    
+        this.workshops = new ArrayList<>();
     }
 
     public void setWorkshops(ArrayList<Workshop> workshops) {
@@ -19,7 +19,7 @@ public class WorkshopRegister {
 
     public void addWorkshop(Workshop workshop) {
 
-        for(Workshop tempWorkshop : workshops) {
+        for (Workshop tempWorkshop : workshops) {
             if (tempWorkshop.getName().equals(workshop.getName())) {
                 throw new IllegalArgumentException("Workshop with this name already exists.");
             }
@@ -31,23 +31,25 @@ public class WorkshopRegister {
         for (Workshop workshop : workshops) {
             if (workshop.getName().equals(name)) {
                 return workshop;
+            } else {
+                throw new IllegalArgumentException("No workshop with this name exists.");
             }
         }
         throw new IllegalArgumentException("No workshop with this name exists.");
         }
 
     public void removeWorkshop(String name) {
-        for(int i=0; i<workshops.size(); i++){
-            Workshop w=workshops.get(i);
-            
-            if(w.getName().equalsIgnoreCase(name)){
+        for (int i = 0; i < workshops.size(); i++) {
+            Workshop w = workshops.get(i);
+
+            if (w.getName().equalsIgnoreCase(name)) {
                 workshops.remove(i);
                 return;
             }
         }
         throw new IllegalArgumentException("No workshop with this name exists. Try again!");
     }
-    //bäst med i loop för att ta bort objekt inne i en loop, ger exception
+    // bäst med i loop för att ta bort objekt inne i en loop, ger exception
 
     public Workshop getMostExpensiveWorkshop() {
         Workshop mostExpensive = null;
@@ -57,7 +59,7 @@ public class WorkshopRegister {
             ArrayList<ServiceHistoryEntry> services = workshop.getServices();
             if (services != null) {
                 for (ServiceHistoryEntry service : services) {
-                    totalCost += service.getCost(); 
+                    totalCost += service.getCost();
                 }
                 if (totalCost > highestCost) {
                     highestCost = totalCost;
