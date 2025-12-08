@@ -6,7 +6,7 @@ public class ServiceHistoryEntry {
     private String problemDescription;
     private double cost;
     private int partsReplaced; 
-    private LocalDate serviceDate;
+    private LocalDate localDate;
     private ArrayList<String> serviceActivities;
     private Workshop workshop;
 
@@ -31,7 +31,7 @@ public class ServiceHistoryEntry {
     public ServiceHistoryEntry(String problemDescription, double cost, LocalDate date){
         this.problemDescription = problemDescription;
         this.cost = cost;
-        this.serviceDate = LocalDate.now();
+        this.localDate = LocalDate.now();
         this.partsReplaced = partsReplaced;
         this.serviceActivities = new ArrayList<String>();
     }
@@ -70,13 +70,13 @@ public class ServiceHistoryEntry {
         this.cost = cost;
     }     
     public LocalDate getDate(){
-        return serviceDate; 
+        return localDate; 
     }       
     public void setDate(LocalDate date){
         if (date == null){
             throw new IllegalArgumentException("Date cannot be empty");
         }
-        this.serviceDate = date; 
+        this.localDate = date; 
     }  
     public int getPartsReplaced(){
         return partsReplaced; 
