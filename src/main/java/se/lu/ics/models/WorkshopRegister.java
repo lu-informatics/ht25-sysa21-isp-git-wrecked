@@ -31,11 +31,10 @@ public class WorkshopRegister {
         for (Workshop workshop : workshops) {
             if (workshop.getName().equals(name)) {
                 return workshop;
-            }else{
-                throw new IllegalArgumentException("No workshop with this name exists.");
             }
         }
-    }
+        throw new IllegalArgumentException("No workshop with this name exists.");
+        }
 
     public void removeWorkshop(String name) {
         for(int i=0; i<workshops.size(); i++){
