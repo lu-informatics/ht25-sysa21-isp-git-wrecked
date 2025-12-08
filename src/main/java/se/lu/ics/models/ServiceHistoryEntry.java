@@ -8,6 +8,7 @@ public class ServiceHistoryEntry {
     private ArrayList<String> partsReplaced; 
     private LocalDate serviceDate;
     private ArrayList<String> serviceActivities;
+    private Workshop workshop;
 
     public ServiceHistoryEntry(String problemDescription, double cost, LocalDate date){
         this.problemDescription = problemDescription;
@@ -21,6 +22,9 @@ public class ServiceHistoryEntry {
     }
     public void removeServiceActivity(String activity){
         this.serviceActivities.remove(activity);  
+    }
+    public ArrayList<String> getServiceActivities(){
+        return serviceActivities;  
     }
     public String getProblemDescription(){
         return problemDescription;
@@ -45,5 +49,14 @@ public class ServiceHistoryEntry {
     } 
     public void removePartReplaced(String part){
         this.partsReplaced.remove(part);  
+    }
+    public int getPartsReplaced(){
+        return partsReplaced.size();  
     } 
+    public void setWorkshop(Workshop workshop) {
+        this.workshop = workshop;
+    }
+    public Workshop getWorkshop() {
+        return workshop;
+    }
 }
