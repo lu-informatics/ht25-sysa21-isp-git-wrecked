@@ -23,6 +23,12 @@ public class ServiceHistoryEntry {
             throw new IllegalArgumentException("Date cannot be empty");
         }
 
+    public ServiceHistoryEntry(){
+        this.partsReplaced = new ArrayList<String>();
+        this.serviceActivities = new ArrayList<String>();
+    }
+
+    public ServiceHistoryEntry(String problemDescription, double cost, LocalDate date){
         this.problemDescription = problemDescription;
         this.cost = cost;
         this.serviceDate = LocalDate.now();
