@@ -8,6 +8,7 @@ public class ServiceHistoryEntry {
     private int partsReplaced; 
     private LocalDate serviceDate;
     private ArrayList<String> serviceActivities;
+    private Workshop workshop;
 
     public ServiceHistoryEntry(String problemDescription, double cost, LocalDate serviceDate, int partsReplaced){
 
@@ -40,6 +41,9 @@ public class ServiceHistoryEntry {
             throw new IllegalArgumentException("Activity cannot be empty");
         }
         this.serviceActivities.remove(activity);  
+    }
+    public ArrayList<String> getServiceActivities(){
+        return serviceActivities;  
     }
     public String getProblemDescription(){
         return problemDescription;
