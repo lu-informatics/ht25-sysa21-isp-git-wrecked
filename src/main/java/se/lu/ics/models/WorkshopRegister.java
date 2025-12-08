@@ -12,26 +12,43 @@ public class WorkshopRegister {
     public void setWorkshops(ArrayList<Workshop> workshops) {
         this.workshops = workshops;
     }
+
     public ArrayList<Workshop> getWorkshops() {
         return workshops;
     }
 
     public void addWorkshop(Workshop workshop) {
+
+        for(Workshop tempWorkshop : workshops) {
+            if (tempWorkshop.getName().equals(workshop.getName())) {
+                throw new IllegalArgumentException("Workshop with this name already exists.");
+            }
+        }
         this.workshops.add(workshop);
     }
 
-    public Workshop findWorkshopByName(String name) {
+    public Workshop findWorkshop(String name) {
         for (Workshop workshop : workshops) {
             if (workshop.getName().equals(name)) {
                 return workshop;
+            }else{
+                throw new IllegalArgumentException("No workshop with this name exists.");
             }
         }
-        return null; // Return null if no workshop with the given name is found
     }
 
-    public void removeWorkshop(Workshop workshop) {
-        this.workshops.remove(workshop);
+    public void removeWorkshop(String name) {
+        for(int i=0; i<workshops.size(); i++){
+            Workshop w=workshops.get(i);
+            
+            if(w.getName().equalsIgnoreCase(name)){
+                workshops.remove(i);
+                return;
+            }
+        }
+        throw new IllegalArgumentException("No workshop with this name exists. Try again!");
     }
+    //bäst med i loop för att ta bort objekt inne i en loop, ger exception
 
     public Workshop getMostExpensiveWorkshop() {
         Workshop mostExpensive = null;
