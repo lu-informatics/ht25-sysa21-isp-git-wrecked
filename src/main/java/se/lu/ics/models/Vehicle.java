@@ -1,5 +1,6 @@
 package se.lu.ics.models;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Vehicle {
     private int vin;
@@ -11,8 +12,10 @@ public class Vehicle {
     private MaintenanceSchedule maintenanceSchedule;
     private VehicleRegister vehicleRegister;
     private ArrayList <ServiceHistoryEntry> serviceHistory;
+    private static int counter = 1;
 
     public Vehicle (String location, int capacity, VehicleType type, String name) {
+        this.vin = counter++;
         this.location = location;
         this.capacity = capacity;
         this.isAvailable = true;
@@ -20,7 +23,13 @@ public class Vehicle {
         this.name = name;
         serviceHistory = new ArrayList<>();
     }
-    
+
+    public void setVin(int vin) {
+        this.vin = vin;
+    }
+    public int getVin() {
+        return vin;
+    }
     public void setLocation(String location) {
         this.location = location;
     }
@@ -45,7 +54,6 @@ public class Vehicle {
     public void removeServiceHistoryEntry(ServiceHistoryEntry entry) {
         serviceHistory.remove(entry);
     }
-
     public void addMaintenanceSchedule(MaintenanceSchedule schedule) {
         this.maintenanceSchedule = schedule;
     }
@@ -67,6 +75,34 @@ public class Vehicle {
     public VehicleType getType() {
         return type;
     }
+
+    public int getPartsReplaced() {
+        int partsReplaced = 0;
+        for (ServiceHistoryEntry entry : serviceHistory) {
+            partsReplaced += entry.getPartsReplaced();
+        }
+        return partsReplaced;
+    }
+
+    public double getTotalCost() {
+        double totalCost = 0.0;
+        for (ServiceHistoryEntry entry : serviceHistory) {
+            totalCost += entry.getCost();
+        }
+        return totalCost;
+    }
+
+    public ArrayList<Workshop> listEveryWorkshop() {
+    ArrayList<Workshop> workshops = new ArrayList<>();
+
+    for (ServiceHistoryEntry entry : serviceHistory) {
+        Workshop w = entry.getWorkshop();
+        if (!workshops.contains(w)) {
+            workshops.add(w);
+        }
+    }
+    return workshops;
+}
 
 
 }
