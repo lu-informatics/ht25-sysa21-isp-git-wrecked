@@ -38,9 +38,11 @@ public class VehicleRegister {
         double total= 0.0;
 
         for(Vehicle v : vehicles){
-            total+=v.getTotalCost();
-            return total;
+            if(v!=null){
+                total+=v.getTotalCost();
+            }
         }
+        return total;
     }
 
     public double calculateAvarageCost(){
