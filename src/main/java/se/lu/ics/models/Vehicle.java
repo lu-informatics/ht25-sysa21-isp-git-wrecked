@@ -1,5 +1,6 @@
 package se.lu.ics.models;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Vehicle {
     private int vin;
@@ -73,6 +74,14 @@ public class Vehicle {
         return type;
     }
 
+    public int getPartsReplaced() {
+        int partsReplaced = 0;
+        for (ServiceHistoryEntry entry : serviceHistory) {
+            partsReplaced += entry.getPartsReplaced();
+        }
+        return partsReplaced;
+    }
+
     public double getTotalCost() {
         double totalCost = 0.0;
         for (ServiceHistoryEntry entry : serviceHistory) {
@@ -80,6 +89,18 @@ public class Vehicle {
         }
         return totalCost;
     }
+
+    public ArrayList<Workshop> listEveryWorkshop() {
+    ArrayList<Workshop> workshops = new ArrayList<>();
+
+    for (ServiceHistoryEntry entry : serviceHistory) {
+        Workshop w = entry.getWorkshop();
+        if (!workshops.contains(w)) {
+            workshops.add(w);
+        }
+    }
+    return workshops;
+}
 
 
 }
