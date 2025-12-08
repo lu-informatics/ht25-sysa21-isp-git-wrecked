@@ -1,5 +1,63 @@
 package se.lu.ics.models;
+import java.util.ArrayList;
 
 public class Workshop {
+    private String name;
+    private boolean isInternal;
+    private String address;
+    private ArrayList<ServiceHistoryEntry> services;
+    private ArrayList<MaintenanceSchedule> schedules;
 
+    public Workshop (String name, boolean isInternal, String address) {
+        this.name = name;
+        this.isInternal = isInternal;
+        this.address = address;
+    }
+
+    public void setName (String name) {
+        this.name = name;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setIsInternal(boolean isInternal) {
+        isInternal = true;
+    }
+    public boolean getIsInternal() {
+        return isInternal;
+    }
+    public void setAddress (String address) {
+        this.address = address;
+    }
+    public String getAddress() {
+        return address;
+    }
+    public void setServices (ArrayList<ServiceHistoryEntry> services) {
+        this.services = services;
+    }
+    public ArrayList<ServiceHistoryEntry> getServices() {
+        return services;
+    }
+    public void setSchedules (ArrayList<MaintenanceSchedule> schedules) {
+        this.schedules = schedules;
+    }
+    public ArrayList<MaintenanceSchedule> getSchedules() {
+        return schedules;
+    }
+
+    public void addService(ServiceHistoryEntry service) {
+        this.services.add(service);
+    }
+    public void addSchedule(MaintenanceSchedule schedule) {
+        this.schedules.add(schedule);
+    }
+
+
+
+
+
+    
 }
+
+
+
