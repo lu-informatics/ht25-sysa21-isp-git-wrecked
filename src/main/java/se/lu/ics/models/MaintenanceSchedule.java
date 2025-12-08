@@ -2,11 +2,11 @@ package se.lu.ics.models;
 import java.time.LocalDate;
 
 public class MaintenanceSchedule {
-    private LocalDate date;
+    private LocalDate localDate;
     private String description;
 
     public MaintenanceSchedule(LocalDate date, String description) {
-        this.date = date;
+        this.localDate = date;
         this.description = description;
     }
 
@@ -14,10 +14,10 @@ public class MaintenanceSchedule {
         if (date == null || date.isBefore(LocalDate.now())) {
             throw new IllegalArgumentException("Date cannot be empty or in the past");
         }
-        this.date = date;
+        this.localDate = date;
     }
     public LocalDate getDate() {
-        return date;
+        return localDate;
     }
     public void setDescription(String description) {
         if (description ==null || description.isEmpty()) {

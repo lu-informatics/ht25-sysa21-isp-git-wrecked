@@ -6,6 +6,8 @@ import java.time.LocalDate;
 public class ServiceHistoryEntry {
     private String problemDescription;
     private double cost;
+    private int partsReplaced; 
+    private LocalDate localDate;
     private int partsReplaced;
     private LocalDate serviceDate;
     private ArrayList<String> serviceActivities;
@@ -30,7 +32,7 @@ public class ServiceHistoryEntry {
 
         this.problemDescription = problemDescription;
         this.cost = cost;
-        this.serviceDate = LocalDate.now();
+        this.localDate = LocalDate.now();
         this.partsReplaced = partsReplaced;
         this.serviceActivities = new ArrayList<String>();
     }
@@ -74,22 +76,21 @@ public class ServiceHistoryEntry {
             throw new IllegalArgumentException("Cost cannot be negative");
         }
         this.cost = cost;
-    }
-
-    public LocalDate getDate() {
-        return serviceDate;
-    }
-
-    public void setDate(LocalDate date) {
-        if (date == null) {
+    }     
+    public LocalDate getDate(){
+        return localDate; 
+    }       
+    public void setDate(LocalDate date){
+        if (date == null){
             throw new IllegalArgumentException("Date cannot be empty");
         }
-        this.serviceDate = date;
+        this.localDate = date; 
+    }  
+    public int getPartsReplaced(){
+        return partsReplaced; 
     }
 
-    public int getPartsReplaced() {
-        return partsReplaced;
-    }
+    
 
     public void setPartsReplaced(int partsReplaced) {
         this.partsReplaced = partsReplaced;
