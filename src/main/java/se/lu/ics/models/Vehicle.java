@@ -12,8 +12,10 @@ public class Vehicle {
     private MaintenanceSchedule maintenanceSchedule;
     private VehicleRegister vehicleRegister;
     private ArrayList <ServiceHistoryEntry> serviceHistory;
+    private static int counter = 1;
 
     public Vehicle (String location, int capacity, VehicleType type, String name) {
+        this.vin = counter++;
         this.location = location;
         this.capacity = capacity;
         this.isAvailable = true;
