@@ -73,7 +73,7 @@ public class Vehicle {
         return type;
     }
 
-    public double getTotalCostOfServiceHistory() {
+    public double getTotalCost() {
         double totalCost = 0.0;
         for (ServiceHistoryEntry entry : serviceHistory) {
             totalCost += entry.getCost();
