@@ -78,8 +78,12 @@ public class ServiceHistoryEntry {
     public void setPartsReplaced(int partsReplaced){ 
         this.partsReplaced = partsReplaced; 
     }
-    public ArrayList<String> getServiceActivities(){
-        return serviceActivities; 
+
+    public Workshop getWorkshop() {
+        return workshop;
+    }
+    public void setWorkshop(Workshop workshop) {
+        this.workshop = workshop;
     }
 
 }
