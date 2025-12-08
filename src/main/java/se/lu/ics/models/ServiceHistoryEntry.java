@@ -5,45 +5,85 @@ import java.time.LocalDate;
 public class ServiceHistoryEntry {
     private String problemDescription;
     private double cost;
-    private ArrayList<String> partsReplaced; 
+    private int partsReplaced; 
     private LocalDate serviceDate;
     private ArrayList<String> serviceActivities;
+    private Workshop workshop;
 
-    public ServiceHistoryEntry(String problemDescription, double cost, LocalDate date){
+    public ServiceHistoryEntry(String problemDescription, double cost, LocalDate serviceDate, int partsReplaced){
+
+        if (cost < 0) {
+            throw new IllegalArgumentException("Cost cannot be negative");
+        }
+
+        if (problemDescription == null || problemDescription.isEmpty()) {
+            throw new IllegalArgumentException("Problem description cannot be empty");
+        }
+        if (serviceDate == null)  {
+            throw new IllegalArgumentException("Date cannot be empty");
+        }
+
         this.problemDescription = problemDescription;
         this.cost = cost;
-        this.serviceDate = date;
-        this.partsReplaced = new ArrayList<String>();
+        this.serviceDate = LocalDate.now();
+        this.partsReplaced = partsReplaced;
         this.serviceActivities = new ArrayList<String>();
     }
     public void addServiceActivity(String activity){
+        if (activity == null || activity.isEmpty()) {
+            throw new IllegalArgumentException("Activity cannot be empty");
+        }
         this.serviceActivities.add(activity);  
     }
     public void removeServiceActivity(String activity){
+
+        if (activity == null || activity.isEmpty()) {
+            throw new IllegalArgumentException("Activity cannot be empty");
+        }
         this.serviceActivities.remove(activity);  
+    }
+    public ArrayList<String> getServiceActivities(){
+        return serviceActivities;  
     }
     public String getProblemDescription(){
         return problemDescription;
     }   
     public void setProblemDescription(String problemDescription){
+        if (problemDescription == null || problemDescription.isEmpty()) {
+            throw new IllegalArgumentException("Problem description cannot be empty");
+        }
         this.problemDescription = problemDescription;
     }
     public double getCost(){
         return cost;
     }   
     public void setCost(double cost){
+        if (cost < 0) {
+            throw new IllegalArgumentException("Cost cannot be negative");
+        }
         this.cost = cost;
     }     
     public LocalDate getDate(){
         return serviceDate; 
     }       
     public void setDate(LocalDate date){
+        if (date == null){
+            throw new IllegalArgumentException("Date cannot be empty");
+        }
         this.serviceDate = date; 
     }  
-   public void addPartReplaced(String part){
-        this.partsReplaced.add(part);  
-    } 
-    public void removePartReplaced(String part){
-        this.partsReplaced.remove(part);  
-    } 
+    public int getPartsReplaced(){
+        return partsReplaced; 
+    }
+    public void setPartsReplaced(int partsReplaced){ 
+        this.partsReplaced = partsReplaced; 
+    }
+
+    public Workshop getWorkshop() {
+        return workshop;
+    }
+    public void setWorkshop(Workshop workshop) {
+        this.workshop = workshop;
+    }
+
 }
