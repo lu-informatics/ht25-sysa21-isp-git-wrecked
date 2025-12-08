@@ -1,4 +1,4 @@
-module //vårt namn för uppgiften {
+module vikingexpress {
     exports se.lu.ics;
 
     requires javafx.fxml;
