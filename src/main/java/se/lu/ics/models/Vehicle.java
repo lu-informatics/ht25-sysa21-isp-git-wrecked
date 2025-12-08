@@ -22,6 +22,23 @@ public class Vehicle {
         this.type = type;
         this.name = name;
         serviceHistory = new ArrayList<>();
+
+        if (location == null || location.isEmpty()) {
+            throw new IllegalArgumentException("Location cannot be empty");
+        }
+
+        if (capacity <= 0) {
+            throw new IllegalArgumentException("Capacity must be greater than zero");
+        }
+
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be empty");
+        }
+
+        if (type == null) {
+            throw new IllegalArgumentException("Vehicle type cannot be empty");
+        }
+
     }
 
     public void setVin(int vin) {
