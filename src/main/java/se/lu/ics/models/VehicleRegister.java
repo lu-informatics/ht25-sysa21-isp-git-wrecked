@@ -53,12 +53,17 @@ public class VehicleRegister {
         return avarageCost;
     }
 
-    public ServiceHistoyEntry getMostExpensiveService(){
+    public ServiceHistoryEntry getMostExpensiveService(){
+        ServiceHistoryEntry mostExpensive = null;
+
         for(Vehicle v : vehicles){
-            for (ServiceHistoyEntry entry : v.getServiceHistory()) {
-                // Implement logic to find the most expensive service entry
-        //fortsätt här!!!! uträkning också
+            for (ServiceHistoryEntry entry : v.getServiceHistory()) {
+                if(mostExpensive==null || entry.getCost()> mostExpensive.getCost()){
+                    mostExpensive= entry;
+                }
             }
         }
+        return mostExpensive;
+        //under konstruktion :)
     }
 }
