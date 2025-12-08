@@ -9,17 +9,20 @@ public class VehicleRegister {
         this.vehicles = new ArrayList<>();
     }
 
-    public void addVehicle(Vehicle veicle){
-        this.vehicles.add(veicle);
+    public void addVehicle(Vehicle vehicle){
+        if(vehicles.contains(vehicle)){
+            throw new IllegalArgumentException("The vehicle already exists.");
+        }
+        this.vehicles.add(vehicle);
     }
 
     public Vehicle findVehicle(int vin){
         for (Vehicle vehicle : vehicles) {
-            if (vehicle.getVin() == vin) { //kolla vilken metod för get i vehicle
+            if (vehicle.getVin() == vin) { 
                 return vehicle;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Vehicle not found.");
     }
 
     public void removeVehicle(int vin){
@@ -28,6 +31,7 @@ public class VehicleRegister {
                 vehicles.remove(v);
             }
         }
+        throw new IllegalArgumentException("Vehicle not found.");
     }
 
     public ArrayList<Vehicle> getAllVeicles(){
