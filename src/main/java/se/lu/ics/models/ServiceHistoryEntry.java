@@ -9,6 +9,11 @@ public class ServiceHistoryEntry {
     private LocalDate serviceDate;
     private ArrayList<String> serviceActivities;
 
+    public ServiceHistoryEntry(){
+        this.partsReplaced = new ArrayList<String>();
+        this.serviceActivities = new ArrayList<String>();
+    }
+
     public ServiceHistoryEntry(String problemDescription, double cost, LocalDate date){
         this.problemDescription = problemDescription;
         this.cost = cost;
