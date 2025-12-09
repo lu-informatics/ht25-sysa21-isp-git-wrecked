@@ -10,7 +10,6 @@ public class Vehicle {
     private String name;
     private VehicleType type;
     private MaintenanceSchedule maintenanceSchedule;
-    private VehicleRegister vehicleRegister;
     private ArrayList<ServiceHistoryEntry> serviceHistory;
     private static int counter = 1;
 
@@ -95,6 +94,9 @@ public class Vehicle {
 
     public void removeMaintenanceSchedule() { // KOLLA IFALL DETTA VERKLIGEN ÄR RÄTT
         this.maintenanceSchedule = null;
+    }
+    public MaintenanceSchedule getMaintenanceSchedule () {
+        return maintenanceSchedule;
     }
 
     public ArrayList<ServiceHistoryEntry> getServiceHistory() {
