@@ -112,11 +112,15 @@ public class ModelIntegrationTest {
 
     vehicle2.removeMaintenanceSchedule();System.out.println("Maintenance schedule after removal:"+vehicle2.getMaintenanceSchedule());
 
-    System.out.println("The most expensive service is: "+vehicleRegister.getMostExpensiveService().getProblemDescription();System.out.println("The vehicle with the highest service cost is:"+vehicleRegister.getMostExpensiveService().getVehicle().getName());System.out.println("The workshop that performed the most expensive service is:"+vehicleRegister.getMostExpensiveService().getWorkshop().getName());
+    System.out.println("The most expensive service is: " + vehicleRegister.getMostExpensiveService().getProblemDescription();
+    System.out.println("The vehicle with the highest service cost is:"+vehicleRegister.getMostExpensiveService().getVehicle().getName());
+    System.out.println("The workshop that performed the most expensive service is:"+vehicleRegister.getMostExpensiveService().getWorkshop().getName());
 
-    System.out.println("The most expensive workshop is:");System.out.println(workshopRegister.getMostExpensiveWorkshop().getName());
+    System.out.println("The most expensive workshop is:");
+    System.out.println(workshopRegister.getMostExpensiveWorkshop().getName()); 
+    
+    System.out.println("Workshops used by vehicle "+ vehicle1.getName()+":")
 
-    System.out.println("Workshops used by vehicle "+vehicle1.getName()+":")
     for(Workshop tempWorkshop:vehicle1.listEveryWorkshop()) {
         System.out.println(tempWorkshop.getName());
     }
