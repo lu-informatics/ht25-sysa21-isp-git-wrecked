@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class VehicleRegister {
     private ArrayList<Vehicle> vehicles;
+    private ServiceHistoryEntry serviceHistory;
 
     public VehicleRegister() {
         this.vehicles = new ArrayList<>();
