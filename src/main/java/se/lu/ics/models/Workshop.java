@@ -13,6 +13,8 @@ public class Workshop {
         this.name = name;
         this.isInternal = isInternal;
         this.address = address;
+        services = new ArrayList<>();
+        schedules = new ArrayList<>();
     }
 
     public void setName(String name) {
