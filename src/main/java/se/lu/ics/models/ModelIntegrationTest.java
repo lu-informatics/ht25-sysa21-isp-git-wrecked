@@ -16,8 +16,8 @@ public class ModelIntegrationTest {
         MaintenanceSchedule schedule1 = new MaintenanceSchedule(LocalDate.of(2024, 7, 15), "Oil Change");
         MaintenanceSchedule schedule2 = new MaintenanceSchedule(LocalDate.of(2024, 8, 20), "Tire Rotation");
 
-        ServiceHistoryEntry entry1 = new ServiceHistoryEntry("Brake issues", 250.0, LocalDate.of(2024, 6, 10));
-        ServiceHistoryEntry entry2 = new ServiceHistoryEntry("Engine noise", 400.0, LocalDate.of(2024, 5, 5));
+        ServiceHistoryEntry entry1 = new ServiceHistoryEntry("Brake issues", 250.0, LocalDate.of(2024, 6, 10),2);
+        ServiceHistoryEntry entry2 = new ServiceHistoryEntry("Engine noise", 400.0, LocalDate.of(2024, 5, 5),1);
 
         vehicleRegister.addVehicle(vehicle1);
         vehicleRegister.addVehicle(vehicle2);
@@ -53,13 +53,12 @@ public class ModelIntegrationTest {
                 System.out.println(entry.getProblemDescription() + " Cost: " + entry.getCost() + " Date: " + entry.getDate());
             }
         }
-        System.out.println("Service History Entries for vehicle " + vehicle1.getName() + ":");
-        for (ServiceHistoryEntry e : vehicle1.getServiceHistory()) {
-            System.out.println(e.getProblemDescription() + " Cost: " + e.getCost() + " Date: " + e.getDate());
-        }
+    System.out.println("Service History Entries for vehicle " + vehicle1.getName() + ":");
+    for (ServiceHistoryEntry e : vehicle1.getServiceHistory()) {
+        System.out.println(e.getProblemDescription() + " Cost: " + e.getCost() + " Date: " + e.getDate());
     }
 
-        System.out.println("Maintenance Schedules:");
+    System.out.println("Maintenance Schedules:");
         for (Vehicle veh: vehicleRegister.getAllVehicles()){
             System.out.println("Mantenance Schedule for vehicles: " + veh.getName()+ vehicleRegister.getMaintenanceSchedule().getNextServiceDate() + " Description: " + vehicleRegister.getMaintenanceSchedule().getDescription());
         }

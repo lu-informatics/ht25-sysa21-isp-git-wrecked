@@ -4,6 +4,7 @@ import java.time.LocalDate;
 public class MaintenanceSchedule {
     private LocalDate localDate;
     private String description;
+    private Workshop workshop;
 
     public MaintenanceSchedule(LocalDate date, String description) {
         this.localDate = date;
@@ -28,6 +29,9 @@ public class MaintenanceSchedule {
 
     public String getDescription() {
         return description;
+    }
+    public Workshop getWorkshop() {
+        return workshop;
     }
 
 }
