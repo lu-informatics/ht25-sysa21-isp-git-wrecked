@@ -10,6 +10,7 @@ public class ServiceHistoryEntry {
     private LocalDate localDate;
     private ArrayList<String> serviceActivities;
     private Workshop workshop;
+    private Vehicle vehicle;
 
     public ServiceHistoryEntry() {
         this.serviceActivities = new ArrayList<String>();
@@ -100,6 +101,12 @@ public class ServiceHistoryEntry {
 
     public void setWorkshop(Workshop workshop) {
         this.workshop = workshop;
+    }
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
 }
