@@ -196,17 +196,21 @@ public class ModelIntegrationTest {
         
         
         
-        
+        //Testar metoden getMostExpensiveService som också visar vilken workshop som utfört servicen och vilket fordon det gäller
         System.out.println("The most expensive service is: " + vehicleRegister.getMostExpensiveService().getProblemDescription();
         System.out.println("The vehicle with the highest service cost is:" + vehicleRegister.getMostExpensiveService().getVehicle().getName());
         System.out.println("The workshop that performed the most expensive service is:" + vehicleRegister.getMostExpensiveService().getWorkshop().getName());
 
+        //Testar metoden getMostExpensiveWorkshop i WorkshopRegister
         System.out.println("The most expensive workshop is:");
         System.out.println(workshopRegister.getMostExpensiveWorkshop().getName());
         
+        //Testar metoden listEveryWorkshop i Vehicle
         System.out.println("Workshops used by vehicle " + vehicle1.getName() + ":");
         for (Workshop tempWorkshop : vehicle1.listEveryWorkshop()) {
             System.out.println(tempWorkshop.getName());
+        }
+
         System.out.println("Average cost for vehicle maintenence");
         for (Vehicle A : vehicleRegister.getAllVehicles ()) {
             System.out.println("Avarage cost for vehicle maintenence is :" + vehicleRegister.calculateAvarageCost());
