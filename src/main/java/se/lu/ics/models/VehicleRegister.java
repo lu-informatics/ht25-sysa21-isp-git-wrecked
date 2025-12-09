@@ -34,10 +34,27 @@ public class VehicleRegister {
         throw new IllegalArgumentException("Vehicle not found.");
     }
 
-    public ArrayList<Vehicle> getAllVeicles(){
+    public ArrayList<Vehicle> getAllVheicles(){
         return vehicles;
     }
 
+    public String printAllMaintenanceSchedules(){
+        if(vehicles.isEmpty()){
+            throw new IllegalArgumentException("No vehicles in the register.");
+        }
+        String result= " ";
+
+            for (Vehicle v : vehicles) {
+                MaintenanceSchedule m=v.getMaintenanceSchedule();
+                if(m==null){
+                    throw new IllegalArgumentException("No maintenance schedule found for vehicle VIN: " + v.getVin());
+                } else {
+                result+=v.getVin() + " " +m.getDate()+ " " + m.getDescription();
+                }
+        }
+        return result;
+        }
+    
     public double getTotalServiceCostForAllVehicles(){
         double total= 0.0;
 
@@ -70,6 +87,5 @@ public class VehicleRegister {
             }
         }
         return mostExpensive;
-        //under konstruktion :)
     }
 }

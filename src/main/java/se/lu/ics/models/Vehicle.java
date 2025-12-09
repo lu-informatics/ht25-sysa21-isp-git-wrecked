@@ -73,6 +73,10 @@ public class Vehicle {
         return name;
     }
 
+    public MaintenanceSchedule getMaintenanceSchedule(){
+        return maintenanceSchedule;
+    }
+
     public void addServiceHistoryEntry(ServiceHistoryEntry entry) {
         serviceHistory.add(entry);
 
