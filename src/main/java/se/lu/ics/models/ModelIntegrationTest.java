@@ -6,12 +6,12 @@ public class ModelIntegrationTest {
     public static void main(String[] args) {
         VehicleRegister vehicleRegister = new VehicleRegister();
         WorkshopRegister workshopRegister = new WorkshopRegister();
-        Vehicle vehicle1 = new Vehicle("Lund", 6, MEDIUM_TRUCK, "Ferrari");
-        Vehicle vehicle2 = new Vehicle("Malmö", 12, VAN, "Lamborghini");
-        Vehicle vehicle3 = new Vehicle("Stockholm",8, LARGE_TRUCK, "Porsche");
+        Vehicle vehicle1 = new Vehicle("Lund", 6, VehicleType.MEDIUM_TRUCK, "Ferrari");
+        Vehicle vehicle2 = new Vehicle("Malmö", 12, VehicleType.VAN, "Lamborghini");
+        Vehicle vehicle3 = new Vehicle("Stockholm",8, VehicleType.LARGE_TRUCK, "Porsche");
 
-        Workshop workshop1 = new Workshop("AutoFix", isInternal, "Bilvägen 1");
-        Workshop workshop2 = new Workshop("CarCare", isExternal, "Motorvägen 5");
+        Workshop workshop1 = new Workshop("AutoFix",true, "Bilvägen 1");
+        Workshop workshop2 = new Workshop("CarCare", false, "Motorvägen 5");
 
         MaintenanceSchedule schedule1 = new MaintenanceSchedule(LocalDate.of(2024, 7, 15), "Oil Change");
         MaintenanceSchedule schedule2 = new MaintenanceSchedule(LocalDate.of(2024, 8, 20), "Tire Rotation");
@@ -38,83 +38,76 @@ public class ModelIntegrationTest {
         entry1.addServiceActivity("Replace brake pads");
         entry1.addServiceActivity("Cleaned brake system");
         entry2.addServiceActivity("Replaced engine oil");
-
-
-        
+ 
         System.out.println("Vehicles in Register:");
         for (Vehicle v : vehicleRegister.getAllVehicles()) { 
             System.out.println(v.getLocation() + " " + v.getCapacity() + " " +  v.getType() + " " + v.getName() + "");   
         }
         System.out.println("Workshops in Register:");
-        for (Workshop w : workshopRegister.getAllWorkshops()) {
+        for (Workshop w : workshopRegister.getWorkshops()) {
             System.out.println(w.getName());
         }
         System.out.println("Service History Entries for all vehicles:");
-        for (Vehicle v : vehicleRegister.getAllVehicles()) {
-            for (ServiceHistoryEntry e : v.getServiceHistory()) {
-                System.out.println(e.getProblemDescription() + " Cost: " + e.getCost() + " Date: " + e.getDate());
+        for (Vehicle ve : vehicleRegister.getAllVehicles()) {
+            for (ServiceHistoryEntry entry : ve.getServiceHistory()) {
+                System.out.println(entry.getProblemDescription() + " Cost: " + entry.getCost() + " Date: " + entry.getDate());
+            }
         }
         System.out.println("Service History Entries for vehicle " + vehicle1.getName() + ":");
         for (ServiceHistoryEntry e : vehicle1.getServiceHistory()) {
             System.out.println(e.getProblemDescription() + " Cost: " + e.getCost() + " Date: " + e.getDate());
         }
         System.out.println("Maintenance Schedules:");
-        for (Vehicle v: vehicleRegister.getAllVehicles()){
-            System.out.println("Mantenance Schedule for vehicles: " + v.getName()+ v.getMaintenanceSchedule().getNextServiceDate() + " Description: " + v.getMaintenanceSchedule().getDescription());
+        for (Vehicle veh: vehicleRegister.getAllVehicles()){
+            System.out.println("Mantenance Schedule for vehicles: " + veh.getName()+ vehicleRegister.getMaintenanceSchedule().getNextServiceDate() + " Description: " + vehicleRegister.getMaintenanceSchedule().getDescription());
         }
         System.out.println("Available Vehicles:");
-       for (Vehicle v : vehicleRegister.getAllVehicles()) {
-            if (v.isAvailable()) {
-            System.out.println(v.getLocation() + " " + v.getCapacity() + " " +  v.getType() + " " + v.getName() );
-        }
-        for (Vehicle v : vehicleRegister.getAllVehicles()) {
-            System.out.println("Vehicle: " + v.getName() + " is maintained by workshop " + v.getMaintenanceSchedule().getWorkshop().getName());
-        }
-        for (ServiceHistoryEntry e : vehicle1.getServiceHistory()) {
-            System.out.println("Service Entry for vehicle " + vehicle1.getName() + ": " + e.getProblemDescription() + " is carried out by workshop " + workshop1.getName());
+       for (Vehicle vehi : vehicleRegister.getAllVehicles()) {
+            if (vehi.isAvailable()) {
+            System.out.println(vehi.getLocation() + " " + vehi.getCapacity() + " " +  vehi.getType() + " " + vehi.getName() );
             }
+        }
+        System.out.println("Workshop that carried out maintenance:");
+        for (Vehicle vehic : vehicleRegister.getAllVehicles()) {
+            System.out.println("Vehicle: " + vehic.getName() + " is maintained by workshop " + vehic.getMaintenanceSchedule().getWorkshop().getName());
+        }
+        System.out.println("Workshop that carried out service entries:");
+        for (ServiceHistoryEntry en: vehicle1.getServiceHistory()) {
+            System.out.println("Service Entry for vehicle " + vehicle1.getName() + ": " + en.getProblemDescription() + " is carried out by workshop " + workshop1.getName());
+        }
         System.out.println("Services activities performed:");
-        for (ServiceHistoryEntry e : vehicle1.getServiceHistory()) {
-            for (String activity : e.getServiceActivities()) {
+        for (ServiceHistoryEntry ent : vehicle1.getServiceHistory()) {
+            for (String activity : ent.getServiceActivities()) {
                 System.out.println(activity);
             }
+        }
         System.out.println("Parts replaced during services:");
-        for (ServiceHistoryEntry e : vehicle2.getServiceHistory()) {
-            for (String part : e.getPartsReplaced()) {
-                System.out.println(part);
-            }
+        for (ServiceHistoryEntry entr: vehicle2.getServiceHistory()) {
+                System.out.println(entr.getPartsReplaced());
+        }
         System.out.println("Service history for workshop " + workshop1.getName() + ":");
-        for (ServiceHistoryEntry e : workshop1.getServiceHistoryEntries()) {
-            System.out.println(e.getProblemDescription() + " for vehicle " + vehicle1.getName());
+        for (ServiceHistoryEntry entry : workshop1.getServices()) {
+            System.out.println(entry.getProblemDescription() + " for vehicle " + vehicle1.getName());
         }
         System.out.println("Total cost of services for vehicle " + vehicle2.getName() + ": " + vehicle2.getTotalCost());
+        
+        System.out.println("Total cost of services for all vehicles:");
+        for (Vehicle vehicl : vehicleRegister.getAllVehicles()) {
+            System.out.println("Vehicle " + vehicl.getName() + ": " + vehicl.getTotalCost());
         }
-        System.out.println("Total cost of services for all vehicles:"){
-        for (Vehicle v : vehicleRegister.getAllVehicles()) {
-            System.out.println("Vehicle " + v.getName() + ": " + v.getTotalCost());
-        }
-        double avgCost=vehicleRegister.calculateAvarageCost();
-
-        System.out.println("Average cost of vehicle maintenance:" + avgCost); // Lös denna 
-         }
+        double averageCost = vehicleRegister.calculateAvarageCost();
+        System.out.println("Average cost of vehicle maintenance:" + averageCost);
 
         vehicleRegister.removeVehicle(vehicle3.getVin());
         System.out.println("Vehicles after removal:" + vehicleRegister.getAllVehicles());
-        }
+
         workshopRegister.removeWorkshop(workshop2.getName());
-        System.out.println("Workshops after removal:" + workshopRegister.getAllWorkshops());
-        }
+        System.out.println("Workshops after removal:" + workshopRegister.getWorkshops());
+
         vehicle1.removeServiceHistoryEntry(entry1);
         System.out.println("Service history after removal:" + vehicle1.getServiceHistory());
-        }
+
         vehicle2.removeMaintenanceSchedule();
         System.out.println("Maintenance schedule after removal:" + vehicle2.getMaintenanceSchedule());
-
-
-
-
-
-        
-        
-        }
     }
+}
