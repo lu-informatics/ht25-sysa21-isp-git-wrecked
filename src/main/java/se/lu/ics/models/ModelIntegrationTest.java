@@ -70,7 +70,7 @@ public class ModelIntegrationTest {
         }
         System.out.println("Workshop that carried out maintenance:");
         for (Vehicle vehic : vehicleRegister.getAllVehicles()) {
-            System.out.println("Vehicle: " + vehic.getName() + " is maintained by workshop " + vehic.getMaintenanceSchedule().().getName());
+            System.out.println("Vehicle:" + vehic.getName() + "is maintained by workshop " + vehic.getMaintenanceSchedule().getWorkshop().getName());
         }
         System.out.println("Workshop that carried out service entries:");
         for (ServiceHistoryEntry en: vehicle1.getServiceHistory()) {
@@ -110,5 +110,20 @@ public class ModelIntegrationTest {
 
         vehicle2.removeMaintenanceSchedule();
         System.out.println("Maintenance schedule after removal:" + vehicle2.getMaintenanceSchedule());
+
+    System.out.println("The most expensive service is: " + vehicleRegister.getMostExpensiveService().getProblemDescription());
+    System.out.println("The vehicle with the highest service cost is:"+vehicleRegister.getMostExpensiveService().getVehicle().getName());
+    System.out.println("The workshop that performed the most expensive service is:"+vehicleRegister.getMostExpensiveService().getWorkshop().getName());
+
+    System.out.println("The most expensive workshop is:");
+    System.out.println(workshopRegister.getMostExpensiveWorkshop().getName()); 
+    
+    System.out.println("Workshops used by vehicle "+ vehicle1.getName()+":");
+
+    for(Workshop tempWorkshop:vehicle1.listEveryWorkshop()) {
+        System.out.println(tempWorkshop.getName());
+    }
+
+
     }
 }
