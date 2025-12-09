@@ -35,7 +35,7 @@ public class VehicleRegister {
         throw new IllegalArgumentException("Vehicle not found.");
     }
 
-    public ArrayList<Vehicle> getAllVeicles(){
+    public ArrayList<Vehicle> getAllVehicles(){
         return vehicles;
     }
 
