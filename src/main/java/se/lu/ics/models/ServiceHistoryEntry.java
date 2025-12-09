@@ -8,8 +8,6 @@ public class ServiceHistoryEntry {
     private double cost;
     private int partsReplaced; 
     private LocalDate localDate;
-    private int partsReplaced;
-    private LocalDate serviceDate;
     private ArrayList<String> serviceActivities;
     private Workshop workshop;
     private Vehicle vehicle;

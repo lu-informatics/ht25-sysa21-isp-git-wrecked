@@ -38,7 +38,7 @@ public class ModelIntegrationTest {
             System.out.println(v.getLocation() + " " + v.getCapacity() + " " + v.getType() + " " + v.getName() + "");
         }
         System.out.println("Workshops in Register:");
-        for (Workshop w : workshopRegister.getAllWorkshops()) {
+        for (Workshop w : workshopRegister.getWorkshops()) {
             System.out.println(w.getName());
         }
         System.out.println("Service History Entries:");
@@ -47,11 +47,11 @@ public class ModelIntegrationTest {
                 System.out.println(e.getProblemDescription() + " Cost: " + e.getCost() + " Date: " + e.getDate());
             }
         }
+    }
+
         System.out.println("Maintenance Schedules:");
-        for (Vehicle v : vehicleRegister.getAllVehicles()) {
-            System.out.println(
-                    "Mantenance Schedule for vehicles: " + v.getName() + v.getMaintenanceSchedule().getNextServiceDate()
-                            + " Description: " + v.getMaintenanceSchedule().getDescription());
+        for (Vehicle v: vehicleRegister.getAllVehicles()){
+            System.out.println("Mantenance Schedule for vehicles: " + v.getName()+ v.getMaintenanceSchedule().getDate() + " Description: " + v.getMaintenanceSchedule().getDescription());
         }
         System.out.println("Available Vehicles:");
         for (Vehicle v : vehicleRegister.getAllVehicles()) {
@@ -207,6 +207,11 @@ public class ModelIntegrationTest {
         System.out.println("Workshops used by vehicle " + vehicle1.getName() + ":");
         for (Workshop tempWorkshop : vehicle1.listEveryWorkshop()) {
             System.out.println(tempWorkshop.getName());
+        System.out.println("Average cost for vehicle maintenence");
+        for (Vehicle A : vehicleRegister.getAllVehicles ()) {
+            System.out.println("Avarage cost for vehicle maintenence is :" + vehicleRegister.calculateAvarageCost());
+        }
+            
         }
     }
 }

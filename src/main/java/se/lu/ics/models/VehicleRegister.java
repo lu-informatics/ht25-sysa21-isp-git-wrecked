@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class VehicleRegister {
     private ArrayList<Vehicle> vehicles;
+    private ServiceHistoryEntry serviceHistory;
 
     public VehicleRegister() {
         this.vehicles = new ArrayList<>();
@@ -34,7 +35,7 @@ public class VehicleRegister {
         throw new IllegalArgumentException("Vehicle not found.");
     }
 
-    public ArrayList<Vehicle> getAllVeicles(){
+    public ArrayList<Vehicle> getAllVehicles(){
         return vehicles;
     }
 
