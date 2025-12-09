@@ -15,9 +15,11 @@ public class ModelIntegrationTest {
 
         MaintenanceSchedule schedule1 = new MaintenanceSchedule(LocalDate.of(2024, 7, 15), "Oil Change");
         MaintenanceSchedule schedule2 = new MaintenanceSchedule(LocalDate.of(2024, 8, 20), "Tire Rotation");
+        MaintenanceSchedule schedule3 = new MaintenanceSchedule(LocalDate.of(2024, 9, 25), "Brake Inspection");
 
         ServiceHistoryEntry entry1 = new ServiceHistoryEntry("Brake issues", 250.0, LocalDate.of(2024, 6, 10), 1);
         ServiceHistoryEntry entry2 = new ServiceHistoryEntry("Engine noise", 400.0, LocalDate.of(2024, 5, 5),2);
+        ServiceHistoryEntry entry3 = new ServiceHistoryEntry("Flat tire", 100.0, LocalDate.of(2024, 4, 15),1);
 
         vehicleRegister.addVehicle(vehicle1);
         vehicleRegister.addVehicle(vehicle2);
@@ -28,16 +30,36 @@ public class ModelIntegrationTest {
 
         vehicle1.addMaintenanceSchedule(schedule1);
         vehicle2.addMaintenanceSchedule(schedule2);
+        vehicle3.addMaintenanceSchedule(schedule3);
 
         vehicle1.addServiceHistoryEntry(entry1);
+        vehicle1.addServiceHistoryEntry(entry2);
         vehicle2.addServiceHistoryEntry(entry2);
+        vehicle3.addServiceHistoryEntry(entry3);
 
         workshop1.addSchedule(schedule1);
         workshop2.addSchedule(schedule2);
 
+        workshop1.addService(entry1);
+        workshop2.addService(entry2);
+        workshop1.addService(entry3);
+
+        schedule1.setWorkshop(workshop1);
+        schedule2.setWorkshop(workshop2);
+        schedule3.setWorkshop(workshop1);
+
         entry1.addServiceActivity("Replace brake pads");
         entry1.addServiceActivity("Cleaned brake system");
         entry2.addServiceActivity("Replaced engine oil");
+        entry3.addServiceActivity("Replaced tire");
+
+        entry1.setVehicle(vehicle1);
+        entry2.setVehicle(vehicle2);
+        entry3.setVehicle(vehicle3);
+
+        entry1.setWorkshop(workshop1);
+        entry2.setWorkshop(workshop2);
+        entry3.setWorkshop(workshop1);
  
         System.out.println("Vehicles in Register:");
         for (Vehicle v : vehicleRegister.getAllVehicles()) {
@@ -58,9 +80,9 @@ public class ModelIntegrationTest {
         System.out.println(e.getProblemDescription() + " Cost: " + e.getCost() + " Date: " + e.getDate());
     }
 
-    System.out.println("Maintenance Schedules:");
+        System.out.println("Maintenance Schedules:");
         for (Vehicle veh: vehicleRegister.getAllVehicles()){
-            System.out.println("Mantenance Schedule for vehicles: " + veh.getName()+ veh.getMaintenanceSchedule() + " Description: " + veh.getMaintenanceSchedule().getDescription());
+            System.out.println("Mantenance Schedule for vehicles: " + veh.getName()+ " " + veh.getMaintenanceSchedule().getDate() + " " + " Description: " + veh.getMaintenanceSchedule().getDescription());
         }
         System.out.println("Available Vehicles:");
        for (Vehicle vehi : vehicleRegister.getAllVehicles()) {
@@ -100,20 +122,24 @@ public class ModelIntegrationTest {
         System.out.println("Average cost of vehicle maintenance:" + averageCost);
 
         vehicleRegister.removeVehicle(vehicle3.getVin());
-        System.out.println("Vehicles after removal:" + vehicleRegister.getAllVehicles());
-
+        for(Vehicle v: vehicleRegister.getAllVehicles()) {
+            System.out.println("Remaining vehicle: " + v.getName());
+        }
         workshopRegister.removeWorkshop(workshop2.getName());
-        System.out.println("Workshops after removal:" + workshopRegister.getWorkshops());
+        for(Workshop w: workshopRegister.getWorkshops()) {
+            System.out.println("Remaining workshop: " + w.getName());
+        }
 
         vehicle1.removeServiceHistoryEntry(entry1);
-        System.out.println("Service history after removal:" + vehicle1.getServiceHistory());
-
+        for(ServiceHistoryEntry e: vehicle1.getServiceHistory()) {
+            System.out.println("Remaining service entry for vehicle " + vehicle1.getName() + ": " + e.getProblemDescription());
+        }
         vehicle2.removeMaintenanceSchedule();
         System.out.println("Maintenance schedule after removal:" + vehicle2.getMaintenanceSchedule());
 
     System.out.println("The most expensive service is: " + vehicleRegister.getMostExpensiveService().getProblemDescription());
-    System.out.println("The vehicle with the highest service cost is:"+vehicleRegister.getMostExpensiveService().getVehicle().getName());
-    System.out.println("The workshop that performed the most expensive service is:"+vehicleRegister.getMostExpensiveService().getWorkshop().getName());
+    System.out.println("The vehicle with the highest service cost is:"+ vehicleRegister.getMostExpensiveService().getVehicle().getName());
+    System.out.println("The workshop that performed the most expensive service is:"+ vehicleRegister.getMostExpensiveService().getWorkshop().getName());
 
     System.out.println("The most expensive workshop is:");
     System.out.println(workshopRegister.getMostExpensiveWorkshop().getName()); 
