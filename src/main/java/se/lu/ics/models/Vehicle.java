@@ -95,9 +95,7 @@ public class Vehicle {
     public void removeMaintenanceSchedule() { // KOLLA IFALL DETTA VERKLIGEN ÄR RÄTT
         this.maintenanceSchedule = null;
     }
-    public MaintenanceSchedule getMaintenanceSchedule () {
-        return maintenanceSchedule;
-    }
+    
 
     public ArrayList<ServiceHistoryEntry> getServiceHistory() {
         return serviceHistory;
