@@ -40,8 +40,8 @@ public class ModelIntegrationTest {
         entry2.addServiceActivity("Replaced engine oil");
  
         System.out.println("Vehicles in Register:");
-        for (Vehicle v : vehicleRegister.getAllVehicles()) { 
-            System.out.println(v.getLocation() + " " + v.getCapacity() + " " +  v.getType() + " " + v.getName() + "");   
+        for (Vehicle v : vehicleRegister.getAllVehicles()) {
+            System.out.println(v.getLocation() + " " + v.getCapacity() + " " + v.getType() + " " + v.getName() + "");
         }
         System.out.println("Workshops in Register:");
         for (Workshop w : workshopRegister.getWorkshops()) {
@@ -57,6 +57,8 @@ public class ModelIntegrationTest {
         for (ServiceHistoryEntry e : vehicle1.getServiceHistory()) {
             System.out.println(e.getProblemDescription() + " Cost: " + e.getCost() + " Date: " + e.getDate());
         }
+    }
+
         System.out.println("Maintenance Schedules:");
         for (Vehicle veh: vehicleRegister.getAllVehicles()){
             System.out.println("Mantenance Schedule for vehicles: " + veh.getName()+ vehicleRegister.getMaintenanceSchedule().getNextServiceDate() + " Description: " + vehicleRegister.getMaintenanceSchedule().getDescription());

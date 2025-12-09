@@ -4,22 +4,26 @@ import java.util.ArrayList;
 
 public class VehicleRegister {
     private ArrayList<Vehicle> vehicles;
+    private ServiceHistoryEntry serviceHistory;
 
     public VehicleRegister() {
         this.vehicles = new ArrayList<>();
     }
 
-    public void addVehicle(Vehicle veicle){
-        this.vehicles.add(veicle);
+    public void addVehicle(Vehicle vehicle){
+        if(vehicles.contains(vehicle)){
+            throw new IllegalArgumentException("The vehicle already exists.");
+        }
+        this.vehicles.add(vehicle);
     }
 
     public Vehicle findVehicle(int vin){
         for (Vehicle vehicle : vehicles) {
-            if (vehicle.getVin() == vin) { //kolla vilken metod för get i vehicle
+            if (vehicle.getVin() == vin) { 
                 return vehicle;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Vehicle not found.");
     }
 
     public void removeVehicle(int vin){
@@ -28,19 +32,39 @@ public class VehicleRegister {
                 vehicles.remove(v);
             }
         }
+        throw new IllegalArgumentException("Vehicle not found.");
     }
 
-    public ArrayList<Vehicle> getAllVeicles(){
+    public ArrayList<Vehicle> getAllVehicles(){
         return vehicles;
     }
 
+    public String printAllMaintenanceSchedules(){
+        if(vehicles.isEmpty()){
+            throw new IllegalArgumentException("No vehicles in the register.");
+        }
+        String result= " ";
+
+            for (Vehicle v : vehicles) {
+                MaintenanceSchedule m=v.getMaintenanceSchedule();
+                if(m==null){
+                    throw new IllegalArgumentException("No maintenance schedule found for vehicle VIN: " + v.getVin());
+                } else {
+                result+=v.getVin() + " " +m.getDate()+ " " + m.getDescription();
+                }
+        }
+        return result;
+        }
+    
     public double getTotalServiceCostForAllVehicles(){
         double total= 0.0;
 
         for(Vehicle v : vehicles){
-            total+=v.getTotalCost();
-            return total;
+            if(v!=null){
+                total+=v.getTotalCost();
+            }
         }
+        return total;
     }
 
     public double calculateAvarageCost(){
@@ -64,6 +88,5 @@ public class VehicleRegister {
             }
         }
         return mostExpensive;
-        //under konstruktion :)
     }
 }
