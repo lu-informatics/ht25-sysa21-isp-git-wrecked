@@ -1,14 +1,19 @@
 package se.lu.ics;
 
-public class App {
+import javafx.application.Application;
+import javafx.stage.Stage;
+import se.lu.ics.controllers.AppController;
+import se.lu.ics.models.AppModel;
+
+public class App extends Application {
     public static void main(String[] args) {
-    
-        @Override
-        public void start(Stage primaryStage) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) {
         AppModel appModel = new AppModel();
         AppController appController = new AppController(primaryStage, appModel);
         appController.showMainView();
-        }
-    
     }
 }
