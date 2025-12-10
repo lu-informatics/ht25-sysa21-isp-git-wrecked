@@ -1,5 +1,5 @@
 package se.lu.ics.controllers;
 
-public class WorkshopViewCOntroller {
+public class WorkshopViewController {
 
 }
