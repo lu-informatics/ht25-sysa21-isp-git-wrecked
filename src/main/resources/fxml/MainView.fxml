@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="700" prefWidth="1100" style="-fx-background-color: #DCEFFB;;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.lu.ics.controllers.MainViewController">
@@ -31,12 +36,86 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="97.0" layoutY="158.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="250.0" text="Vehicle" />
-            <Button layoutX="100.0" layoutY="276.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="250.0" text="Workshop">
+            <Button layoutX="66.0" layoutY="94.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="250.0" text="Vehicle">
                <font>
-                  <Font name="Arial" size="64.0" />
+                  <Font size="18.0" />
+               </font></Button>
+            <Button layoutX="64.0" layoutY="195.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="250.0" text="Workshop">
+               <font>
+                  <Font size="18.0" />
                </font>
             </Button>
+            <VBox layoutX="748.0" layoutY="348.0" prefHeight="122.0" prefWidth="261.0" style="-fx-border-color: black; -fx-background-color: white;">
+               <children>
+                  <HBox prefHeight="42.0" prefWidth="223.0">
+                     <children>
+                        <Label prefHeight="47.0" prefWidth="269.0" style="-fx-border-color: black;" text="Most expensive maintenance job">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="59.0" prefWidth="239.0">
+                     <children>
+                        <Label />
+                        <Label text=" Maintenance job">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="57.0" prefWidth="251.0">
+                     <children>
+                        <Label text=" Vehicle">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="59.0" prefWidth="251.0">
+                     <children>
+                        <Label text="Workshop">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <LineChart layoutX="405.0" layoutY="27.0" prefHeight="285.0" prefWidth="325.0" title="Avarage servicecost overtime">
+              <xAxis>
+                <CategoryAxis label="Date" prefHeight="17.0" prefWidth="282.0" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis label="SEK" side="LEFT" />
+              </yAxis>
+            </LineChart>
+            <VBox layoutX="771.0" layoutY="307.0" prefHeight="24.0" prefWidth="164.0" />
+            <TextField layoutX="643.0" layoutY="302.0" prefHeight="19.0" prefWidth="75.0" />
+            <Label layoutX="474.0" layoutY="305.0" text="Avarage servicecost">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <VBox layoutX="738.0" layoutY="206.0" prefHeight="85.0" prefWidth="278.0" style="-fx-background-color: white; -fx-border-color: black;">
+               <children>
+                  <HBox prefHeight="38.0" prefWidth="278.0">
+                     <children>
+                        <Label text="Most expensive workshop">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Label />
+                  <TextField prefHeight="81.0" prefWidth="278.0" />
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
    </center>
