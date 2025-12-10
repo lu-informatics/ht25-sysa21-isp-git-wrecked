@@ -1,17 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 
-<AnchorPane>
+<BorderPane prefHeight="700" prefWidth="1100" style="-fx-background-color: #DCEFFB;;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.lu.ics.controllers.MainViewController">
 
-<children>
+    <!-- ================= TOP BAR ================= -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="12" style="-fx-background-color: #0A2A43;">
+            <padding>
+                <Insets bottom="14" left="20" right="20" top="14" />
+            </padding>
 
-</children>
+            <ImageView fitHeight="60" fitWidth="60" preserveRatio="true">
+                <image>
+                    <Image url="@../VikingExpressTransparent.png" />
+                </image>
+            </ImageView>
 
-</AnchorPane>
+            <Label style="-fx-text-fill: white; -fx-font-size: 30px; -fx-font-weight: bold;" text="VikingExpress Fleet Management System" />
+        </HBox>
+    </top>
+
+
+    
+
+</BorderPane>
