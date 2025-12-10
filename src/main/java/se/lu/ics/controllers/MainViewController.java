@@ -23,6 +23,14 @@ public class MainViewController {
 
     @FXML
     private TextField vinTextField;
-    //button labels textfields osv. alla knappar för metoderna def.
+    // button labels textfields osv. alla knappar för metoderna def.
+
+    public void setAppModel(AppModel appModel) {
+        this.appModel = appModel;
+    }
+
+    public void setAppController(AppController appController) {
+        this.appController = appController;
+    }
 
 }
