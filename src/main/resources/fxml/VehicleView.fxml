@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #DCEFFB;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="96.0" prefWidth="600.0" style="-fx-background-color: #0A2A43;">
+         <children>
+            <Label layoutX="109.0" layoutY="40.0" text="VikingExpress Fleet Management System" textFill="WHITE" />
+            <ImageView fitHeight="77.0" fitWidth="105.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../VikingExpressTransparent.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="470.0" layoutY="119.0" prefHeight="200.0" prefWidth="116.0" style="-fx-background-color: white;">
+         <children>
+            <Button layoutX="7.0" layoutY="14.0" mnemonicParsing="false" text="Add" />
+            <Button layoutX="7.0" layoutY="57.0" mnemonicParsing="false" text="Find" />
+            <Button layoutX="7.0" layoutY="100.0" mnemonicParsing="false" text="Remove" />
+            <TextField layoutX="59.0" layoutY="57.0" prefHeight="26.0" prefWidth="50.0" />
+            <Button layoutX="9.0" layoutY="144.0" mnemonicParsing="false" text="Update" />
+         </children></Pane>
+      <TableView layoutX="6.0" layoutY="119.0" prefHeight="200.0" prefWidth="450.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="VIN" />
+          <TableColumn prefWidth="75.0" text="Name" />
+            <TableColumn prefWidth="75.0" text="Capacity" />
+            <TableColumn prefWidth="75.0" text="Type" />
+            <TableColumn prefWidth="75.0" text="Availible" />
+            <TableColumn prefWidth="75.0" text="Location" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
