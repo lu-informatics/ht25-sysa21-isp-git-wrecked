@@ -10,7 +10,7 @@ public class AppController {
     private final Stage primaryStage;
     private final AppModel appModel;
 
-public AppController(Stage primaryStage, AppModel appModel) {
+    public AppController(Stage primaryStage, AppModel appModel) {
         this.primaryStage = primaryStage;
         this.appModel = appModel;
     }
