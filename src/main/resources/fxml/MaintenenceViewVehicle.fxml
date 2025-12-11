@@ -40,9 +40,9 @@
       <TextField fx:id="textFieldVin" layoutX="34.0" layoutY="263.0" prefHeight="26.0" prefWidth="153.0" />
       <MenuButton fx:id="menuButtonManageMaintenance" layoutX="34.0" layoutY="134.0" mnemonicParsing="false" text="Manage maintenance">
         <items>
-            <MenuItem fx:id="menuItemFind" mnemonicParsing="false" onAction="#handleMenuItemFindMaintenanceScheduleAction" text="Find" />
-          <MenuItem fx:id="menuItemBook" mnemonicParsing="false" onAction="#handleMenuItemBookMaintenanceAction" text="Book" />
-          <MenuItem fx:id="menuItemCancel" mnemonicParsing="false" onAction="#handleMenuItemCancelMaintenanceAction" text="Cancel" />
+            <MenuItem fx:id="menuItemFind" mnemonicParsing="false" onAction="#handleMenuItemFindMaintenanceScheduleAction" text="Find Scheduled Maintenance" />
+          <MenuItem fx:id="menuItemBook" mnemonicParsing="false" onAction="#handleMenuItemBookMaintenanceAction" text="Book Maintenance" />
+          <MenuItem fx:id="menuItemCancel" mnemonicParsing="false" onAction="#handleMenuItemCancelMaintenanceAction" text="Cancel Maintenance" />
         </items>
       </MenuButton>
       <Label fx:id="labelWorkshop" layoutX="34.0" layoutY="304.0" text="Workshop:" />
