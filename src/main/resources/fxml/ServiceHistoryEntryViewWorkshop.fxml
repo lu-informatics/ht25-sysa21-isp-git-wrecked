@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #DCEFFB;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="96.0" prefWidth="600.0" style="-fx-background-color: #0A2A43;">
+         <children>
+            <Label layoutX="109.0" layoutY="40.0" text="VikingExpress Fleet Management System" textFill="WHITE" />
+            <ImageView fitHeight="77.0" fitWidth="105.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../VikingExpressTransparent.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <TableView layoutX="8.0" layoutY="132.0" prefHeight="229.0" prefWidth="584.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Date" />
+          <TableColumn prefWidth="75.0" text="Cost" />
+            <TableColumn prefWidth="75.0" text="Parts" />
+            <TableColumn prefWidth="75.0" text="Type" />
+            <TableColumn prefWidth="75.0" text="Vehicle" />
+            <TableColumn prefWidth="208.0" text="Description" />
+        </columns>
+      </TableView>
+      <Text layoutX="8.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Service histories">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
