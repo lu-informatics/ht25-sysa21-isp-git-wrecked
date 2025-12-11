@@ -58,6 +58,12 @@ public class MaintenanceScheduleVehicleViewController {
     private Label labelResponse;
 
     @FXML
+    public void initialize() {
+        updateMostExpensiveWorkshop();
+    }  
+    //metod för att visa hela tiden
+
+    @FXML
     public void handleButtonFindMaintenanceSceduleAction(ActionEvent event){
         String vinT=textFieldVin.getText();
 
@@ -95,6 +101,69 @@ public class MaintenanceScheduleVehicleViewController {
         }
     }
 
+    @FXML
+    public void handleButtonBookMaintenanceScheduleAction(ActionEvent event){
+        String vehicle=textFieldVehicle.getText();
+        String vinT=textFieldVin.getText();
+        String workshop=textFieldWorkshop.getText();
+
+        //hur? behövs ju massa fält då Först skapa maintenance objekt 
+        // och sedan addera till bil??
+
+    
+    updateMostExpensiveWorkshop(); // någonstans i slutet
+}
+
+
+    @FXML
+    public void handleButtonCancelMaintenanceScheduleAction(ActionEvent event){
+        String vinT=textFieldVin.getText();
+
+        if(vinT==null || vinT.isEmpty()){
+            labelResponse.setText("Please enter a valid VIN.");
+            return;
+        }
+        try{
+            int vin=Integer.parseInt(vinT);
+            Vehicle vehicle=appModel.getVehicleRegister().findVehicle(vin);
+            MaintenanceSchedule schedule=vehicle.getMaintenanceSchedule();
+
+            if(schedule!=null){
+                LocalDate date = schedule.getDate();
+                if(date==null){
+                    labelShowDate.setText("No date.");
+                    labelResponse.setText("No maintenance schedule to cancel for vehicle VIN: " + vin);
+                } else {
+                    labelShowDate.setText(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))); // för localdate
+                }
+                labelShowMaintenanceJob.setText(schedule.getDescription());
+                labelShowWorkshop.setText(schedule.getWorkshop().getName());
+
+                vehicle.removeMaintenanceSchedule();
+                labelResponse.setText("Maintenance schedule cancelled for vehicle VIN: " + vin);
+                updateMostExpensiveWorkshop();
+            } 
+            clearMaintenanceLabels();
+            } catch (NumberFormatException e){
+                labelResponse.setText("Please enter a numeric VIN.");
+            } catch (IllegalArgumentException e){
+                labelResponse.setText(e.getMessage());
+            }
+    }
+
+    //metod för att visa most expensive hela tiden.
+    
+    private void updateMostExpensiveWorkshop(){
+        WorkshopRegister workshopRegister=appModel.getWorkshopRegister();
+        Workshop mostExpensiveWorkshop=workshopRegister.getMostExpensiveWorkshop();
+
+        if(mostExpensiveWorkshop!=null){
+            labelShowMostExpensiveWorkshop.setText(mostExpensiveWorkshop.getName());
+
+        } else {
+            labelShowMostExpensiveWorkshop.setText("No data availible.");
+        }
+    }
 
     private void clearMaintenanceLabels(){
         labelShowDate.setText("");
