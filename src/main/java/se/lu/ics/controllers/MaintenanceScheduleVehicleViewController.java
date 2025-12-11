@@ -61,7 +61,7 @@ public class MaintenanceScheduleVehicleViewController {
     public void initialize() {
         updateMostExpensiveWorkshop();
     }  
-    //metod för att visa hela tiden
+    //metod för att uppdatera
 
     @FXML
     public void handleButtonFindMaintenanceSceduleAction(ActionEvent event){
@@ -151,7 +151,7 @@ public class MaintenanceScheduleVehicleViewController {
             }
     }
 
-    //metod för att visa most expensive hela tiden.
+    //metod för att visa most expensive uppdaterad.
     
     private void updateMostExpensiveWorkshop(){
         WorkshopRegister workshopRegister=appModel.getWorkshopRegister();
