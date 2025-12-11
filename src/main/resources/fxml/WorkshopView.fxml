@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" style="-fx-background-color: #DCEFFB;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+
+   <children>
+
+      <Pane prefHeight="96.0" prefWidth="750.0" style="-fx-background-color: #0A2A43;">
+         <children>
+            <Label layoutX="120.0" layoutY="35.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="VikingExpress Fleet Management System" textFill="WHITE" />
+            <ImageView fitHeight="77.0" fitWidth="105.0" layoutX="14.0" layoutY="10.0" preserveRatio="true">
+               <image>
+                  <Image url="@../VikingExpressTransparent.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+
+      <Button fx:id="btnBack" layoutX="14.0" layoutY="105.0" mnemonicParsing="false" text="Back to main menu" />
+
+      <Label layoutX="14.0" layoutY="134.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Workshops" />
+
+      <TableView fx:id="workshopTable" layoutX="14.0" layoutY="159.0" prefHeight="307.0" prefWidth="682.0">
+        <columns>
+          <TableColumn fx:id="colName" prefWidth="150.0" text="Name" />
+          <TableColumn fx:id="colType" prefWidth="130.0" text="Type" />
+          <TableColumn fx:id="colAddress" prefWidth="160.0" text="Address" />
+          <TableColumn fx:id="colServiceEntries" prefWidth="160.0" text="Service entries" />
+        </columns>
+      </TableView>
+
+      <Button fx:id="btnViewEntries" layoutX="615.0" layoutY="470.0" mnemonicParsing="false" text="View entries" />
+
+      <TextField fx:id="txtSearch" layoutX="14.0" layoutY="470.0" prefHeight="26.0" prefWidth="150.0" promptText="Search workshop..." />
+
+      <MenuButton layoutX="177.0" layoutY="470.0" mnemonicParsing="false" text="Options">
+        <items>
+          <MenuItem fx:id="menuAdd" mnemonicParsing="false" text="Add Workshop" />
+          <MenuItem fx:id="menuRemove" mnemonicParsing="false" text="Remove Workshop" />
+          <MenuItem fx:id="menuEdit" mnemonicParsing="false" text="Edit Workshop" />
+        </items>
+      </MenuButton>
+
+   </children>
+</AnchorPane>
