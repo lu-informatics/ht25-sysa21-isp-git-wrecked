@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?fxml version="1.0" encoding="UTF-8"?>
+<?import com.gluonhq.charm.glisten.control.TextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #DCEFFB;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="labelMaintenanceSchedule" layoutX="241.0" layoutY="134.0" prefHeight="26.0" prefWidth="314.0" style="-fx-background-color: white; -fx-border-width: 1; -fx-border-color: C8C8C8;" text="Maintenance Schedule:" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <Pane prefHeight="96.0" prefWidth="600.0" style="-fx-background-color: #0A2A43;">
+         <children>
+            <Label layoutX="109.0" layoutY="40.0" text="VikingExpress Fleet Management System" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font></Label>
+            <ImageView fitHeight="77.0" fitWidth="105.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../VikingExpressTransparent.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <TableView layoutX="241.0" layoutY="160.0" prefHeight="144.0" prefWidth="314.0">
+        <columns>
+          <TableColumn fx:id="tableColumnDate" prefWidth="78.0" text="Date" />
+            <TableColumn fx:id="tableColumnMaintenanceJob" prefWidth="124.0" text="Maintenance job" />
+            <TableColumn fx:id="tableColumnWorkshop" prefWidth="110.0" text="Workshop" />
+        </columns>
+      </TableView>
+      <Label fx:id="labelVehicle" layoutX="35.0" layoutY="183.0" prefHeight="17.0" prefWidth="101.0" text="Vehicle:" />
+      <TextField fx:id="textFieldVehicle" layoutX="34.0" layoutY="206.0" prefHeight="26.0" prefWidth="153.0" />
+      <Label fx:id="labelVin" layoutX="35.0" layoutY="246.0" prefHeight="17.0" prefWidth="42.0" text="VIN:" />
+      <TextField fx:id="textFieldVin" layoutX="34.0" layoutY="263.0" prefHeight="26.0" prefWidth="153.0" />
+      <MenuButton fx:id="menuButtonManageMaintenance" layoutX="34.0" layoutY="134.0" mnemonicParsing="false" text="Manage maintenance">
+        <items>
+            <MenuItem fx:id="menuItemFind" mnemonicParsing="false" onAction="#handleMenuItemFindMaintenanceScheduleAction" text="Find" />
+          <MenuItem fx:id="menuItemBook" mnemonicParsing="false" onAction="#handleMenuItemBookMaintenanceAction" text="Book" />
+          <MenuItem fx:id="menuItemCancel" mnemonicParsing="false" onAction="#handleMenuItemCancelMaintenanceAction" text="Cancel" />
+        </items>
+      </MenuButton>
+      <Label fx:id="labelWorkshop" layoutX="34.0" layoutY="304.0" text="Workshop:" />
+      <TextField fx:id="textFieldWorkshop" layoutX="34.0" layoutY="328.0" prefHeight="26.0" prefWidth="153.0" />
+      <Label fx:id="labelResponse" layoutX="241.0" layoutY="109.0" prefHeight="17.0" prefWidth="314.0" />
+      <GridPane fx:id="gridPaneInformation" layoutX="241.0" layoutY="311.0" prefHeight="60.0" prefWidth="314.0" style="-fx-background-color: white; -fx-border-color: C8C8C8; -fx-border-width: 1;">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="201.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.0" minWidth="10.0" prefWidth="111.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="24.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="58.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="labelMostExpensiveMaintenance" prefHeight="17.0" prefWidth="205.0" text="Most expensive maintenance job:" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelShowMostExpensiveWorkshop" GridPane.columnIndex="1" />
+            <Label fx:id="labelShowMostExpensiveMaintenance" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="labelMostExpensiveWorkshop" prefHeight="17.0" prefWidth="171.0" text="Most expensive workshop:" textAlignment="RIGHT">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+    </children>
+</AnchorPane>
