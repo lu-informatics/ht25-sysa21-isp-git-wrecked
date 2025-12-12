@@ -34,7 +34,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Label fx:id="labelVehicle" layoutX="35.0" layoutY="183.0" prefHeight="17.0" prefWidth="101.0" text="Vehicle:" />
+      <Label fx:id="labelChooseDate" layoutX="35.0" layoutY="183.0" prefHeight="17.0" prefWidth="101.0" text="Choose date:" />
       <TextField fx:id="textFieldVehicle" layoutX="34.0" layoutY="206.0" prefHeight="26.0" prefWidth="153.0" />
       <Label fx:id="labelVin" layoutX="35.0" layoutY="246.0" prefHeight="17.0" prefWidth="42.0" text="VIN:" />
       <TextField fx:id="textFieldVin" layoutX="34.0" layoutY="263.0" prefHeight="26.0" prefWidth="153.0" />
