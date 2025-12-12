@@ -103,16 +103,50 @@ public class MaintenanceScheduleVehicleViewController {
 
     @FXML
     public void handleButtonBookMaintenanceScheduleAction(ActionEvent event){
-        String vinT=textFieldVin.getText();
-        String workshop=textFieldWorkshop.getText();
+        try{
+            String vinT=textFieldVin.getText(); //föra över från fönstret innan, koppla schemat hit
 
-        //hur? behövs ju massa fält då Först skapa maintenance objekt 
-        // och sedan addera till bil??
+            String workshop=textFieldWorkshop.getText(); //till set workshop
+            String dateT=textFieldChooseDate.getText();
+            String description=textfieldMaintenanceJob.getText(); //lägg till ruta för detta, ev ta vin ersätta med detta
 
-    
+            if(dateT.isEmpty() || workshop.isEmpty() || description.isEmpty()){
+                labelResponse.setText("Please fill in all fields: date, workshop, and maintenance job.");
+                return;
+            }
+
+            LocalDate date=LocalDate.parse(dateT); //gör till typ local date
+            int vin=Integer.parseInt(vinT);
+
+            Vehicle vehicle=appModel.getVehicleRegister().findVehicle(vin);
+
+            if(vehicle.getMaintenanceSchedule()!=null){
+                labelResponse.setText("Vehicle VIN: " + vin + " already has a maintenance schedule.");
+                return;
+            } // kolla om det redan finns ett schema
+            
+            MaintenanceSchedule schedule=new MaintenanceSchedule(date, description);
+
+            //ev. koppla till workshop här
+            Workshop foundWorkshop=appModel.getWorkshopRegister().findWorkshop(workshop);
+
+            vehicle.addMaintenanceSchedule(schedule);
+            schedule.setVehicle(vehicle);
+            schedule.setWorkshop(foundWorkshop);
+
+            labelResponse.setText("Maintenance schedule booked for vehicle VIN: " + vin);
+            labelShowDate.setText(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))); // för localdate
+            labelShowMaintenanceJob.setText(schedule.getDescription());
+            labelShowWorkshop.setText(schedule.getWorkshop().getName());
+
+        } catch (NumberFormatException e){
+            labelResponse.setText("Please enter a numeric VIN.");
+        } catch (IllegalArgumentException e){
+            labelResponse.setText(e.getMessage());
+        }
+    clearMaintenanceLabels(); //exakt var placera?
     updateMostExpensiveWorkshop(); // någonstans i slutet
 }
-
 
     @FXML
     public void handleButtonCancelMaintenanceScheduleAction(ActionEvent event){
