@@ -33,7 +33,7 @@ public class MaintenanceScheduleVehicleViewController {
     }
 
     @FXML
-    private TextField textFieldVehicle;
+    private TextField textFieldChooseDate;
     @FXML
     private TextField textFieldVin;
     @FXML
@@ -103,7 +103,6 @@ public class MaintenanceScheduleVehicleViewController {
 
     @FXML
     public void handleButtonBookMaintenanceScheduleAction(ActionEvent event){
-        String vehicle=textFieldVehicle.getText();
         String vinT=textFieldVin.getText();
         String workshop=textFieldWorkshop.getText();
 
