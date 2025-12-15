@@ -36,7 +36,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="66.0" layoutY="94.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="250.0" text="Vehicle">
+            <Button fx:id="buttonVehicles" layoutX="66.0" layoutY="94.0" mnemonicParsing="false" onAction="#handleButtonVehiclesAction" prefHeight="60.0" prefWidth="250.0" text="Vehicles">
                <font>
                   <Font size="18.0" />
                </font></Button>
