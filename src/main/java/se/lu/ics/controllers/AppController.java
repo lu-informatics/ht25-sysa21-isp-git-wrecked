@@ -31,4 +31,20 @@ public void showMainView() {
         e.printStackTrace();
     }
 }
+public void showVehicleView() {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/VehicleView.fxml"));
+        Parent root = loader.load();
+
+        VehicleViewController vehicleController = loader.getController();
+        vehicleController.setAppController(this);
+        vehicleController.setAppModel(appModel);
+
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
 }
