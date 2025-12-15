@@ -69,6 +69,7 @@ public class VehicleViewController {
 
     @FXML
     public void handleButtonVehicleAddAction(ActionEvent event) {
+        appController.showInputVehicleView();
     }
 
     @FXML

@@ -15,36 +15,54 @@ public class AppController {
         this.appModel = appModel;
     }
 
-public void showMainView() {
-    try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
-        Parent root = loader.load();
+    public void showMainView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
+            Parent root = loader.load();
 
-        MainViewController mainController = loader.getController();
-        mainController.setAppController(this);
-        mainController.setAppModel(appModel);
+            MainViewController mainController = loader.getController();
+            mainController.setAppController(this);
+            mainController.setAppModel(appModel);
 
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
 
-    } catch (Exception e) {
-        e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-}
-public void showVehicleView() {
-    try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/VehicleView.fxml"));
-        Parent root = loader.load();
 
-        VehicleViewController vehicleController = loader.getController();
-        vehicleController.setAppController(this);
-        vehicleController.setAppModel(appModel);
+    public void showVehicleView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/VehicleView.fxml"));
+            Parent root = loader.load();
 
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+            VehicleViewController vehicleController = loader.getController();
+            vehicleController.setAppController(this);
+            vehicleController.setAppModel(appModel);
 
-    } catch (Exception e) {
-        e.printStackTrace();
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-}
+
+    public void showInputVehicleView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputVehicleView.fxml"));
+            Parent root = loader.load();
+
+            InputVehicleViewController inputVehicleController = loader.getController();
+            inputVehicleController.setAppController(this);
+            inputVehicleController.setAppModel(appModel);
+
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
