@@ -22,6 +22,8 @@ import javafx.stage.Stage;
 import javafx.stage.Modality;
 
 
+
+
 public class WorkshopViewController {
     private AppModel appModel;
     private AppController appController;
@@ -35,13 +37,13 @@ public class WorkshopViewController {
     }
 
     @FXML
-    private TextField textFieldWorkshopName;
+    private TableView<Workshop> workshopTableView;
 
+    @FXML 
+    private TableColumn<Workshop, String> columnServiceCount; 
+      
     @FXML
-    private TextField textFieldWorkshopAddress;
-
-    @FXML
-    private TableView<Workshop> tableViewWorkshops;
+    private TableColumn <Workshop, String> tableViewWorkshops;
 
     @FXML
     private TableColumn<Workshop, String> columnWorkshopName;
@@ -71,15 +73,72 @@ public class WorkshopViewController {
     private Button buttonViewSchedules;
 
     @FXML
+    private Button buttonBackToMainMenu;
+
+
+
+    @FXML
     private void handleMenuItemAddWorkshop(ActionEvent event) {
         
     }
-    @FXML void handleMenuItemRemoveWorkshop(ActionEvent event) {
+    @FXML 
+    private void handleMenuItemRemoveWorkshop(ActionEvent event) {
         
     }
-    @FXML void handleMenuItemEditWorkshop(ActionEvent event) {
+    @FXML 
+    private void handleMenuItemEditWorkshop(ActionEvent event) {
         
     }
+    @FXML
+    private void handleButtonBackToMainMenu(ActionEvent event) {
+        appController.showMainView();
+    }
+    @FXML
+    private void handleTextFieldSearchWorkshop(ActionEvent event) {
+
+        
+    }
+
+    @FXML
+    private void handleButtonViewEntries(ActionEvent event) {
+        
+    }
+    @FXML
+    private void handleButtonViewSchedules(ActionEvent event) {
+        
+    }
+    
+    @FXML
+    private void initialize() {
+
+        
+    }
+
+    @FXML 
+    private void handleTableViewWorkshops() {
+        
+        
+    }
+    @FXML   
+    private void handleTableColumnWorkshopName() {
+        
+        
+    }
+    @FXML
+    private void handleTableColumnWorkshopAddress() {
+        
+        
+    }
+
+    @FXML
+    private void handleTableColumnWorkshopType() {
+        
+        
+    }   
+
+
+
+
 
 
 
