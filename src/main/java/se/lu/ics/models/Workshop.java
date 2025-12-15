@@ -1,6 +1,7 @@
 package se.lu.ics.models;
 
 import java.util.ArrayList;
+import java.util.Queue;
 
 public class Workshop {
     private String name;
@@ -70,4 +71,9 @@ public class Workshop {
     public void addSchedule(MaintenanceSchedule schedule) {
         this.schedules.add(schedule);
     }
+
+    public int getServiceCount() {
+        return services.size();
+    }
+
 }
