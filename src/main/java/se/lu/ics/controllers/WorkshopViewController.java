@@ -70,6 +70,17 @@ public class WorkshopViewController {
     @FXML
     private Button buttonViewSchedules;
 
+    @FXML
+    private void handleMenuItemAddWorkshop(ActionEvent event) {
+        
+    }
+    @FXML void handleMenuItemRemoveWorkshop(ActionEvent event) {
+        
+    }
+    @FXML void handleMenuItemEditWorkshop(ActionEvent event) {
+        
+    }
+
 
 
 }
