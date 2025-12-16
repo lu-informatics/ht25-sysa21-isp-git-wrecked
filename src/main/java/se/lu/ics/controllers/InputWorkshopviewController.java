@@ -1,10 +1,63 @@
 package se.lu.ics.controllers;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import se.lu.ics.models.Workshop;
+import se.lu.ics.models.WorkshopRegister;
 import se.lu.ics.models.AppModel;
+
+
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.stage.Modality;
 
 public class InputWorkshopviewController {
     private AppModel appModel;
     private AppController appController;
+
+    @FXML
+    private Button buttonApply;
+    @FXML
+    private TextField textFieldWorkshopName;
+    @FXML
+    private TextField textFieldWorkshopAddress;
+    @FXML
+    private TextField textFieldWorkshopType;
+    
+
+    
+    @FXML
+    private void handleButtonApplyAction() {
+        String name = textFieldWorkshopName.getText();
+        String address = textFieldWorkshopAddress.getText();
+        String type = textFieldWorkshopType.getText();
+
+        boolean isInternal = type.equalsIgnoreCase("internal");
+
+        Workshop newWorkshop = new Workshop(name, isInternal, address);
+        appModel.getWorkshopRegister().addWorkshop(newWorkshop);
+
+        appController.showWorkshopView();
+    }   
+    @FXML
+    private void handleTextFieldWorkshopNameAction() {
+        String name = textFieldWorkshopName.getText();
+
+        
+    }
+    @FXML
+    private void handleTextFieldWorkshopAddressAction() {
+        String address = textFieldWorkshopAddress.getText();
+
+    }
+    @FXML
+    private void handleTextFieldWorkshopTypeAction() {
+        String type = textFieldWorkshopType.getText();
+
+    }
 
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;

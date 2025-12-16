@@ -100,4 +100,78 @@ public class AppController {
             e.printStackTrace();
 }
     }
+
+    public void showWorkshopEntriesView() {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ServiceHistoryEntryViewWorkshop.fxml"));
+                Parent root = loader.load();
+    
+                ServiceHistoryEntryView serviceHistoryEntryView = loader.getController();
+                serviceHistoryEntryView.setAppController(this);
+                serviceHistoryEntryView.setAppModel(appModel);
+    
+                primaryStage.setScene(new Scene(root));
+                primaryStage.show();
+    
+            } catch (Exception e) {
+                e.printStackTrace();
+        
+    }
+    }
+
+    public void showWorkshopSchedulesView() {
+         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MaintenanceViewWorkshop.fxml"));
+            Parent root = loader.load();
+
+            MaintenanceScheduleViewController maintenanceWorkshopController = loader.getController();
+            maintenanceWorkshopController.setAppController(this);
+            maintenanceWorkshopController.setAppModel(appModel);
+
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace(); 
+    
 }
+
+
+    }
+    public void showInputMaintenanceScheduleView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputMaintenanceScheduleView.fxml"));
+            Parent root = loader.load();
+
+            InputMaintenanceScheduleViewController inputMaintenanceScheduleController = loader.getController();
+            inputMaintenanceScheduleController.setAppController(this);
+            inputMaintenanceScheduleController.setAppModel(appModel);
+
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+}
+    }
+
+    public void showInputServiceHistoryEntryView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputServiceHistoryEntryView.fxml"));
+            Parent root = loader.load();
+
+            InputServiceHistoryEntryViewController inputServiceHistoryEntryController = loader.getController();
+            inputServiceHistoryEntryController.setAppController(this);
+            inputServiceHistoryEntryController.setAppModel(appModel);
+
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+}
+    }
+}
+
+
+        

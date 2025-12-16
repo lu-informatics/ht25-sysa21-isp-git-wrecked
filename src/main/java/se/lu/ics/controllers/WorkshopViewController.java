@@ -6,6 +6,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 import javafx.collections.FXCollections;
@@ -37,22 +38,24 @@ public class WorkshopViewController {
     }
 
     @FXML
-    private TableView<Workshop> workshopTableView;
+    private TableView<Workshop> workshopTable;
 
-    @FXML 
-    private TableColumn<Workshop, String> columnServiceCount; 
+ 
       
     @FXML
     private TableColumn <Workshop, String> tableViewWorkshops;
 
     @FXML
-    private TableColumn<Workshop, String> columnWorkshopName;
+    private TableColumn<Workshop, String> tableColumnName;
 
     @FXML
-    private TableColumn<Workshop, String> columnWorkshopAddress;
+    private TableColumn<Workshop, String> TableColumnAddress;
 
     @FXML
-    private TableColumn <Workshop, Boolean> columnWorkshopType;
+    private TableColumn <Workshop, Boolean> TableColumnType;
+
+    @FXML
+    private TableColumn<Workshop, Integer> tableColumnServiceEntries;
 
     @FXML
     private MenuItem menuItemAddWorkshop;
@@ -64,7 +67,7 @@ public class WorkshopViewController {
     private MenuItem menuItemEditWorkshop;
 
     @FXML
-    private TextField textFieldSearchWorkshop;
+    private TextField textSearch;
 
     @FXML
     private Button buttonViewEntries;
@@ -73,7 +76,7 @@ public class WorkshopViewController {
     private Button buttonViewSchedules;
 
     @FXML
-    private Button buttonBackToMainMenu;
+    private Button backToMainMenuButton;
 
 
 
@@ -84,11 +87,11 @@ public class WorkshopViewController {
     }
     @FXML 
     private void handleMenuItemRemoveWorkshopAction(ActionEvent event) {
-        
+
     }
-    @FXML 
+    @FXML
     private void handleMenuItemEditWorkshopAction(ActionEvent event) {
-        appController.showInputWorkshopView();
+        
     }
     @FXML
     private void handleButtonBackToMainMenuAction(ActionEvent event) {
@@ -96,24 +99,33 @@ public class WorkshopViewController {
     }
     @FXML
     private void handleTextSearchAction (ActionEvent event) {
-        
+        String searchText = textSearch.getText().toLowerCase();
+        ObservableList<Workshop> filteredWorkshops = FXCollections.observableArrayList();
+
+        for (Workshop workshop : appModel.getWorkshopRegister().getWorkshops()) {
+            if (workshop.getName().toLowerCase().contains(searchText) ||
+                workshop.getAddress().toLowerCase().contains(searchText) ||
+                workshop.getType().toLowerCase().contains(searchText)) {
+                filteredWorkshops.add(workshop);
+            }
+        }
+        workshopTable.setItems(filteredWorkshops);
     }
 
     @FXML
     private void handleButtonViewEntriesAction(ActionEvent event) {
+        appController.showWorkshopEntriesView();    
+
         
     }
-    @FXML
-    private void handleButtonViewSchedulesAction(ActionEvent event) {
         
-    }
+    
     
     @FXML
     private void initialize() {
-
-        
-
-
+        TableColumnAddress.setCellValueFactory(new PropertyValueFactory<>("Address"));
+        tableColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        TableColumnType.setCellValueFactory(new PropertyValueFactory<>("type"));
         
     }
 
@@ -124,6 +136,7 @@ public class WorkshopViewController {
     }
     @FXML   
     private void handleTableColumnWorkshopNameAction() {
+
         
         
     }
@@ -135,10 +148,15 @@ public class WorkshopViewController {
 
     @FXML
     private void handleTableColumnWorkshopTypeAction() {
+
         
         
     }   
-
+    @FXML
+    private void handleButtonViewSchedulesAction() {
+        appController.showWorkshopSchedulesView();
+        
+    }
 
 
 
