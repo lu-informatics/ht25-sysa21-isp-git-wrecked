@@ -79,6 +79,7 @@ public class WorkshopViewController {
 
     @FXML
     private void handleMenuItemAddWorkshopAction(ActionEvent event) {
+        appController.showInputWorkshopView();
         
     }
     @FXML 
@@ -87,7 +88,7 @@ public class WorkshopViewController {
     }
     @FXML 
     private void handleMenuItemEditWorkshopAction(ActionEvent event) {
-        
+        appController.showInputWorkshopView();
     }
     @FXML
     private void handleButtonBackToMainMenuAction(ActionEvent event) {
