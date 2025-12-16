@@ -27,6 +27,9 @@ public class MainViewController {
     @FXML
     private Button buttonVehicles;
 
+    @FXML
+    private Button buttonWorkshops;
+
     // button labels textfields osv. alla knappar för metoderna def.
 
     public void setAppModel(AppModel appModel) {
@@ -41,5 +44,11 @@ public class MainViewController {
     private void handleButtonVehiclesAction(ActionEvent event) {
         appController.showVehicleView();
     }
+
+    @FXML
+    private void handleButtonWorkshopsAction(ActionEvent event) {
+        appController.showWorkshopView();
+    }
+
 
 }

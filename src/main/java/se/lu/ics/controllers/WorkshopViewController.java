@@ -78,33 +78,32 @@ public class WorkshopViewController {
 
 
     @FXML
-    private void handleMenuItemAddWorkshop(ActionEvent event) {
+    private void handleMenuItemAddWorkshopAction(ActionEvent event) {
         
     }
     @FXML 
-    private void handleMenuItemRemoveWorkshop(ActionEvent event) {
+    private void handleMenuItemRemoveWorkshopAction(ActionEvent event) {
         
     }
     @FXML 
-    private void handleMenuItemEditWorkshop(ActionEvent event) {
+    private void handleMenuItemEditWorkshopAction(ActionEvent event) {
         
     }
     @FXML
-    private void handleButtonBackToMainMenu(ActionEvent event) {
+    private void handleButtonBackToMainMenuAction(ActionEvent event) {
         appController.showMainView();
     }
     @FXML
-    private void handleTextFieldSearchWorkshop(ActionEvent event) {
-
+    private void handleTextSearchAction (ActionEvent event) {
         
     }
 
     @FXML
-    private void handleButtonViewEntries(ActionEvent event) {
+    private void handleButtonViewEntriesAction(ActionEvent event) {
         
     }
     @FXML
-    private void handleButtonViewSchedules(ActionEvent event) {
+    private void handleButtonViewSchedulesAction(ActionEvent event) {
         
     }
     
@@ -112,26 +111,29 @@ public class WorkshopViewController {
     private void initialize() {
 
         
+
+
+        
     }
 
     @FXML 
-    private void handleTableViewWorkshops() {
+    private void handleTableViewWorkshopsAction() {
         
         
     }
     @FXML   
-    private void handleTableColumnWorkshopName() {
+    private void handleTableColumnWorkshopNameAction() {
         
         
     }
     @FXML
-    private void handleTableColumnWorkshopAddress() {
+    private void handleTableColumnWorkshopAddressAction() {
         
         
     }
 
     @FXML
-    private void handleTableColumnWorkshopType() {
+    private void handleTableColumnWorkshopTypeAction() {
         
         
     }   

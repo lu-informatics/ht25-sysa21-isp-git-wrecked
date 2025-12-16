@@ -64,5 +64,40 @@ public class AppController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+ 
+    }
+
+    public void showWorkshopView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/WorkshopView.fxml"));
+            Parent root = loader.load();
+
+            WorkshopViewController workshopController = loader.getController();
+            workshopController.setAppController(this);
+            workshopController.setAppModel(appModel);
+
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+}
+
+    }
+    public void showInputWorkshopView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputWorkshopView.fxml"));
+            Parent root = loader.load();
+
+            InputWorkshopviewController inputWorkshopController = loader.getController();
+            inputWorkshopController.setAppController(this);
+            inputWorkshopController.setAppModel(appModel);
+
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+}
     }
 }
