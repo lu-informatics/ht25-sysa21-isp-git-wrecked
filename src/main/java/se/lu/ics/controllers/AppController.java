@@ -11,7 +11,6 @@ import se.lu.ics.models.MaintenanceSchedule;
 import se.lu.ics.models.ServiceHistoryEntry;
 import se.lu.ics.models.Workshop;
 
-
 public class AppController {
     private final Stage primaryStage;
     private final AppModel appModel;
@@ -20,7 +19,6 @@ public class AppController {
         this.primaryStage = primaryStage;
         this.appModel = appModel;
     }
-    
 
     public void showMainView() {
         try {
@@ -71,7 +69,7 @@ public class AppController {
         } catch (Exception e) {
             e.printStackTrace();
         }
- 
+
     }
 
     public void showWorkshopView() {
@@ -88,9 +86,10 @@ public class AppController {
 
         } catch (Exception e) {
             e.printStackTrace();
-}
+        }
 
     }
+
     public void showInputWorkshopView() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputWorkshopView.fxml"));
@@ -105,29 +104,29 @@ public class AppController {
 
         } catch (Exception e) {
             e.printStackTrace();
-}
+        }
     }
 
     public void showWorkshopEntriesView() {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ServiceHistoryEntryViewWorkshop.fxml"));
-                Parent root = loader.load();
-    
-                ServiceHistoryEntryView serviceHistoryEntryView = loader.getController();
-                serviceHistoryEntryView.setAppController(this);
-                serviceHistoryEntryView.setAppModel(appModel);
-    
-                primaryStage.setScene(new Scene(root));
-                primaryStage.show();
-    
-            } catch (Exception e) {
-                e.printStackTrace();
-        
-    }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ServiceHistoryEntryViewWorkshop.fxml"));
+            Parent root = loader.load();
+
+            ServiceHistoryEntryView serviceHistoryEntryView = loader.getController();
+            serviceHistoryEntryView.setAppController(this);
+            serviceHistoryEntryView.setAppModel(appModel);
+
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
     }
 
     public void showWorkshopSchedulesView() {
-         try {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MaintenanceViewWorkshop.fxml"));
             Parent root = loader.load();
 
@@ -139,12 +138,12 @@ public class AppController {
             primaryStage.show();
 
         } catch (Exception e) {
-            e.printStackTrace(); 
-    
-}
+            e.printStackTrace();
 
+        }
 
     }
+
     public void showInputMaintenanceScheduleView() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputMaintenanceScheduleView.fxml"));
@@ -159,7 +158,7 @@ public class AppController {
 
         } catch (Exception e) {
             e.printStackTrace();
-}
+        }
     }
 
     public void showInputServiceHistoryEntryView() {
@@ -176,8 +175,9 @@ public class AppController {
 
         } catch (Exception e) {
             e.printStackTrace();
-}
+        }
     }
+
     public void showEditInputServiceHistoryEntryView(ServiceHistoryEntry selectedEntry) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputServiceHistoryEntryView.fxml"));
@@ -193,11 +193,11 @@ public class AppController {
 
         } catch (Exception e) {
             e.printStackTrace();
-    
-}
+
+        }
 
     }
-    
+
     public void showEditInputWorkshopView(Workshop selectedWorkshop) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputWorkshopView.fxml"));
@@ -213,7 +213,7 @@ public class AppController {
 
         } catch (Exception e) {
             e.printStackTrace();
-}
+        }
     }
 
     public void showEditInputScheduleView(MaintenanceSchedule selectedSchedule) {
@@ -231,8 +231,7 @@ public class AppController {
 
         } catch (Exception e) {
             e.printStackTrace();
-}   
+        }
 
     }
-}   
-        
+}

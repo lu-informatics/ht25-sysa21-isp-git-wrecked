@@ -23,16 +23,18 @@ import se.lu.ics.models.VehicleRegister;
 import java.time.LocalDate;
 
 public class MaintenanceScheduleViewController {
-    
+
     private AppModel appModel;
     private AppController appController;
 
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
     }
+
     public void setAppController(AppController appController) {
         this.appController = appController;
     }
+
     @FXML
     private Button buttonBack;
 
@@ -45,14 +47,12 @@ public class MaintenanceScheduleViewController {
     @FXML
     private MenuItem menuItemCancelMaintenance;
 
-    @FXML 
+    @FXML
     private TextField searchVin;
-
-    
 
     @FXML
     private void handleMenuItemFindMaintenanceScheduleAction() {
-        
+
     }
 
     @FXML
@@ -62,7 +62,7 @@ public class MaintenanceScheduleViewController {
 
     @FXML
     private void handleMenuItemCancelMaintenanceAction() {
-        
+
     }
 
     @FXML

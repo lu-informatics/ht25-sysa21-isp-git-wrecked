@@ -33,7 +33,6 @@ public class InputVehicleViewController {
     @FXML
     private Label labelResponse;
 
-
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
     }
@@ -45,19 +44,24 @@ public class InputVehicleViewController {
     @FXML
     private void handleTextFieldNameAction(ActionEvent e) {
     }
+
     @FXML
     private void handleComboBoxVehicleTypeAction(ActionEvent e) {
     }
+
     @FXML
     public void initialize() {
         comboBoxVehicleType.getItems().setAll(VehicleType.values());
     }
+
     @FXML
     private void handleTextFieldCapacityAction(ActionEvent e) {
     }
+
     @FXML
     private void handleTextFieldLocationAction(ActionEvent e) {
     }
+
     @FXML
     private void handleButtonApplyAction(ActionEvent event) {
         String name = textFieldName.getText();
@@ -82,15 +86,17 @@ public class InputVehicleViewController {
         appModel.getVehicleRegister().addVehicle(newVehicle);
         appController.showVehicleView();
     }
+
     @FXML
     private void handleButtonResetAction(ActionEvent event) {
         textFieldName.clear();
         textFieldCapacity.clear();
         textFieldLocation.clear();
     }
+
     @FXML
     private void handleButtonBackAction(ActionEvent event) {
         appController.showVehicleView();
     }
-    
+
 }

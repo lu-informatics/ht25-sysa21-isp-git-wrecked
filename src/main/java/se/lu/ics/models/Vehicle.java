@@ -72,7 +72,7 @@ public class Vehicle {
         return name;
     }
 
-    public MaintenanceSchedule getMaintenanceSchedule(){
+    public MaintenanceSchedule getMaintenanceSchedule() {
         return maintenanceSchedule;
     }
 
@@ -95,6 +95,7 @@ public class Vehicle {
     public void removeMaintenanceSchedule() { // KOLLA IFALL DETTA VERKLIGEN ÄR RÄTT
         this.maintenanceSchedule = null;
     }
+
     public ArrayList<ServiceHistoryEntry> getServiceHistory() {
         return serviceHistory;
     }

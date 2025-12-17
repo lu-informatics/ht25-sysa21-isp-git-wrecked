@@ -1,4 +1,5 @@
 package se.lu.ics.controllers;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
@@ -15,15 +16,11 @@ import se.lu.ics.models.Workshop;
 import se.lu.ics.models.WorkshopRegister;
 import se.lu.ics.models.AppModel;
 
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Modality;
-
-
-
 
 public class WorkshopViewController {
     private AppModel appModel;
@@ -42,9 +39,9 @@ public class WorkshopViewController {
 
     @FXML
     private Label labelErrorMessage;
-      
+
     @FXML
-    private TableColumn <Workshop, String> tableViewWorkshops;
+    private TableColumn<Workshop, String> tableViewWorkshops;
 
     @FXML
     private TableColumn<Workshop, String> tableColumnName;
@@ -53,7 +50,7 @@ public class WorkshopViewController {
     private TableColumn<Workshop, String> TableColumnAddress;
 
     @FXML
-    private TableColumn <Workshop, Boolean> TableColumnType;
+    private TableColumn<Workshop, Boolean> TableColumnType;
 
     @FXML
     private TableColumn<Workshop, Integer> tableColumnServiceEntries;
@@ -72,21 +69,20 @@ public class WorkshopViewController {
 
     @FXML
     private Button buttonViewEntries;
-    
+
     @FXML
     private Button buttonViewSchedules;
 
     @FXML
     private Button backToMainMenuButton;
 
-
-
     @FXML
     private void handleMenuItemAddWorkshopAction(ActionEvent event) {
         appController.showInputWorkshopView();
-        
+
     }
-    @FXML 
+
+    @FXML
     private void handleMenuItemRemoveWorkshopAction(ActionEvent event) {
         Workshop selectedWorkshop = workshopTable.getSelectionModel().getSelectedItem();
         if (selectedWorkshop != null) {
@@ -97,32 +93,32 @@ public class WorkshopViewController {
         }
 
     }
+
     @FXML
     private void handleMenuItemEditWorkshopAction(ActionEvent event) {
         Workshop selectedWorkshop = workshopTable.getSelectionModel().getSelectedItem();
         if (selectedWorkshop != null) {
             appController.showEditInputWorkshopView(selectedWorkshop);
-        }
-        else {
+        } else {
             labelErrorMessage.setText("Please select a workshop to edit.");
         }
 
-        
     }
+
     @FXML
     private void handleButtonBackToMainMenuAction(ActionEvent event) {
         appController.showMainView();
     }
 
     @FXML
-    private void handleTextSearchAction (ActionEvent event) {
+    private void handleTextSearchAction(ActionEvent event) {
         String searchText = textSearch.getText().toLowerCase();
         ObservableList<Workshop> filteredWorkshops = FXCollections.observableArrayList();
 
         for (Workshop workshop : appModel.getWorkshopRegister().getWorkshops()) {
             if (workshop.getName().toLowerCase().contains(searchText) ||
-                workshop.getAddress().toLowerCase().contains(searchText) ||
-                workshop.getType().toLowerCase().contains(searchText)) {
+                    workshop.getAddress().toLowerCase().contains(searchText) ||
+                    workshop.getType().toLowerCase().contains(searchText)) {
                 filteredWorkshops.add(workshop);
             }
         }
@@ -131,36 +127,27 @@ public class WorkshopViewController {
 
     @FXML
     private void handleButtonViewEntriesAction(ActionEvent event) {
-        appController.showWorkshopEntriesView();    
+        appController.showWorkshopEntriesView();
 
-        
     }
-        
-    
-    
+
     @FXML
     private void initialize() {
         TableColumnAddress.setCellValueFactory(new PropertyValueFactory<>("Address"));
         tableColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
         TableColumnType.setCellValueFactory(new PropertyValueFactory<>("type"));
-        
+
     }
 
-    @FXML 
+    @FXML
     private void handleTableViewWorkshopsAction() {
 
-    }   
+    }
+
     @FXML
     private void handleButtonViewSchedulesAction() {
         appController.showWorkshopSchedulesView();
-        
+
     }
 
-
-
-
-
-
 }
-
-

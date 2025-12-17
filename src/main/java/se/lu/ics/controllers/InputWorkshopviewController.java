@@ -7,7 +7,6 @@ import se.lu.ics.models.Workshop;
 import se.lu.ics.models.WorkshopRegister;
 import se.lu.ics.models.AppModel;
 
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -27,9 +26,7 @@ public class InputWorkshopviewController {
     private TextField textFieldWorkshopAddress;
     @FXML
     private TextField textFieldWorkshopType;
-    
 
-    
     @FXML
     private void handleButtonApplyAction() {
         String name = textFieldWorkshopName.getText();
@@ -42,20 +39,20 @@ public class InputWorkshopviewController {
         appModel.getWorkshopRegister().addWorkshop(newWorkshop);
 
         appController.showWorkshopView();
-    }   
+    }
+
     @FXML
     private void handleTextFieldWorkshopNameAction() {
 
-        
     }
+
     @FXML
     private void handleTextFieldWorkshopAddressAction() {
-        
 
     }
+
     @FXML
     private void handleTextFieldWorkshopTypeAction() {
-    
 
     }
 
@@ -71,4 +68,3 @@ public class InputWorkshopviewController {
         this.selectedWorkshop = selectedWorkshop;
     }
 }
-

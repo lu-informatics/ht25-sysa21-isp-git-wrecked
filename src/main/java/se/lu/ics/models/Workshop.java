@@ -75,7 +75,8 @@ public class Workshop {
     public int getServiceCount() {
         return services.size();
     }
-    public String getType () {
+
+    public String getType() {
         if (isInternal) {
             return "Internal";
         } else {

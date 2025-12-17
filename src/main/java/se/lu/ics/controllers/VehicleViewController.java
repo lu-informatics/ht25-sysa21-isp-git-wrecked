@@ -98,7 +98,7 @@ public class VehicleViewController {
 
     @FXML
     public void handleButtonBackAction(ActionEvent event) {
-            appController.showMainView();
+        appController.showMainView();
     }
 
     public void setAppModel(AppModel appModel) {
