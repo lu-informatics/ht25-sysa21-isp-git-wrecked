@@ -7,12 +7,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import se.lu.ics.models.AppModel;
+import se.lu.ics.models.MaintenanceSchedule;
 import se.lu.ics.models.ServiceHistoryEntry;
+import se.lu.ics.models.Workshop;
+
 
 public class AppController {
     private final Stage primaryStage;
     private final AppModel appModel;
     private ServiceHistoryEntry selectedEntry;
+    private MaintenanceSchedule selectedSchedule;
+    private Workshop selectedWorkshop;
 
     public AppController(Stage primaryStage, AppModel appModel) {
         this.primaryStage = primaryStage;
