@@ -5,6 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.cell.PropertyValueFactory; //för att koppla getter metoder till tabell kolumner
 import java.time.LocalDate;
 
@@ -40,6 +43,18 @@ public class ServiceHistoryEntryVehicleViewController {
     private TableColumn<ServiceHistoryEntry, String> workshopColumn;
     @FXML
     private TableColumn<ServiceHistoryEntry, String> serviceActivitiesColumn;
+    @FXML
+    private TextField textFieldSearchServiceHistory;
+    @FXML
+    private MenuItem menuItemAddServiceHistory;
+    @FXML
+    private MenuItem menuItemRemoveServiceHistory;
+    @FXML
+    private Button buttonBack;  
+
+    @FXML
+    private void handleTextFieldSearchServiceHistoryAction() {
+    }
 
     @FXML
     private void initialize() { // kan göra detta under med lambdas men vet nt om det är överkurs
@@ -56,5 +71,23 @@ public class ServiceHistoryEntryVehicleViewController {
 
         vehicleLabel.setText(vehicle.getName() + "" + vehicle.getVin());
         serviceHistoryTable.getItems().setAll(vehicle.getServiceHistory());
+    }
+    @FXML
+    private void handleMenuItemAddServiceHistoryAction(){
+        appController.showInputServiceHistoryEntryView(vehicle);
+    }
+    @FXML
+    private void handleMenuItemRemoveServiceHistoryAction(){
+        ServiceHistoryEntry selectedEntry=serviceHistoryTable.getSelectionModel().getSelectedItem();
+        if(selectedEntry!=null){
+            vehicle.removeServiceHistoryEntry(selectedEntry);
+            serviceHistoryTable.getItems().setAll(vehicle.getServiceHistory());
+        } else {
+            System.out.println("Please select a service history entry to remove.");
+        }
+    }
+    @FXML
+    private void handleButtonBackAction() {
+        appController.showVehicleView();
     }
 }
