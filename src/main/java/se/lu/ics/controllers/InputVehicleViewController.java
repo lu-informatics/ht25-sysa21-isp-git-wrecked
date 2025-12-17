@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 
 import se.lu.ics.models.AppModel;
 import se.lu.ics.models.Vehicle;
@@ -29,6 +30,9 @@ public class InputVehicleViewController {
     private Button buttonReset;
     @FXML
     private Button buttonBack;
+    @FXML
+    private Label labelResponse;
+
 
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
@@ -56,6 +60,27 @@ public class InputVehicleViewController {
     }
     @FXML
     private void handleButtonApplyAction(ActionEvent event) {
+        String name = textFieldName.getText();
+        VehicleType type = comboBoxVehicleType.getValue();
+        String capacityStr = textFieldCapacity.getText();
+        String location = textFieldLocation.getText();
+
+        if (name.isEmpty() || type == null || capacityStr.isEmpty() || location.isEmpty()) {
+            labelResponse.setText("Please fill in all fields.");
+            return;
+        }
+
+        int capacity;
+        try {
+            capacity = Integer.parseInt(capacityStr);
+        } catch (NumberFormatException e) {
+            labelResponse.setText("Capacity must be a valid number.");
+            return;
+        }
+
+        Vehicle newVehicle = new Vehicle(location, capacity, type, name);
+        appModel.getVehicleRegister().addVehicle(newVehicle);
+        appController.showVehicleView();
     }
     @FXML
     private void handleButtonResetAction(ActionEvent event) {
