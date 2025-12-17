@@ -1,4 +1,5 @@
 package se.lu.ics.controllers;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -22,13 +23,14 @@ public class ServiceHistoryEntryView {
     private AppModel appModel;
     private AppController appController;
 
-
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
     }
+
     public void setAppController(AppController appController) {
         this.appController = appController;
     }
+
     @FXML
     private Label labelErrorMessage;
     @FXML
@@ -54,7 +56,7 @@ public class ServiceHistoryEntryView {
 
     @FXML
     private void handleTextFieldSearchAction() {
-        
+
     }
 
     @FXML
@@ -76,13 +78,10 @@ public class ServiceHistoryEntryView {
     private void handleMenuItemEditServiceHistoryAction() {
         ServiceHistoryEntry selectedEntry = tableViewServiceHistory.getSelectionModel().getSelectedItem();
         if (selectedEntry != null) {
-            appController.showEditInputServiceHistoryEntryView(selectedEntry); }
-        else {
+            appController.showEditInputServiceHistoryEntryView(selectedEntry);
+        } else {
             labelErrorMessage.setText("Please select a service history entry to edit.");
-    
 
-        
-            
         }
     }
 
@@ -90,6 +89,7 @@ public class ServiceHistoryEntryView {
     private void handleButtonBackAction() {
         appController.showWorkshopView();
     }
+
     @FXML
     private void initialize() {
         columnDate.setCellValueFactory(new PropertyValueFactory<>("date"));

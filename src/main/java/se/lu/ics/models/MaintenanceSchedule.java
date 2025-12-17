@@ -1,4 +1,5 @@
 package se.lu.ics.models;
+
 import java.time.LocalDate;
 
 public class MaintenanceSchedule {
@@ -18,11 +19,13 @@ public class MaintenanceSchedule {
         }
         this.localDate = date;
     }
+
     public LocalDate getDate() {
         return localDate;
     }
+
     public void setDescription(String description) {
-        if (description ==null || description.isEmpty()) {
+        if (description == null || description.isEmpty()) {
             throw new IllegalArgumentException("Description cannot be empty");
         }
         this.description = description;
@@ -31,15 +34,19 @@ public class MaintenanceSchedule {
     public String getDescription() {
         return description;
     }
+
     public Workshop getWorkshop() {
         return workshop;
     }
+
     public void setWorkshop(Workshop workshop) {
         this.workshop = workshop;
     }
+
     public Vehicle getVehicle() {
         return vehicle;
     }
+
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
     }

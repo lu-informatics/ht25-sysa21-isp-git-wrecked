@@ -9,8 +9,8 @@ import javafx.stage.Stage;
 import se.lu.ics.models.AppModel;
 import se.lu.ics.models.MaintenanceSchedule;
 import se.lu.ics.models.ServiceHistoryEntry;
+import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.Workshop;
-
 
 public class AppController {
     private final Stage primaryStage;
@@ -20,7 +20,6 @@ public class AppController {
         this.primaryStage = primaryStage;
         this.appModel = appModel;
     }
-    
 
     public void showMainView() {
         try {
@@ -71,7 +70,43 @@ public class AppController {
         } catch (Exception e) {
             e.printStackTrace();
         }
- 
+
+    }
+
+    public void showMaintenenceViewVehicle() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MaintenenceViewVehicle.fxml"));
+            Parent root = loader.load();
+
+            MaintenanceScheduleVehicleViewController maintenanceVehicleController = loader.getController();
+            maintenanceVehicleController.setAppController(this);
+            maintenanceVehicleController.setAppModel(appModel);
+
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showServiceHistoryEntryViewVehicle(Vehicle selectedVehicle) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/fxml/ServiceHistoryEntryViewVehicle.fxml"));
+            Parent root = loader.load();
+
+            ServiceHistoryEntryVehicleViewController controller = loader.getController();
+            controller.setAppController(this);
+            controller.setAppModel(appModel);
+            controller.setVehicle(selectedVehicle); // 👈 skicka vidare fordonet
+
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void showWorkshopView() {
@@ -88,9 +123,10 @@ public class AppController {
 
         } catch (Exception e) {
             e.printStackTrace();
-}
+        }
 
     }
+
     public void showInputWorkshopView() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputWorkshopView.fxml"));
@@ -105,29 +141,29 @@ public class AppController {
 
         } catch (Exception e) {
             e.printStackTrace();
-}
+        }
     }
 
     public void showWorkshopEntriesView() {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ServiceHistoryEntryViewWorkshop.fxml"));
-                Parent root = loader.load();
-    
-                ServiceHistoryEntryView serviceHistoryEntryView = loader.getController();
-                serviceHistoryEntryView.setAppController(this);
-                serviceHistoryEntryView.setAppModel(appModel);
-    
-                primaryStage.setScene(new Scene(root));
-                primaryStage.show();
-    
-            } catch (Exception e) {
-                e.printStackTrace();
-        
-    }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ServiceHistoryEntryViewWorkshop.fxml"));
+            Parent root = loader.load();
+
+            ServiceHistoryEntryView serviceHistoryEntryView = loader.getController();
+            serviceHistoryEntryView.setAppController(this);
+            serviceHistoryEntryView.setAppModel(appModel);
+
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
     }
 
     public void showWorkshopSchedulesView() {
-         try {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MaintenanceViewWorkshop.fxml"));
             Parent root = loader.load();
 
@@ -139,12 +175,12 @@ public class AppController {
             primaryStage.show();
 
         } catch (Exception e) {
-            e.printStackTrace(); 
-    
-}
+            e.printStackTrace();
 
+        }
 
     }
+
     public void showInputMaintenanceScheduleView() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputMaintenanceScheduleView.fxml"));
@@ -159,7 +195,7 @@ public class AppController {
 
         } catch (Exception e) {
             e.printStackTrace();
-}
+        }
     }
 
     public void showInputServiceHistoryEntryView() {
@@ -176,8 +212,9 @@ public class AppController {
 
         } catch (Exception e) {
             e.printStackTrace();
-}
+        }
     }
+
     public void showEditInputServiceHistoryEntryView(ServiceHistoryEntry selectedEntry) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputServiceHistoryEntryView.fxml"));
@@ -193,11 +230,11 @@ public class AppController {
 
         } catch (Exception e) {
             e.printStackTrace();
-    
-}
+
+        }
 
     }
-    
+
     public void showEditInputWorkshopView(Workshop selectedWorkshop) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputWorkshopView.fxml"));
@@ -213,7 +250,7 @@ public class AppController {
 
         } catch (Exception e) {
             e.printStackTrace();
-}
+        }
     }
 
     public void showEditInputScheduleView(MaintenanceSchedule selectedSchedule) {
@@ -231,8 +268,7 @@ public class AppController {
 
         } catch (Exception e) {
             e.printStackTrace();
-}   
+        }
 
     }
-}   
-        
+}
