@@ -1,19 +1,24 @@
 package se.lu.ics.controllers;
 
+import java.security.Provider.Service;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import se.lu.ics.models.AppModel;
+import se.lu.ics.models.ServiceHistoryEntry;
 
 public class AppController {
     private final Stage primaryStage;
     private final AppModel appModel;
+    private ServiceHistoryEntry selectedEntry;
 
     public AppController(Stage primaryStage, AppModel appModel) {
         this.primaryStage = primaryStage;
         this.appModel = appModel;
     }
+    
 
     public void showMainView() {
         try {
@@ -171,7 +176,41 @@ public class AppController {
             e.printStackTrace();
 }
     }
+    public void showEditInputServiceHistoryEntryView(ServiceHistoryEntry selectedEntry) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputServiceHistoryEntryView.fxml"));
+            Parent root = loader.load();
+
+            InputServiceHistoryEntryViewController inputServiceHistoryEntryController = loader.getController();
+            inputServiceHistoryEntryController.setAppController(this);
+            inputServiceHistoryEntryController.setAppModel(appModel);
+            inputServiceHistoryEntryController.setSelectedEntry(selectedEntry);
+
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+    
 }
 
+    }
+    
+    public void showEditInputWorkshopView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputWorkshopView.fxml"));
+            Parent root = loader.load();
 
+            InputWorkshopviewController inputWorkshopController = loader.getController();
+            inputWorkshopController.setAppController(this);
+            inputWorkshopController.setAppModel(appModel);
+
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+}
+    }
+}   
         

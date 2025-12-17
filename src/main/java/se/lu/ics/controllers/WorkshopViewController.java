@@ -87,6 +87,7 @@ public class WorkshopViewController {
     }
     @FXML 
     private void handleMenuItemRemoveWorkshopAction(ActionEvent event) {
+        
 
     }
     @FXML
@@ -131,26 +132,7 @@ public class WorkshopViewController {
 
     @FXML 
     private void handleTableViewWorkshopsAction() {
-        
-        
-    }
-    @FXML   
-    private void handleTableColumnWorkshopNameAction() {
 
-        
-        
-    }
-    @FXML
-    private void handleTableColumnWorkshopAddressAction() {
-        
-        
-    }
-
-    @FXML
-    private void handleTableColumnWorkshopTypeAction() {
-
-        
-        
     }   
     @FXML
     private void handleButtonViewSchedulesAction() {
