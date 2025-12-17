@@ -72,6 +72,7 @@
                  </MenuButton>
                   <Button fx:id="buttonViewEntries" layoutX="933.0" layoutY="483.0" onAction="#handleButtonViewEntriesAction" text="View entries" />
             <Button fx:id="buttonViewSchedules" layoutX="810.0" layoutY="483.0" mnemonicParsing="false" onAction="#handleButtonViewSchedulesAction" prefHeight="25.0" prefWidth="101.0" text="View schedules" />
+            <Label fx:id="labelErrorMessage" layoutX="272.0" layoutY="487.0" prefHeight="17.0" prefWidth="106.0" />
 
             </children>
         </AnchorPane>

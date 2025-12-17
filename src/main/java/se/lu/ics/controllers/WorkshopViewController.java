@@ -40,7 +40,8 @@ public class WorkshopViewController {
     @FXML
     private TableView<Workshop> workshopTable;
 
- 
+    @FXML
+    private Label labelErrorMessage;
       
     @FXML
     private TableColumn <Workshop, String> tableViewWorkshops;
@@ -87,17 +88,32 @@ public class WorkshopViewController {
     }
     @FXML 
     private void handleMenuItemRemoveWorkshopAction(ActionEvent event) {
-        
+        Workshop selectedWorkshop = workshopTable.getSelectionModel().getSelectedItem();
+        if (selectedWorkshop != null) {
+            workshopTable.getItems().remove(selectedWorkshop);
+            appModel.getWorkshopRegister().removeWorkshop(selectedWorkshop.getName());
+        } else {
+            labelErrorMessage.setText("Please select a workshop to remove.");
+        }
 
     }
     @FXML
     private void handleMenuItemEditWorkshopAction(ActionEvent event) {
+        Workshop selectedWorkshop = workshopTable.getSelectionModel().getSelectedItem();
+        if (selectedWorkshop != null) {
+            appController.showEditInputWorkshopView(selectedWorkshop);
+        }
+        else {
+            labelErrorMessage.setText("Please select a workshop to edit.");
+        }
+
         
     }
     @FXML
     private void handleButtonBackToMainMenuAction(ActionEvent event) {
         appController.showMainView();
     }
+
     @FXML
     private void handleTextSearchAction (ActionEvent event) {
         String searchText = textSearch.getText().toLowerCase();

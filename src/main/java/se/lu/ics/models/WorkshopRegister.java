@@ -38,7 +38,7 @@ public class WorkshopRegister {
         throw new IllegalArgumentException("No workshop with this name exists.");
         }
 
-    public void removeWorkshop(String name) {
+    public void removeWorkshop(String name) { //BOrde dessa verkligen ha String name som parameter?
         for (int i = 0; i < workshops.size(); i++) {
             Workshop w = workshops.get(i);
 
