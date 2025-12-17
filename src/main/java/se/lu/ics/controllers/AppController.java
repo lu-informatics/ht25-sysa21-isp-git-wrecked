@@ -212,5 +212,23 @@ public class AppController {
             e.printStackTrace();
 }
     }
+
+    public void showEditInputScheduleView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputMaintenanceScheduleView.fxml"));
+            Parent root = loader.load();
+
+            InputMaintenanceScheduleViewController inputMaintenanceScheduleController = loader.getController();
+            inputMaintenanceScheduleController.setAppController(this);
+            inputMaintenanceScheduleController.setAppModel(appModel);
+
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+}   
+
+    }
 }   
         
