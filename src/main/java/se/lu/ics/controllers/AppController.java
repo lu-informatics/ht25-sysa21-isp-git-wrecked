@@ -15,9 +15,6 @@ import se.lu.ics.models.Workshop;
 public class AppController {
     private final Stage primaryStage;
     private final AppModel appModel;
-    private ServiceHistoryEntry selectedEntry;
-    private MaintenanceSchedule selectedSchedule;
-    private Workshop selectedWorkshop;
 
     public AppController(Stage primaryStage, AppModel appModel) {
         this.primaryStage = primaryStage;
@@ -201,7 +198,7 @@ public class AppController {
 
     }
     
-    public void showEditInputWorkshopView() {
+    public void showEditInputWorkshopView(Workshop selectedWorkshop) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputWorkshopView.fxml"));
             Parent root = loader.load();
@@ -209,6 +206,7 @@ public class AppController {
             InputWorkshopviewController inputWorkshopController = loader.getController();
             inputWorkshopController.setAppController(this);
             inputWorkshopController.setAppModel(appModel);
+            inputWorkshopController.setSelectedWorkshop(selectedWorkshop);
 
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
@@ -218,7 +216,7 @@ public class AppController {
 }
     }
 
-    public void showEditInputScheduleView() {
+    public void showEditInputScheduleView(MaintenanceSchedule selectedSchedule) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputMaintenanceScheduleView.fxml"));
             Parent root = loader.load();
@@ -226,6 +224,7 @@ public class AppController {
             InputMaintenanceScheduleViewController inputMaintenanceScheduleController = loader.getController();
             inputMaintenanceScheduleController.setAppController(this);
             inputMaintenanceScheduleController.setAppModel(appModel);
+            inputMaintenanceScheduleController.setSelectedSchedule(selectedSchedule);
 
             primaryStage.setScene(new Scene(root));
             primaryStage.show();

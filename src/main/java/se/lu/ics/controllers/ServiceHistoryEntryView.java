@@ -54,7 +54,7 @@ public class ServiceHistoryEntryView {
 
     @FXML
     private void handleTextFieldSearchAction() {
-    
+        
     }
 
     @FXML

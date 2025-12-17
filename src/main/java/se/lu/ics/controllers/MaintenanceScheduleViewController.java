@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -32,6 +33,20 @@ public class MaintenanceScheduleViewController {
     public void setAppController(AppController appController) {
         this.appController = appController;
     }
+    @FXML
+    private Button buttonBack;
+
+    @FXML
+    private MenuItem menuItemFindMaintenanceSchedule;
+
+    @FXML
+    private MenuItem menuItemBookMaintenance;
+
+    @FXML
+    private MenuItem menuItemCancelMaintenance;
+
+    @FXML 
+    private TextField searchVin;
 
     
 
@@ -48,6 +63,11 @@ public class MaintenanceScheduleViewController {
     @FXML
     private void handleMenuItemCancelMaintenanceAction() {
         
+    }
+
+    @FXML
+    private void handleButtonBackAction() {
+        appController.showWorkshopView();
     }
 
 }

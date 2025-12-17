@@ -28,12 +28,12 @@
       </Pane>
       <TableView fx:id="tableViewServiceHistory" layoutX="8.0" layoutY="132.0" prefHeight="200.0" prefWidth="584.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Date" />
-          <TableColumn prefWidth="75.0" text="Cost" />
-            <TableColumn prefWidth="75.0" text="Parts" />
-            <TableColumn prefWidth="75.0" text="Type" />
-            <TableColumn prefWidth="75.0" text="Vehicle" />
-            <TableColumn prefWidth="208.0" text="Description" />
+          <TableColumn fx:id="columnDate" prefWidth="75.0" text="Date" />
+          <TableColumn fx:id="columnCost" prefWidth="75.0" text="Cost" />
+            <TableColumn fx:id="columnPartsReplaced" prefWidth="75.0" text="Parts" />
+            <TableColumn fx:id="columnType" prefWidth="75.0" text="Type" />
+            <TableColumn fx:id="columnVehicle" prefWidth="75.0" text="Vehicle" />
+            <TableColumn fx:id="columnProblemDescription" prefWidth="208.0" text="Description" />
         </columns>
       </TableView>
       <Text fx:id="textServiceHistory" layoutX="7.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Service histories">

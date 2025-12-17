@@ -17,6 +17,7 @@ import javafx.stage.Modality;
 public class InputWorkshopviewController {
     private AppModel appModel;
     private AppController appController;
+    private Workshop selectedWorkshop;
 
     @FXML
     private Button buttonApply;
@@ -44,18 +45,17 @@ public class InputWorkshopviewController {
     }   
     @FXML
     private void handleTextFieldWorkshopNameAction() {
-        String name = textFieldWorkshopName.getText();
 
         
     }
     @FXML
     private void handleTextFieldWorkshopAddressAction() {
-        String address = textFieldWorkshopAddress.getText();
+        
 
     }
     @FXML
     private void handleTextFieldWorkshopTypeAction() {
-        String type = textFieldWorkshopType.getText();
+    
 
     }
 
@@ -67,5 +67,8 @@ public class InputWorkshopviewController {
         this.appController = appController;
     }
 
+    public void setSelectedWorkshop(Workshop selectedWorkshop) {
+        this.selectedWorkshop = selectedWorkshop;
+    }
 }
 
