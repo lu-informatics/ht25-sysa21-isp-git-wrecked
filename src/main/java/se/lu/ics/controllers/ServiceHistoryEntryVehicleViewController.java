@@ -28,6 +28,14 @@ public class ServiceHistoryEntryVehicleViewController {
         this.appController = appController;
     }
 
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
     @FXML
     private Label vehicleLabel;
     @FXML

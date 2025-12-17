@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import se.lu.ics.models.AppModel;
 import se.lu.ics.models.MaintenanceSchedule;
 import se.lu.ics.models.ServiceHistoryEntry;
+import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.Workshop;
 
 public class AppController {
@@ -80,6 +81,25 @@ public class AppController {
             MaintenanceScheduleVehicleViewController maintenanceVehicleController = loader.getController();
             maintenanceVehicleController.setAppController(this);
             maintenanceVehicleController.setAppModel(appModel);
+
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showServiceHistoryEntryViewVehicle(Vehicle selectedVehicle) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/fxml/ServiceHistoryEntryViewVehicle.fxml"));
+            Parent root = loader.load();
+
+            ServiceHistoryEntryVehicleViewController controller = loader.getController();
+            controller.setAppController(this);
+            controller.setAppModel(appModel);
+            controller.setVehicle(selectedVehicle); // 👈 skicka vidare fordonet
 
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
