@@ -2,7 +2,9 @@ package se.lu.ics.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ComboBox;
 
 import se.lu.ics.models.AppModel;
 import se.lu.ics.models.Vehicle;
@@ -14,13 +16,19 @@ public class InputVehicleViewController {
     private AppController appController;
 
     @FXML
-    private TextField textFieldLocation;
+    private TextField textFieldName;
+    @FXML
+    private ComboBox<VehicleType> comboBoxVehicleType;
     @FXML
     private TextField textFieldCapacity;
     @FXML
-    private TextField textFieldType;
+    private TextField textFieldLocation;
     @FXML
-    private TextField textFieldName;
+    private Button buttonApply;
+    @FXML
+    private Button buttonReset;
+    @FXML
+    private Button buttonBack;
 
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
@@ -31,22 +39,33 @@ public class InputVehicleViewController {
     }
 
     @FXML
-    private void handleButtonApplyAction(ActionEvent event) {
+    private void handleTextFieldNameAction(ActionEvent e) {
     }
-
     @FXML
-    private void handleTextFieldLocationAction(ActionEvent e) {
+    private void handleComboBoxVehicleTypeAction(ActionEvent e) {
     }
-
+    @FXML
+    public void initialize() {
+        comboBoxVehicleType.getItems().setAll(VehicleType.values());
+    }
     @FXML
     private void handleTextFieldCapacityAction(ActionEvent e) {
     }
-
     @FXML
-    private void handleTextFieldTypeAction(ActionEvent e) {
+    private void handleTextFieldLocationAction(ActionEvent e) {
     }
-
     @FXML
-    private void handleTextFieldNameAction(ActionEvent e) {
+    private void handleButtonApplyAction(ActionEvent event) {
     }
+    @FXML
+    private void handleButtonResetAction(ActionEvent event) {
+        textFieldName.clear();
+        textFieldCapacity.clear();
+        textFieldLocation.clear();
+    }
+    @FXML
+    private void handleButtonBackAction(ActionEvent event) {
+        appController.showVehicleView();
+    }
+    
 }
