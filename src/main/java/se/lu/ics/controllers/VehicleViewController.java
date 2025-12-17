@@ -90,6 +90,7 @@ public class VehicleViewController {
 
     @FXML
     public void handleButtonViewMaintenanceScheduleAction(ActionEvent event) {
+        appController.showMaintenenceViewVehicle();
     }
 
     @FXML

@@ -72,6 +72,23 @@ public class AppController {
 
     }
 
+    public void showMaintenenceViewVehicle() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MaintenenceViewVehicle.fxml"));
+            Parent root = loader.load();
+
+            MaintenanceScheduleVehicleViewController maintenanceVehicleController = loader.getController();
+            maintenanceVehicleController.setAppController(this);
+            maintenanceVehicleController.setAppModel(appModel);
+
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void showWorkshopView() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/WorkshopView.fxml"));

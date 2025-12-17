@@ -59,12 +59,12 @@ public class MaintenanceScheduleVehicleViewController {
 
     @FXML
     public void initialize() {
-        updateMostExpensiveWorkshop();
+        //updateMostExpensiveWorkshop();
     }
     // metod för att uppdatera
 
     @FXML
-    public void handleButtonFindMaintenanceSceduleAction(ActionEvent event) {
+    public void handleMenuItemFindMaintenanceScheduleAction(ActionEvent event) {
         String vinT = textFieldVin.getText();
 
         if (vinT == null || vinT.isEmpty()) {
@@ -100,7 +100,7 @@ public class MaintenanceScheduleVehicleViewController {
     }
 
     @FXML
-    public void handleButtonBookMaintenanceScheduleAction(ActionEvent event) {
+    public void handleMenuItemBookMaintenanceAction(ActionEvent event) {
         try {
             String vinT = textFieldVin.getText(); // föra över från fönstret innan, koppla schemat hit
 
@@ -148,7 +148,7 @@ public class MaintenanceScheduleVehicleViewController {
     }
 
     @FXML
-    public void handleButtonCancelMaintenanceScheduleAction(ActionEvent event) {
+    public void handleMenuItemCancelMaintenanceAction(ActionEvent event) {
         String vinT = textFieldVin.getText();
 
         if (vinT == null || vinT.isEmpty()) {
