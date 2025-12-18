@@ -12,7 +12,6 @@ import java.time.LocalDate;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 
-import se.lu.ics.models.AppModel;
 import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.VehicleType;
 import se.lu.ics.models.ServiceHistoryEntry;
