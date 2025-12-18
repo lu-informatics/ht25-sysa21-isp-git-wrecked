@@ -43,7 +43,7 @@ public class AppModel {
       Workshop workshop2 = new Workshop("Workshop 2", false, "Address 2");
       Workshop workshop3 = new Workshop("Workshop 3", true, "Address 3");
       Workshop workshop4 = new Workshop("Workshop 4", true, "Address 4");
-      // Add test data to vehicle register
+
       vehicleRegister.addVehicle(vehicle1);
       vehicleRegister.addVehicle(vehicle2);
       vehicleRegister.addVehicle(vehicle3);
@@ -62,7 +62,6 @@ public class AppModel {
       vehicleRegister.addVehicle(vehicle16);
       vehicleRegister.addVehicle(vehicle17);
 
-      // Add test data to workshop register
       workshopRegister.addWorkshop(workshop1);
       workshopRegister.addWorkshop(workshop2);
       workshopRegister.addWorkshop(workshop3);
