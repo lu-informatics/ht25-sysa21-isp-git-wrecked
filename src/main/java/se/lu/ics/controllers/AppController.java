@@ -167,7 +167,7 @@ public class AppController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MaintenanceViewWorkshop.fxml"));
             Parent root = loader.load();
 
-            MaintenanceScheduleViewController maintenanceWorkshopController = loader.getController();
+            MaintenanceScheduleViewControllerWorkshop maintenanceWorkshopController = loader.getController();
             maintenanceWorkshopController.setAppController(this);
             maintenanceWorkshopController.setAppModel(appModel);
 
