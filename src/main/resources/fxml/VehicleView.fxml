@@ -38,7 +38,7 @@
                 <TableColumn fx:id="columnName" prefWidth="75.0" text="Name" />
                   <TableColumn fx:id="columnType" prefWidth="75.0" text="Type" />
                   <TableColumn fx:id="columnCapacity" prefWidth="75.0" text="Capacity" />
-                  <TableColumn fx:id="columnAvailable" prefWidth="75.0" text="Availibility" />
+                  <TableColumn fx:id="columnAvailable" prefWidth="75.0" text="Availible" />
                   <TableColumn fx:id="columnLocation" prefWidth="75.0" text="Location" />
               </columns>
                <columnResizePolicy>
@@ -50,9 +50,8 @@
                   <Button fx:id="buttonVehicleAdd" mnemonicParsing="false" onAction="#handleButtonVehicleAddAction" prefHeight="26.0" prefWidth="62.0" text="Add" />
                   <Button fx:id="buttonVehicleRemove" mnemonicParsing="false" onAction="#handleButtonVehicleRemoveAction" text="Remove" />
                   <Button fx:id="buttonVehicleEdit" mnemonicParsing="false" onAction="#handleButtonVehicleEditAction" prefHeight="26.0" prefWidth="62.0" text="Edit" />
-                  <Label fx:id="labelFindVehicle" text="Find vehicle" />
+                  <Label fx:id="labelFindVehicle" text="Press ENTER to seach" />
                   <TextField fx:id="textFieldVehicleSearch" onAction="#handleTextFieldVehicleSearchAction" promptText="VIN..." />
-                  <Button fx:id="buttonVehicleSearch" mnemonicParsing="false" onAction="#handleButtonVehicleSearchAction" text="Search" />
                </children>
             </HBox>
             <Label fx:id="labelVehicles" layoutX="1.0" layoutY="15.0" prefHeight="17.0" prefWidth="68.0" text="Vehicles:">
