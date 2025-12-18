@@ -13,10 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #DCEFFB;" 
-xmlns="http://javafx.com/javafx/25" 
-xmlns:fx="http://javafx.com/fxml/1"
-fx:controller="se.lu.ics.controllers.ServiceHistoryEntryVehicleViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #DCEFFB;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.lu.ics.controllers.ServiceHistoryEntryVehicleViewController">
    <children>
       <Pane prefHeight="96.0" prefWidth="600.0" style="-fx-background-color: #0A2A43;">
          <children>
@@ -44,12 +41,13 @@ fx:controller="se.lu.ics.controllers.ServiceHistoryEntryVehicleViewController">
          </font></Label>
       <Label fx:id="vehicleLabel" layoutX="140.0" layoutY="106.0" text=" " />
       <TextField fx:id="textFieldSearchServiceHistory" layoutX="8.0" layoutY="362.0" onAction="#handleTextFieldSearchServiceHistoryAction" promptText=" Search Service History..." />
-      <Button fx:id="buttonBack" layoutX="547.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleButtonBackAction" text="Back" />
       <MenuButton fx:id="menuButtonOptions" layoutX="175.0" layoutY="363.0" mnemonicParsing="false" text="Options">
         <items>
           <MenuItem fx:id="menuItemAddServiceHistory" mnemonicParsing="false" onAction="#handleMenuItemAddServiceHistoryAction" text="Add service history" />
           <MenuItem fx:id="menuItemRemoveServiceHistory" mnemonicParsing="false" onAction="#handleMenuItemRemoveServiceHistoryAction" text="Remove service history" />
         </items>
       </MenuButton>
+       <Button fx:id="buttonBack" layoutX="547.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleButtonBackAction" text="Back" />
+       <Label fx:id="labelErrorMessage" layoutX="293.0" layoutY="346.0" prefHeight="0.0" prefWidth="52.0" />
    </children>
 </AnchorPane>
