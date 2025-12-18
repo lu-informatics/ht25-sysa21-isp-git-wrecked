@@ -28,6 +28,7 @@ public class WorkshopViewController {
 
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
+        workshopTable.setItems(appModel.getWorkshopRegister().getWorkshops());
     }
 
     public void setAppController(AppController appController) {
@@ -47,10 +48,10 @@ public class WorkshopViewController {
     private TableColumn<Workshop, String> tableColumnName;
 
     @FXML
-    private TableColumn<Workshop, String> TableColumnAddress;
+    private TableColumn<Workshop, String> tableColumnAddress;
 
     @FXML
-    private TableColumn<Workshop, Boolean> TableColumnType;
+    private TableColumn<Workshop, Boolean> tableColumnType;
 
     @FXML
     private TableColumn<Workshop, Integer> tableColumnServiceEntries;
@@ -133,10 +134,10 @@ public class WorkshopViewController {
 
     @FXML
     private void initialize() {
-        TableColumnAddress.setCellValueFactory(new PropertyValueFactory<>("Address"));
+        tableColumnAddress.setCellValueFactory(new PropertyValueFactory<>("Address"));
         tableColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        TableColumnType.setCellValueFactory(new PropertyValueFactory<>("type"));
-
+        tableColumnType.setCellValueFactory(new PropertyValueFactory<>("type"));
+        tableColumnServiceEntries.setCellValueFactory(new PropertyValueFactory<>("serviceEntriesCount"));
     }
 
     @FXML

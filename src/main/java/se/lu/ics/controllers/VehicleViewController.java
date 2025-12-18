@@ -80,7 +80,6 @@ public class VehicleViewController {
         if (selectedVehicle != null) {
             try {
                 appModel.getVehicleRegister().removeVehicle(selectedVehicle.getVin());
-                labelResponse.setText("Vehicle removed successfully.");
                 updateTable();
             } catch (IllegalArgumentException e) {
                 labelResponse.setText(e.getMessage());
@@ -88,10 +87,6 @@ public class VehicleViewController {
         } else {
             labelResponse.setText("Please select a vehicle to remove.");
         }
-    }
-
-    @FXML
-    public void handleButtonVehicleEditAction(ActionEvent event) {
     }
 
     @FXML
