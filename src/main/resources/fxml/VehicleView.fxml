@@ -34,7 +34,7 @@
          <children>
             <TableView fx:id="tableVehicles" layoutY="66.0" prefHeight="181.0" prefWidth="600.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="66.0">
               <columns>
-                <TableColumn fx:id="columnVin" prefWidth="75.0" text="VIN" />
+                <TableColumn fx:id="columnVin" editable="false" prefWidth="75.0" text="VIN" />
                 <TableColumn fx:id="columnName" prefWidth="75.0" text="Name" />
                   <TableColumn fx:id="columnType" prefWidth="75.0" text="Type" />
                   <TableColumn fx:id="columnCapacity" prefWidth="75.0" text="Capacity" />
@@ -49,7 +49,6 @@
                <children>
                   <Button fx:id="buttonVehicleAdd" mnemonicParsing="false" onAction="#handleButtonVehicleAddAction" prefHeight="26.0" prefWidth="62.0" text="Add" />
                   <Button fx:id="buttonVehicleRemove" mnemonicParsing="false" onAction="#handleButtonVehicleRemoveAction" text="Remove" />
-                  <Button fx:id="buttonVehicleEdit" mnemonicParsing="false" onAction="#handleButtonVehicleEditAction" prefHeight="26.0" prefWidth="62.0" text="Edit" />
                   <Label fx:id="labelFindVehicle" text="Press ENTER to seach" />
                   <TextField fx:id="textFieldVehicleSearch" onAction="#handleTextFieldVehicleSearchAction" promptText="VIN..." />
                </children>

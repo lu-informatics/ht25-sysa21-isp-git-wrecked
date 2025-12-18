@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.lu.ics.controllers.InputVehicleViewController">
    <children>
-      <VBox layoutX="87.0" layoutY="74.0" prefHeight="188.0" prefWidth="196.0" spacing="30.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
+      <VBox layoutX="100.0" layoutY="74.0" prefHeight="200.0" prefWidth="200.0" spacing="30.0" AnchorPane.bottomAnchor="159.0" AnchorPane.topAnchor="100.0">
          <children>
             <TextField fx:id="textFieldName" onAction="#handleTextFieldNameAction" promptText="Name..." />
             <ComboBox fx:id="comboBoxVehicleType" onAction="#handleComboBoxVehicleTypeAction" prefHeight="26.0" prefWidth="198.0" promptText="Type" />
@@ -19,7 +19,7 @@
             <Label fx:id="labelResponse" prefHeight="17.0" prefWidth="201.0" textFill="RED" />
          </children>
       </VBox>
-      <HBox layoutX="79.0" layoutY="385.0" prefHeight="26.0" prefWidth="215.0" spacing="20.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+      <HBox layoutX="100.0" layoutY="385.0" prefHeight="26.0" prefWidth="200.0" spacing="24.0" AnchorPane.bottomAnchor="100.0">
          <children>
             <Button fx:id="buttonBack" mnemonicParsing="false" onAction="#handleButtonBackAction" text="Back" />
             <Button fx:id="buttonReset" mnemonicParsing="false" onAction="#handleButtonResetAction" text="Reset" />
