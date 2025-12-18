@@ -93,15 +93,11 @@ public class MaintenanceScheduleVehicleViewController {
                 labelResponse.setText("The vehicle already has a maintenance schedule. You can only have one.");
                 return;
             } 
+
             appController.showInputMaintenanceScheduleView();
-
-            MaintenanceInput input = appController.getMaintenanceInput();
-
-            int vin= vehicle.getVin();
-
-            String workshop = input.workshop();
-            String dateT = input.dateT();
-            String description = input.description();
+           
+            //kan text komma efter andra fönstret stängs, kan jag fylla i med information från annat fönster
+            //hur uppdatera labels efter bokning?
 
             labelResponse.setText("Maintenance schedule booked.");
             labelShowDate.setText(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))); // för localdate
@@ -112,6 +108,7 @@ public class MaintenanceScheduleVehicleViewController {
             labelResponse.setText(e.getMessage());
         }
         updateMostExpensiveWorkshop();
+        loadMaintenanceSchedule();
     }
 
     @FXML

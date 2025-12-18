@@ -61,15 +61,12 @@ public class InputMaintenanceScheduleViewController {
             LocalDate date = LocalDate.parse(dateT); // gör till typ local date
         }catch(Exception e){
                 labelResponse.setText("Invalid date format. Please use YYYY-MM-DD.");
-                return;
+                return; 
             }
 
         MaintenanceSchedule newSchedule = new MaintenanceSchedule(date, description);
-        Vehicle vehicle = appModel.getVehicleRegister().findVehicle(vin);
-
-            MaintenanceSchedule schedule = new MaintenanceSchedule(date, description);
-
-            Workshop foundWorkshop = appModel.getWorkshopRegister().findWorkshop(workshop);
+        Vehicle vehicle = appModel.getVehicleRegister().findVehicle(vin);//hur få hit vin?
+        Workshop foundWorkshop = appModel.getWorkshopRegister().findWorkshop(workshop);
 
             vehicle.addMaintenanceSchedule(schedule);
             schedule.setVehicle(vehicle);
