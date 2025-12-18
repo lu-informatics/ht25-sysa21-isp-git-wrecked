@@ -18,7 +18,10 @@ public class InputMaintenanceScheduleViewController {
 
     private AppModel appModel;
     private AppController appController;
-    private MaintenanceSchedule schedule;
+    private Vehicle vehicle;
+    //som varaibler för kunna använda samma objekt i flera controllers
+    // lägger in vehicle objekt, inte variabel av vehicle
+    //skapar instans av vehicle direkt när controller skapas
 
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
@@ -28,8 +31,8 @@ public class InputMaintenanceScheduleViewController {
         this.appController = appController;
     }
 
-    public void setSchedule(MaintenanceSchedule schedule) {
-        this.schedule = schedule;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
     @FXML
@@ -44,7 +47,7 @@ public class InputMaintenanceScheduleViewController {
     private Button buttonBack;
     @FXML
     private Label labelResponse;
-
+    
     @FXML
     private void handleButtonApplyAction(ActionEvent event) {
         String workshop = textFieldWorkshop.getText();
@@ -55,25 +58,22 @@ public class InputMaintenanceScheduleViewController {
             labelResponse.setText("Please fill in all fields: workshop, date, and description.");
             return;
         }
-            LocalDate date; //deklarera
-            
+
         try {
             LocalDate date = LocalDate.parse(dateT); // gör till typ local date
-        }catch(Exception e){
-                labelResponse.setText("Invalid date format. Please use YYYY-MM-DD.");
-                return; 
-            }
 
-        MaintenanceSchedule newSchedule = new MaintenanceSchedule(date, description);
-        Vehicle vehicle = appModel.getVehicleRegister().findVehicle(vin);//hur få hit vin?
-        Workshop foundWorkshop = appModel.getWorkshopRegister().findWorkshop(workshop);
+            MaintenanceSchedule newSchedule = new MaintenanceSchedule(date, description);
+            Workshop foundWorkshop = appModel.getWorkshopRegister().findWorkshop(workshop);
 
-            vehicle.addMaintenanceSchedule(schedule);
-            schedule.setVehicle(vehicle);
-            schedule.setWorkshop(foundWorkshop);
-    
-        appController.showMaintenenceViewVehicle();
+                vehicle.addMaintenanceSchedule(newSchedule);
+                newSchedule.setVehicle(vehicle);
+                newSchedule.setWorkshop(foundWorkshop);
+        
+            appController.showMaintenenceViewVehicle();
+            }catch(Exception e){
+                    labelResponse.setText("Invalid date format. Please use YYYY-MM-DD."); 
         }
+    }
 
     @FXML
         private void handleButtonBackAction(ActionEvent event) {
