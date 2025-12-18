@@ -2,6 +2,9 @@ package se.lu.ics.models;
 
 import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class Vehicle {
     private int vin;
     private String location;
@@ -10,7 +13,7 @@ public class Vehicle {
     private String name;
     private VehicleType type;
     private MaintenanceSchedule maintenanceSchedule;
-    private ArrayList<ServiceHistoryEntry> serviceHistory;
+    private ObservableList<ServiceHistoryEntry> serviceHistory;
     private static int counter = 1;
 
     public Vehicle(String location, int capacity, VehicleType type, String name) {
@@ -20,7 +23,7 @@ public class Vehicle {
         this.isAvailable = true;
         this.type = type;
         this.name = name;
-        serviceHistory = new ArrayList<>();
+        serviceHistory = FXCollections.observableArrayList();
 
         if (location == null || location.isEmpty()) {
             throw new IllegalArgumentException("Location cannot be empty");
@@ -96,8 +99,8 @@ public class Vehicle {
         this.maintenanceSchedule = null;
     }
 
-    public ArrayList<ServiceHistoryEntry> getServiceHistory() {
-        return serviceHistory;
+    public ObservableList<ServiceHistoryEntry> getServiceHistory() {
+        return FXCollections.unmodifiableObservableList(serviceHistory);
     }
 
     public void setAvailable(boolean isAvailable) {

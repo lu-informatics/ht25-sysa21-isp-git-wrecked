@@ -30,6 +30,8 @@ public class ServiceHistoryEntryVehicleViewController {
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
+
+        serviceHistoryTable.setItems(vehicle.getServiceHistory());
     }
 
     public Vehicle getVehicle() {

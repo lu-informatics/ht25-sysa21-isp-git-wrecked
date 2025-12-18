@@ -121,14 +121,16 @@ public class VehicleViewController {
     }
 
     @FXML
-    public void handleButtonViewServiceHistoryAction(ActionEvent event) {
+    public void handleButtonViewServiceHistoryAction() {
         Vehicle selectedVehicle = tableVehicles.getSelectionModel().getSelectedItem();
-        if (selectedVehicle != null) {
-            appController.showServiceHistoryEntryViewVehicle(selectedVehicle);
-        } else {
+
+        if (selectedVehicle == null) {
             labelResponse.setText("Please select a vehicle to view its service history.");
+            return;
         }
-    }
+
+    appController.showServiceHistoryEntryViewVehicle(selectedVehicle);
+}
 
     @FXML
     public void handleButtonBackAction(ActionEvent event) {

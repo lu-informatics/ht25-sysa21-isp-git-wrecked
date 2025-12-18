@@ -1,5 +1,7 @@
 package se.lu.ics.models;
 
+import java.time.LocalDate;
+
 public class AppModel {
    private VehicleRegister vehicleRegister;
    private WorkshopRegister workshopRegister;
@@ -66,5 +68,24 @@ public class AppModel {
       workshopRegister.addWorkshop(workshop2);
       workshopRegister.addWorkshop(workshop3);
       workshopRegister.addWorkshop(workshop4);
+
+      ServiceHistoryEntry entry1 = new ServiceHistoryEntry("Brake issues", 250.0, LocalDate.of(2024, 6, 10), 1);
+      ServiceHistoryEntry entry2 = new ServiceHistoryEntry("Engine noise", 400.0, LocalDate.of(2024, 5, 5), 2);
+      ServiceHistoryEntry entry3 = new ServiceHistoryEntry("Flat tire", 100.0, LocalDate.of(2024, 4, 15), 1);
+      ServiceHistoryEntry entry4 = new ServiceHistoryEntry("Oil leak detected", 320.0, LocalDate.of(2024, 3, 20), 1);
+      ServiceHistoryEntry entry5 = new ServiceHistoryEntry("Brake pads replaced", 600.0, LocalDate.of(2024, 2, 12), 4);
+      ServiceHistoryEntry entry6 = new ServiceHistoryEntry("Cooling system repair", 750.0, LocalDate.of(2024, 1, 18), 2);
+      ServiceHistoryEntry entry7 = new ServiceHistoryEntry("Electrical system fault", 280.0, LocalDate.of(2023, 12, 5), 1);
+      ServiceHistoryEntry entry8 = new ServiceHistoryEntry("Exhaust system replacement", 900.0, LocalDate.of(2023, 11, 10), 3);
+      ServiceHistoryEntry entry9 = new ServiceHistoryEntry("Clutch adjustment", 450.0, LocalDate.of(2023, 10, 2), 2);
+      ServiceHistoryEntry entry10 = new ServiceHistoryEntry("Annual safety inspection", 200.0, LocalDate.of(2023, 9, 15), 0);
+
+      vehicle1.addServiceHistoryEntry(entry1);
+      vehicle1.addServiceHistoryEntry(entry2);
+      vehicle1.addServiceHistoryEntry(entry3);
+
+      workshop1.addService(entry1);
+      workshop2.addService(entry2);
+      workshop3.addService(entry3);
    }
 }
