@@ -65,6 +65,8 @@ public class VehicleViewController {
         columnLocation.setCellValueFactory(new PropertyValueFactory<>("location"));
         columnAvailable.setCellValueFactory(new PropertyValueFactory<>("available"));
         columnType.setCellValueFactory(new PropertyValueFactory<>("type"));
+
+        updateTable();
     }
 
     @FXML
@@ -110,9 +112,16 @@ public class VehicleViewController {
 
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
+        updateTable();
     }
 
     public void setAppController(AppController appController) {
         this.appController = appController;
     }
+    private void updateTable() {
+    if (appModel != null && tableVehicles != null) {
+        tableVehicles.setItems(appModel.getVehicleRegister().getVehicles());
+    }
+}
+
 }
