@@ -58,12 +58,6 @@ public class MaintenanceScheduleVehicleViewController {
     private Label labelResponse;
 
     @FXML
-    public void initialize() {
-        //updateMostExpensiveWorkshop();
-    }
-    // metod för att uppdatera
-
-    @FXML
     public void handleMenuItemFindMaintenanceScheduleAction(ActionEvent event) {
         String vinT = textFieldVin.getText();
 
@@ -126,7 +120,6 @@ public class MaintenanceScheduleVehicleViewController {
 
             MaintenanceSchedule schedule = new MaintenanceSchedule(date, description);
 
-            // ev. koppla till workshop här
             Workshop foundWorkshop = appModel.getWorkshopRegister().findWorkshop(workshop);
 
             vehicle.addMaintenanceSchedule(schedule);
