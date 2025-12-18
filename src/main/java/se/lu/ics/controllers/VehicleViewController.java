@@ -93,32 +93,31 @@ public class VehicleViewController {
     @FXML
     public void handleButtonVehicleEditAction(ActionEvent event) {
     }
-    
 
     @FXML
     public void handleTextFieldVehicleSearchAction(ActionEvent event) {
 
         String searchText = textFieldVehicleSearch.getText().trim();
 
-    if (searchText.isEmpty()) {
-        tableVehicles.getSelectionModel().clearSelection();
-        labelResponse.setText("Enter a VIN number to search.");
-        return;
-    }
+        if (searchText.isEmpty()) {
+            tableVehicles.getSelectionModel().clearSelection();
+            labelResponse.setText("Enter a VIN number to search.");
+            return;
+        }
 
-    try {
-        int vin = Integer.parseInt(searchText);
-        Vehicle foundVehicle = appModel.getVehicleRegister().findVehicle(vin);
+        try {
+            int vin = Integer.parseInt(searchText);
+            Vehicle foundVehicle = appModel.getVehicleRegister().findVehicle(vin);
 
-        tableVehicles.getSelectionModel().select(foundVehicle);
-        tableVehicles.scrollTo(foundVehicle);
+            tableVehicles.getSelectionModel().select(foundVehicle);
+            tableVehicles.scrollTo(foundVehicle);
 
-    } catch (NumberFormatException e) {
-        labelResponse.setText("Please enter a valid VIN number.");
-    } catch (IllegalArgumentException e) {
-        labelResponse.setText(e.getMessage());
-    }
-        
+        } catch (NumberFormatException e) {
+            labelResponse.setText("Please enter a valid VIN number.");
+        } catch (IllegalArgumentException e) {
+            labelResponse.setText(e.getMessage());
+        }
+
     }
 
     @FXML
@@ -131,7 +130,7 @@ public class VehicleViewController {
         Vehicle selectedVehicle = tableVehicles.getSelectionModel().getSelectedItem();
         if (selectedVehicle != null) {
             appController.showServiceHistoryEntryViewVehicle(selectedVehicle);
-        } else {          
+        } else {
             labelResponse.setText("Please select a vehicle to view its service history.");
         }
     }
@@ -149,10 +148,11 @@ public class VehicleViewController {
     public void setAppController(AppController appController) {
         this.appController = appController;
     }
+
     private void updateTable() {
-    if (appModel != null && tableVehicles != null) {
-        tableVehicles.setItems(appModel.getVehicleRegister().getVehicles());
+        if (appModel != null && tableVehicles != null) {
+            tableVehicles.setItems(appModel.getVehicleRegister().getVehicles());
+        }
     }
-}
 
 }
