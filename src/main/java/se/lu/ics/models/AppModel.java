@@ -9,6 +9,8 @@ public class AppModel {
       this.vehicleRegister = new VehicleRegister();
       this.serviceHistoryEntry = new ServiceHistoryEntry();
       this.workshopRegister = new WorkshopRegister();
+
+      addTestData();
    }
 
    public VehicleRegister getVehicleRegister() {
@@ -21,5 +23,15 @@ public class AppModel {
 
    public WorkshopRegister getWorkshopRegister() {
       return workshopRegister;
+   }
+
+   private void addTestData() {
+
+      Vehicle vehicle1 = new Vehicle("Location 1", 1000,VehicleType.MEDIUM_TRUCK, "Volvo");
+      Workshop workshop1 = new Workshop("Workshop 1", true,  "Address 1");
+      // Add test data to vehicle register
+      vehicleRegister.addVehicle(new Vehicle("Location 1", 1000,VehicleType.MEDIUM_TRUCK, "Volvo"));
+      // Add test data to workshop register
+      workshopRegister.addWorkshop(new Workshop("Workshop 1", true,  "Address 1"));
    }
 }
