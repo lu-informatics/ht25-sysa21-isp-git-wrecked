@@ -2,13 +2,17 @@ package se.lu.ics.models;
 
 import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class VehicleRegister {
-    private ArrayList<Vehicle> vehicles;
+    private ObservableList<Vehicle> vehicles;
     private ServiceHistoryEntry serviceHistory;
 
     public VehicleRegister() {
-        this.vehicles = new ArrayList<>();
+        this.vehicles = FXCollections.observableArrayList();
     }
+
 
     public void addVehicle(Vehicle vehicle) {
         if (vehicles.contains(vehicle)) {
@@ -43,9 +47,10 @@ public class VehicleRegister {
         }
     }
 
-    public ArrayList<Vehicle> getAllVehicles() {
-        return vehicles;
+    public ObservableList<Vehicle> getVehicles() {
+        return FXCollections.unmodifiableObservableList(this.vehicles);
     }
+
 
     public String printAllMaintenanceSchedules() {
         if (vehicles.isEmpty()) {
