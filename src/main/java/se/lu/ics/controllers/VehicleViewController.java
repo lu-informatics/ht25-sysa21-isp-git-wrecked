@@ -76,18 +76,49 @@ public class VehicleViewController {
 
     @FXML
     public void handleButtonVehicleRemoveAction(ActionEvent event) {
+        Vehicle selectedVehicle = tableVehicles.getSelectionModel().getSelectedItem();
+        if (selectedVehicle != null) {
+            try {
+                appModel.getVehicleRegister().removeVehicle(selectedVehicle.getVin());
+                labelResponse.setText("Vehicle removed successfully.");
+                updateTable();
+            } catch (IllegalArgumentException e) {
+                labelResponse.setText(e.getMessage());
+            }
+        } else {
+            labelResponse.setText("Please select a vehicle to remove.");
+        }
     }
 
     @FXML
     public void handleButtonVehicleEditAction(ActionEvent event) {
     }
+    
 
     @FXML
     public void handleTextFieldVehicleSearchAction(ActionEvent event) {
+
+        String searchText = textFieldVehicleSearch.getText().trim();
+
+    if (searchText.isEmpty()) {
+        tableVehicles.getSelectionModel().clearSelection();
+        labelResponse.setText("Enter a VIN number to search.");
+        return;
     }
 
-    @FXML
-    public void handleButtonVehicleSearchAction(ActionEvent event) {
+    try {
+        int vin = Integer.parseInt(searchText);
+        Vehicle foundVehicle = appModel.getVehicleRegister().findVehicle(vin);
+
+        tableVehicles.getSelectionModel().select(foundVehicle);
+        tableVehicles.scrollTo(foundVehicle);
+
+    } catch (NumberFormatException e) {
+        labelResponse.setText("Please enter a valid VIN number.");
+    } catch (IllegalArgumentException e) {
+        labelResponse.setText(e.getMessage());
+    }
+        
     }
 
     @FXML
