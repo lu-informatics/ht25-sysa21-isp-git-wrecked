@@ -82,7 +82,7 @@ public class MaintenanceScheduleVehicleViewController {
             } else {
                 labelResponse.setText("No maintenance schedule found.");
             }
-        }
+        } //saknas en catch här
     }
 
     //kvar

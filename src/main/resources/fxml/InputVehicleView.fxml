@@ -12,10 +12,10 @@
    <children>
       <VBox layoutX="100.0" layoutY="74.0" prefHeight="200.0" prefWidth="200.0" spacing="30.0" AnchorPane.bottomAnchor="159.0" AnchorPane.topAnchor="100.0">
          <children>
-            <TextField fx:id="textFieldName" onAction="#handleTextFieldNameAction" promptText="Name..." />
-            <ComboBox fx:id="comboBoxVehicleType" onAction="#handleComboBoxVehicleTypeAction" prefHeight="26.0" prefWidth="198.0" promptText="Type" />
-            <TextField fx:id="textFieldCapacity" onAction="#handleTextFieldCapacityAction" promptText="Capacity..." />
-            <TextField fx:id="textFieldLocation" onAction="#handleTextFieldLocationAction" promptText="Location..." />
+            <TextField fx:id="textFieldName" promptText="Name..." />
+            <ComboBox fx:id="comboBoxVehicleType" prefHeight="26.0" prefWidth="198.0" promptText="Type" />
+            <TextField fx:id="textFieldCapacity" promptText="Capacity..." />
+            <TextField fx:id="textFieldLocation" promptText="Location..." />
             <Label fx:id="labelResponse" prefHeight="17.0" prefWidth="201.0" textFill="RED" />
          </children>
       </VBox>

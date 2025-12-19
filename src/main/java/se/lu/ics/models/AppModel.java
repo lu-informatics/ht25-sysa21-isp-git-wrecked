@@ -33,13 +33,6 @@ public class AppModel {
       Vehicle vehicle8 = new Vehicle("Stockholm", 850, VehicleType.VAN, "Mercedes Sprinter");
       Vehicle vehicle9 = new Vehicle("Jönköping", 1400, VehicleType.MEDIUM_TRUCK, "Scania P280");
       Vehicle vehicle10 = new Vehicle("Linköping", 2300, VehicleType.LARGE_TRUCK, "Volvo FH16");
-      Vehicle vehicle11 = new Vehicle("Karlstad", 1600, VehicleType.MEDIUM_TRUCK, "MAN TGM");
-      Vehicle vehicle12 = new Vehicle("Kalmar", 600, VehicleType.VAN, "Iveco Daily");
-      Vehicle vehicle13 = new Vehicle("Borås", 2100, VehicleType.LARGE_TRUCK, "Scania R500");
-      Vehicle vehicle14 = new Vehicle("Falun", 900, VehicleType.VAN, "Ford Transit");
-      Vehicle vehicle15 = new Vehicle("Sundsvall", 1500, VehicleType.MEDIUM_TRUCK, "DAF LF");
-      Vehicle vehicle16 = new Vehicle("Gävle", 1700, VehicleType.MEDIUM_TRUCK, "Renault D");
-      Vehicle vehicle17 = new Vehicle("Luleå", 2400, VehicleType.LARGE_TRUCK, "Volvo FMX");
 
       Workshop workshop1 = new Workshop("Workshop 1", true, "Address 1");
       Workshop workshop2 = new Workshop("Workshop 2", false, "Address 2");
@@ -56,13 +49,6 @@ public class AppModel {
       vehicleRegister.addVehicle(vehicle8);
       vehicleRegister.addVehicle(vehicle9);
       vehicleRegister.addVehicle(vehicle10);
-      vehicleRegister.addVehicle(vehicle11);
-      vehicleRegister.addVehicle(vehicle12);
-      vehicleRegister.addVehicle(vehicle13);
-      vehicleRegister.addVehicle(vehicle14);
-      vehicleRegister.addVehicle(vehicle15);
-      vehicleRegister.addVehicle(vehicle16);
-      vehicleRegister.addVehicle(vehicle17);
 
       workshopRegister.addWorkshop(workshop1);
       workshopRegister.addWorkshop(workshop2);
@@ -87,5 +73,15 @@ public class AppModel {
       workshop1.addService(entry1);
       workshop2.addService(entry2);
       workshop3.addService(entry3);
+
+      // Skapar service activities och stoppar dem listan som tillhör Service History Entry 1
+      String serviceActivities1 = "Bytt bromsar";
+      String serviceActivities2 = "Fixat motorljud";
+      String serviceActivities3 = "Bytt däck";
+
+      entry1.addServiceActivity(serviceActivities1);
+      entry1.addServiceActivity(serviceActivities2);
+      entry2.addServiceActivity(serviceActivities3);
+      
    }
 }

@@ -117,7 +117,14 @@ public class VehicleViewController {
 
     @FXML
     public void handleButtonViewMaintenanceScheduleAction(ActionEvent event) {
-        appController.showMaintenenceViewVehicle();
+        Vehicle selectedVehicle = tableVehicles.getSelectionModel().getSelectedItem();
+
+        if (selectedVehicle == null) {
+            labelResponse.setText("Please select a vehicle to view its maintenance schedule.");
+            return;
+        }
+
+        appController.showMaintenenceViewVehicle(selectedVehicle);
     }
 
     @FXML

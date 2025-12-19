@@ -42,24 +42,8 @@ public class InputVehicleViewController {
     }
 
     @FXML
-    private void handleTextFieldNameAction(ActionEvent e) {
-    }
-
-    @FXML
-    private void handleComboBoxVehicleTypeAction(ActionEvent e) {
-    }
-
-    @FXML
     public void initialize() {
         comboBoxVehicleType.getItems().setAll(VehicleType.values());
-    }
-
-    @FXML
-    private void handleTextFieldCapacityAction(ActionEvent e) {
-    }
-
-    @FXML
-    private void handleTextFieldLocationAction(ActionEvent e) {
     }
 
     @FXML

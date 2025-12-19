@@ -73,7 +73,7 @@ public class AppController {
 
     }
 
-    public void showMaintenenceViewVehicle() {
+    public void showMaintenenceViewVehicle(Vehicle selectedVehicle) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MaintenenceViewVehicle.fxml"));
             Parent root = loader.load();
@@ -81,6 +81,7 @@ public class AppController {
             MaintenanceScheduleVehicleViewController maintenanceVehicleController = loader.getController();
             maintenanceVehicleController.setAppController(this);
             maintenanceVehicleController.setAppModel(appModel);
+            maintenanceVehicleController.setVehicle(selectedVehicle); // skicka vidare fordone   t
 
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
@@ -92,8 +93,7 @@ public class AppController {
 
     public void showServiceHistoryEntryViewVehicle(Vehicle selectedVehicle) {
         try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/fxml/ServiceHistoryEntryViewVehicle.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ServiceHistoryEntryViewVehicle.fxml"));
             Parent root = loader.load();
 
             ServiceHistoryEntryVehicleViewController controller = loader.getController();
