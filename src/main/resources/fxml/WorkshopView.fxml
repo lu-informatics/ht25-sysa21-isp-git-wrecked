@@ -48,8 +48,8 @@
 
                     <columns>
                         <TableColumn fx:id="tableColumnName" text="Name" />
-                        <TableColumn fx:id="TableColumnType" text="Type" />
-                        <TableColumn fx:id="TableColumnAddress" text="Address" />
+                        <TableColumn fx:id="tableColumnType" text="Type" />
+                        <TableColumn fx:id="tableColumnAddress" text="Address" />
                         <TableColumn fx:id="tableColumnServiceEntries" text="Service entries" />
                     </columns>
 

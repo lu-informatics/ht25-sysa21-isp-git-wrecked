@@ -62,7 +62,7 @@ public class ModelIntegrationTest {
         entry3.setWorkshop(workshop1);
 
         System.out.println("Vehicles in Register:");
-        for (Vehicle v : vehicleRegister.getAllVehicles()) {
+        for (Vehicle v : vehicleRegister.getVehicles()) {
             System.out.println(v.getLocation() + " " + v.getCapacity() + " " + v.getType() + " " + v.getName() + "");
         }
         System.out.println("Workshops in Register:");
@@ -70,7 +70,7 @@ public class ModelIntegrationTest {
             System.out.println(w.getName());
         }
         System.out.println("Service History Entries for all vehicles:");
-        for (Vehicle ve : vehicleRegister.getAllVehicles()) {
+        for (Vehicle ve : vehicleRegister.getVehicles()) {
             for (ServiceHistoryEntry entry : ve.getServiceHistory()) {
                 System.out.println(
                         entry.getProblemDescription() + " Cost: " + entry.getCost() + " Date: " + entry.getDate());
@@ -82,20 +82,20 @@ public class ModelIntegrationTest {
         }
 
         System.out.println("Maintenance Schedules:");
-        for (Vehicle veh : vehicleRegister.getAllVehicles()) {
+        for (Vehicle veh : vehicleRegister.getVehicles()) {
             System.out.println(
                     "Mantenance Schedule for vehicles: " + veh.getName() + " " + veh.getMaintenanceSchedule().getDate()
                             + " " + " Description: " + veh.getMaintenanceSchedule().getDescription());
         }
         System.out.println("Available Vehicles:");
-        for (Vehicle vehi : vehicleRegister.getAllVehicles()) {
+        for (Vehicle vehi : vehicleRegister.getVehicles()) {
             if (vehi.isAvailable()) {
                 System.out.println(
                         vehi.getLocation() + " " + vehi.getCapacity() + " " + vehi.getType() + " " + vehi.getName());
             }
         }
         System.out.println("Workshop that carried out maintenance:");
-        for (Vehicle vehic : vehicleRegister.getAllVehicles()) {
+        for (Vehicle vehic : vehicleRegister.getVehicles()) {
             System.out.println("Vehicle:" + vehic.getName() + "is maintained by workshop "
                     + vehic.getMaintenanceSchedule().getWorkshop().getName());
         }
@@ -121,14 +121,14 @@ public class ModelIntegrationTest {
         System.out.println("Total cost of services for vehicle " + vehicle2.getName() + ": " + vehicle2.getTotalCost());
 
         System.out.println("Total cost of services for all vehicles:");
-        for (Vehicle vehicl : vehicleRegister.getAllVehicles()) {
+        for (Vehicle vehicl : vehicleRegister.getVehicles()) {
             System.out.println("Vehicle " + vehicl.getName() + ": " + vehicl.getTotalCost());
         }
         double averageCost = vehicleRegister.calculateAvarageCost();
         System.out.println("Average cost of vehicle maintenance:" + averageCost);
 
         vehicleRegister.removeVehicle(vehicle3.getVin());
-        for (Vehicle v : vehicleRegister.getAllVehicles()) {
+        for (Vehicle v : vehicleRegister.getVehicles()) {
             System.out.println("Remaining vehicle: " + v.getName());
         }
         workshopRegister.removeWorkshop(workshop2.getName());

@@ -2,19 +2,18 @@ package se.lu.ics.models;
 
 import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class WorkshopRegister {
-    private ArrayList<Workshop> workshops;
+    private ObservableList<Workshop> workshops;
 
     public WorkshopRegister() {
-        this.workshops = new ArrayList<>();
+        this.workshops = FXCollections.observableArrayList();
     }
 
-    public void setWorkshops(ArrayList<Workshop> workshops) {
-        this.workshops = workshops;
-    }
-
-    public ArrayList<Workshop> getWorkshops() {
-        return workshops;
+    public ObservableList<Workshop> getWorkshops() {
+        return FXCollections.unmodifiableObservableList(workshops);
     }
 
     public void addWorkshop(Workshop workshop) {

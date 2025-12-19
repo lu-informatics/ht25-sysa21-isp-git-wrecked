@@ -76,34 +76,68 @@ public class VehicleViewController {
 
     @FXML
     public void handleButtonVehicleRemoveAction(ActionEvent event) {
-    }
-
-    @FXML
-    public void handleButtonVehicleEditAction(ActionEvent event) {
+        Vehicle selectedVehicle = tableVehicles.getSelectionModel().getSelectedItem();
+        if (selectedVehicle != null) {
+            try {
+                appModel.getVehicleRegister().removeVehicle(selectedVehicle.getVin());
+                updateTable();
+            } catch (IllegalArgumentException e) {
+                labelResponse.setText(e.getMessage());
+            }
+        } else {
+            labelResponse.setText("Please select a vehicle to remove.");
+        }
     }
 
     @FXML
     public void handleTextFieldVehicleSearchAction(ActionEvent event) {
-    }
 
-    @FXML
-    public void handleButtonVehicleSearchAction(ActionEvent event) {
+        String searchText = textFieldVehicleSearch.getText().trim();
+
+        if (searchText.isEmpty()) {
+            tableVehicles.getSelectionModel().clearSelection();
+            labelResponse.setText("Enter a VIN number to search.");
+            return;
+        }
+
+        try {
+            int vin = Integer.parseInt(searchText);
+            Vehicle foundVehicle = appModel.getVehicleRegister().findVehicle(vin);
+
+            tableVehicles.getSelectionModel().select(foundVehicle);
+            tableVehicles.scrollTo(foundVehicle);
+
+        } catch (NumberFormatException e) {
+            labelResponse.setText("Please enter a valid VIN number.");
+        } catch (IllegalArgumentException e) {
+            labelResponse.setText(e.getMessage());
+        }
+
     }
 
     @FXML
     public void handleButtonViewMaintenanceScheduleAction(ActionEvent event) {
-        appController.showMaintenenceViewVehicle();
+        Vehicle selectedVehicle = tableVehicles.getSelectionModel().getSelectedItem();
+
+        if (selectedVehicle == null) {
+            labelResponse.setText("Please select a vehicle to view its maintenance schedule.");
+            return;
+        }
+
+        appController.showMaintenenceViewVehicle(selectedVehicle);
     }
 
     @FXML
-    public void handleButtonViewServiceHistoryAction(ActionEvent event) {
+    public void handleButtonViewServiceHistoryAction() {
         Vehicle selectedVehicle = tableVehicles.getSelectionModel().getSelectedItem();
-        if (selectedVehicle != null) {
-            appController.showServiceHistoryEntryViewVehicle(selectedVehicle);
-        } else {          
+
+        if (selectedVehicle == null) {
             labelResponse.setText("Please select a vehicle to view its service history.");
+            return;
         }
-    }
+
+    appController.showServiceHistoryEntryViewVehicle(selectedVehicle);
+}
 
     @FXML
     public void handleButtonBackAction(ActionEvent event) {
@@ -118,10 +152,11 @@ public class VehicleViewController {
     public void setAppController(AppController appController) {
         this.appController = appController;
     }
+
     private void updateTable() {
-    if (appModel != null && tableVehicles != null) {
-        tableVehicles.setItems(appModel.getVehicleRegister().getVehicles());
+        if (appModel != null && tableVehicles != null) {
+            tableVehicles.setItems(appModel.getVehicleRegister().getVehicles());
+        }
     }
-}
 
 }
