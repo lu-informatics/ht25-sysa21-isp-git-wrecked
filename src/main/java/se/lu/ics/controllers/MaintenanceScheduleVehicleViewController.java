@@ -70,18 +70,15 @@ public class MaintenanceScheduleVehicleViewController {
 
         if (schedule != null) {
             LocalDate date = schedule.getDate();
-            if (date == null ELLERSCHEDULE TOM ) {
-                labelShowDate.setText("No maintenance schedule found");
-            } else {
-                labelShowDate.setText(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))); // för localdate
-                labelShowMaintenanceJob.setText(schedule.getDescription());
-                labelShowWorkshop.setText(schedule.getWorkshop().getName());
-                labelResponse.setText("Maintenance schedule found.");
-            }if else {
+            
+            labelShowDate.setText(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))); // för localdate
+            labelShowMaintenanceJob.setText(schedule.getDescription());
+            labelShowWorkshop.setText(schedule.getWorkshop().getName());
+            labelResponse.setText("Maintenance schedule found.");
+            }else {
                 labelResponse.setText("No maintenance schedule found.");
             }
         }
-    }
 
     @FXML
     public void handleMenuItemBookMaintenanceAction(ActionEvent event) {
