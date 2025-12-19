@@ -149,7 +149,7 @@ public class AppController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ServiceHistoryEntryViewWorkshop.fxml"));
             Parent root = loader.load();
 
-            ServiceHistoryEntryView serviceHistoryEntryView = loader.getController();
+            ServiceHistoryEntryViewController serviceHistoryEntryView = loader.getController();
             serviceHistoryEntryView.setAppController(this);
             serviceHistoryEntryView.setAppModel(appModel);
 

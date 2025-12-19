@@ -23,17 +23,14 @@ public class ServiceHistoryEntryVehicleViewController {
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
     }
-
     public void setAppController(AppController appController) {
         this.appController = appController;
     }
-
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
 
         serviceHistoryTable.setItems(vehicle.getServiceHistory());
     }
-
     public Vehicle getVehicle() {
         return vehicle;
     }
@@ -62,14 +59,11 @@ public class ServiceHistoryEntryVehicleViewController {
     private MenuItem menuItemRemoveServiceHistory;
     @FXML
     private Button buttonBack;
-
     @FXML
-    private void handleTextFieldSearchServiceHistoryAction() {
-    }
+    private Label labelErrorMessage;
 
     @FXML
     private void initialize() { // kan göra detta under med lambdas men vet nt om det är överkurs
-
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         problemDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("problemDescription"));
         costColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
@@ -77,12 +71,14 @@ public class ServiceHistoryEntryVehicleViewController {
         workshopColumn.setCellValueFactory(new PropertyValueFactory<>("workshop"));
         serviceActivitiesColumn.setCellValueFactory(new PropertyValueFactory<>("serviceActivities"));
     }
-
     public void initData(Vehicle vehicle) {
         this.vehicle = vehicle;
 
         vehicleLabel.setText(vehicle.getName() + "" + vehicle.getVin());
         serviceHistoryTable.getItems().setAll(vehicle.getServiceHistory());
+    }
+ @FXML
+    private void handleTextFieldSearchServiceHistoryAction() {
     }
 
     @FXML
