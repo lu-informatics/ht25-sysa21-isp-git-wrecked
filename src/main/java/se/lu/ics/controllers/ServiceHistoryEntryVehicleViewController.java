@@ -87,7 +87,7 @@ public class ServiceHistoryEntryVehicleViewController {
 
     @FXML
     private void handleMenuItemAddServiceHistoryAction() {
-        appController.showInputServiceHistoryEntryView(vehicle);
+        appController.showInputServiceHistoryEntryView();
     }
 
     @FXML
