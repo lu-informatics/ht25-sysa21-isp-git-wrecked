@@ -86,16 +86,12 @@ public class MaintenanceScheduleVehicleViewController {
         if (vehicle.getMaintenanceSchedule() != null) {
             labelResponse.setText("The vehicle already has a maintenance schedule. You can only have one.");
             return;
-        }
-        if(vehicle==null){
-            labelResponse.setText("Vehicle not set.");
-            return;
-        }
+        }else{
         appController.showInputMaintenanceScheduleView(vehicle);
-       
+        
         // uppdatera labels efter bokning
         MaintenanceSchedule schedule = vehicle.getMaintenanceSchedule();
-
+        
         if(schedule !=null){
             LocalDate date = schedule.getDate();
 
@@ -108,6 +104,7 @@ public class MaintenanceScheduleVehicleViewController {
         }
         updateMostExpensiveWorkshop();
     }
+}
 
     @FXML
     public void handleMenuItemCancelMaintenanceAction(ActionEvent event) {
@@ -131,7 +128,9 @@ public class MaintenanceScheduleVehicleViewController {
                 vehicle.removeMaintenanceSchedule();
                 labelResponse.setText("Maintenance schedule cancelled.");
                 updateMostExpensiveWorkshop();
-            }
+            }else{
+            labelResponse.setText("No maintenance schedule to cancel.");
+}
             clearMaintenanceLabels();
         
         } catch (IllegalArgumentException e) {
