@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javafx.scene.control.Label;
 
 
@@ -59,19 +60,38 @@ public class InputMaintenanceScheduleViewController {
             return;
         }
 
+        LocalDate date; //deklarera för att använda hela metoden
+
         try {
-            LocalDate date = LocalDate.parse(dateT); // gör till typ local date
-
-            MaintenanceSchedule newSchedule = new MaintenanceSchedule(date, description);
-            Workshop foundWorkshop = appModel.getWorkshopRegister().findWorkshop(workshop);
-
-                vehicle.addMaintenanceSchedule(newSchedule);
-                newSchedule.setVehicle(vehicle);
-                newSchedule.setWorkshop(foundWorkshop);
-        
-            appController.showMaintenenceViewVehicle();
-            }catch(Exception e){
+            date = LocalDate.parse(dateT); // gör till typ local date
+        }catch(Exception e){
                     labelResponse.setText("Invalid date format. Please use YYYY-MM-DD."); 
+                    return;
+        }
+            Workshop foundWorkshop = appModel.getWorkshopRegister().findWorkshop(workshop);
+            if (foundWorkshop == null) {
+                labelResponse.setText("Workshop not found. Please enter a valid workshop name.");
+                return;
+            }
+            if(vehicle==null){
+                labelResponse.setText("Vehicle not set. Can not add maintenance schedule.");
+                return;
+            }
+            MaintenanceSchedule newSchedule = new MaintenanceSchedule(date, description);
+
+            vehicle.addMaintenanceSchedule(newSchedule);
+            System.out.println("INPUT schedule after add: " + vehicle.getMaintenanceSchedule());
+            System.out.println("INPUT vehicle id: " + System.identityHashCode(vehicle));
+
+            System.out.println("INPUT vehicle id: " + System.identityHashCode(vehicle));
+            System.out.println("INPUT schedule after add: " + vehicle.getMaintenanceSchedule());
+
+            newSchedule.setVehicle(vehicle);
+            newSchedule.setWorkshop(foundWorkshop);
+        
+        Stage stage=(Stage) buttonApply.getScene().getWindow();
+        stage.close();
+        //stänga fönstret efter apply button
         }
     }
 

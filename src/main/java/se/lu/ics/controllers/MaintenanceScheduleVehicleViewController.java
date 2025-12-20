@@ -86,19 +86,25 @@ public class MaintenanceScheduleVehicleViewController {
         if (vehicle.getMaintenanceSchedule() != null) {
             labelResponse.setText("The vehicle already has a maintenance schedule. You can only have one.");
             return;
-        } 
-
-        appController.showInputMaintenanceScheduleView();
-           
+        }
+        if(vehicle==null){
+            labelResponse.setText("Vehicle not set.");
+            return;
+        }
+        appController.showInputMaintenanceScheduleView(vehicle);
+       
         // uppdatera labels efter bokning
         MaintenanceSchedule schedule = vehicle.getMaintenanceSchedule();
-        LocalDate date = schedule.getDate();
 
         if(schedule !=null){
+            LocalDate date = schedule.getDate();
+
             labelResponse.setText("Maintenance schedule booked.");
             labelShowDate.setText(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))); // för localdate
             labelShowMaintenanceJob.setText(schedule.getDescription());
             labelShowWorkshop.setText(schedule.getWorkshop().getName());
+        }else{
+            labelResponse.setText("No maintenance schedule booked.");
         }
         updateMostExpensiveWorkshop();
     }

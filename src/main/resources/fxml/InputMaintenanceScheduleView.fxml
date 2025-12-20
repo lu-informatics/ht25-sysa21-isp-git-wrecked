@@ -5,7 +5,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="283.0" prefWidth="348.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane
+    xmlns="http://javafx.com/javafx/25"
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="se.lu.ics.controllers.InputMaintenanceScheduleViewController"
+    prefHeight="283.0"
+    prefWidth="348.0">
    <children>
       <TextField fx:id="textFieldDescription" layoutX="100.0" layoutY="56.0" onAction="#handleTextFieldDescriptionAction" promptText="Description..." />
       <TextField fx:id="textFieldDate" layoutX="100.0" layoutY="93.0" onAction="#handleTextFieldVehicleAction" promptText="Date..." />
