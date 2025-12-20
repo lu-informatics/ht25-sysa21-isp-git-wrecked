@@ -128,7 +128,14 @@ public class WorkshopViewController {
 
     @FXML
     private void handleButtonViewEntriesAction(ActionEvent event) {
-        appController.showWorkshopEntriesView();
+        Workshop selectedWorkshop = workshopTable.getSelectionModel().getSelectedItem();
+        if (selectedWorkshop != null) {
+        appController.showWorkshopEntriesView(selectedWorkshop);
+        } else {
+            labelErrorMessage.setText("Please select a workshop to view its entries.");
+        }
+
+
 
     }
 
@@ -146,8 +153,13 @@ public class WorkshopViewController {
     }
 
     @FXML
-    private void handleButtonViewSchedulesAction() {
-        appController.showWorkshopSchedulesView();
+    private void handleButtonViewSchedulesAction(ActionEvent event) {
+        Workshop selectedWorkshop = workshopTable.getSelectionModel().getSelectedItem();
+        if (selectedWorkshop != null) {
+            appController.showWorkshopSchedulesView(selectedWorkshop);
+        } else {
+            labelErrorMessage.setText("Please select a workshop to view its schedules.");
+        }
 
     }
 

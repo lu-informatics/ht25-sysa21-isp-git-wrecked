@@ -11,6 +11,8 @@ import se.lu.ics.models.MaintenanceSchedule;
 import se.lu.ics.models.ServiceHistoryEntry;
 import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.Workshop;
+import se.lu.ics.controllers.MainViewController;
+import se.lu.ics.controllers.ServiceHistoryEntryWorkshopViewController;
 
 public class AppController {
     private final Stage primaryStage;
@@ -144,14 +146,15 @@ public class AppController {
         }
     }
 
-    public void showWorkshopEntriesView() {
+    public void showWorkshopEntriesView(Workshop workshop) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ServiceHistoryEntryViewWorkshop.fxml"));
             Parent root = loader.load();
 
-            ServiceHistoryEntryViewController serviceHistoryEntryView = loader.getController();
+            ServiceHistoryEntryWorkshopViewController serviceHistoryEntryView = loader.getController();
             serviceHistoryEntryView.setAppController(this);
             serviceHistoryEntryView.setAppModel(appModel);
+            serviceHistoryEntryView.setWorkshop(workshop);
 
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
@@ -162,7 +165,7 @@ public class AppController {
         }
     }
 
-    public void showWorkshopSchedulesView() {
+    public void showWorkshopSchedulesView(Workshop workshop) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MaintenanceViewWorkshop.fxml"));
             Parent root = loader.load();
@@ -170,6 +173,7 @@ public class AppController {
             MaintenanceScheduleViewControllerWorkshop maintenanceWorkshopController = loader.getController();
             maintenanceWorkshopController.setAppController(this);
             maintenanceWorkshopController.setAppModel(appModel);
+            maintenanceWorkshopController.setWorkshop(workshop);
 
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
@@ -253,7 +257,7 @@ public class AppController {
         }
     }
 
-    public void showEditInputScheduleView(MaintenanceSchedule selectedSchedule) {
+    public void showEditInputScheduleView(MaintenanceSchedule selectedSchedule) { //Vi tar väll bort Edit metod o gör dom editable, gäller alla showedit
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputMaintenanceScheduleView.fxml"));
             Parent root = loader.load();
