@@ -28,7 +28,7 @@ public class ServiceHistoryEntryVehicleViewController {
     }
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
-
+        vehicleLabel.setText(vehicle.getName() + " " + vehicle.getVin());
         serviceHistoryTable.setItems(vehicle.getServiceHistory());
     }
     public Vehicle getVehicle() {

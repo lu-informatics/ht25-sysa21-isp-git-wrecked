@@ -28,6 +28,8 @@ public class ServiceHistoryEntryWorkshopViewController {
     }
     public void setWorkshop(Workshop workshop) {
         this.workshop = workshop;
+        workshopLabel.setText(workshop.getName());
+        tableViewServiceHistory.setItems(workshop.getServices());
     }      
     public Workshop getWorkshop() {
         return workshop;
