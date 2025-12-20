@@ -22,6 +22,8 @@ import se.lu.ics.models.Workshop;
 import se.lu.ics.models.WorkshopRegister;
 import se.lu.ics.models.VehicleRegister;
 import java.time.LocalDate;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
     public class MaintenanceScheduleViewControllerWorkshop {
 
@@ -76,7 +78,7 @@ import java.time.LocalDate;
         tableColumnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         tableColumnDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
 
-        ObservableList<MaintenanceSchedule> schedules = FXCollections.observableArrayList(workshop.getMaintenanceScedules());
+        ObservableList<MaintenanceSchedule> schedules = FXCollections.observableArrayList(workshop.getSchedules());
         //hur göra med observablelist?
 
         tableMaintenanceSchedules.setItems(schedules);
