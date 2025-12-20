@@ -185,7 +185,7 @@ public class AppController {
 
     }
 
-    public void showInputMaintenanceScheduleView() {
+    public void showInputMaintenanceScheduleView(Vehicle vehicle) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputMaintenanceScheduleView.fxml"));
             Parent root = loader.load();
@@ -193,10 +193,14 @@ public class AppController {
             InputMaintenanceScheduleViewController inputMaintenanceScheduleController = loader.getController();
             inputMaintenanceScheduleController.setAppController(this);
             inputMaintenanceScheduleController.setAppModel(appModel);
-
-            primaryStage.setScene(new Scene(root));
-            primaryStage.show();
-
+            inputMaintenanceScheduleController.setVehicle(vehicle); 
+            
+            Stage stage=new Stage();
+            stage.initOwner(primaryStage);
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+           
+            //för att inte gå vidare i koden förrän fönstret stängt
         } catch (Exception e) {
             e.printStackTrace();
         }
