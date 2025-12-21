@@ -42,7 +42,7 @@ public class MaintenanceScheduleVehicleViewController {
     @FXML
     private Label labelShowWorkshop;
     @FXML
-    private Label labelShowMaintenanceJob;
+    private Label labelShowMaintenance;
     @FXML
     private Label labelVehicleVin;
     @FXML
@@ -72,7 +72,7 @@ public class MaintenanceScheduleVehicleViewController {
             LocalDate date = schedule.getDate();
             
             labelShowDate.setText(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))); // för localdate
-            labelShowMaintenanceJob.setText(schedule.getDescription());
+            labelShowMaintenance.setText(schedule.getDescription());
             labelShowWorkshop.setText(schedule.getWorkshop().getName());
             labelResponse.setText("Maintenance schedule found.");
             }else {
@@ -82,38 +82,27 @@ public class MaintenanceScheduleVehicleViewController {
 
     @FXML
     public void handleMenuItemBookMaintenanceAction(ActionEvent event) {
-    
+         if(vehicle==null){
+            labelResponse.setText("Vehicle not set.");
+            return;
+        }
+
         if (vehicle.getMaintenanceSchedule() != null) {
             labelResponse.setText("The vehicle already has a maintenance schedule. You can only have one.");
             return;
         }
-        if(vehicle==null){
-            labelResponse.setText("Vehicle not set.");
-            return;
-        }
+       
         appController.showInputMaintenanceScheduleView(vehicle);
        
-        // uppdatera labels efter bokning
-        MaintenanceSchedule schedule = vehicle.getMaintenanceSchedule();
-
-        if(schedule !=null){
-            LocalDate date = schedule.getDate();
-
-            labelResponse.setText("Maintenance schedule booked.");
-            labelShowDate.setText(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))); // för localdate
-            labelShowMaintenanceJob.setText(schedule.getDescription());
-            labelShowWorkshop.setText(schedule.getWorkshop().getName());
-        }else{
-            labelResponse.setText("No maintenance schedule booked.");
-        }
+        loadMaintenanceSchedule();
         updateMostExpensiveWorkshop();
     }
+
 
     @FXML
     public void handleMenuItemCancelMaintenanceAction(ActionEvent event) {
     int vin=vehicle.getVin();
 
-        try {
             Vehicle vehicle = appModel.getVehicleRegister().findVehicle(vin);
             MaintenanceSchedule schedule = vehicle.getMaintenanceSchedule();
 
@@ -122,22 +111,14 @@ public class MaintenanceScheduleVehicleViewController {
                 if (date == null) {
                     labelShowDate.setText("No date.");
                     labelResponse.setText("No maintenance schedule to cancel.");
-                } else {
-                    labelShowDate.setText(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))); // för localdate
-                }
-                labelShowMaintenanceJob.setText(schedule.getDescription());
-                labelShowWorkshop.setText(schedule.getWorkshop().getName());
-
-                vehicle.removeMaintenanceSchedule();
-                labelResponse.setText("Maintenance schedule cancelled.");
-                updateMostExpensiveWorkshop();
-            }
+            } else {
+            vehicle.removeMaintenanceSchedule();
+            labelResponse.setText("Maintenance schedule cancelled.");
+            updateMostExpensiveWorkshop();
             clearMaintenanceLabels();
-        
-        } catch (IllegalArgumentException e) {
-            labelResponse.setText(e.getMessage());
         }
     }
+}
 
     // metod för att visa most expensive uppdaterad.
 
