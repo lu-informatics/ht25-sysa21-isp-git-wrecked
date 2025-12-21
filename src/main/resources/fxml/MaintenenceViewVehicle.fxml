@@ -75,9 +75,9 @@
             <Label fx:id="labelDate" prefHeight="17.0" prefWidth="91.0" style="-fx-alignment: center;" text="Date" />
             <Label fx:id="labelMaintenanceJob" prefHeight="17.0" prefWidth="119.0" style="-fx-alignment: center;" text="Maintenance job" GridPane.columnIndex="1" />
             <Label fx:id="labelWorkshop" prefHeight="17.0" prefWidth="101.0" style="-fx-alignment: center;" text="Workshop" GridPane.columnIndex="2" />
-            <Label fx:id="labelShowDate" prefHeight="17.0" prefWidth="89.0" GridPane.rowIndex="1" />
-            <Label fx:id="labelShowMaintenance" prefHeight="17.0" prefWidth="117.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="labelShowWorkshop" prefHeight="17.0" prefWidth="99.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label fx:id="labelShowDate" prefHeight="17.0" prefWidth="89.0" style="-fx-alignment: CENTER;" textAlignment="CENTER" GridPane.rowIndex="1" />
+            <Label fx:id="labelShowMaintenance" prefHeight="17.0" prefWidth="117.0" style="-fx-alignment: CENTER;" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="labelShowWorkshop" prefHeight="17.0" prefWidth="99.0" style="-fx-alignment: CENTER;" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <Button fx:id="buttonBack" layoutX="533.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleButtonBackAction" text="Back" />
