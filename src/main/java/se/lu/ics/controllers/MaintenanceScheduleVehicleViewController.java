@@ -136,7 +136,7 @@ public class MaintenanceScheduleVehicleViewController {
 
     private void clearMaintenanceLabels() {
         labelShowDate.setText("");
-        labelShowMaintenanceJob.setText("");
+        labelShowMaintenance.setText("");
         labelShowWorkshop.setText("");
     }
 
