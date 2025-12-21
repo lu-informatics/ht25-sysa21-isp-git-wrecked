@@ -6,20 +6,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane
-   maxHeight="-Infinity" 
-   maxWidth="-Infinity" 
-   minHeight="-Infinity" 
-   minWidth="-Infinity" 
-   prefHeight="500.0" 
-   prefWidth="400.0" 
-   xmlns="http://javafx.com/javafx/25" 
-   xmlns:fx="http://javafx.com/fxml/1" 
-   fx:controller="se.lu.ics.controllers.InputMaintenanceScheduleViewController">
-
+    xmlns="http://javafx.com/javafx/25"
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="se.lu.ics.controllers.InputMaintenanceScheduleViewController"
+    prefHeight="283.0"
+    prefWidth="348.0">
    <children>
-      <TextField fx:id="textFieldDescription" layoutX="100.0" layoutY="56.0"  promptText="Description..." />
-      <TextField fx:id="textFieldDate" layoutX="100.0" layoutY="93.0" promptText="Date..." />
-      <TextField fx:id="textFieldWorkshop" layoutX="100.0" layoutY="129.0"  promptText="Workshop..." />
+      <TextField fx:id="textFieldDescription" layoutX="100.0" layoutY="56.0" onAction="#handleTextFieldDescriptionAction" promptText="Description..." />
+      <TextField fx:id="textFieldDate" layoutX="100.0" layoutY="93.0" onAction="#handleTextFieldVehicleAction" promptText="Date..." />
+      <TextField fx:id="textFieldWorkshop" layoutX="100.0" layoutY="129.0" onAction="#handleTextFieldWorkshopAction" promptText="Workshop..." />
       <Button fx:id="buttonApply" layoutX="143.0" layoutY="219.0" mnemonicParsing="false" onAction="#handleButtonApplyAction" prefHeight="25.0" prefWidth="64.0" text="Apply" />
       <Label fx:id="labelResponse" layoutX="34.0" layoutY="24.0" prefHeight="17.0" prefWidth="289.0" />
       <Button fx:id="buttonBack" layoutX="279.0" layoutY="245.0" mnemonicParsing="false" onAction="#handleButtonBackAction" text="Back" />

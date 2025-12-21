@@ -82,28 +82,31 @@ public class MaintenanceScheduleVehicleViewController {
 
     @FXML
     public void handleMenuItemBookMaintenanceAction(ActionEvent event) {
-
+    
         if (vehicle.getMaintenanceSchedule() != null) {
             labelResponse.setText("The vehicle already has a maintenance schedule. You can only have one.");
             return;
-        }else{
-            appController.showInputMaintenanceScheduleView(vehicle);
         }
+        if(vehicle==null){
+            labelResponse.setText("Vehicle not set.");
+            return;
+        }
+        appController.showInputMaintenanceScheduleView(vehicle);
+       
         // uppdatera labels efter bokning
-       MaintenanceSchedule schedule = vehicle.getMaintenanceSchedule();
-      
-       if(schedule !=null){
-           LocalDate date = schedule.getDate();
+        MaintenanceSchedule schedule = vehicle.getMaintenanceSchedule();
 
+        if(schedule !=null){
+            LocalDate date = schedule.getDate();
 
-           labelResponse.setText("Maintenance schedule booked.");
-           labelShowDate.setText(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))); // för localdate
-           labelShowMaintenanceJob.setText(schedule.getDescription());
-           labelShowWorkshop.setText(schedule.getWorkshop().getName());
-       }else{
-           labelResponse.setText("No maintenance schedule booked.");
-       }
-       updateMostExpensiveWorkshop();
+            labelResponse.setText("Maintenance schedule booked.");
+            labelShowDate.setText(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))); // för localdate
+            labelShowMaintenanceJob.setText(schedule.getDescription());
+            labelShowWorkshop.setText(schedule.getWorkshop().getName());
+        }else{
+            labelResponse.setText("No maintenance schedule booked.");
+        }
+        updateMostExpensiveWorkshop();
     }
 
     @FXML
@@ -128,9 +131,7 @@ public class MaintenanceScheduleVehicleViewController {
                 vehicle.removeMaintenanceSchedule();
                 labelResponse.setText("Maintenance schedule cancelled.");
                 updateMostExpensiveWorkshop();
-            }else{
-            labelResponse.setText("No maintenance schedule to cancel.");
-}
+            }
             clearMaintenanceLabels();
         
         } catch (IllegalArgumentException e) {
