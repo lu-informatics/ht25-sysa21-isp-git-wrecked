@@ -51,7 +51,7 @@ public class InputMaintenanceScheduleViewController {
     
     @FXML
     private void handleButtonApplyAction(ActionEvent event) {
-        String workshop = textFieldWorkshop.getText();
+        String workshop = textFieldWorkshop.getText().trim();
         String dateT = textFieldDate.getText();
         String description = textFieldDescription.getText();
 
@@ -61,43 +61,39 @@ public class InputMaintenanceScheduleViewController {
         }
 
         LocalDate date; //deklarera för att använda hela metoden
+        Workshop foundWorkshop;
 
         try {
             date = LocalDate.parse(dateT); // gör till typ local date
         }catch(Exception e){
-                    labelResponse.setText("Invalid date format. Please use YYYY-MM-DD."); 
-                    return;
+            labelResponse.setText("Invalid date format. Please use YYYY-MM-DD."); 
+            return;
         }
-            Workshop foundWorkshop = appModel.getWorkshopRegister().findWorkshop(workshop);
-            if (foundWorkshop == null) {
-                labelResponse.setText("Workshop not found. Please enter a valid workshop name.");
-                return;
-            }
-            if(vehicle==null){
-                labelResponse.setText("Vehicle not set. Can not add maintenance schedule.");
-                return;
-            }
-            MaintenanceSchedule newSchedule = new MaintenanceSchedule(date, description);
+        try{
+            foundWorkshop = appModel.getWorkshopRegister().findWorkshop(workshop);
+        }catch(IllegalArgumentException e){
+            labelResponse.setText(e.getMessage());
+            return;
+        }
 
-            vehicle.addMaintenanceSchedule(newSchedule);
-            System.out.println("INPUT schedule after add: " + vehicle.getMaintenanceSchedule());
-            System.out.println("INPUT vehicle id: " + System.identityHashCode(vehicle));
+        MaintenanceSchedule newSchedule = new MaintenanceSchedule(date, description);
 
-            System.out.println("INPUT vehicle id: " + System.identityHashCode(vehicle));
-            System.out.println("INPUT schedule after add: " + vehicle.getMaintenanceSchedule());
-
-            newSchedule.setVehicle(vehicle);
-            newSchedule.setWorkshop(foundWorkshop);
+        vehicle.addMaintenanceSchedule(newSchedule);
+        newSchedule.setVehicle(vehicle);
+        newSchedule.setWorkshop(foundWorkshop);
         
-        Stage stage=(Stage) buttonApply.getScene().getWindow();
+        appController.showMaintenenceViewVehicle(vehicle);
+
+        Stage stage = (Stage) buttonApply.getScene().getWindow();
         stage.close();
-        //stänga fönstret efter apply button
-        }
     }
 
     @FXML
         private void handleButtonBackAction(ActionEvent event) {
-            appController.showMaintenenceViewVehicle();
+            appController.showMaintenenceViewVehicle(vehicle);
+            Stage stage = (Stage) buttonApply.getScene().getWindow();
+            stage.close();
+
         }
 
 }

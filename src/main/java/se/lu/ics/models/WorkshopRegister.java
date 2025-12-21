@@ -27,15 +27,20 @@ public class WorkshopRegister {
     }
 
     public Workshop findWorkshop(String name) {
+        if(name==null){
+            throw new IllegalArgumentException("No workshop with this name exists.");
+        }
+        String inputName= name.trim();
+
         for (Workshop workshop : workshops) {
-            if (workshop.getName().equals(name)) {
+            String workshopN=workshop.getName();
+
+            if (workshopN!=null && workshopN.equalsIgnoreCase(inputName)) {
                 return workshop;
-            } else {
-                throw new IllegalArgumentException("No workshop with this name exists.");
             }
         }
         throw new IllegalArgumentException("No workshop with this name exists.");
-        }
+    }
 
     public void removeWorkshop(String name) { //BOrde dessa verkligen ha String name som parameter?
         for (int i = 0; i < workshops.size(); i++) {
