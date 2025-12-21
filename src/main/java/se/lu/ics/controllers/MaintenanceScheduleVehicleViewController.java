@@ -82,29 +82,29 @@ public class MaintenanceScheduleVehicleViewController {
 
     @FXML
     public void handleMenuItemBookMaintenanceAction(ActionEvent event) {
-    
+
         if (vehicle.getMaintenanceSchedule() != null) {
             labelResponse.setText("The vehicle already has a maintenance schedule. You can only have one.");
             return;
         }else{
-        appController.showInputMaintenanceScheduleView(vehicle);
-        
-        // uppdatera labels efter bokning
-        MaintenanceSchedule schedule = vehicle.getMaintenanceSchedule();
-        
-        if(schedule !=null){
-            LocalDate date = schedule.getDate();
-
-            labelResponse.setText("Maintenance schedule booked.");
-            labelShowDate.setText(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))); // för localdate
-            labelShowMaintenanceJob.setText(schedule.getDescription());
-            labelShowWorkshop.setText(schedule.getWorkshop().getName());
-        }else{
-            labelResponse.setText("No maintenance schedule booked.");
+            appController.showInputMaintenanceScheduleView(vehicle);
         }
-        updateMostExpensiveWorkshop();
+        // uppdatera labels efter bokning
+       MaintenanceSchedule schedule = vehicle.getMaintenanceSchedule();
+      
+       if(schedule !=null){
+           LocalDate date = schedule.getDate();
+
+
+           labelResponse.setText("Maintenance schedule booked.");
+           labelShowDate.setText(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))); // för localdate
+           labelShowMaintenanceJob.setText(schedule.getDescription());
+           labelShowWorkshop.setText(schedule.getWorkshop().getName());
+       }else{
+           labelResponse.setText("No maintenance schedule booked.");
+       }
+       updateMostExpensiveWorkshop();
     }
-}
 
     @FXML
     public void handleMenuItemCancelMaintenanceAction(ActionEvent event) {

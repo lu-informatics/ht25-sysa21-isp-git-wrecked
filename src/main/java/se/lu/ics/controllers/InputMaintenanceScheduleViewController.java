@@ -68,6 +68,7 @@ public class InputMaintenanceScheduleViewController {
                     labelResponse.setText("Invalid date format. Please use YYYY-MM-DD."); 
                     return;
         }
+
             Workshop foundWorkshop = appModel.getWorkshopRegister().findWorkshop(workshop);
             if (foundWorkshop == null) {
                 labelResponse.setText("Workshop not found. Please enter a valid workshop name.");
@@ -80,24 +81,15 @@ public class InputMaintenanceScheduleViewController {
             MaintenanceSchedule newSchedule = new MaintenanceSchedule(date, description);
 
             vehicle.addMaintenanceSchedule(newSchedule);
-            System.out.println("INPUT schedule after add: " + vehicle.getMaintenanceSchedule());
-            System.out.println("INPUT vehicle id: " + System.identityHashCode(vehicle));
-
-            System.out.println("INPUT vehicle id: " + System.identityHashCode(vehicle));
-            System.out.println("INPUT schedule after add: " + vehicle.getMaintenanceSchedule());
-
             newSchedule.setVehicle(vehicle);
             newSchedule.setWorkshop(foundWorkshop);
         
-        Stage stage=(Stage) buttonApply.getScene().getWindow();
-        stage.close();
-        //stänga fönstret efter apply button
+        appController.showMaintenenceViewVehicle(vehicle);
         }
-    }
 
     @FXML
         private void handleButtonBackAction(ActionEvent event) {
-            appController.showMaintenenceViewVehicle();
+            appController.showMaintenenceViewVehicle(vehicle);
         }
 
 }
