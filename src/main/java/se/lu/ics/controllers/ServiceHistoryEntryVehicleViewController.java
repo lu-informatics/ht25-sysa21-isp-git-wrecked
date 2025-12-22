@@ -8,6 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.cell.PropertyValueFactory; //för att koppla getter metoder till tabell kolumner
+import javafx.event.ActionEvent;
+
 import java.time.LocalDate;
 
 import se.lu.ics.models.AppModel;
@@ -83,11 +85,17 @@ public class ServiceHistoryEntryVehicleViewController {
 
     @FXML
     private void handleMenuItemAddServiceHistoryAction() {
-        appController.showInputServiceHistoryEntryView();
+         if(vehicle==null){
+            labelErrorMessage.setText("Vehicle not set.");
+            return;
+        }
+       
+        appController.showInputServiceHistoryEntryView(vehicle);
+        serviceHistoryTable.setItems(vehicle.getServiceHistory());
     }
 
     @FXML
-    private void handleMenuItemRemoveServiceHistoryAction() {
+    public void handleMenuItemRemoveServiceHistoryAction(ActionEvent event) {
         ServiceHistoryEntry selectedEntry = serviceHistoryTable.getSelectionModel().getSelectedItem();
         if (selectedEntry != null) {
             vehicle.removeServiceHistoryEntry(selectedEntry);
@@ -95,6 +103,9 @@ public class ServiceHistoryEntryVehicleViewController {
         } else {
             System.out.println("Please select a service history entry to remove.");
         }
+    }
+    private void clearServiceHistoryTable() {
+        serviceHistoryTable.getItems().clear();
     }
 
     @FXML
