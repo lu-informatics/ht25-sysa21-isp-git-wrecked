@@ -74,7 +74,10 @@ import javafx.collections.ObservableList;
         ObservableList<MaintenanceSchedule> schedules = FXCollections.observableArrayList(workshop.getSchedules());
         //hur göra med observablelist?
 
-        tableMaintenanceSchedules.setItems(schedules);
+        //sätta items i tableview
+        if (appModel != null && tableMaintenanceSchedules != null) {
+            tableMaintenanceSchedules.setItems(schedules);
+        }
     }
 
     @FXML
