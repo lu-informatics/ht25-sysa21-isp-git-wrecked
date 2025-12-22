@@ -92,7 +92,7 @@ public class MaintenanceScheduleVehicleViewController {
             return;
         }
        
-        appController.showInputMaintenanceScheduleView(vehicle);
+        appController.showInputMaintenanceScheduleVehicleView(vehicle);
        
         loadMaintenanceSchedule();
         updateMostExpensiveWorkshop();

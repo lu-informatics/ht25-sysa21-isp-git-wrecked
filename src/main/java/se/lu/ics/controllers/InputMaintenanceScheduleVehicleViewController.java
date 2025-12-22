@@ -11,11 +11,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 
 
-public class InputMaintenanceScheduleViewController {
+public class InputMaintenanceScheduleVehicleViewController {
 
     private AppModel appModel;
     private AppController appController;
@@ -39,7 +40,7 @@ public class InputMaintenanceScheduleViewController {
     @FXML
     private TextField textFieldWorkshop;
     @FXML
-    private TextField textFieldDate;
+    private DatePicker datePicker;
     @FXML
     private TextField textFieldDescription;
     @FXML
@@ -52,23 +53,16 @@ public class InputMaintenanceScheduleViewController {
     @FXML
     private void handleButtonApplyAction(ActionEvent event) {
         String workshop = textFieldWorkshop.getText().trim();
-        String dateT = textFieldDate.getText();
+        LocalDate date = datePicker.getValue();
         String description = textFieldDescription.getText().trim();
 
-        if(workshop.isEmpty() || dateT.isEmpty() || description.isEmpty()) {
+        if(workshop.isEmpty() || date==null || description.isEmpty()) {
             labelResponse.setText("Please fill in all fields: workshop, date, and description.");
             return;
         }
 
-        LocalDate date; //deklarera för att använda hela metoden
         Workshop foundWorkshop;
 
-        try {
-            date = LocalDate.parse(dateT); // gör till typ local date
-        }catch(Exception e){
-                    labelResponse.setText("Invalid date format. Please use YYYY-MM-DD."); 
-                    return;
-        }
         try{
             foundWorkshop=appModel.getWorkshopRegister().findWorkshop(workshop);
         }catch(IllegalArgumentException e){

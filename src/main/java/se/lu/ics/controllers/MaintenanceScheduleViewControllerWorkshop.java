@@ -29,7 +29,7 @@ import javafx.collections.ObservableList;
 
     private AppModel appModel;
     private AppController appController;
-    private Workshop workshop; //varför deklarera?
+    private Workshop workshop; 
 
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
@@ -40,19 +40,13 @@ import javafx.collections.ObservableList;
     }
     
     @FXML
-    private Label labelShowMostExpensiveMaintenance;
-    @FXML
     private Label labelResponse;
-
     @FXML
     private Button buttonBack;
-
     @FXML
     private MenuItem menuItemAddMaintenance;
-
     @FXML
     private MenuItem menuItemCancelMaintenance;
-
     @FXML
     private TableView <MaintenanceSchedule> tableMaintenanceSchedules;
     @FXML
@@ -72,7 +66,6 @@ import javafx.collections.ObservableList;
     }
 
     private void loadMaintenanceSchedules(){
-        //metod för visa alla maintenance schedule för viss workshop i tabell
 
         tableColumnVehicle.setCellValueFactory(new PropertyValueFactory<>("vin"));
         tableColumnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -81,54 +74,39 @@ import javafx.collections.ObservableList;
         ObservableList<MaintenanceSchedule> schedules = FXCollections.observableArrayList(workshop.getSchedules());
         //hur göra med observablelist?
 
-        tableMaintenanceSchedules.setItems(schedules);
-    }
-
-    @FXML
-    public void handleMenuItemAddMaintenanceAction(ActionEvent event) {
-        try {
-            String name=workshop.getName();
-
-            String vinT =  //fixa input finns inte nu
-            String dateT =
-            String description =
-            
-            if (dateT.isEmpty() || vinT.isEmpty() || description.isEmpty()) {
-                labelResponse.setText("Please fill in all fields: date, workshop, and maintenance job.");
-                return;
-            } //flytta till inputen
-
-            LocalDate date = LocalDate.parse(dateT); // gör till typ local date
-            int vin = Integer.parseInt(vinT);
-
-            Vehicle vehicle = appModel.getVehicleRegister().findVehicle(vin);
-
-            MaintenanceSchedule schedule = new MaintenanceSchedule(date, description);
-
-            Workshop workshop = appModel.getWorkshopRegister().findWorkshop(name);
-
-            vehicle.addMaintenanceSchedule(schedule);
-            schedule.setVehicle(vehicle);
-            schedule.setWorkshop(workshop);
-
-            labelResponse.setText("Maintenance schedule booked for vehicle VIN: " + vin);
-            labelShowDate.setText(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))); // för localdate
-
-            //lägg till i tabellen längst ner
+        //sätta items i tableview
+        if (appModel != null && tableMaintenanceSchedules != null) {
+            tableMaintenanceSchedules.setItems(schedules);
         }
     }
 
     @FXML
+    public void handleMenuItemAddMaintenanceAction(ActionEvent event) {
+        appController.showInputMaintenanceWorkshopView(workshop);
+        loadMaintenanceSchedules();
+    }
+    
+    @FXML
     public void handleMenuItemCancelMaintenanceAction(ActionEvent event) {
-        String workshop=workshop.getName();
 
-        //öppna input här även för att radera pga mst välja en bil av flera
-       
+        MaintenanceSchedule schedule = tableMaintenanceSchedules.getSelectionModel().getSelectedItem();
+        if(schedule == null) {
+            labelResponse.setText("Please select a maintenance schedule to cancel.");
+            return;
+        }
+
+        int vin = schedule.getVehicle().getVin();
+
+        try {
+                appModel.getVehicleRegister().removeVehicle(vin);
+                loadMaintenanceSchedules();
+            } catch (IllegalArgumentException e) {
+                labelResponse.setText(e.getMessage());
+            }
     }
 
     @FXML
     private void handleButtonBackAction() {
         appController.showWorkshopView();
     }
-
 }
