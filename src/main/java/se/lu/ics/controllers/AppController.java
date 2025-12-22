@@ -185,15 +185,36 @@ public class AppController {
 
     }
 
-    public void showInputMaintenanceScheduleView(Vehicle selectedVehicle) {
+    public void showInputMaintenanceScheduleVehicleView(Vehicle selectedVehicle) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputMaintenanceScheduleView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputMaintenanceScheduleVehicleView.fxml"));
             Parent root = loader.load();
 
-            InputMaintenanceScheduleViewController inputMaintenanceScheduleController = loader.getController();
+            InputMaintenanceScheduleVehicleViewController inputMaintenanceScheduleController = loader.getController();
             inputMaintenanceScheduleController.setAppController(this);
             inputMaintenanceScheduleController.setAppModel(appModel);
             inputMaintenanceScheduleController.setVehicle(selectedVehicle); 
+            
+            Stage stage=new Stage();
+            stage.initOwner(primaryStage);
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+           
+            //för att inte gå vidare i koden förrän fönstret stängt
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showInputMaintenanceWorkshopView(Workshop selectedWorkshop) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputMaintenanceWorkshopView.fxml"));
+            Parent root = loader.load();
+
+            InputMaintenanceScheduleVehicleViewController inputMaintenanceScheduleController = loader.getController();
+            inputMaintenanceScheduleController.setAppController(this);
+            inputMaintenanceScheduleController.setAppModel(appModel);
+            inputMaintenanceScheduleController.setWorkshop(selectedWorkshop); 
             
             Stage stage=new Stage();
             stage.initOwner(primaryStage);
@@ -266,7 +287,7 @@ public class AppController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputMaintenanceScheduleView.fxml"));
             Parent root = loader.load();
 
-            InputMaintenanceScheduleViewController inputMaintenanceScheduleController = loader.getController();
+            InputMaintenanceScheduleVehicleViewController inputMaintenanceScheduleController = loader.getController();
             inputMaintenanceScheduleController.setAppController(this);
             inputMaintenanceScheduleController.setAppModel(appModel);
             inputMaintenanceScheduleController.setSelectedSchedule(selectedSchedule);
