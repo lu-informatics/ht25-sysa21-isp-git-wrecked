@@ -16,8 +16,8 @@
             <TextField fx:id="textFieldProblemDescription" promptText="Problem Description..." />
             <TextField fx:id="textFieldPartsReplaced" promptText="Parts Replaced..." />
             <TextField fx:id="textFieldCost" promptText="Cost..." />
-            <ComboBox fx:id="comboBoxWorkshop" prefWidth="150.0" promptText="Workshop" />
-            <TextField fx:id="textFieldServiceActivites" promptText="Service Activities..." />
+            <TextField fx:id="textFieldServiceActivities" promptText="Service Activities..." />
+            <TextField fx:id="textFieldWorkshop" promptText="Workshop..." />
          </children>
       </VBox>
       <HBox layoutX="75.0" layoutY="323.0" prefHeight="26.0" prefWidth="150.0" spacing="20.0">

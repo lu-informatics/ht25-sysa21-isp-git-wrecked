@@ -128,7 +128,7 @@ public class VehicleViewController {
     }
 
     @FXML
-    public void handleButtonViewServiceHistoryAction() {
+    public void handleButtonViewServiceHistoryAction(ActionEvent event) {
         Vehicle selectedVehicle = tableVehicles.getSelectionModel().getSelectedItem();
 
         if (selectedVehicle == null) {

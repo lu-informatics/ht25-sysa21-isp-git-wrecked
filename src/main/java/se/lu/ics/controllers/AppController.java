@@ -104,7 +104,7 @@ public class AppController {
             controller.setVehicle(selectedVehicle); // 👈 skicka vidare fordonet
 
             primaryStage.setScene(new Scene(root));
-            primaryStage.show();
+            primaryStage.show(); 
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -206,18 +206,21 @@ public class AppController {
         }
     }
 
-    public void showInputServiceHistoryEntryView() {
+    public void showInputServiceHistoryEntryView(Vehicle selectedVehicle) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputServiceHistoryEntryView.fxml"));
             Parent root = loader.load();
 
-            InputServiceHistoryEntryViewController inputServiceHistoryEntryController = loader.getController();
-            inputServiceHistoryEntryController.setAppController(this);
-            inputServiceHistoryEntryController.setAppModel(appModel);
+            InputServiceHistoryEntryViewController controller = loader.getController();
+            controller.setAppController(this);
+            controller.setAppModel(appModel);
+            controller.setVehicle(selectedVehicle);
 
-            primaryStage.setScene(new Scene(root));
-            primaryStage.show();
-
+            Stage stage=new Stage();
+            stage.initOwner(primaryStage);
+            stage.setScene(new Scene(root));
+            stage.showAndWait(); //pop up
+           
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -231,7 +234,6 @@ public class AppController {
             InputServiceHistoryEntryViewController inputServiceHistoryEntryController = loader.getController();
             inputServiceHistoryEntryController.setAppController(this);
             inputServiceHistoryEntryController.setAppModel(appModel);
-            inputServiceHistoryEntryController.setSelectedEntry(selectedEntry);
 
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
