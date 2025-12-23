@@ -66,10 +66,10 @@ import javafx.collections.ObservableList;
     }
 
     private void loadMaintenanceSchedules(){
-
+        
         tableColumnVehicle.setCellValueFactory(new PropertyValueFactory<>("vin"));
         tableColumnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
-        tableColumnDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        tableColumnDescription.setCellValueFactory(new PropertyValueFactory<>("description"));        
 
         ObservableList<MaintenanceSchedule> schedules = FXCollections.observableArrayList(workshop.getSchedules());
         //hur göra med observablelist?

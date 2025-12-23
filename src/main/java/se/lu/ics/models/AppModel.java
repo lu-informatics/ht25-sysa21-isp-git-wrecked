@@ -83,5 +83,13 @@ public class AppModel {
       entry1.addServiceActivity(serviceActivities2);
       entry2.addServiceActivity(serviceActivities3);
       
+      MaintenanceSchedule schedule1 = new MaintenanceSchedule(LocalDate.of(2024, 7, 1), "Regular maintenance");
+      vehicle1.addMaintenanceSchedule(schedule1);
+      schedule1.setVehicle(vehicle1);
+      schedule1.setWorkshop(workshop1);
+      MaintenanceSchedule schedule2 = new MaintenanceSchedule(LocalDate.of(2024, 8, 15), "Engine check-up");
+      vehicle2.addMaintenanceSchedule(schedule2);
+      schedule2.setVehicle(vehicle2);
+      schedule2.setWorkshop(workshop1);
    }
 }
