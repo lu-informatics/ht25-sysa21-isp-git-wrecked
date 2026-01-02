@@ -83,5 +83,9 @@ public class Workshop {
             return "External";
         }
     }
+    @Override
+    public String toString() {
+        return name;
+    }
 
 }

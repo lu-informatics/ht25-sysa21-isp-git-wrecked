@@ -3,6 +3,7 @@ package se.lu.ics.controllers;
 import se.lu.ics.models.AppModel;
 import se.lu.ics.models.ServiceHistoryEntry;
 import se.lu.ics.models.Vehicle;
+import se.lu.ics.models.Workshop;
 
 import java.time.LocalDate;
 
@@ -86,6 +87,8 @@ public class InputServiceHistoryEntryViewController {
     newEntry.setProblemDescription(problem);
     newEntry.setCost(cost);
     newEntry.setPartsReplaced(parts);
+    Workshop w = new Workshop(workshopText,false,"");
+    newEntry.setWorkshop(w);
 
     newEntry.setVehicle(vehicle);
     vehicle.addServiceHistoryEntry(newEntry);
