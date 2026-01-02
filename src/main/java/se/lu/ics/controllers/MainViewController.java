@@ -34,6 +34,7 @@ public class MainViewController {
 
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
+        updateMostExpensiveWorkshop();
     }
 
     public void setAppController(AppController appController) {
@@ -49,5 +50,35 @@ public class MainViewController {
     private void handleButtonWorkshopsAction(ActionEvent event) {
         appController.showWorkshopView();
     }
+    @FXML
+    private TextField textFieldMostExpensiveWorkshop;
 
+    @FXML
+    private void updateMostExpensiveWorkshop() {
+        String mostExpensiveWorkshop = "";
+        double highestTotalCost = 0.0;
+
+        for (Workshop w : appModel.getWorkshopRegister().getWorkshops()) {
+            double totalCostForWorkshop = 0.0;
+        
+            for (Vehicle v : appModel.getVehicleRegister().getVehicles()) {
+        
+                for (ServiceHistoryEntry e : w.getServices()) {
+                    if (e.getWorkshop() !=null && e.getWorkshop().equals(w)){
+                totalCostForWorkshop += e.getCost();
+                    }
+                }
+            }
+            
+            if (totalCostForWorkshop > highestTotalCost) {
+                highestTotalCost = totalCostForWorkshop ;
+                mostExpensiveWorkshop = w.getName() + " - Total Cost: " + highestTotalCost;
+            }
+        }
+        if(!mostExpensiveWorkshop.isEmpty()){
+        textFieldMostExpensiveWorkshop.setText(mostExpensiveWorkshop + "(" + highestTotalCost + " SEK)");
+        } else {
+            textFieldMostExpensiveWorkshop.setText("No workshops with service history.");
+        }
+    }
 }

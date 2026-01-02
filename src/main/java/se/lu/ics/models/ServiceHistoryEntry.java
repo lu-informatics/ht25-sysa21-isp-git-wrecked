@@ -31,7 +31,7 @@ public class ServiceHistoryEntry {
 
         this.problemDescription = problemDescription;
         this.cost = cost;
-        this.localDate = LocalDate.now();
+        this.localDate = serviceDate;
         this.partsReplaced = partsReplaced;
         this.serviceActivities = new ArrayList<String>();
     }
