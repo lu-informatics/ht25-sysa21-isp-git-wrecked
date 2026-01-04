@@ -30,12 +30,23 @@ public class MainViewController {
     @FXML
     private Button buttonWorkshops;
 
+    @FXML
+    private Label labelMaintenanceJob;
+
+    @FXML
+    private Label labelVehicle;
+
+    @FXML
+    private Label labelWorkshop;
+
+
     // button labels textfields osv. alla knappar för metoderna def.
 
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
         updateMostExpensiveWorkshop();
         updateAverageMaintenanceCost();
+        updateMostExpensiveMaintenanceJob();
     }
 
     public void setAppController(AppController appController) {
@@ -100,5 +111,25 @@ public class MainViewController {
         } else {
             textFieldAverageMaintenanceCost.setText("0.00");
         }
+    }
+    private void updateMostExpensiveMaintenanceJob() {
+        ServiceHistoryEntry mostExpensiveJob = null;
+        Vehicle vehicleForMost = null;
+
+        for (Vehicle v : appModel.getVehicleRegister().getVehicles()) {
+            for (ServiceHistoryEntry e : v.getServiceHistory()) {
+                if (mostExpensiveJob == null || e.getCost() > mostExpensiveJob.getCost()) {
+                    mostExpensiveJob = e;
+                    vehicleForMost = v;
+                }
+            }
+        }
+        if(mostExpensiveJob==null){
+            labelMaintenanceJob.setText("No maintenance jobs available.");
+        return;
+        }
+        labelMaintenanceJob.setText("Most expensive job: " + mostExpensiveJob.getProblemDescription());
+        labelVehicle.setText("Vehicle: " + vehicleForMost.getName() + "  " + vehicleForMost.getVin());
+        labelWorkshop.setText("Workshop: " + (mostExpensiveJob.getWorkshop() != null ? mostExpensiveJob.getWorkshop().getName() : "Unknown"));
     }
 }
