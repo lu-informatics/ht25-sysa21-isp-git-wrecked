@@ -35,6 +35,7 @@ public class MainViewController {
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
         updateMostExpensiveWorkshop();
+        updateAverageMaintenanceCost();
     }
 
     public void setAppController(AppController appController) {
@@ -53,7 +54,6 @@ public class MainViewController {
     @FXML
     private TextField textFieldMostExpensiveWorkshop;
 
-    @FXML
     private void updateMostExpensiveWorkshop() {
         String mostExpensiveWorkshop = "";
         double highestTotalCost = 0.0;
@@ -79,6 +79,26 @@ public class MainViewController {
         textFieldMostExpensiveWorkshop.setText(mostExpensiveWorkshop + "(" + highestTotalCost + " SEK)");
         } else {
             textFieldMostExpensiveWorkshop.setText("No workshops with service history.");
+        }
+    }
+    @FXML
+    private TextField textFieldAverageMaintenanceCost;
+
+    private void updateAverageMaintenanceCost() {
+        double totalCost = 0.0;
+        int serviceCount = 0;
+
+        for (Vehicle v:appModel.getVehicleRegister().getVehicles()) {
+            for (ServiceHistoryEntry e : v.getServiceHistory()) {
+                totalCost += e.getCost();
+                serviceCount++;
+            }
+        }
+        if (serviceCount > 0) {
+            double averageCost = totalCost / serviceCount;
+            textFieldAverageMaintenanceCost.setText(String.format("%.2f SEK", averageCost));
+        } else {
+            textFieldAverageMaintenanceCost.setText("0.00");
         }
     }
 }

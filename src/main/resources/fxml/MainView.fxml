@@ -98,8 +98,8 @@
                 <NumberAxis label="SEK" side="LEFT" />
               </yAxis>
             </LineChart>
-            <TextField layoutX="629.0" layoutY="376.0" prefHeight="19.0" prefWidth="75.0" />
-            <Label layoutX="445.0" layoutY="379.0" text="Avarage maintenancecost">
+            <TextField fx:id="textFieldAverageMaintenanceCost" editable="false" focusTraversable="false" layoutX="613.0" layoutY="376.0" prefHeight="26.0" prefWidth="96.0" />
+            <Label layoutX="429.0" layoutY="379.0" text="Avarage maintenancecost">
                <font>
                   <Font size="16.0" />
                </font>
