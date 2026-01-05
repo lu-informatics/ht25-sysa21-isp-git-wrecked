@@ -95,16 +95,6 @@ public class WorkshopViewController {
 
     }
 
-    @FXML
-    private void handleMenuItemEditWorkshopAction(ActionEvent event) {
-        Workshop selectedWorkshop = workshopTable.getSelectionModel().getSelectedItem();
-        if (selectedWorkshop != null) {
-            appController.showEditInputWorkshopView(selectedWorkshop);
-        } else {
-            labelErrorMessage.setText("Please select a workshop to edit.");
-        }
-
-    }
 
     @FXML
     private void handleButtonBackToMainMenuAction(ActionEvent event) {
@@ -145,6 +135,8 @@ public class WorkshopViewController {
         tableColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
         tableColumnType.setCellValueFactory(new PropertyValueFactory<>("type"));
         tableColumnServiceEntries.setCellValueFactory(new PropertyValueFactory<>("serviceEntriesCount"));
+
+        updateTable();
     }
 
     @FXML
@@ -162,5 +154,11 @@ public class WorkshopViewController {
         }
 
     }
+    private void updateTable() {
+        if (appModel != null && workshopTable != null) {
+            workshopTable.setItems(appModel.getWorkshopRegister().getWorkshops());
+        }
+    }
+    
 
 }

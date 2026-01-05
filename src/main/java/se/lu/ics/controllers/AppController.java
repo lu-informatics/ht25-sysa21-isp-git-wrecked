@@ -11,8 +11,6 @@ import se.lu.ics.models.MaintenanceSchedule;
 import se.lu.ics.models.ServiceHistoryEntry;
 import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.Workshop;
-import se.lu.ics.controllers.MainViewController;
-import se.lu.ics.controllers.ServiceHistoryEntryWorkshopViewController;
 
 public class AppController {
     private final Stage primaryStage;
@@ -247,59 +245,7 @@ public class AppController {
         }
     }
 
-    public void showEditInputServiceHistoryEntryView(ServiceHistoryEntry selectedEntry) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputServiceHistoryEntryView.fxml"));
-            Parent root = loader.load();
+    
 
-            InputServiceHistoryEntryViewController inputServiceHistoryEntryController = loader.getController();
-            inputServiceHistoryEntryController.setAppController(this);
-            inputServiceHistoryEntryController.setAppModel(appModel);
-
-            primaryStage.setScene(new Scene(root));
-            primaryStage.show();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }
-
-    }
-
-    public void showEditInputWorkshopView(Workshop selectedWorkshop) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputWorkshopView.fxml"));
-            Parent root = loader.load();
-
-            InputWorkshopviewController inputWorkshopController = loader.getController();
-            inputWorkshopController.setAppController(this);
-            inputWorkshopController.setAppModel(appModel);
-            inputWorkshopController.setSelectedWorkshop(selectedWorkshop);
-
-            primaryStage.setScene(new Scene(root));
-            primaryStage.show();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void showEditInputScheduleView(MaintenanceSchedule selectedSchedule) { //Vi tar väll bort Edit metod o gör dom editable, gäller alla showedit
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputMaintenanceScheduleView.fxml"));
-            Parent root = loader.load();
-
-            InputMaintenanceScheduleVehicleViewController inputMaintenanceScheduleController = loader.getController();
-            inputMaintenanceScheduleController.setAppController(this);
-            inputMaintenanceScheduleController.setAppModel(appModel);
-            inputMaintenanceScheduleController.setSelectedSchedule(selectedSchedule);
-
-            primaryStage.setScene(new Scene(root));
-            primaryStage.show();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
+    
 }
