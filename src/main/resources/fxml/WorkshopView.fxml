@@ -44,7 +44,7 @@
                     </font>
                 </Label>
 
-                <TableView fx:id="workshopTable" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                <TableView fx:id="workshopTable" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0" editable = "true">
 
                     <columns>
                         <TableColumn fx:id="tableColumnName" text="Name" />
@@ -66,11 +66,10 @@
                  <MenuButton layoutX="167.0" layoutY="483.0" text="Options">
                      <items>
                          <MenuItem fx:id="menuItemAddWorkshop" onAction="#handleMenuItemAddWorkshopAction" text="Add Workshop" />
-                         <MenuItem fx:id="menuItemRemoveWorkshop" onAction="#handleMenuItemRemoveWorkshopAction" text="Remove Workshop" />
-                         <MenuItem fx:id="menuItemEditWorkshop" onAction="#handleMenuItemEditWorkshopAction" text="Edit Workshop" />
+                         <MenuItem fx:id="menuItemRemoveWorkshop" onAction="#handleMenuItemRemoveWorkshopAction" text="Remove Workshop" /> 
                      </items>
                  </MenuButton>
-                  <Button fx:id="buttonViewEntries" layoutX="933.0" layoutY="483.0" onAction="#handleButtonViewEntriesAction" text="View entries" />
+                  <Button fx:id="buttonViewEntries" layoutX="933.0" layoutY="483.0" onAction="#handleButtonViewEntriesAction" text="View entries" prefHeight="25.0" prefWidth="101.0" />
             <Button fx:id="buttonViewSchedules" layoutX="810.0" layoutY="483.0" mnemonicParsing="false" onAction="#handleButtonViewSchedulesAction" prefHeight="25.0" prefWidth="101.0" text="View schedules" />
             <Label fx:id="labelErrorMessage" layoutX="272.0" layoutY="487.0" prefHeight="17.0" prefWidth="106.0" />
 

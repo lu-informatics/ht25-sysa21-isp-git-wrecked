@@ -1,20 +1,23 @@
 package se.lu.ics.models;
 
 import java.util.ArrayList;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import java.util.Queue;
 
 public class Workshop {
     private String name;
     private boolean isInternal;
     private String address;
-    private ArrayList<ServiceHistoryEntry> services;
+    private ObservableList<ServiceHistoryEntry> services;
     private ArrayList<MaintenanceSchedule> schedules;
 
     public Workshop(String name, boolean isInternal, String address) {
         this.name = name;
         this.isInternal = isInternal;
         this.address = address;
-        services = new ArrayList<>();
+        services = javafx.collections.FXCollections.observableArrayList();
         schedules = new ArrayList<>();
     }
 
@@ -48,12 +51,12 @@ public class Workshop {
         return address;
     }
 
-    public void setServices(ArrayList<ServiceHistoryEntry> services) {
+    public void setServices(ObservableList<ServiceHistoryEntry> services) {
         this.services = services;
     }
 
-    public ArrayList<ServiceHistoryEntry> getServices() {
-        return services;
+    public ObservableList<ServiceHistoryEntry> getServices() {
+        return FXCollections.unmodifiableObservableList(services);
     }
 
     public void setSchedules(ArrayList<MaintenanceSchedule> schedules) {
