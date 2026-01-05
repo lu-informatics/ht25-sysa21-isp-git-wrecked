@@ -33,11 +33,15 @@ public class Workshop {
     }
 
     public void setIsInternal(boolean isInternal) {
-        isInternal = true;
+        this.isInternal = isInternal;
     }
 
     public boolean getIsInternal() {
         return isInternal;
+    }
+
+    public String getType() {
+        return isInternal ? "Internal" : "External";
     }
 
     public void setAddress(String address) {
@@ -79,13 +83,7 @@ public class Workshop {
         return services.size();
     }
 
-    public String getType() {
-        if (isInternal) {
-            return "Internal";
-        } else {
-            return "External";
-        }
-    }
+    
     @Override
     public String toString() {
         return name;

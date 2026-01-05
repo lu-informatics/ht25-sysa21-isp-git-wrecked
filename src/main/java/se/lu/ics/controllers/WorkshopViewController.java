@@ -131,10 +131,10 @@ public class WorkshopViewController {
 
     @FXML
     private void initialize() {
-        tableColumnAddress.setCellValueFactory(new PropertyValueFactory<>("Address"));
+        tableColumnAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
         tableColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
         tableColumnType.setCellValueFactory(new PropertyValueFactory<>("type"));
-        tableColumnServiceEntries.setCellValueFactory(new PropertyValueFactory<>("serviceEntriesCount"));
+        tableColumnServiceEntries.setCellValueFactory(new PropertyValueFactory<>("serviceCount"));
 
         updateTable();
     }

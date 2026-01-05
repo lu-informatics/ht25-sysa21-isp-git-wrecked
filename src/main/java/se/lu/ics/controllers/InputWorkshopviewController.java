@@ -2,6 +2,7 @@ package se.lu.ics.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import se.lu.ics.models.Workshop;
 import se.lu.ics.models.WorkshopRegister;
@@ -24,16 +25,25 @@ public class InputWorkshopviewController {
     private TextField textFieldWorkshopName;
     @FXML
     private TextField textFieldWorkshopAddress;
+    
     @FXML
-    private TextField textFieldWorkshopType;
+    private RadioButton radioButtonInternal;
+    @FXML
+    private RadioButton radioButtonExternal;
 
     @FXML
     private void handleButtonApplyAction() {
         String name = textFieldWorkshopName.getText();
         String address = textFieldWorkshopAddress.getText();
-        String type = textFieldWorkshopType.getText();
-
-        boolean isInternal = type.equalsIgnoreCase("internal");
+        boolean isInternal;
+        
+        if (radioButtonInternal.isSelected()) {
+            isInternal = true;
+        } else if (radioButtonExternal.isSelected()) {
+            isInternal = false;
+        } else {
+            return;
+        }
 
         Workshop newWorkshop = new Workshop(name, isInternal, address);
         appModel.getWorkshopRegister().addWorkshop(newWorkshop);
