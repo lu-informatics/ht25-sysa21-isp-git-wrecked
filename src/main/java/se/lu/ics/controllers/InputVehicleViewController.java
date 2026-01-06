@@ -4,9 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-
+import javafx.scene.control.RadioButton;
 import se.lu.ics.models.AppModel;
 import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.VehicleType;
@@ -33,6 +34,12 @@ public class InputVehicleViewController {
     private Button buttonBack;
     @FXML
     private Label labelResponse;
+    @FXML
+    private RadioButton radioButtonAvailable;
+    @FXML
+    private RadioButton radioButtonNotAvailable;
+    @FXML 
+    private ToggleGroup availabilityGroup;
 
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
@@ -50,6 +57,13 @@ public class InputVehicleViewController {
             comboBoxVehicleType.setValue(vehicle.getType());
             textFieldCapacity.setText(String.valueOf(vehicle.getCapacity()));
             textFieldLocation.setText(vehicle.getLocation());
+
+            // NYTT — sätt rätt radioknapp
+            if (vehicle.isAvailable()) {
+                radioButtonAvailable.setSelected(true);
+            } else {
+                radioButtonNotAvailable.setSelected(true);
+            }
         }
     }
 
@@ -81,7 +95,8 @@ public class InputVehicleViewController {
 
         if (vehicle == null) {
             // att add new vehicle
-            Vehicle newVehicle = new Vehicle(location, capacity, type, name);
+            boolean available = radioButtonAvailable.isSelected();
+            Vehicle newVehicle = new Vehicle(location, capacity, available, type, name);
             appModel.getVehicleRegister().addVehicle(newVehicle);
         } else {
             // att edit existing vehicle
@@ -89,6 +104,8 @@ public class InputVehicleViewController {
             vehicle.setType(type);
             vehicle.setCapacity(capacity);
             vehicle.setLocation(location);
+            vehicle.setAvailable(radioButtonAvailable.isSelected());
+
         }
 
         appController.showVehicleView();
