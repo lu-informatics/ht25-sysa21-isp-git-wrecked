@@ -48,6 +48,7 @@
             <HBox alignment="CENTER_RIGHT" prefHeight="51.0" prefWidth="524.0" spacing="10.0" AnchorPane.rightAnchor="0.0">
                <children>
                   <Button fx:id="buttonVehicleAdd" mnemonicParsing="false" onAction="#handleButtonVehicleAddAction" prefHeight="26.0" prefWidth="62.0" text="Add" />
+                  <Button fx:id="ButtonVehicleEdit" mnemonicParsing="false" onAction="#handleButtonVehicleEditAction" text="Edit" />
                   <Button fx:id="buttonVehicleRemove" mnemonicParsing="false" onAction="#handleButtonVehicleRemoveAction" text="Remove" />
                   <Label fx:id="labelFindVehicle" text="Press ENTER to seach" />
                   <TextField fx:id="textFieldVehicleSearch" onAction="#handleTextFieldVehicleSearchAction" promptText="VIN..." />
