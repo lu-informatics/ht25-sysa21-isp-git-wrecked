@@ -33,8 +33,8 @@
           <MenuItem fx:id="menuItemCancel" mnemonicParsing="false" onAction="#handleMenuItemCancelMaintenanceAction" text="Cancel Maintenance" />
         </items>
       </MenuButton>
-      <Label fx:id="labelResponse" layoutX="22.0" layoutY="368.0" prefHeight="17.0" prefWidth="497.0" />
-      <Button fx:id="buttonBack" layoutX="541.0" layoutY="363.0" mnemonicParsing="false" onAction="#handleButtonBackAction" text="Back" />
+      <Label fx:id="labelResponse" layoutX="89.0" layoutY="368.0" prefHeight="17.0" prefWidth="497.0" />
+      <Button fx:id="buttonBack" layoutX="22.0" layoutY="364.0" mnemonicParsing="false" onAction="#handleButtonBackAction" text="Back" />
       <Label layoutX="33.0" layoutY="122.0" text="Maintenance schedules for workshop:" />
       <Label fx:id="labelWorkshop" layoutX="248.0" layoutY="122.0" prefHeight="17.0" prefWidth="340.0" />
       <TableView fx:id="tableMaintenanceSchedules" layoutX="22.0" layoutY="154.0" prefHeight="200.0" prefWidth="418.0">
