@@ -10,11 +10,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.lu.ics.controllers.InputVehicleViewController">
    
    <fx:define>
-      <ToggleGroup fx:id="availabilityGroup"/>
+      <ToggleGroup fx:id="availabilityGroup" />
    </fx:define>
    
    <children>
@@ -26,20 +25,23 @@
             <TextField fx:id="textFieldCapacity" promptText="Capacity..." />
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <RadioButton fx:id="radioButtonAvailable" mnemonicParsing="false" text="Available" toggleGroup="$availabilityGroup" />
+                  <RadioButton fx:id="radioButtonAvailable" mnemonicParsing="false" text="Available">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="availabilityGroup" />
+                     </toggleGroup></RadioButton>
                   <RadioButton fx:id="radioButtonNotAvailable" mnemonicParsing="false" text="Not Available" toggleGroup="$availabilityGroup" />
                </children>
             </HBox>
             <TextField fx:id="textFieldLocation" promptText="Location..." />
+            <HBox prefHeight="26.0" prefWidth="200.0" spacing="24.0">
+               <children>
+                  <Button fx:id="buttonBack" mnemonicParsing="false" onAction="#handleButtonBackAction" text="Back" />
+                  <Button fx:id="buttonReset" mnemonicParsing="false" onAction="#handleButtonResetAction" text="Reset" />
+                  <Button fx:id="buttonApply" mnemonicParsing="false" onAction="#handleButtonApplyAction" text="Apply" />
+               </children>
+            </HBox>
             <Label fx:id="labelResponse" prefHeight="17.0" prefWidth="201.0" textFill="RED" />
          </children>
       </VBox>
-      <HBox layoutX="100.0" layoutY="385.0" prefHeight="26.0" prefWidth="200.0" spacing="24.0" AnchorPane.bottomAnchor="100.0">
-         <children>
-            <Button fx:id="buttonBack" mnemonicParsing="false" onAction="#handleButtonBackAction" text="Back" />
-            <Button fx:id="buttonReset" mnemonicParsing="false" onAction="#handleButtonResetAction" text="Reset" />
-            <Button fx:id="buttonApply" mnemonicParsing="false" onAction="#handleButtonApplyAction" text="Apply" />
-         </children>
-      </HBox>
    </children>
 </AnchorPane>
