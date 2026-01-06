@@ -1,8 +1,6 @@
 package se.lu.ics.controllers;
 
 import se.lu.ics.models.AppModel;
-import java.text.NumberFormat;
-import java.time.format.DateTimeFormatter;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import javafx.event.ActionEvent;
@@ -11,16 +9,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import se.lu.ics.App;
 import se.lu.ics.models.AppModel;
-import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.MaintenanceSchedule;
 import se.lu.ics.models.Workshop;
-import se.lu.ics.models.WorkshopRegister;
-import se.lu.ics.models.VehicleRegister;
 import java.time.LocalDate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -33,12 +27,13 @@ import javafx.collections.ObservableList;
 
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
+        updateTableView();
     }
 
     public void setAppController(AppController appController) {
         this.appController = appController;
     }
-    
+
     @FXML
     private Label labelResponse;
     @FXML
@@ -62,28 +57,28 @@ import javafx.collections.ObservableList;
     public void setWorkshop(Workshop workshop ) {
         this.workshop= workshop;
         labelWorkshop.setText(workshop.getName());
-        loadMaintenanceSchedules();
+        updateTableView();
     }
-
-    private void loadMaintenanceSchedules(){
+    @FXML
+    private void initialize(){
         
         tableColumnVehicle.setCellValueFactory(new PropertyValueFactory<>("vin"));
         tableColumnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         tableColumnDescription.setCellValueFactory(new PropertyValueFactory<>("description"));        
+        
+        updateTableView();        
+    }
 
-        ObservableList<MaintenanceSchedule> schedules = FXCollections.observableArrayList(workshop.getSchedules());
-        //hur göra med observablelist?
-
-        //sätta items i tableview
-        if (appModel != null && tableMaintenanceSchedules != null) {
-            tableMaintenanceSchedules.setItems(schedules);
+    private void updateTableView(){
+        if (workshop != null && tableMaintenanceSchedules != null) {
+            tableMaintenanceSchedules.setItems(workshop.getSchedules());
         }
     }
 
     @FXML
     public void handleMenuItemAddMaintenanceAction(ActionEvent event) {
         appController.showInputMaintenanceWorkshopView(workshop);
-        loadMaintenanceSchedules();
+        updateTableView();
     }
     
     @FXML
@@ -95,11 +90,8 @@ import javafx.collections.ObservableList;
             return;
         }
 
-        int vin = schedule.getVehicle().getVin();
-
         try {
-                appModel.getVehicleRegister().removeVehicle(vin);
-                loadMaintenanceSchedules();
+                workshop.getSchedules().remove(schedule);
             } catch (IllegalArgumentException e) {
                 labelResponse.setText(e.getMessage());
             }

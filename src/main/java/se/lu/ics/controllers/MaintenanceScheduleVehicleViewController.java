@@ -1,6 +1,5 @@
 package se.lu.ics.controllers;
 
-import java.text.NumberFormat;
 import java.time.format.DateTimeFormatter;
 
 import javafx.event.ActionEvent;
@@ -16,7 +15,6 @@ import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.MaintenanceSchedule;
 import se.lu.ics.models.Workshop;
 import se.lu.ics.models.WorkshopRegister;
-import se.lu.ics.models.VehicleRegister;
 import java.time.LocalDate;
 
 

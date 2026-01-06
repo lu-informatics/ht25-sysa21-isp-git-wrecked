@@ -11,14 +11,14 @@ public class Workshop {
     private boolean isInternal;
     private String address;
     private ObservableList<ServiceHistoryEntry> services;
-    private ArrayList<MaintenanceSchedule> schedules;
+    private ObservableList<MaintenanceSchedule> schedules;
 
     public Workshop(String name, boolean isInternal, String address) {
         this.name = name;
         this.isInternal = isInternal;
         this.address = address;
         services = javafx.collections.FXCollections.observableArrayList();
-        schedules = new ArrayList<>();
+        schedules = javafx.collections.FXCollections.observableArrayList();
     }
 
     public void setName(String name) {
@@ -63,12 +63,12 @@ public class Workshop {
         return FXCollections.unmodifiableObservableList(services);
     }
 
-    public void setSchedules(ArrayList<MaintenanceSchedule> schedules) {
-        this.schedules = schedules;
+    public ObservableList<MaintenanceSchedule> getSchedules() {
+        return schedules;
     }
 
-    public ArrayList<MaintenanceSchedule> getSchedules() {
-        return schedules;
+    public void setSchedules(ObservableList<MaintenanceSchedule> schedules) {
+        this.schedules = schedules;
     }
 
     public void addService(ServiceHistoryEntry service) {
