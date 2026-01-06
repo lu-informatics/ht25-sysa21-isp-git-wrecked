@@ -1,5 +1,7 @@
 package se.lu.ics.controllers;
 
+import java.security.Provider.Service;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -66,28 +68,10 @@ public class MainViewController {
     private TextField textFieldMostExpensiveWorkshop;
 
     private void updateMostExpensiveWorkshop() {
-        String mostExpensiveWorkshop = "";
-        double highestTotalCost = 0.0;
+        Workshop w = appModel.getWorkshopRegister().getMostExpensiveWorkshop();
 
-        for (Workshop w : appModel.getWorkshopRegister().getWorkshops()) {
-            double totalCostForWorkshop = 0.0;
-        
-            for (Vehicle v : appModel.getVehicleRegister().getVehicles()) {
-        
-                for (ServiceHistoryEntry e : w.getServices()) {
-                    if (e.getWorkshop() !=null && e.getWorkshop().equals(w)){
-                totalCostForWorkshop += e.getCost();
-                    }
-                }
-            }
-            
-            if (totalCostForWorkshop > highestTotalCost) {
-                highestTotalCost = totalCostForWorkshop ;
-                mostExpensiveWorkshop = w.getName() + " - Total Cost: " + highestTotalCost;
-            }
-        }
-        if(!mostExpensiveWorkshop.isEmpty()){
-        textFieldMostExpensiveWorkshop.setText(mostExpensiveWorkshop + "(" + highestTotalCost + " SEK)");
+        if(w != null){
+        textFieldMostExpensiveWorkshop.setText(w.getName());
         } else {
             textFieldMostExpensiveWorkshop.setText("No workshops with service history.");
         }
@@ -96,38 +80,21 @@ public class MainViewController {
     private TextField textFieldAverageMaintenanceCost;
 
     private void updateAverageMaintenanceCost() {
-        double totalCost = 0.0;
-        int serviceCount = 0;
-
-        for (Vehicle v:appModel.getVehicleRegister().getVehicles()) {
-            for (ServiceHistoryEntry e : v.getServiceHistory()) {
-                totalCost += e.getCost();
-                serviceCount++;
-            }
-        }
-        if (serviceCount > 0) {
-            double averageCost = totalCost / serviceCount;
-            textFieldAverageMaintenanceCost.setText(String.format("%.2f SEK", averageCost));
-        } else {
-            textFieldAverageMaintenanceCost.setText("0.00");
-        }
+        double avarageCost= appModel.getVehicleRegister().calculateAvarageCost();
+        textFieldAverageMaintenanceCost.setText(String.format("%.2f SEK", avarageCost));
+    
     }
     private void updateMostExpensiveMaintenanceJob() {
-        ServiceHistoryEntry mostExpensiveJob = null;
-        Vehicle vehicleForMost = null;
+        ServiceHistoryEntry mostExpensiveJob = appModel.getVehicleRegister().getMostExpensiveService();
 
-        for (Vehicle v : appModel.getVehicleRegister().getVehicles()) {
-            for (ServiceHistoryEntry e : v.getServiceHistory()) {
-                if (mostExpensiveJob == null || e.getCost() > mostExpensiveJob.getCost()) {
-                    mostExpensiveJob = e;
-                    vehicleForMost = v;
-                }
-            }
-        }
         if(mostExpensiveJob==null){
             labelMaintenanceJob.setText("No maintenance jobs available.");
+            labelVehicle.setText("");
+            labelWorkshop.setText("");
         return;
         }
+       Vehicle vehicleForMost = appModel.getVehicleRegister().getVehicleForServiceEntry(mostExpensiveJob);
+
         labelMaintenanceJob.setText("Most expensive job: " + mostExpensiveJob.getProblemDescription());
         labelVehicle.setText("Vehicle: " + vehicleForMost.getName() + "  " + vehicleForMost.getVin());
         labelWorkshop.setText("Workshop: " + (mostExpensiveJob.getWorkshop() != null ? mostExpensiveJob.getWorkshop().getName() : "Unknown"));

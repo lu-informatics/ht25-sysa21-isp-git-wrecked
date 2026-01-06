@@ -102,4 +102,15 @@ public class VehicleRegister {
         }
         return mostExpensive;
     }
+    public Vehicle getVehicleForServiceEntry(ServiceHistoryEntry entry) {
+        if (entry == null) {
+            throw new IllegalArgumentException("Service history entry cannot be null.");
+        }
+        for (Vehicle v : vehicles) {
+            if (v.getServiceHistory().contains(entry)) {
+                return v;
+            }
+        }
+        return null;
+    }
 }
