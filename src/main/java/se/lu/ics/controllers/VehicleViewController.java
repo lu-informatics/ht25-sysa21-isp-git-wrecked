@@ -71,7 +71,18 @@ public class VehicleViewController {
 
     @FXML
     public void handleButtonVehicleAddAction(ActionEvent event) {
-        appController.showInputVehicleView();
+        appController.showInputVehicleView(null);
+    }
+
+    @FXML
+    public void handleButtonVehicleEditAction(ActionEvent event) {
+        Vehicle selectedVehicle = tableVehicles.getSelectionModel().getSelectedItem();
+
+        if (selectedVehicle != null) {
+            appController.showInputVehicleView(selectedVehicle);
+        } else {
+            labelResponse.setText("Please select a vehicle to edit.");
+        }
     }
 
     @FXML
@@ -136,8 +147,8 @@ public class VehicleViewController {
             return;
         }
 
-    appController.showServiceHistoryEntryViewVehicle(selectedVehicle);
-}
+        appController.showServiceHistoryEntryViewVehicle(selectedVehicle);
+    }
 
     @FXML
     public void handleButtonBackAction(ActionEvent event) {

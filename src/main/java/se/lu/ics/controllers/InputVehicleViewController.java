@@ -15,6 +15,7 @@ public class InputVehicleViewController {
 
     private AppModel appModel;
     private AppController appController;
+    private Vehicle vehicle;
 
     @FXML
     private TextField textFieldName;
@@ -41,6 +42,17 @@ public class InputVehicleViewController {
         this.appController = appController;
     }
 
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+
+        if (vehicle != null) {
+            textFieldName.setText(vehicle.getName());
+            comboBoxVehicleType.setValue(vehicle.getType());
+            textFieldCapacity.setText(String.valueOf(vehicle.getCapacity()));
+            textFieldLocation.setText(vehicle.getLocation());
+        }
+    }
+
     @FXML
     public void initialize() {
         comboBoxVehicleType.getItems().setAll(VehicleType.values());
@@ -48,6 +60,7 @@ public class InputVehicleViewController {
 
     @FXML
     private void handleButtonApplyAction(ActionEvent event) {
+
         String name = textFieldName.getText();
         VehicleType type = comboBoxVehicleType.getValue();
         String capacityStr = textFieldCapacity.getText();
@@ -66,8 +79,18 @@ public class InputVehicleViewController {
             return;
         }
 
-        Vehicle newVehicle = new Vehicle(location, capacity, type, name);
-        appModel.getVehicleRegister().addVehicle(newVehicle);
+        if (vehicle == null) {
+            // att add new vehicle
+            Vehicle newVehicle = new Vehicle(location, capacity, type, name);
+            appModel.getVehicleRegister().addVehicle(newVehicle);
+        } else {
+            // att edit existing vehicle
+            vehicle.setName(name);
+            vehicle.setType(type);
+            vehicle.setCapacity(capacity);
+            vehicle.setLocation(location);
+        }
+
         appController.showVehicleView();
     }
 
