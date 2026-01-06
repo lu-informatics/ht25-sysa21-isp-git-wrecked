@@ -24,14 +24,14 @@ public class AppModel {
    private void addTestData() {
 
       Vehicle vehicle1 = new Vehicle("Malmö", 1200, true, VehicleType.MEDIUM_TRUCK, "Volvo");
-      Vehicle vehicle2 = new Vehicle("Göteborg", 2200, true, VehicleType.LARGE_TRUCK, "Scania");
+      Vehicle vehicle2 = new Vehicle("Göteborg", 2200, false, VehicleType.LARGE_TRUCK, "Scania");
       Vehicle vehicle3 = new Vehicle("Lund", 700, true, VehicleType.VAN, "Ford");
       Vehicle vehicle4 = new Vehicle("Helsingborg", 2000, true, VehicleType.LARGE_TRUCK, "Mercedes");
-      Vehicle vehicle5 = new Vehicle("Uppsala", 1500, true, VehicleType.MEDIUM_TRUCK, "SAAB");
-      Vehicle vehicle6 = new Vehicle("Västerås", 800, true, VehicleType.VAN, "Toyota");
+      Vehicle vehicle5 = new Vehicle("Uppsala", 1500, false, VehicleType.MEDIUM_TRUCK, "SAAB");
+      Vehicle vehicle6 = new Vehicle("Västerås", 800, false, VehicleType.VAN, "Toyota");
       Vehicle vehicle7 = new Vehicle("Örebro", 1300,true, VehicleType.MEDIUM_TRUCK, "Nissan");
       Vehicle vehicle8 = new Vehicle("Stockholm", 850, true, VehicleType.VAN, "Mercedes Sprinter");
-      Vehicle vehicle9 = new Vehicle("Jönköping", 1400, true, VehicleType.MEDIUM_TRUCK, "Scania P280");
+      Vehicle vehicle9 = new Vehicle("Jönköping", 1400, false, VehicleType.MEDIUM_TRUCK, "Scania P280");
       Vehicle vehicle10 = new Vehicle("Linköping", 2300, true, VehicleType.LARGE_TRUCK, "Volvo FH16");
 
       Workshop workshop1 = new Workshop("Workshop 1", true, "Address 1");
