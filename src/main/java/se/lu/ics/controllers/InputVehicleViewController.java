@@ -38,7 +38,7 @@ public class InputVehicleViewController {
     private RadioButton radioButtonAvailable;
     @FXML
     private RadioButton radioButtonNotAvailable;
-    @FXML 
+    @FXML
     private ToggleGroup availabilityGroup;
 
     public void setAppModel(AppModel appModel) {
@@ -70,6 +70,8 @@ public class InputVehicleViewController {
     @FXML
     public void initialize() {
         comboBoxVehicleType.getItems().setAll(VehicleType.values());
+        radioButtonAvailable.setSelected(true);
+
     }
 
     @FXML
