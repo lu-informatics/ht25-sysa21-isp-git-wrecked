@@ -59,9 +59,10 @@ public class WorkshopRegister {
     public Workshop getMostExpensiveWorkshop() {
         Workshop mostExpensive = null;
         double highestCost = 0.0;
+
         for (Workshop workshop : workshops) {
             double totalCost = 0.0;
-            ArrayList<ServiceHistoryEntry> services = workshop.getServices();
+            ObservableList<ServiceHistoryEntry> services = workshop.getServices();
             if (services != null) {
                 for (ServiceHistoryEntry service : services) {
                     totalCost += service.getCost();
