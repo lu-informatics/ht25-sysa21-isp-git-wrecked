@@ -42,10 +42,12 @@ public class InputMaintenanceWorkshopViewController {
     @FXML
     private Button buttonBack;
     @FXML
+    private Button buttonReset;
+    @FXML
     private Label labelResponse;
 
     @FXML
-    private void handleButtonApplyAction(ActionEvent event) {
+    public void handleButtonApplyAction(ActionEvent event) {
         String vehicleVinStr = textFieldVehicle.getText().trim();
         String description = textFieldDescription.getText().trim();
         LocalDate date = datePicker.getValue();
@@ -70,18 +72,27 @@ public class InputMaintenanceWorkshopViewController {
         foundVehicle.addMaintenanceSchedule(newSchedule);
         newSchedule.setVehicle(foundVehicle);
         newSchedule.setWorkshop(workshop);
+        workshop.getSchedules().add(newSchedule);
 
         appController.showWorkshopSchedulesView(workshop);
         Stage stage=(Stage) buttonApply.getScene().getWindow();
         stage.close();
-        //stänga fönstret efter apply button
+        
     }
 
      @FXML
-        private void handleButtonBackAction(ActionEvent event) {
+    public void handleButtonBackAction(ActionEvent event) {
             appController.showWorkshopSchedulesView(workshop);
             Stage stage=(Stage) buttonBack.getScene().getWindow();
             stage.close();
         }
+    @FXML
+    public void handleButtonResetAction(ActionEvent event) {
+        datePicker.setValue(null);
+        textFieldDescription.clear();
+        textFieldVehicle.clear();
+        labelResponse.setText("All fields have been cleared.");
+    }
+
 }
 

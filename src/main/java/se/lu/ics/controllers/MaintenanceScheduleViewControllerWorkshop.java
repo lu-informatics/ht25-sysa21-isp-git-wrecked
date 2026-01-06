@@ -39,9 +39,9 @@ import javafx.collections.ObservableList;
     @FXML
     private Button buttonBack;
     @FXML
-    private MenuItem menuItemAddMaintenance;
+    private MenuItem menuItemAdd;
     @FXML
-    private MenuItem menuItemCancelMaintenance;
+    private MenuItem menuItemCancel;
     @FXML
     private TableView <MaintenanceSchedule> tableMaintenanceSchedules;
     @FXML
@@ -60,13 +60,12 @@ import javafx.collections.ObservableList;
         updateTableView();
     }
     @FXML
-    private void initialize(){
+    public void initialize(){
         
         tableColumnVehicle.setCellValueFactory(new PropertyValueFactory<>("vin"));
         tableColumnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
-        tableColumnDescription.setCellValueFactory(new PropertyValueFactory<>("description"));        
-        
-        updateTableView();        
+        tableColumnDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        updateTableView();
     }
 
     private void updateTableView(){
@@ -98,7 +97,7 @@ import javafx.collections.ObservableList;
     }
 
     @FXML
-    private void handleButtonBackAction() {
+    public void handleButtonBackAction(ActionEvent event) {
         appController.showWorkshopView();
     }
 }
