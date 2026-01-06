@@ -3,18 +3,33 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.lu.ics.controllers.InputVehicleViewController">
+   
+   <fx:define>
+      <ToggleGroup fx:id="availabilityGroup"/>
+   </fx:define>
+   
    <children>
+
       <VBox layoutX="100.0" layoutY="74.0" prefHeight="200.0" prefWidth="200.0" spacing="30.0" AnchorPane.bottomAnchor="159.0" AnchorPane.topAnchor="100.0">
          <children>
             <TextField fx:id="textFieldName" promptText="Name..." />
             <ComboBox fx:id="comboBoxVehicleType" prefHeight="26.0" prefWidth="198.0" promptText="Type" />
             <TextField fx:id="textFieldCapacity" promptText="Capacity..." />
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <RadioButton fx:id="radioButtonAvailable" mnemonicParsing="false" text="Available" toggleGroup="$availabilityGroup" />
+                  <RadioButton fx:id="radioButtonNotAvailable" mnemonicParsing="false" text="Not Available" toggleGroup="$availabilityGroup" />
+               </children>
+            </HBox>
             <TextField fx:id="textFieldLocation" promptText="Location..." />
             <Label fx:id="labelResponse" prefHeight="17.0" prefWidth="201.0" textFill="RED" />
          </children>
