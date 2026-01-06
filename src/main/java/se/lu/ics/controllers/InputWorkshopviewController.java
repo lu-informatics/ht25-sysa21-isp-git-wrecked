@@ -13,6 +13,7 @@ import se.lu.ics.models.AppModel;
 public class InputWorkshopviewController {
     private AppModel appModel;
     private AppController appController;
+    private Workshop workshop;
 
     @FXML
     private Button buttonApply;
@@ -42,12 +43,15 @@ public class InputWorkshopviewController {
             labelErrorMessage.setText("Please fill in all fields.");
             return;     
         }
-        for (Workshop workshop : appModel.getWorkshopRegister().getWorkshops()) {
-            if (workshop.getName().equalsIgnoreCase(name)) {
-            labelErrorMessage.setText("A workshop with this name already exists.");
-            return;
+
+        
+        for (Workshop w : appModel.getWorkshopRegister().getWorkshops()) {
+            if (w.getName().equalsIgnoreCase(name) && (workshop == null || !w.getName().equalsIgnoreCase(workshop.getName()))) {
+                labelErrorMessage.setText("A workshop with this name already exists.");
+                return;
+            }
         }
-    }
+
         boolean isInternal;
         
         if (radioButtonInternal.isSelected()) {
@@ -59,9 +63,16 @@ public class InputWorkshopviewController {
             return;
         }
 
-
-        Workshop newWorkshop = new Workshop(name, isInternal, address);
-        appModel.getWorkshopRegister().addWorkshop(newWorkshop);
+        if (workshop != null) {
+            
+            workshop.setName(name);
+            workshop.setAddress(address);
+            workshop.setIsInternal(isInternal);
+        } else {
+           
+            workshop = new Workshop(name, isInternal, address);
+            appModel.getWorkshopRegister().addWorkshop(workshop);
+        }
 
         appController.showWorkshopView();
     }
@@ -72,6 +83,20 @@ public class InputWorkshopviewController {
 
     public void setAppController(AppController appController) {
         this.appController = appController;
+    }
+
+    public void setWorkshop(Workshop selectedWorkshop) {
+        this.workshop = selectedWorkshop;
+
+        if (workshop != null) {
+            textFieldWorkshopName.setText(workshop.getName());
+            textFieldWorkshopAddress.setText(workshop.getAddress());
+            if (workshop.getIsInternal()) {
+                radioButtonInternal.setSelected(true);
+            } else {
+                radioButtonExternal.setSelected(true);
+            }
+        }
     }
 
     @FXML

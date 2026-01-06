@@ -54,6 +54,8 @@ public class ServiceHistoryEntryWorkshopViewController {
     @FXML
     private MenuItem menuItemRemoveServiceHistory;
     @FXML
+    private MenuItem menuItemEdit;
+    @FXML
     private Button buttonBack;
     @FXML
     private Label labelErrorMessage;
@@ -76,6 +78,16 @@ public class ServiceHistoryEntryWorkshopViewController {
     }
 
     @FXML
+    private void handleMenuItemEditAction() {
+        ServiceHistoryEntry selectedEntry = tableViewServiceHistory.getSelectionModel().getSelectedItem();
+        if (selectedEntry != null) {
+            appController.showInputServiceHistoryEntryView();
+        } else {
+            labelErrorMessage.setText("Please select a service entry to edit.");
+        }
+    }
+
+    @FXML
     private void handleMenuItemAddServiceHistoryAction() {
         appController.showInputServiceHistoryEntryView();
     }
@@ -86,7 +98,7 @@ public class ServiceHistoryEntryWorkshopViewController {
         if (selectedEntry != null) {
             tableViewServiceHistory.getItems().remove(selectedEntry);
         } else {
-            System.out.println("Please select a service history entry to remove.");
+            labelErrorMessage.setText("Please select a service history entry to remove.");
         }
     }
 
