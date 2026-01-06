@@ -128,7 +128,7 @@ public class AppController {
 
     }
 
-    public void showInputWorkshopView() {
+    public void showInputWorkshopView(Workshop selectedWorkshop) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputWorkshopView.fxml"));
             Parent root = loader.load();
@@ -136,6 +136,7 @@ public class AppController {
             InputWorkshopviewController inputWorkshopController = loader.getController();
             inputWorkshopController.setAppController(this);
             inputWorkshopController.setAppModel(appModel);
+            inputWorkshopController.setWorkshop(selectedWorkshop);
 
             primaryStage.setScene(new Scene(root));
             primaryStage.show();

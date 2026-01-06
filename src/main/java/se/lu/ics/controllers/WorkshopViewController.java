@@ -63,7 +63,7 @@ public class WorkshopViewController {
     private MenuItem menuItemRemoveWorkshop;
 
     @FXML
-    private MenuItem menuItemEditWorkshop;
+    private MenuItem menuItemEdit;
 
     @FXML
     private TextField textSearch;
@@ -79,7 +79,7 @@ public class WorkshopViewController {
 
     @FXML
     private void handleMenuItemAddWorkshopAction(ActionEvent event) {
-        appController.showInputWorkshopView();
+        appController.showInputWorkshopView(null);
 
     }
 
@@ -95,6 +95,17 @@ public class WorkshopViewController {
             }
         } else {
             labelErrorMessage.setText("Please select a workshop to remove.");
+        }
+    }
+
+    @FXML
+    public void handleMenuItemEditAction(ActionEvent event) {
+        Workshop editWorkshop = workshopTable.getSelectionModel().getSelectedItem();
+
+        if (editWorkshop != null) {
+            appController.showInputWorkshopView(editWorkshop);
+        } else {
+            labelErrorMessage.setText("Please select a workshop to edit.");
         }
     }
 
@@ -120,7 +131,7 @@ public class WorkshopViewController {
     }
 
     @FXML
-    private void handleButtonViewEntriesAction(ActionEvent event) {
+    public void handleButtonViewEntriesAction(ActionEvent event) {
         Workshop selectedWorkshop = workshopTable.getSelectionModel().getSelectedItem();
         if (selectedWorkshop != null) {
         appController.showWorkshopEntriesView(selectedWorkshop);
@@ -143,12 +154,7 @@ public class WorkshopViewController {
     }
 
     @FXML
-    private void handleTableViewWorkshopsAction() {
-
-    }
-
-    @FXML
-    private void handleButtonViewSchedulesAction(ActionEvent event) {
+    public void handleButtonViewSchedulesAction(ActionEvent event) {
         Workshop selectedWorkshop = workshopTable.getSelectionModel().getSelectedItem();
         if (selectedWorkshop != null) {
             appController.showWorkshopSchedulesView(selectedWorkshop);

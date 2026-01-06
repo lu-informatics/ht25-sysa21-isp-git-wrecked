@@ -43,6 +43,7 @@
       <TextField fx:id="textFieldSearch" layoutX="8.0" layoutY="363.0" onAction="#handleTextFieldSearchAction" promptText="Search Service History..." />
       <MenuButton fx:id="menuButtonOptions" layoutX="174.0" layoutY="363.0" mnemonicParsing="false" text="Options">
         <items>
+            <MenuItem fx:id="menuItemEdit" mnemonicParsing="false" onAction="#handleMenuItemEditAction" text="Edit Service Entry" />
           <MenuItem fx:id="menuItemAddServiceHistory" mnemonicParsing="false" onAction="#handleMenuItemAddServiceHistoryAction" text="Add Service Entry" />
           <MenuItem fx:id="menuItemRemoveServiceHistory" mnemonicParsing="false" onAction="#handleMenuItemRemoveServiceHistoryAction" text="Remove Service Entry" />
         </items>

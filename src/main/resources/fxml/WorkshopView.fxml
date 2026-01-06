@@ -65,6 +65,7 @@
 
                  <MenuButton layoutX="167.0" layoutY="483.0" text="Options">
                      <items>
+                  <MenuItem fx:id="menuItemEdit" mnemonicParsing="false" onAction="#handleMenuItemEditAction" text="Edit Workshop" />
                          <MenuItem fx:id="menuItemAddWorkshop" onAction="#handleMenuItemAddWorkshopAction" text="Add Workshop" />
                          <MenuItem fx:id="menuItemRemoveWorkshop" onAction="#handleMenuItemRemoveWorkshopAction" text="Remove Workshop" /> 
                      </items>

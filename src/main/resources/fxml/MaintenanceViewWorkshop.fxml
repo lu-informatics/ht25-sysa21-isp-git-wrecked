@@ -31,6 +31,7 @@
         <items>
           <MenuItem fx:id="menuItemAdd" mnemonicParsing="false" onAction="#handleMenuItemAddMaintenanceAction" text="Add Maintenance" />
           <MenuItem fx:id="menuItemCancel" mnemonicParsing="false" onAction="#handleMenuItemCancelMaintenanceAction" text="Cancel Maintenance" />
+            <MenuItem fx:id="menuItemEdit" mnemonicParsing="false" onAction="#handleMenuItemEditAction" text="Edit Maintenance" />
         </items>
       </MenuButton>
       <Label fx:id="labelResponse" layoutX="22.0" layoutY="368.0" prefHeight="17.0" prefWidth="497.0" />

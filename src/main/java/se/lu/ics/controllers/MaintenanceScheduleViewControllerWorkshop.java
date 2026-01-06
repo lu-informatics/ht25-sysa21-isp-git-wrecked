@@ -41,6 +41,8 @@ import javafx.collections.ObservableList;
     @FXML
     private MenuItem menuItemAdd;
     @FXML
+    private MenuItem menuItemEdit;
+    @FXML
     private MenuItem menuItemCancel;
     @FXML
     private TableView <MaintenanceSchedule> tableMaintenanceSchedules;
@@ -76,6 +78,17 @@ import javafx.collections.ObservableList;
 
     @FXML
     public void handleMenuItemAddMaintenanceAction(ActionEvent event) {
+        appController.showInputMaintenanceWorkshopView(workshop);
+        updateTableView();
+    }
+
+    @FXML
+    public void handleMenuItemEditAction(ActionEvent event) {
+        MaintenanceSchedule selectedSchedule = tableMaintenanceSchedules.getSelectionModel().getSelectedItem();
+        if (selectedSchedule == null) {
+            labelResponse.setText("Please select a maintenance schedule to edit.");
+            return;
+        }
         appController.showInputMaintenanceWorkshopView(workshop);
         updateTableView();
     }
