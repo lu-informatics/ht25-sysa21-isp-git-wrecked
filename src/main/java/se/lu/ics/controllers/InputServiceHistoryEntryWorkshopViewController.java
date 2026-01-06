@@ -84,45 +84,9 @@ public class InputServiceHistoryEntryWorkshopViewController {
     
     @FXML
     private void handleButtonApplyAction() {
-    
-        LocalDate date = datePickerServiceDate.getValue();
-        String problem = textFieldProblemDescription.getText().trim();
-        String costText = textFieldCost.getText().trim();
-        String partsText = textFieldPartsReplaced.getText().trim();
-        String activitiesText = textFieldServiceActivities.getText().trim();
-        Vehicle selectedVehicle = comboBoxVehicle.getValue();
-
-        if (date == null || problem.isEmpty() || costText.isEmpty() || partsText.isEmpty() || selectedVehicle == null) {
-            showError("Fill in date, problem, cost, parts replaced, and select a vehicle.");
-            return;
-        }
-
-        double cost;
-        try {
-            cost = Double.parseDouble(costText);
-        } catch (NumberFormatException e) {
-            showError("Cost must be a valid number.");
-            return;
-        }
-
-        if (entry != null) {
-            entry.setDate(date);
-            entry.setProblemDescription(problem);
-            entry.setCost(cost);
-            entry.setPartsReplaced(partsText);
-            entry.setServiceActivities(activitiesText.isEmpty() ? new java.util.ArrayList<>() : java.util.Arrays.asList(activitiesText.split("\\s*,\\s*")));
-            entry.setVehicle(selectedVehicle);
-            entry.setWorkshop(workshop);
-        } else {
-            ServiceHistoryEntry newEntry = new ServiceHistoryEntry(date, problem, cost, partsText, selectedVehicle, workshop);
-            selectedVehicle.addServiceHistoryEntry(newEntry);
-            workshop.addService(newEntry);
-        }
-
-        appController.showWorkshopServiceHistoryView(workshop, entry);
-        ((Stage) buttonApply.getScene().getWindow()).close();
-    
     }
+    
+    
     
 
 
