@@ -15,7 +15,7 @@ import javafx.collections.ObservableList;
 import se.lu.ics.models.Workshop;
 import se.lu.ics.models.WorkshopRegister;
 import se.lu.ics.models.AppModel;
-
+import se.lu.ics.models.Vehicle;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -83,16 +83,19 @@ public class WorkshopViewController {
 
     }
 
-    @FXML
-    private void handleMenuItemRemoveWorkshopAction(ActionEvent event) {
+     @FXML
+    public void handleMenuItemRemoveWorkshopAction(ActionEvent event) {
         Workshop selectedWorkshop = workshopTable.getSelectionModel().getSelectedItem();
         if (selectedWorkshop != null) {
-            workshopTable.getItems().remove(selectedWorkshop);
-            appModel.getWorkshopRegister().removeWorkshop(selectedWorkshop.getName());
+            try {
+                appModel.getWorkshopRegister().removeWorkshop(selectedWorkshop.getName());
+                updateTable();
+            } catch (IllegalArgumentException e) {
+                labelErrorMessage.setText(e.getMessage());
+            }
         } else {
             labelErrorMessage.setText("Please select a workshop to remove.");
         }
-
     }
 
 
