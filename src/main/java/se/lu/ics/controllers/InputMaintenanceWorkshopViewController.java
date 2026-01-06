@@ -18,6 +18,7 @@ public class InputMaintenanceWorkshopViewController {
     private AppModel appModel;
     private AppController appController;
     private Workshop workshop;
+    private MaintenanceSchedule maintenanceSchedule;
 
      public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
@@ -29,6 +30,16 @@ public class InputMaintenanceWorkshopViewController {
 
      public void setWorkshop(Workshop workshop) {
         this.workshop = workshop;
+    }
+
+    public void setMaintenanceSchedule(MaintenanceSchedule selectedSchedule) {
+        this.maintenanceSchedule = selectedSchedule;
+
+        if (maintenanceSchedule != null) {
+            textFieldVehicle.setText(String.valueOf(maintenanceSchedule.getVin()));
+            textFieldDescription.setText(maintenanceSchedule.getDescription());
+            datePicker.setValue(maintenanceSchedule.getDate());
+        }
     }
 
     @FXML
@@ -52,32 +63,38 @@ public class InputMaintenanceWorkshopViewController {
         String description = textFieldDescription.getText().trim();
         LocalDate date = datePicker.getValue();
 
-        if(vehicleVinStr.isEmpty() || description.isEmpty() || date==null) {
-            labelResponse.setText("Please fill in all fields: vehicle(VIN), description, and date.");
+        if (vehicleVinStr.isEmpty() || description.isEmpty() || date == null) {
+            labelResponse.setText("Please fill in all fields: vehicle (VIN), description, and date.");
             return;
         }
 
-        int vehicleVin=Integer.parseInt(vehicleVinStr);
-        Vehicle foundVehicle;
+        try {
+            int vehicleVin = Integer.parseInt(vehicleVinStr);
+            Vehicle foundVehicle = appModel.getVehicleRegister().findVehicle(vehicleVin);
 
-        try{
-            foundVehicle=appModel.getVehicleRegister().findVehicle(vehicleVin);
-        }catch(Exception e){
+            if (maintenanceSchedule != null) {
+                
+                maintenanceSchedule.setDate(date);
+                maintenanceSchedule.setDescription(description);
+                maintenanceSchedule.setVehicle(foundVehicle);
+                maintenanceSchedule.setWorkshop(workshop);
+            } else {
+                
+                MaintenanceSchedule newSchedule = new MaintenanceSchedule(date, description);
+                newSchedule.setVehicle(foundVehicle);
+                newSchedule.setWorkshop(workshop);
+                foundVehicle.addMaintenanceSchedule(newSchedule);
+                workshop.getSchedules().add(newSchedule);
+            }
+
+            appController.showWorkshopSchedulesView(workshop);
+            Stage stage = (Stage) buttonApply.getScene().getWindow();
+            stage.close();
+        } catch (NumberFormatException e) {
+            labelResponse.setText("Invalid VIN. Please enter a valid number.");
+        } catch (Exception e) {
             labelResponse.setText(e.getMessage());
-            return;
         }
-
-        MaintenanceSchedule newSchedule = new MaintenanceSchedule(date, description);
-
-        foundVehicle.addMaintenanceSchedule(newSchedule);
-        newSchedule.setVehicle(foundVehicle);
-        newSchedule.setWorkshop(workshop);
-        workshop.getSchedules().add(newSchedule);
-
-        appController.showWorkshopSchedulesView(workshop);
-        Stage stage=(Stage) buttonApply.getScene().getWindow();
-        stage.close();
-        
     }
 
      @FXML

@@ -21,9 +21,7 @@ public class InputMaintenanceScheduleVehicleViewController {
     private AppModel appModel;
     private AppController appController;
     private Vehicle vehicle;
-    //som varaibler för kunna använda samma objekt i flera controllers
-    // lägger in vehicle objekt, inte variabel av vehicle
-    //skapar instans av vehicle direkt när controller skapas
+   
 
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
