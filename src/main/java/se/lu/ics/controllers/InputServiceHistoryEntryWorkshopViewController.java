@@ -7,6 +7,7 @@ import se.lu.ics.models.Workshop;
 
 import java.time.LocalDate;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -20,8 +21,6 @@ public class InputServiceHistoryEntryWorkshopViewController {
     private AppModel appModel;
     private AppController appController;
     private Workshop workshop;
-
-    
     private ServiceHistoryEntry entry;
 
 
@@ -84,11 +83,61 @@ public class InputServiceHistoryEntryWorkshopViewController {
     
     @FXML
     private void handleButtonApplyAction() {
-    }
-    
-    
-    
 
+ 
+    LocalDate date = datePickerServiceDate.getValue();
+    String problem = textFieldProblemDescription.getText().trim();
+    String costText = textFieldCost.getText().trim();
+    String partsText = textFieldPartsReplaced.getText().trim();
+    String activitiesText = textFieldServiceActivities.getText().trim(); 
+    Vehicle vehicle = comboBoxVehicle.getValue();
+
+    if (date == null || problem.isEmpty() || costText.isEmpty() || partsText.isEmpty() || vehicle == null) {
+        showError("Fill in date, problem, cost, parts replaced, and vehicle.");
+        return;
+    }
+
+    double cost;
+    int parts;
+    try {
+        cost = Double.parseDouble(costText);
+    } catch (NumberFormatException e) {
+        showError("Cost must be a number.");
+        return;
+    }
+
+    try {
+        parts = Integer.parseInt(partsText);
+    } catch (NumberFormatException e) {
+        showError("Parts replaced must be a whole number.");
+        return;
+    }
+    ServiceHistoryEntry newEntry = new ServiceHistoryEntry();
+    newEntry.setDate(date);
+    newEntry.setProblemDescription(problem);
+    newEntry.setCost(cost);
+    newEntry.setPartsReplaced(parts);
+    newEntry.setWorkshop(workshop);
+    newEntry.setVehicle(vehicle);
+
+    if (!activitiesText.isEmpty()) {
+    for (String a : activitiesText.split(",")) {
+        String trimmed = a.trim();
+        if (!trimmed.isEmpty()) newEntry.addServiceActivity(trimmed);
+    }
+    }
+    if (workshop==null) {
+    showError("No workshop selected.");
+    return;
+    }
+    if (entry != null) {
+        workshop.addService(newEntry);
+        vehicle.addServiceHistoryEntry(newEntry);
+    }
+  
+    Stage stage = (Stage) buttonApply.getScene().getWindow();
+    stage.close();
+    }
 
     @FXML
     private void handleButtonBackAction() {
@@ -104,5 +153,6 @@ public class InputServiceHistoryEntryWorkshopViewController {
         alert.showAndWait();
     }
 
+}
 
 

@@ -229,7 +229,7 @@ public class AppController {
         }
     }
 
-    public void showInputServiceHistoryEntryView(Vehicle selectedVehicle) {
+    public void showInputServiceHistoryEntryViewVehicle(Vehicle selectedVehicle) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputServiceHistoryEntryView.fxml"));
             Parent root = loader.load();
@@ -250,13 +250,13 @@ public class AppController {
     }
     public void showInputServiceHistoryEntryViewWorkshop(Workshop selectedWorkshop, ServiceHistoryEntry selectedEntry) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputServiceHistoryEntryView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputServiceHistoryViewWorkshop.fxml"));
             Parent root = loader.load();
 
-            InputServiceHistoryEntryViewVehicleController controller = loader.getController();
+            InputServiceHistoryEntryWorkshopViewController controller = loader.getController();
             controller.setAppController(this);
             controller.setAppModel(appModel);
-            controller.setServiceHistoryEntry(selectedEntry);
+            controller.setEntry(selectedEntry);
             controller.setWorkshop(selectedWorkshop);
 
             Stage stage = new Stage();
@@ -268,5 +268,6 @@ public class AppController {
             e.printStackTrace();
         }
     }
+    
 
 }

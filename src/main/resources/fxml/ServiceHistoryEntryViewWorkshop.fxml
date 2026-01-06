@@ -41,7 +41,6 @@
       <Label fx:id="workshopLabel" layoutX="140.0" layoutY="106.0" text=" " />
       <MenuButton fx:id="menuButtonOptions" layoutX="8.0" layoutY="363.0" mnemonicParsing="false" text="Options">
         <items>
-            <MenuItem fx:id="menuItemEdit" mnemonicParsing="false" onAction="#handleMenuItemEditAction" text="Edit Service Entry" />
           <MenuItem fx:id="menuItemAddServiceHistory" mnemonicParsing="false" onAction="#handleMenuItemAddServiceHistoryAction" text="Add Service Entry" />
           <MenuItem fx:id="menuItemRemoveServiceHistory" mnemonicParsing="false" onAction="#handleMenuItemRemoveServiceHistoryAction" text="Remove Service Entry" />
         </items>

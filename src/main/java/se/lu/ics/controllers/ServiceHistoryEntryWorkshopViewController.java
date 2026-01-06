@@ -76,35 +76,32 @@ public class ServiceHistoryEntryWorkshopViewController {
         workshopLabel.setText(workshop.getName());
         tableViewServiceHistory.getItems().setAll(workshop.getServices());
     }
-     @FXML
-    public void handleMenuItemEditAction(ActionEvent event) {
-        ServiceHistoryEntry selectedEntry = tableViewServiceHistory.getSelectionModel().getSelectedItem();
-
-        if (selectedEntry != null) {
-            appController.showInputServiceHistoryEntryViewWorkshop(selectedEntry);
-        } else {
-            labelErrorMessage.setText("Please select a workshop to edit.");
-        }
-    }
 
     @FXML
     public void handleMenuItemAddServiceHistoryAction(ActionEvent event) {
-        appController.showInputServiceHistoryEntryViewWorkshop(null);
+       ServiceHistoryEntry selectedEntry = tableViewServiceHistory.getSelectionModel().getSelectedItem();
+    if (workshop == null) {
+        labelErrorMessage.setText("Pleasse selcet a workshop to add a service history entry.");
+        return;
+    }
+        appController.showInputServiceHistoryEntryViewWorkshop(workshop, new ServiceHistoryEntry());
     }
 
-    @FXML
+   @FXML
     private void handleMenuItemRemoveServiceHistoryAction() {
-        ServiceHistoryEntry selectedEntry = tableViewServiceHistory.getSelectionModel().getSelectedItem();
-        if (selectedEntry != null) {
-            tableViewServiceHistory.getItems().remove(selectedEntry);
-        } else {
-            labelErrorMessage.setText("Please select a service history entry to remove.");
-        }
+    ServiceHistoryEntry selectedEntry = tableViewServiceHistory.getSelectionModel().getSelectedItem();
+    if (selectedEntry == null) {
+        labelErrorMessage.setText("Please select a service history entry to remove.");
+        return;
     }
+    workshop.removeService(selectedEntry); 
+}
+
 
     @FXML
     private void handleButtonBackAction() {
         appController.showWorkshopView();
     
     }
+    
 }

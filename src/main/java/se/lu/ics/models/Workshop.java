@@ -82,7 +82,9 @@ public class Workshop {
     public int getServiceCount() {
         return services.size();
     }
-
+public void removeService(ServiceHistoryEntry service) {
+        this.services.remove(service);
+    }
     
     @Override
     public String toString() {
