@@ -50,4 +50,8 @@ public class MaintenanceSchedule {
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
+
+    public int getVin(){
+        return vehicle.getVin();
+    }
 }
