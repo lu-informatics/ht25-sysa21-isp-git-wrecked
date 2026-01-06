@@ -1,19 +1,21 @@
 package se.lu.ics.models;
 
-import java.util.ArrayList;
+
 import java.time.LocalDate;
+import javafx.collections.ObservableList;
+import javafx.collections.FXCollections;
 
 public class ServiceHistoryEntry {
     private String problemDescription;
     private double cost;
     private int partsReplaced;
     private LocalDate localDate;
-    private ArrayList<String> serviceActivities;
+    private ObservableList<String> serviceActivities;
     private Workshop workshop;
     private Vehicle vehicle;
 
     public ServiceHistoryEntry() {
-        this.serviceActivities = new ArrayList<String>();
+        this.serviceActivities = FXCollections.observableArrayList();
     }
 
     public ServiceHistoryEntry(String problemDescription, double cost, LocalDate serviceDate, int partsReplaced) {
@@ -33,7 +35,7 @@ public class ServiceHistoryEntry {
         this.cost = cost;
         this.localDate = serviceDate;
         this.partsReplaced = partsReplaced;
-        this.serviceActivities = new ArrayList<String>();
+        this.serviceActivities = FXCollections.observableArrayList();
     }
 
     public void addServiceActivity(String activity) {
@@ -51,7 +53,7 @@ public class ServiceHistoryEntry {
         this.serviceActivities.remove(activity);
     }
 
-    public ArrayList<String> getServiceActivities() {
+    public ObservableList<String> getServiceActivities() {
         return serviceActivities;
     }
 

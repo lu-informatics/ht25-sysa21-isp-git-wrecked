@@ -6,7 +6,6 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -40,8 +39,7 @@
             <Font size="15.0" />
          </font></Label>
       <Label fx:id="workshopLabel" layoutX="140.0" layoutY="106.0" text=" " />
-      <TextField fx:id="textFieldSearch" layoutX="8.0" layoutY="363.0" onAction="#handleTextFieldSearchAction" promptText="Search Service History..." />
-      <MenuButton fx:id="menuButtonOptions" layoutX="174.0" layoutY="363.0" mnemonicParsing="false" text="Options">
+      <MenuButton fx:id="menuButtonOptions" layoutX="8.0" layoutY="363.0" mnemonicParsing="false" text="Options">
         <items>
             <MenuItem fx:id="menuItemEdit" mnemonicParsing="false" onAction="#handleMenuItemEditAction" text="Edit Service Entry" />
           <MenuItem fx:id="menuItemAddServiceHistory" mnemonicParsing="false" onAction="#handleMenuItemAddServiceHistoryAction" text="Add Service Entry" />

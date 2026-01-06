@@ -65,23 +65,23 @@ public class MainViewController {
         appController.showWorkshopView();
     }
     @FXML
-    private TextField textFieldMostExpensiveWorkshop;
+    private Label labelMostExpensiveWorkshop;
 
     private void updateMostExpensiveWorkshop() {
         Workshop w = appModel.getWorkshopRegister().getMostExpensiveWorkshop();
 
         if(w != null){
-        textFieldMostExpensiveWorkshop.setText(w.getName());
+        labelMostExpensiveWorkshop.setText(w.getName());
         } else {
-            textFieldMostExpensiveWorkshop.setText("No workshops with service history.");
+            labelMostExpensiveWorkshop.setText("No workshops with service history.");
         }
     }
     @FXML
-    private TextField textFieldAverageMaintenanceCost;
+    private Label labelAverageMaintenanceCost;
 
     private void updateAverageMaintenanceCost() {
         double avarageCost= appModel.getVehicleRegister().calculateAvarageCost();
-        textFieldAverageMaintenanceCost.setText(String.format("%.2f SEK", avarageCost));
+        labelAverageMaintenanceCost.setText(String.format("%.2f SEK", avarageCost));
     
     }
     private void updateMostExpensiveMaintenanceJob() {
