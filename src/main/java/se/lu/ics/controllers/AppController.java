@@ -234,7 +234,7 @@ public class AppController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputServiceHistoryEntryView.fxml"));
             Parent root = loader.load();
 
-            InputServiceHistoryEntryViewController controller = loader.getController();
+            InputServiceHistoryEntryViewVehicleController controller = loader.getController();
             controller.setAppController(this);
             controller.setAppModel(appModel);
             controller.setVehicle(selectedVehicle);
@@ -253,7 +253,7 @@ public class AppController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputServiceHistoryEntryView.fxml"));
             Parent root = loader.load();
 
-            InputServiceHistoryEntryViewController controller = loader.getController();
+            InputServiceHistoryEntryViewVehicleController controller = loader.getController();
             controller.setAppController(this);
             controller.setAppModel(appModel);
             controller.setServiceHistoryEntry(selectedEntry);

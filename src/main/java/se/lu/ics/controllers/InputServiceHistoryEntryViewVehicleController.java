@@ -18,7 +18,7 @@ import javafx.scene.control.Alert;
 
 
 
-public class InputServiceHistoryEntryViewController {
+public class InputServiceHistoryEntryViewVehicleController {
 
     private AppModel appModel;
     private AppController appController;

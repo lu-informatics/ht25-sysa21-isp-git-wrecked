@@ -34,48 +34,7 @@ public class InputWorkshopviewController {
     private Button buttonBack;
 
 
-    @FXML
-    private void handleButtonApplyAction() {
-        String name = textFieldWorkshopName.getText();
-        String address = textFieldWorkshopAddress.getText();
-
-        if (name.trim().isEmpty() || address.trim().isEmpty() || name == null || address == null) {
-            labelErrorMessage.setText("Please fill in all fields.");
-            return;     
-        }
-
-        
-        for (Workshop w : appModel.getWorkshopRegister().getWorkshops()) {
-            if (w.getName().equalsIgnoreCase(name) && (workshop == null || !w.getName().equalsIgnoreCase(workshop.getName()))) {
-                labelErrorMessage.setText("A workshop with this name already exists.");
-                return;
-            }
-        }
-
-        boolean isInternal;
-        
-        if (radioButtonInternal.isSelected()) {
-            isInternal = true;
-        } else if (radioButtonExternal.isSelected()) {
-            isInternal = false;
-        } else {
-            labelErrorMessage.setText("Please select a workshop type.");
-            return;
-        }
-
-        if (workshop != null) {
-            
-            workshop.setName(name);
-            workshop.setAddress(address);
-            workshop.setIsInternal(isInternal);
-        } else {
-           
-            workshop = new Workshop(name, isInternal, address);
-            appModel.getWorkshopRegister().addWorkshop(workshop);
-        }
-
-        appController.showWorkshopView();
-    }
+   
 
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
