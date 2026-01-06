@@ -1,5 +1,6 @@
 package se.lu.ics.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -11,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.time.LocalDate;
 
 import se.lu.ics.models.AppModel;
+import se.lu.ics.models.MaintenanceSchedule;
 import se.lu.ics.models.Workshop;
 import se.lu.ics.models.ServiceHistoryEntry;
 import se.lu.ics.models.Vehicle;
@@ -19,6 +21,7 @@ public class ServiceHistoryEntryWorkshopViewController {
     private AppModel appModel;
     private AppController appController;
     private Workshop workshop;
+    private ServiceHistoryEntry serviceHistoryEntry;
 
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
@@ -31,8 +34,8 @@ public class ServiceHistoryEntryWorkshopViewController {
         workshopLabel.setText(workshop.getName());
         tableViewServiceHistory.setItems(workshop.getServices());
     }      
-    public Workshop getWorkshop() {
-        return workshop;
+    public void setServiceHistoryEntry(ServiceHistoryEntry serviceHistoryEntry) {
+       this.serviceHistoryEntry = serviceHistoryEntry;
     }
 
     @FXML
@@ -73,23 +76,20 @@ public class ServiceHistoryEntryWorkshopViewController {
         workshopLabel.setText(workshop.getName());
         tableViewServiceHistory.getItems().setAll(workshop.getServices());
     }
-    @FXML
-    private void handleTextFieldSearchAction() {
-    }
-
-    @FXML
-    private void handleMenuItemEditAction() {
+     @FXML
+    public void handleMenuItemEditAction(ActionEvent event) {
         ServiceHistoryEntry selectedEntry = tableViewServiceHistory.getSelectionModel().getSelectedItem();
+
         if (selectedEntry != null) {
-            appController.showInputServiceHistoryEntryView();
+            appController.showInputServiceHistoryEntryViewWorkshop(selectedEntry);
         } else {
-            labelErrorMessage.setText("Please select a service entry to edit.");
+            labelErrorMessage.setText("Please select a workshop to edit.");
         }
     }
 
     @FXML
-    private void handleMenuItemAddServiceHistoryAction() {
-        appController.showInputServiceHistoryEntryView();
+    public void handleMenuItemAddServiceHistoryAction(ActionEvent event) {
+        appController.showInputServiceHistoryEntryViewWorkshop(null);
     }
 
     @FXML

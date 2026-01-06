@@ -207,7 +207,7 @@ public class AppController {
         }
     }
 
-    public void showInputMaintenanceWorkshopView(Workshop selectedWorkshop) {
+    public void showInputMaintenanceWorkshopView(Workshop selectedWorkshop, MaintenanceSchedule selectedSchedule) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputMaintenanceWorkshopView.fxml"));
             Parent root = loader.load();
@@ -216,6 +216,7 @@ public class AppController {
             inputMaintenanceScheduleController.setAppController(this);
             inputMaintenanceScheduleController.setAppModel(appModel);
             inputMaintenanceScheduleController.setWorkshop(selectedWorkshop);
+            inputMaintenanceScheduleController.setMaintenanceSchedule(selectedSchedule);
 
             Stage stage = new Stage();
             stage.initOwner(primaryStage);
@@ -237,6 +238,26 @@ public class AppController {
             controller.setAppController(this);
             controller.setAppModel(appModel);
             controller.setVehicle(selectedVehicle);
+
+            Stage stage = new Stage();
+            stage.initOwner(primaryStage);
+            stage.setScene(new Scene(root));
+            stage.showAndWait(); // pop up
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void showInputServiceHistoryEntryViewWorkshop(Workshop selectedWorkshop, ServiceHistoryEntry selectedEntry) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputServiceHistoryEntryView.fxml"));
+            Parent root = loader.load();
+
+            InputServiceHistoryEntryViewController controller = loader.getController();
+            controller.setAppController(this);
+            controller.setAppModel(appModel);
+            controller.setServiceHistoryEntry(selectedEntry);
+            controller.setWorkshop(selectedWorkshop);
 
             Stage stage = new Stage();
             stage.initOwner(primaryStage);

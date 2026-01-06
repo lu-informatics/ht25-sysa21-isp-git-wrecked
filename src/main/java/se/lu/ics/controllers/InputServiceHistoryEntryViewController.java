@@ -23,6 +23,8 @@ public class InputServiceHistoryEntryViewController {
     private AppModel appModel;
     private AppController appController;
     private Vehicle vehicle;
+    private ServiceHistoryEntry serviceHistoryEntry;
+    private Workshop workshop;
     //som varaibler för kunna använda samma objekt i flera controllers
     // lägger in vehicle objekt, inte variabel av vehicle
 
@@ -36,6 +38,25 @@ public class InputServiceHistoryEntryViewController {
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
+    public void setServiceHistoryEntry(ServiceHistoryEntry selectedEntry) {
+        this.serviceHistoryEntry = selectedEntry;
+
+        if (selectedEntry != null) {
+            datePickerServiceDate.setValue(selectedEntry.getDate());
+            textFieldProblemDescription.setText(selectedEntry.getProblemDescription());
+            textFieldCost.setText(String.valueOf(selectedEntry.getCost()));
+            textFieldPartsReplaced.setText(String.valueOf(selectedEntry.getPartsReplaced()));
+            textFieldServiceActivities.setText(String.join(", ", selectedEntry.getServiceActivities()));
+            textFieldWorkshop.setText(selectedEntry.getWorkshop().getName());
+        }
+    }
+
+    public void setWorkshop(Workshop workshop) {
+        this.workshop = workshop;
+    }
+
+
+
     @FXML 
     private TextField textFieldProblemDescription;
     @FXML 
@@ -52,6 +73,8 @@ public class InputServiceHistoryEntryViewController {
     private Button buttonApply;
     @FXML
     private Button buttonBack;
+
+    
     @FXML
     private void handleButtonApplyAction() {
  
@@ -63,7 +86,7 @@ public class InputServiceHistoryEntryViewController {
     String workshopText = textFieldWorkshop.getText().trim();
 
     if (date == null || problem.isEmpty() || costText.isEmpty() || partsText.isEmpty() || workshopText.isEmpty()) {
-        showError("Fill in date, problem, cost and parts replaced.");
+        showError("Fill in date, problem, cost, parts replaced, and workshop.");
         return;
     }
 
