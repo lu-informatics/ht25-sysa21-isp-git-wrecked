@@ -17,7 +17,7 @@ import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.VehicleType;
 import se.lu.ics.models.ServiceHistoryEntry;
 
-public class ServiceHistoryEntryVehicleViewController {
+public class ServiceHistoryEntryViewVehicleController {
     private AppModel appModel;
     private AppController appController;
     private Vehicle vehicle;
@@ -90,7 +90,7 @@ public class ServiceHistoryEntryVehicleViewController {
             return;
         }
        
-        appController.showInputServiceHistoryEntryView(vehicle);
+        appController.showInputServiceHistoryEntryViewVehicle(vehicle);
         serviceHistoryTable.setItems(vehicle.getServiceHistory());
     }
 
