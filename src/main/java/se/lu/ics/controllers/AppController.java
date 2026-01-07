@@ -97,7 +97,7 @@ public class AppController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ServiceHistoryEntryViewVehicle.fxml"));
             Parent root = loader.load();
 
-            ServiceHistoryEntryVehicleViewController controller = loader.getController();
+            ServiceHistoryEntryViewVehicleController controller = loader.getController();
             controller.setAppController(this);
             controller.setAppModel(appModel);
             controller.setVehicle(selectedVehicle); // 👈 skicka vidare fordonet
@@ -229,12 +229,12 @@ public class AppController {
         }
     }
 
-    public void showInputServiceHistoryEntryView(Vehicle selectedVehicle) {
+    public void showInputServiceHistoryEntryViewVehicle(Vehicle selectedVehicle) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputServiceHistoryEntryView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputServiceHistoryEntryViewVehicle.fxml"));
             Parent root = loader.load();
 
-            InputServiceHistoryEntryViewController controller = loader.getController();
+            InputServiceHistoryEntryViewVehicleController controller = loader.getController();
             controller.setAppController(this);
             controller.setAppModel(appModel);
             controller.setVehicle(selectedVehicle);

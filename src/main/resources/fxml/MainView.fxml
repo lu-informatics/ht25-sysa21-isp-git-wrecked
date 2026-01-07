@@ -57,7 +57,7 @@
                         <Label fx:id="labelMaintenanceJob" />
                         <VBox layoutX="650.0" prefHeight="31.0" prefWidth="300.0">
                            <children>
-                              <Label fx:id="labelMaintenanceJob" text=" Maintenance job" textFill="#0a2a43">
+                              <Label fx:id="labelMaintenanceJob" text="   Maintenance job" textFill="#0a2a43">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -68,22 +68,19 @@
                   </HBox>
                   <HBox prefHeight="57.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="labelVehicle" text=" Vehicle" textFill="#0a2a43">
+                        <Label fx:id="labelVehicle" text="   Vehicle" textFill="#0a2a43">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
                      </children>
                   </HBox>
-                  <HBox prefHeight="31.0" prefWidth="271.0">
-                     <children>
-                        <Label fx:id="labelWorkshop" prefHeight="22.0" prefWidth="310.0" text=" Workshop" textFill="#0a2a43">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
+                  <Label fx:id="labelWorkshop" prefHeight="22.0" prefWidth="310.0" text="   Workshop" textFill="#0a2a43">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="31.0" prefWidth="271.0" />
                </children>
             </VBox>
             <VBox layoutX="650.0" layoutY="45.0" prefHeight="77.0" prefWidth="300.0" style="-fx-background-color: white; -fx-border-color: #0A2A43; -fx-background-radius: 14; -fx-border-radius: 14; -fx-background-radius: 14;">
@@ -98,7 +95,7 @@
                      </children></HBox>
                   <HBox prefHeight="57.0" prefWidth="294.0">
                      <children>
-                        <Label fx:id="labelMostExpensiveWorkshop" prefHeight="39.0" prefWidth="294.0">
+                        <Label fx:id="labelMostExpensiveWorkshop" prefHeight="39.0" prefWidth="322.0" text="     ">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -118,12 +115,14 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 14;" />
-                  <Label fx:id="labelAverageMaintenanceCost" prefHeight="0.0" prefWidth="298.0">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 14;">
+                     <children>
+                        <Label fx:id="labelAverageMaintenanceCost" prefHeight="48.0" prefWidth="298.0" text="    ">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children></HBox>
                </children>
             </VBox>
          </children>
