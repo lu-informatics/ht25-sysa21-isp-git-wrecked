@@ -109,11 +109,19 @@ public class InputServiceHistoryEntryViewVehicleController {
     newEntry.setProblemDescription(problem);
     newEntry.setCost(cost);
     newEntry.setPartsReplaced(parts);
-    Workshop w = new Workshop(workshopText,false,"");
+    Workshop w;
+    try {
+        w = appModel.getWorkshopRegister().findWorkshop(workshopText);
+    } catch (IllegalArgumentException e) {
+        showError(e.getMessage());
+        return;
+    }
+
     newEntry.setWorkshop(w);
 
     newEntry.setVehicle(vehicle);
     vehicle.addServiceHistoryEntry(newEntry);
+    w.addService(newEntry);
 
     if (!activitiesText.isEmpty()) {
     for (String a : activitiesText.split(",")) {
