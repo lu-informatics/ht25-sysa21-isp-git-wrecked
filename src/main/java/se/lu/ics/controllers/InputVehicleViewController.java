@@ -59,7 +59,7 @@ public class InputVehicleViewController {
             textFieldLocation.setText(vehicle.getLocation());
 
             // NYTT — sätt rätt radioknapp
-            if (vehicle.isAvailable()) {
+            if (vehicle.getIsAvailable()) {
                 radioButtonAvailable.setSelected(true);
             } else {
                 radioButtonNotAvailable.setSelected(true);
@@ -106,7 +106,7 @@ public class InputVehicleViewController {
             vehicle.setType(type);
             vehicle.setCapacity(capacity);
             vehicle.setLocation(location);
-            vehicle.setAvailable(radioButtonAvailable.isSelected());
+            vehicle.setIsAvailable(radioButtonAvailable.isSelected());
 
         }
 
