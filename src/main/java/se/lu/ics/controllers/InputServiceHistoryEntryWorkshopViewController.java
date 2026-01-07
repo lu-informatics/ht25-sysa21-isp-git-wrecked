@@ -7,7 +7,6 @@ import se.lu.ics.models.Workshop;
 
 import java.time.LocalDate;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;

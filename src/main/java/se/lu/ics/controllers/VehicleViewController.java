@@ -1,7 +1,6 @@
 package se.lu.ics.controllers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
@@ -13,9 +12,7 @@ import javafx.scene.control.Button;
 
 import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.VehicleType;
-import se.lu.ics.models.VehicleRegister;
 import se.lu.ics.models.AppModel;
-import se.lu.ics.controllers.AppController;
 
 import javafx.event.ActionEvent;
 

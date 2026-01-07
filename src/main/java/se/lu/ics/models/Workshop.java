@@ -1,10 +1,8 @@
 package se.lu.ics.models;
 
-import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import java.util.Queue;
 
 public class Workshop {
     private String name;
