@@ -1,7 +1,5 @@
 package se.lu.ics.controllers;
 
-import java.security.Provider.Service;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

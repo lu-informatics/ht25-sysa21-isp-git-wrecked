@@ -6,9 +6,9 @@ public class ModelIntegrationTest {
     public static void main(String[] args) {
         VehicleRegister vehicleRegister = new VehicleRegister();
         WorkshopRegister workshopRegister = new WorkshopRegister();
-        Vehicle vehicle1 = new Vehicle("Lund", 6, VehicleType.MEDIUM_TRUCK, "Ferrari");
-        Vehicle vehicle2 = new Vehicle("Malmö", 12, VehicleType.VAN, "Lamborghini");
-        Vehicle vehicle3 = new Vehicle("Stockholm", 8, VehicleType.LARGE_TRUCK, "Porsche");
+        Vehicle vehicle1 = new Vehicle("Lund", 6, true, VehicleType.MEDIUM_TRUCK, "Ferrari");
+        Vehicle vehicle2 = new Vehicle("Malmö", 12, false, VehicleType.VAN, "Lamborghini");
+        Vehicle vehicle3 = new Vehicle("Stockholm", 8, true, VehicleType.LARGE_TRUCK, "Porsche");
 
         Workshop workshop1 = new Workshop("AutoFix", true, "Bilvägen 1");
         Workshop workshop2 = new Workshop("CarCare", false, "Motorvägen 5");

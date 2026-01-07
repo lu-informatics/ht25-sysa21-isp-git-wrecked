@@ -12,10 +12,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.time.LocalDate;
 
 import se.lu.ics.models.AppModel;
-import se.lu.ics.models.MaintenanceSchedule;
 import se.lu.ics.models.Workshop;
 import se.lu.ics.models.ServiceHistoryEntry;
-import se.lu.ics.models.Vehicle;
+
 
 public class ServiceHistoryEntryWorkshopViewController {
     private AppModel appModel;

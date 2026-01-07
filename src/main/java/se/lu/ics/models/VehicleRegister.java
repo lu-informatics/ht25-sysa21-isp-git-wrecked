@@ -1,7 +1,5 @@
 package se.lu.ics.models;
 
-import java.util.ArrayList;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

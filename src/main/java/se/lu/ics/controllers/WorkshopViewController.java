@@ -2,7 +2,6 @@ package se.lu.ics.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -13,14 +12,8 @@ import javafx.event.ActionEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import se.lu.ics.models.Workshop;
-import se.lu.ics.models.WorkshopRegister;
 import se.lu.ics.models.AppModel;
-import se.lu.ics.models.Vehicle;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.stage.Modality;
+
 
 public class WorkshopViewController {
     private AppModel appModel;

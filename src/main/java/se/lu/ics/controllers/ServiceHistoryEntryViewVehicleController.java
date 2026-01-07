@@ -14,7 +14,6 @@ import java.time.LocalDate;
 
 import se.lu.ics.models.AppModel;
 import se.lu.ics.models.Vehicle;
-import se.lu.ics.models.VehicleType;
 import se.lu.ics.models.ServiceHistoryEntry;
 
 public class ServiceHistoryEntryViewVehicleController {
