@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import se.lu.ics.models.AppModel;
 import se.lu.ics.models.Workshop;
 import se.lu.ics.models.ServiceHistoryEntry;
+import se.lu.ics.models.Vehicle;
 
 
 public class ServiceHistoryEntryWorkshopViewController {
@@ -32,6 +33,7 @@ public class ServiceHistoryEntryWorkshopViewController {
         this.workshop = workshop;
         workshopLabel.setText(workshop.getName());
         tableViewServiceHistory.setItems(workshop.getServices());
+        tableViewServiceHistory.refresh();
     }      
     public void setServiceHistoryEntry(ServiceHistoryEntry serviceHistoryEntry) {
        this.serviceHistoryEntry = serviceHistoryEntry;
@@ -66,7 +68,7 @@ public class ServiceHistoryEntryWorkshopViewController {
 
     @FXML
     private void initialize() {
-        columnVehicle.setCellValueFactory(new PropertyValueFactory<>("vehicle"));
+        columnVehicle.setCellValueFactory(new PropertyValueFactory<>("vehicleString"));
         columnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         columnProblemDescription.setCellValueFactory(new PropertyValueFactory<>("problemDescription"));
         columnCost.setCellValueFactory(new PropertyValueFactory<>("cost"));
@@ -83,6 +85,7 @@ public class ServiceHistoryEntryWorkshopViewController {
     public void handleMenuItemAddServiceHistoryAction(ActionEvent event) {
     
         appController.showInputServiceHistoryEntryViewWorkshop(workshop);
+        tableViewServiceHistory.refresh();
     }
 
    @FXML
@@ -92,7 +95,8 @@ public class ServiceHistoryEntryWorkshopViewController {
         labelErrorMessage.setText("Please select a service history entry to remove.");
         return;
     }
-    workshop.removeService(selectedEntry); 
+    workshop.removeService(selectedEntry);
+    tableViewServiceHistory.refresh();
 }
 
     @FXML

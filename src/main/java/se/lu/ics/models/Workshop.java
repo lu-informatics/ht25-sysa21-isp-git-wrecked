@@ -12,18 +12,25 @@ public class Workshop {
     private ObservableList<MaintenanceSchedule> schedules;
 
     public Workshop(String name, boolean isInternal, String address) {
-        this.name = name;
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Workshop name cannot be empty.");
+        }
+        if (address == null || address.trim().isEmpty()) {
+            throw new IllegalArgumentException("Workshop address cannot be empty.");
+        }
+
+        this.name = name.trim();
         this.isInternal = isInternal;
-        this.address = address;
+        this.address = address.trim();
         services = javafx.collections.FXCollections.observableArrayList();
         schedules = javafx.collections.FXCollections.observableArrayList();
     }
 
     public void setName(String name) {
-        if (name == null || name.isEmpty()) {
-            throw new IllegalArgumentException("Name can not be empty");
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Workshop name cannot be empty.");
         }
-        this.name = name;
+        this.name = name.trim();
     }
 
     public String getName() {
@@ -43,10 +50,10 @@ public class Workshop {
     }
 
     public void setAddress(String address) {
-        if (address == null || address.isEmpty()) {
-            throw new IllegalArgumentException("Address can not be empty");
+        if (address == null || address.trim().isEmpty()) {
+            throw new IllegalArgumentException("Workshop address cannot be empty.");
         }
-        this.address = address;
+        this.address = address.trim();
     }
 
     public String getAddress() {

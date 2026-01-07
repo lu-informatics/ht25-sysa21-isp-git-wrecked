@@ -74,9 +74,20 @@ public class InputWorkshopviewController {
     @FXML
     public void handleButtonApplyAction() {
 
-    String name = textFieldWorkshopName.getText();
-    String address = textFieldWorkshopAddress.getText();
+    String name = textFieldWorkshopName.getText().trim();
+    String address = textFieldWorkshopAddress.getText().trim();
     boolean isInternal;
+
+    
+    if (name.isEmpty()) {
+        labelErrorMessage.setText("Workshop name cannot be empty.");
+        return;
+    }
+
+    if (address.isEmpty()) {
+        labelErrorMessage.setText("Workshop address cannot be empty.");
+        return;
+    }
 
     if (radioButtonInternal.isSelected()) {
         isInternal = true;
@@ -87,10 +98,27 @@ public class InputWorkshopviewController {
         return;
     }
 
-    Workshop newWorkshop = new Workshop(name, isInternal, address);
-    appModel.getWorkshopRegister().addWorkshop(newWorkshop);
+    try {
 
-    appController.showWorkshopView();
+        if (workshop == null) {
+            Workshop newWorkshop = new Workshop(name, isInternal, address);
+            appModel.getWorkshopRegister().addWorkshop(newWorkshop);
+            labelErrorMessage.setText("Workshop created successfully!");
+        } else {
+            
+            workshop.setName(name);
+            workshop.setAddress(address);
+            workshop.setIsInternal(isInternal);
+            labelErrorMessage.setText("Workshop updated successfully!");
+        }
+
+        appController.showWorkshopView();
+
+    } catch (IllegalArgumentException e) {
+        labelErrorMessage.setText("Error: " + e.getMessage());
+    } catch (Exception e) {
+        labelErrorMessage.setText("An unexpected error occurred: " + e.getMessage());
+    }
 }
 
     }

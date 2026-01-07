@@ -95,7 +95,7 @@ public class Vehicle {
         this.maintenanceSchedule = schedule;
     }
 
-    public void removeMaintenanceSchedule() { // KOLLA IFALL DETTA VERKLIGEN ÄR RÄTT
+    public void removeMaintenanceSchedule() { 
         this.maintenanceSchedule = null;
     }
 

@@ -63,8 +63,19 @@ public class InputMaintenanceWorkshopViewController {
         String description = textFieldDescription.getText().trim();
         LocalDate date = datePicker.getValue();
 
-        if (vehicleVinStr.isEmpty() || description.isEmpty() || date == null) {
-            labelResponse.setText("Please fill in all fields: vehicle (VIN), description, and date.");
+        // Validate all fields
+        if (vehicleVinStr.isEmpty()) {
+            labelResponse.setText("Vehicle VIN cannot be empty.");
+            return;
+        }
+
+        if (description.isEmpty()) {
+            labelResponse.setText("Maintenance description cannot be empty.");
+            return;
+        }
+
+        if (date == null) {
+            labelResponse.setText("Maintenance date must be selected.");
             return;
         }
 
@@ -72,28 +83,36 @@ public class InputMaintenanceWorkshopViewController {
             int vehicleVin = Integer.parseInt(vehicleVinStr);
             Vehicle foundVehicle = appModel.getVehicleRegister().findVehicle(vehicleVin);
 
+            if (foundVehicle == null) {
+                labelResponse.setText("Vehicle with VIN " + vehicleVin + " not found.");
+                return;
+            }
+
             if (maintenanceSchedule != null) {
-                
                 maintenanceSchedule.setDate(date);
                 maintenanceSchedule.setDescription(description);
                 maintenanceSchedule.setVehicle(foundVehicle);
                 maintenanceSchedule.setWorkshop(workshop);
+                labelResponse.setText("Maintenance schedule updated successfully!");
             } else {
-                
                 MaintenanceSchedule newSchedule = new MaintenanceSchedule(date, description);
                 newSchedule.setVehicle(foundVehicle);
                 newSchedule.setWorkshop(workshop);
                 foundVehicle.addMaintenanceSchedule(newSchedule);
                 workshop.getSchedules().add(newSchedule);
+                labelResponse.setText("Maintenance schedule created successfully!");
             }
 
             appController.showWorkshopSchedulesView(workshop);
             Stage stage = (Stage) buttonApply.getScene().getWindow();
             stage.close();
+
         } catch (NumberFormatException e) {
-            labelResponse.setText("Invalid VIN. Please enter a valid number.");
+            labelResponse.setText("Invalid VIN format. Please enter a valid number.");
+        } catch (IllegalArgumentException e) {
+            labelResponse.setText("Error: " + e.getMessage());
         } catch (Exception e) {
-            labelResponse.setText(e.getMessage());
+            labelResponse.setText("An unexpected error occurred: " + e.getMessage());
         }
     }
 

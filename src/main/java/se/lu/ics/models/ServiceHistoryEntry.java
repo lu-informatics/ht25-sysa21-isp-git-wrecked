@@ -114,4 +114,13 @@ public class ServiceHistoryEntry {
         this.vehicle = vehicle;
     }
 
+    public String getVehicleString () {
+        if (vehicle == null) {
+            return "";
+        }
+        
+        return String.valueOf(vehicle.getVin());
+    }
 }
+
+
