@@ -103,7 +103,7 @@ public class Vehicle {
         return FXCollections.unmodifiableObservableList(serviceHistory);
     }
 
-    public void setAvailable(boolean isAvailable) {
+    public void setIsAvailable(boolean isAvailable) {
         this.isAvailable = isAvailable;
     }
 
