@@ -24,28 +24,28 @@
             </ImageView>
          </children>
       </Pane>
-      <TableView fx:id="tableViewServiceHistory" layoutX="8.0" layoutY="132.0" prefHeight="225.0" prefWidth="584.0">
+      <TableView fx:id="tableViewServiceHistory" layoutX="15.0" layoutY="138.0" prefHeight="225.0" prefWidth="571.0">
         <columns>
-          <TableColumn fx:id="columnDate" prefWidth="75.0" text="Date" />
-          <TableColumn fx:id="columnCost" prefWidth="75.0" text="Cost" />
-            <TableColumn fx:id="columnPartsReplaced" prefWidth="75.0" text="Parts" />
-            <TableColumn fx:id="columnType" prefWidth="75.0" text="Type" />
-            <TableColumn fx:id="columnVehicle" prefWidth="75.0" text="Vehicle" />
-            <TableColumn fx:id="columnProblemDescription" prefWidth="208.0" text="Description" />
+            <TableColumn fx:id="columnVehicle" prefWidth="61.0" text="VIN" />
+          <TableColumn fx:id="columnCost" prefWidth="68.0" text="Cost" />
+            <TableColumn fx:id="columnPartsReplaced" prefWidth="71.5" text="Parts" />
+          <TableColumn fx:id="columnDate" prefWidth="115.5" text="Date" />
+            <TableColumn fx:id="columnProblemDescription" prefWidth="254.0" text="Description" />
         </columns>
       </TableView>
      <Label layoutX="14.0" layoutY="105.0" prefHeight="17.0" prefWidth="133.0" text="Service history for:">
          <font>
             <Font size="15.0" />
          </font></Label>
-      <Label fx:id="workshopLabel" layoutX="140.0" layoutY="106.0" text=" " />
-      <MenuButton fx:id="menuButtonOptions" layoutX="8.0" layoutY="363.0" mnemonicParsing="false" text="Options">
+      <Label fx:id="workshopLabel" layoutX="140.0" layoutY="106.0" prefHeight="17.0" prefWidth="150.0" text=" " />
+      <MenuButton fx:id="menuButtonOptions" layoutX="15.0" layoutY="363.0" mnemonicParsing="false" text="Options">
         <items>
+            <MenuItem fx:id="menuItemEdit" mnemonicParsing="false" onAction="#handleMenuItemEditAction" text="Edit Service Entry" />
           <MenuItem fx:id="menuItemAddServiceHistory" mnemonicParsing="false" onAction="#handleMenuItemAddServiceHistoryAction" text="Add Service Entry" />
           <MenuItem fx:id="menuItemRemoveServiceHistory" mnemonicParsing="false" onAction="#handleMenuItemRemoveServiceHistoryAction" text="Remove Service Entry" />
         </items>
       </MenuButton>
       <Button fx:id="buttonBack" layoutX="547.0" layoutY="363.0" mnemonicParsing="false" onAction="#handleButtonBackAction" text="Back" />
-      <Label fx:id="labelErrorMessage" layoutX="293.0" layoutY="346.0" prefHeight="0.0" prefWidth="52.0" />
+      <Label fx:id="labelErrorMessage" layoutX="114.0" layoutY="367.0" prefHeight="17.0" prefWidth="315.0" />
    </children>
 </AnchorPane>

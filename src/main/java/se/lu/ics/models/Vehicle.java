@@ -147,4 +147,9 @@ public class Vehicle {
         return workshops;
     }
 
+    @Override
+    public String toString() {
+        return String.valueOf(vin);
+    }
+
 }

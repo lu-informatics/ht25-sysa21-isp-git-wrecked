@@ -71,6 +71,29 @@ public class InputWorkshopviewController {
     public void handleButtonBackAction() {
         appController.showWorkshopView();
     }
+    @FXML
+    public void handleButtonApplyAction() {
 
+    String name = textFieldWorkshopName.getText();
+    String address = textFieldWorkshopAddress.getText();
+    boolean isInternal;
 
+    if (radioButtonInternal.isSelected()) {
+        isInternal = true;
+    } else if (radioButtonExternal.isSelected()) {
+        isInternal = false;
+    } else {
+        labelErrorMessage.setText("Please select if the workshop is internal or external.");
+        return;
+    }
+
+    Workshop newWorkshop = new Workshop(name, isInternal, address);
+    appModel.getWorkshopRegister().addWorkshop(newWorkshop);
+
+    appController.showWorkshopView();
 }
+
+    }
+
+
+

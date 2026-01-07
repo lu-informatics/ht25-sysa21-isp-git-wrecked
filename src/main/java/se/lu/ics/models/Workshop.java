@@ -60,7 +60,7 @@ public class Workshop {
     }
 
     public ObservableList<ServiceHistoryEntry> getServices() {
-        return FXCollections.unmodifiableObservableList(services);
+        return services;
     }
 
     public ObservableList<MaintenanceSchedule> getSchedules() {
