@@ -229,12 +229,12 @@ public class AppController {
         }
     }
 
-    public void showInputServiceHistoryEntryViewVehicle(Vehicle selectedVehicle) {
+    public void showInputServiceHistoryEntryView(Vehicle selectedVehicle) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputServiceHistoryEntryView.fxml"));
             Parent root = loader.load();
 
-            InputServiceHistoryEntryViewVehicleController controller = loader.getController();
+            InputServiceHistoryEntryViewController controller = loader.getController();
             controller.setAppController(this);
             controller.setAppModel(appModel);
             controller.setVehicle(selectedVehicle);
