@@ -107,7 +107,7 @@ public class Vehicle {
         this.isAvailable = isAvailable;
     }
 
-    public boolean isAvailable() {
+    public boolean getIsAvailable() {
         return isAvailable;
     }
 
