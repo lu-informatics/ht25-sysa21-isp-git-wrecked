@@ -42,6 +42,8 @@ public class ServiceHistoryEntryWorkshopViewController {
     @FXML
     private TableView<ServiceHistoryEntry> tableViewServiceHistory;
     @FXML
+    private TableColumn<ServiceHistoryEntry, Vehicle> columnVehicle;
+    @FXML
     private TableColumn<ServiceHistoryEntry, LocalDate> columnDate;
     @FXML
     private TableColumn<ServiceHistoryEntry, String> columnProblemDescription;
@@ -64,6 +66,7 @@ public class ServiceHistoryEntryWorkshopViewController {
 
     @FXML
     private void initialize() {
+        columnVehicle.setCellValueFactory(new PropertyValueFactory<>("vehicle"));
         columnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         columnProblemDescription.setCellValueFactory(new PropertyValueFactory<>("problemDescription"));
         columnCost.setCellValueFactory(new PropertyValueFactory<>("cost"));
@@ -78,16 +81,12 @@ public class ServiceHistoryEntryWorkshopViewController {
 
     @FXML
     public void handleMenuItemAddServiceHistoryAction(ActionEvent event) {
-       ServiceHistoryEntry selectedEntry = tableViewServiceHistory.getSelectionModel().getSelectedItem();
-    if (workshop == null) {
-        labelErrorMessage.setText("Pleasse selcet a workshop to add a service history entry.");
-        return;
-    }
-        appController.showInputServiceHistoryEntryViewWorkshop(workshop, new ServiceHistoryEntry());
+    
+        appController.showInputServiceHistoryEntryViewWorkshop(workshop);
     }
 
    @FXML
-    private void handleMenuItemRemoveServiceHistoryAction() {
+    private void handleMenuItemRemoveServiceHistoryAction(ActionEvent event) {
     ServiceHistoryEntry selectedEntry = tableViewServiceHistory.getSelectionModel().getSelectedItem();
     if (selectedEntry == null) {
         labelErrorMessage.setText("Please select a service history entry to remove.");
@@ -95,6 +94,17 @@ public class ServiceHistoryEntryWorkshopViewController {
     }
     workshop.removeService(selectedEntry); 
 }
+
+    @FXML
+    private void handleMenuItemEditAction(ActionEvent event) {
+    ServiceHistoryEntry selectedEntry = tableViewServiceHistory.getSelectionModel().getSelectedItem();
+    if (selectedEntry == null) {
+        labelErrorMessage.setText("Please select a service history entry to edit.");
+        return;
+    }
+    appController.showInputEditServiceHistoryEntryViewWorkshop(workshop, selectedEntry);
+    tableViewServiceHistory.refresh();
+    }
 
 
     @FXML

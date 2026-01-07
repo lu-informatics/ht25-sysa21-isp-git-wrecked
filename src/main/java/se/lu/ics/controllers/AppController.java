@@ -246,7 +246,7 @@ public class AppController {
             e.printStackTrace();
         }
     }
-    public void showInputServiceHistoryEntryViewWorkshop(Workshop selectedWorkshop, ServiceHistoryEntry selectedEntry) {
+    public void showInputEditServiceHistoryEntryViewWorkshop(Workshop selectedWorkshop, ServiceHistoryEntry selectedEntry) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputServiceHistoryViewWorkshop.fxml"));
             Parent root = loader.load();
@@ -260,12 +260,34 @@ public class AppController {
             Stage stage = new Stage();
             stage.initOwner(primaryStage);
             stage.setScene(new Scene(root));
-            stage.showAndWait(); // pop up
+            stage.showAndWait(); 
+    
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
+    public void showInputServiceHistoryEntryViewWorkshop(Workshop selectedWorkshop) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputServiceHistoryViewWorkshop.fxml"));
+            Parent root = loader.load();
+
+            InputServiceHistoryEntryWorkshopViewController controller = loader.getController();
+            controller.setAppController(this);
+            controller.setAppModel(appModel);
+            controller.setWorkshop(selectedWorkshop);
+
+            Stage stage = new Stage();
+            stage.initOwner(primaryStage);
+            stage.setScene(new Scene(root));
+            stage.showAndWait(); 
+            
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
