@@ -94,8 +94,29 @@ public class InputServiceHistoryEntryWorkshopViewController {
     String partsText = textFieldPartsReplaced.getText().trim();
     Vehicle vehicle = comboBoxVehicle.getValue();
 
-    if (date == null || problem.isEmpty() || costText.isEmpty() || partsText.isEmpty() || vehicle == null) {
-        showError("Fill in date, problem, cost, parts replaced, and vehicle.");
+    // Validate all fields
+    if (date == null) {
+        showError("Service date must be selected.");
+        return;
+    }
+
+    if (problem.isEmpty()) {
+        showError("Problem description cannot be empty.");
+        return;
+    }
+
+    if (costText.isEmpty()) {
+        showError("Cost cannot be empty.");
+        return;
+    }
+
+    if (partsText.isEmpty()) {
+        showError("Parts replaced value cannot be empty.");
+        return;
+    }
+
+    if (vehicle == null) {
+        showError("A vehicle must be selected.");
         return;
     }
 
@@ -104,40 +125,55 @@ public class InputServiceHistoryEntryWorkshopViewController {
 
     try {
         cost = Double.parseDouble(costText);
+        if (cost < 0) {
+            showError("Cost cannot be negative.");
+            return;
+        }
     } catch (NumberFormatException e) {
-        showError("Cost must be a number.");
+        showError("Cost must be a valid number.");
         return;
     }
 
     try {
         parts = Integer.parseInt(partsText);
+        if (parts < 0) {
+            showError("Parts replaced cannot be negative.");
+            return;
+        }
     } catch (NumberFormatException e) {
         showError("Parts replaced must be a whole number.");
         return;
     }
 
-    ServiceHistoryEntry entry;
+    try {
+        ServiceHistoryEntry entry;
 
-    if (serviceHistoryEntry == null) {
-        entry = new ServiceHistoryEntry();   
-    } else {
-        entry = serviceHistoryEntry;         
+        if (serviceHistoryEntry == null) {
+            entry = new ServiceHistoryEntry();   
+        } else {
+            entry = serviceHistoryEntry;         
+        }
+
+        entry.setDate(date);
+        entry.setProblemDescription(problem);
+        entry.setCost(cost);
+        entry.setPartsReplaced(parts);
+        entry.setWorkshop(workshop);
+        entry.setVehicle(vehicle);
+
+        if (serviceHistoryEntry == null) {
+            workshop.getServices().add(entry);   
+        }
+
+        showError("Service history entry saved successfully!");
+        Stage stage = (Stage) buttonApply.getScene().getWindow();
+        stage.close();
+
+    } catch (IllegalArgumentException e) {
+        showError("Error: " + e.getMessage());
+    } catch (Exception e) {
+        showError("An unexpected error occurred: " + e.getMessage());
     }
-
-    entry.setDate(date);
-    entry.setProblemDescription(problem);
-    entry.setCost(cost);
-    entry.setPartsReplaced(parts);
-    entry.setWorkshop(workshop);
-    entry.setVehicle(vehicle);
-
-    if (serviceHistoryEntry == null) {
-        workshop.getServices().add(entry);   
-    }
-
-    Stage stage = (Stage) buttonApply.getScene().getWindow();
-    stage.close();
-    
 }
 
 
