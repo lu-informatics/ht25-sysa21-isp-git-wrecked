@@ -11,6 +11,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import se.lu.ics.models.MaintenanceSchedule;
+import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.Workshop;
 import java.time.LocalDate;
 
