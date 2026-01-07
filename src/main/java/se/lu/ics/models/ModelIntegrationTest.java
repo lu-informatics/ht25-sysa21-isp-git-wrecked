@@ -89,7 +89,7 @@ public class ModelIntegrationTest {
         }
         System.out.println("Available Vehicles:");
         for (Vehicle vehi : vehicleRegister.getVehicles()) {
-            if (vehi.isAvailable()) {
+            if (vehi.getIsAvailable()) {
                 System.out.println(
                         vehi.getLocation() + " " + vehi.getCapacity() + " " + vehi.getType() + " " + vehi.getName());
             }
