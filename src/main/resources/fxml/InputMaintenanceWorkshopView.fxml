@@ -9,12 +9,12 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="307.0" prefWidth="361.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.lu.ics.controllers.InputMaintenanceWorkshopViewController">
 
    <children>
-      <TextField fx:id="textFieldDescription" layoutX="100.0" layoutY="55.0" promptText="Description..." />
-      <TextField fx:id="textFieldVehicle" layoutX="100.0" layoutY="129.0" promptText="Vehicle(VIN)..." />
-      <Button fx:id="buttonApply" layoutX="143.0" layoutY="192.0" mnemonicParsing="false" onAction="#handleButtonApplyAction" prefHeight="25.0" prefWidth="64.0" text="Apply" />
-      <Button fx:id="buttonBack" layoutX="217.0" layoutY="193.0" mnemonicParsing="false" onAction="#handleButtonBackAction" prefHeight="25.0" prefWidth="64.0" text="Back" />
-      <Label fx:id="labelResponse" layoutX="6.0" layoutY="256.0" prefHeight="17.0" prefWidth="349.0" />
-      <DatePicker fx:id="datePicker" layoutX="100.0" layoutY="91.0" prefHeight="26.0" prefWidth="149.0" promptText="Date..." />
-      <Button fx:id="buttonReset" layoutX="68.0" layoutY="192.0" mnemonicParsing="false" onAction="#handleButtonResetAction" prefHeight="25.0" prefWidth="64.0" text="Reset" />
+      <TextField fx:id="textFieldDescription" layoutX="68.0" layoutY="60.0" prefHeight="26.0" prefWidth="218.0" promptText="Description..." />
+      <TextField fx:id="textFieldVehicle" layoutX="68.0" layoutY="141.0" prefHeight="26.0" prefWidth="218.0" promptText="Vehicle(VIN)..." />
+      <Button fx:id="buttonApply" layoutX="222.0" layoutY="185.0" mnemonicParsing="false" onAction="#handleButtonApplyAction" prefHeight="25.0" prefWidth="64.0" text="Apply" />
+      <Button fx:id="buttonBack" layoutX="68.0" layoutY="185.0" mnemonicParsing="false" onAction="#handleButtonBackAction" prefHeight="25.0" prefWidth="64.0" text="Back" />
+      <Label fx:id="labelResponse" alignment="CENTER" layoutX="6.0" layoutY="14.0" prefHeight="17.0" prefWidth="349.0" style="-fx-alignment: CENTER;" />
+      <DatePicker fx:id="datePicker" layoutX="68.0" layoutY="100.0" prefHeight="26.0" prefWidth="218.0" promptText="Date..." />
+      <Button fx:id="buttonReset" layoutX="145.0" layoutY="185.0" mnemonicParsing="false" onAction="#handleButtonResetAction" prefHeight="25.0" prefWidth="64.0" text="Reset" />
    </children>
 </AnchorPane>

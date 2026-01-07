@@ -6,14 +6,14 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.lu.ics.controllers.InputMaintenanceScheduleVehicleViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="307.0" prefWidth="361.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.lu.ics.controllers.InputMaintenanceScheduleVehicleViewController">
 
    <children>
-      <TextField fx:id="textFieldDescription" layoutX="100.0" layoutY="56.0" promptText="Description..." />
-      <TextField fx:id="textFieldWorkshop" layoutX="100.0" layoutY="129.0" promptText="Workshop..." />
-      <Button fx:id="buttonApply" layoutX="106.0" layoutY="191.0" mnemonicParsing="false" onAction="#handleButtonApplyAction" prefHeight="25.0" prefWidth="64.0" text="Apply" />
-      <Label fx:id="labelResponse" layoutX="11.0" layoutY="24.0" prefHeight="17.0" prefWidth="379.0" />
-      <Button fx:id="buttonBack" layoutX="188.0" layoutY="191.0" mnemonicParsing="false" onAction="#handleButtonBackAction" prefHeight="26.0" prefWidth="64.0" text="Back" />
-      <DatePicker fx:id="datePicker" layoutX="100.0" layoutY="95.0" prefHeight="26.0" prefWidth="160.0" promptText="Date..." />
+      <TextField fx:id="textFieldDescription" layoutX="101.0" layoutY="73.0" promptText="Description..." />
+      <TextField fx:id="textFieldWorkshop" layoutX="101.0" layoutY="147.0" promptText="Workshop..." />
+      <Button fx:id="buttonApply" layoutX="197.0" layoutY="191.0" mnemonicParsing="false" onAction="#handleButtonApplyAction" prefHeight="25.0" prefWidth="64.0" text="Apply" />
+      <Label fx:id="labelResponse" alignment="CENTER" layoutX="8.0" layoutY="23.0" prefHeight="17.0" prefWidth="347.0" style="-fx-alignment: CENTER;" />
+      <Button fx:id="buttonBack" layoutX="101.0" layoutY="191.0" mnemonicParsing="false" onAction="#handleButtonBackAction" prefHeight="26.0" prefWidth="64.0" text="Back" />
+      <DatePicker fx:id="datePicker" layoutX="101.0" layoutY="111.0" prefHeight="26.0" prefWidth="160.0" promptText="Date..." />
    </children>
 </AnchorPane>
