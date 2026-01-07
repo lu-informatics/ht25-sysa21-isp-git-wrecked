@@ -42,7 +42,7 @@ public class ServiceHistoryEntryWorkshopViewController {
     @FXML
     private TableView<ServiceHistoryEntry> tableViewServiceHistory;
     @FXML
-    private TableColumn<ServiceHistoryEntry, Vehicle> columnVehicle;
+    private TableColumn<ServiceHistoryEntry, String> columnVehicle;
     @FXML
     private TableColumn<ServiceHistoryEntry, LocalDate> columnDate;
     @FXML
