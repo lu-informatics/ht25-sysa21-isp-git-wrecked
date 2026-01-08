@@ -89,10 +89,17 @@ public class InputMaintenanceWorkshopViewController {
             }
 
             if (maintenanceSchedule != null) {
+                Vehicle oldVehicle = maintenanceSchedule.getVehicle();
+                if (oldVehicle != null && oldVehicle != foundVehicle) {
+                    oldVehicle.removeMaintenanceSchedule();
+                }
                 maintenanceSchedule.setDate(date);
                 maintenanceSchedule.setDescription(description);
+
+                foundVehicle.addMaintenanceSchedule(maintenanceSchedule);
                 maintenanceSchedule.setVehicle(foundVehicle);
                 maintenanceSchedule.setWorkshop(workshop);
+                
                 labelResponse.setText("Maintenance schedule updated successfully!");
             } else {
                 MaintenanceSchedule newSchedule = new MaintenanceSchedule(date, description);

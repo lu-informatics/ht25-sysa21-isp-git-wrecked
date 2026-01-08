@@ -93,6 +93,6 @@ public class AppModel {
       vehicle2.addMaintenanceSchedule(schedule2);
       workshop2.addSchedule(schedule2);
       schedule2.setVehicle(vehicle2);
-      schedule2.setWorkshop(workshop1);
+      schedule2.setWorkshop(workshop2);
    }
 }
