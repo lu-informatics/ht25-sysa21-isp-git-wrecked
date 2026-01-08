@@ -55,9 +55,9 @@ public class AppModel {
       workshopRegister.addWorkshop(workshop3);
       workshopRegister.addWorkshop(workshop4);
 
-      ServiceHistoryEntry entry1 = new ServiceHistoryEntry("Brake issues", 250.0, LocalDate.of(2024, 6, 10), 1);
-      ServiceHistoryEntry entry2 = new ServiceHistoryEntry("Engine noise", 400.0, LocalDate.of(2024, 5, 5), 2);
-      ServiceHistoryEntry entry3 = new ServiceHistoryEntry("Flat tire", 100.0, LocalDate.of(2024, 4, 15), 1);
+      ServiceHistoryEntry entry1 = new ServiceHistoryEntry("Brake issues", 250.0, LocalDate.of(2026, 6, 10), 1);
+      ServiceHistoryEntry entry2 = new ServiceHistoryEntry("Engine noise", 400.0, LocalDate.of(2026, 5, 5), 2);
+      ServiceHistoryEntry entry3 = new ServiceHistoryEntry("Flat tire", 100.0, LocalDate.of(2026, 4, 15), 1);
       
       vehicle1.addServiceHistoryEntry(entry1);
       vehicle1.addServiceHistoryEntry(entry2);
@@ -80,12 +80,12 @@ public class AppModel {
       entry2.setWorkshop(workshop2);
       entry3.setWorkshop(workshop3);
       
-      MaintenanceSchedule schedule1 = new MaintenanceSchedule(LocalDate.of(2024, 7, 1), "Regular maintenance");
+      MaintenanceSchedule schedule1 = new MaintenanceSchedule(LocalDate.of(2026, 7, 1), "Regular maintenance");
       vehicle1.addMaintenanceSchedule(schedule1);
       workshop1.addSchedule(schedule1);
       schedule1.setVehicle(vehicle1);
       schedule1.setWorkshop(workshop1);
-      MaintenanceSchedule schedule2 = new MaintenanceSchedule(LocalDate.of(2024, 8, 15), "Engine check-up");
+      MaintenanceSchedule schedule2 = new MaintenanceSchedule(LocalDate.of(2026, 8, 15), "Engine check-up");
       vehicle2.addMaintenanceSchedule(schedule2);
       workshop2.addSchedule(schedule2);
       schedule2.setVehicle(vehicle2);
