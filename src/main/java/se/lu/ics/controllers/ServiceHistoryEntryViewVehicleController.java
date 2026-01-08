@@ -111,7 +111,7 @@ public class ServiceHistoryEntryViewVehicleController {
                 vehicle.removeServiceHistoryEntry(selectedEntry);
                 selectedEntry.getWorkshop().removeService(selectedEntry);
             } catch (IllegalArgumentException e) {
-                labelErrorMessage.setText(e.getMessage());
+                labelErrorMessage.csetText(e.getMessage());
                 return;
             }
         } 
