@@ -48,8 +48,10 @@ public class Vehicle {
     }
 
     public void setLocation(String location) {
+        if (location == null || location.isEmpty()) {
+            throw new IllegalArgumentException("Location must have letters or numbers");
+        }
         this.location = location;
-        throw new IllegalArgumentException("Location must have letters or numbers");
     }
 
     public String getLocation() {
@@ -118,11 +120,11 @@ public class Vehicle {
         return FXCollections.unmodifiableObservableList(serviceHistory);
     }
 
-    public void setIsAvailable(boolean isAvailable) {
+    public void setAvailable(boolean isAvailable) {
         this.isAvailable = isAvailable;
     }
 
-    public boolean getIsAvailable() {
+    public boolean isAvailable() {
         return isAvailable;
     }
 
