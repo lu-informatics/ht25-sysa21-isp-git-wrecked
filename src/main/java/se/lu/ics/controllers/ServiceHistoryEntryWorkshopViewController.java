@@ -63,11 +63,12 @@ public class ServiceHistoryEntryWorkshopViewController {
 
     @FXML
     private void initialize() {
-        columnVehicle.setCellValueFactory(new PropertyValueFactory<>("vehicleString"));
+        columnVehicle.setCellValueFactory(new PropertyValueFactory<>("vin"));
         columnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         columnProblemDescription.setCellValueFactory(new PropertyValueFactory<>("problemDescription"));
         columnCost.setCellValueFactory(new PropertyValueFactory<>("cost"));
         columnPartsReplaced.setCellValueFactory(new PropertyValueFactory<>("partsReplaced"));
+        tableViewServiceHistory.refresh();
     }
      public void initData(Workshop workshop) {
         this.workshop = workshop;
@@ -90,8 +91,16 @@ public class ServiceHistoryEntryWorkshopViewController {
         labelErrorMessage.setText("Please select a service history entry to remove.");
         return;
     }
-    workshop.removeService(selectedEntry);
-    tableViewServiceHistory.refresh();
+    try {
+        workshop.removeService(selectedEntry);
+        tableViewServiceHistory.refresh();
+    }   
+        catch (IllegalArgumentException e) {
+        labelErrorMessage.setText(e.getMessage());
+        return;
+    }
+    
+    
 }
 
     @FXML

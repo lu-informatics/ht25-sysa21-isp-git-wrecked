@@ -79,6 +79,10 @@ public class AppModel {
       entry1.setWorkshop(workshop1);
       entry2.setWorkshop(workshop2);
       entry3.setWorkshop(workshop3);
+
+      entry1.setVehicle(vehicle1);
+      entry2.setVehicle(vehicle1);
+      entry3.setVehicle(vehicle1);
       
       MaintenanceSchedule schedule1 = new MaintenanceSchedule(LocalDate.of(2026, 7, 1), "Regular maintenance");
       vehicle1.addMaintenanceSchedule(schedule1);

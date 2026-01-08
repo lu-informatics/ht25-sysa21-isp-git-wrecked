@@ -121,6 +121,9 @@ public class ServiceHistoryEntry {
         
         return String.valueOf(vehicle.getVin());
     }
+    public int getVin(){
+        return vehicle.getVin();
+    }
 }
 
 

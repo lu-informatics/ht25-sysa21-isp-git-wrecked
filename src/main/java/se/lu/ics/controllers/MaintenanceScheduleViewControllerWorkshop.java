@@ -98,10 +98,11 @@ import java.time.LocalDate;
         }
 
         try {
-                workshop.getSchedules().remove(schedule);
+                workshop.removeSchedule(schedule);
             } catch (IllegalArgumentException e) {
                 labelResponse.setText(e.getMessage());
             }
+        updateTableView();
     }
 
     @FXML

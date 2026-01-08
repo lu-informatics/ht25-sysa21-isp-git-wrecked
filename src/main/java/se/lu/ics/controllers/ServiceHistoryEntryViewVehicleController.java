@@ -71,15 +71,13 @@ public class ServiceHistoryEntryViewVehicleController {
         partsReplacedColumn.setCellValueFactory(new PropertyValueFactory<>("partsReplaced"));
         workshopColumn.setCellValueFactory(new PropertyValueFactory<>("workshop"));
         serviceActivitiesColumn.setCellValueFactory(new PropertyValueFactory<>("serviceActivities"));
-    }
+        serviceHistoryTable.refresh();
+        }
     public void initData(Vehicle vehicle) {
         this.vehicle = vehicle;
 
         vehicleLabel.setText(vehicle.getName() + "" + vehicle.getVin());
         serviceHistoryTable.getItems().setAll(vehicle.getServiceHistory());
-    }
- @FXML
-    private void handleTextFieldSearchServiceHistoryAction() {
     }
 
     @FXML
@@ -97,15 +95,20 @@ public class ServiceHistoryEntryViewVehicleController {
     public void handleMenuItemRemoveServiceHistoryAction(ActionEvent event) {
         ServiceHistoryEntry selectedEntry = serviceHistoryTable.getSelectionModel().getSelectedItem();
         if (selectedEntry != null) {
-            vehicle.removeServiceHistoryEntry(selectedEntry);
-            serviceHistoryTable.getItems().setAll(vehicle.getServiceHistory());
-        } else {
-            System.out.println("Please select a service history entry to remove.");
-        }
+            try {
+                vehicle.removeServiceHistoryEntry(selectedEntry);
+                serviceHistoryTable.getItems().setAll(vehicle.getServiceHistory());
+            } catch (IllegalArgumentException e) {
+                labelErrorMessage.setText(e.getMessage());
+                return;
+            }
+        } 
     }
 
     @FXML
     private void handleButtonBackAction() {
         appController.showVehicleView();
     }
-}
+
+    
+    }

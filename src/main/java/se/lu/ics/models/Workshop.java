@@ -81,8 +81,12 @@ public class Workshop {
 
     public void addSchedule(MaintenanceSchedule schedule) {
         this.schedules.add(schedule);
+
     }
 
+    public void removeSchedule(MaintenanceSchedule schedule) {
+        this.schedules.remove(schedule);
+    }
     public int getServiceCount() {
         return services.size();
     }
@@ -91,9 +95,6 @@ public class Workshop {
         this.services.remove(service);
     }
     
-    @Override
-    public String toString() {
-        return name;
-    }
+    
 
 }
