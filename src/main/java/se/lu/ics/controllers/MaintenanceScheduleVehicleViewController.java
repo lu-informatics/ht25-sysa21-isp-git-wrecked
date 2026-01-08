@@ -138,7 +138,7 @@ public class MaintenanceScheduleVehicleViewController {
     }
 
     @FXML
-    private void handleButtonBackAction() {
+    public void handleButtonBackAction() {
         appController.showVehicleView();
     }
 }

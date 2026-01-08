@@ -84,8 +84,8 @@ public class ServiceHistoryEntryWorkshopViewController {
         tableViewServiceHistory.refresh();
     }
 
-   @FXML
-    private void handleMenuItemRemoveServiceHistoryAction(ActionEvent event) {
+    @FXML
+     public void handleMenuItemRemoveServiceHistoryAction(ActionEvent event) {
     ServiceHistoryEntry selectedEntry = tableViewServiceHistory.getSelectionModel().getSelectedItem();
     if (selectedEntry == null) {
         labelErrorMessage.setText("Please select a service history entry to remove.");
@@ -104,7 +104,7 @@ public class ServiceHistoryEntryWorkshopViewController {
 }
 
     @FXML
-    private void handleMenuItemEditAction(ActionEvent event) {
+    public void handleMenuItemEditAction(ActionEvent event) {
     ServiceHistoryEntry selectedEntry = tableViewServiceHistory.getSelectionModel().getSelectedItem();
     if (selectedEntry == null) {
         labelErrorMessage.setText("Please select a service history entry to edit.");
@@ -116,7 +116,7 @@ public class ServiceHistoryEntryWorkshopViewController {
 
 
     @FXML
-    private void handleButtonBackAction() {
+    public void handleButtonBackAction() {
         appController.showWorkshopView();
     
     }

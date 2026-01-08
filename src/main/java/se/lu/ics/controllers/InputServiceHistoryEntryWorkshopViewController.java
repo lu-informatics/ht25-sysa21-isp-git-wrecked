@@ -78,7 +78,7 @@ public class InputServiceHistoryEntryWorkshopViewController {
 
     
     @FXML
-    private void handleButtonResetAction() {
+    public void handleButtonResetAction() {
         datePickerServiceDate.setValue(null);
         textFieldProblemDescription.clear();
         textFieldCost.clear();
@@ -86,7 +86,7 @@ public class InputServiceHistoryEntryWorkshopViewController {
         comboBoxVehicle.setValue(null);
     }
     @FXML
-    private void handleButtonApplyAction() {
+    public void handleButtonApplyAction() {
 
     LocalDate date = datePickerServiceDate.getValue();
     String problem = textFieldProblemDescription.getText().trim();
@@ -178,7 +178,7 @@ public class InputServiceHistoryEntryWorkshopViewController {
 
 
     @FXML
-    private void handleButtonBackAction() {
+    public void handleButtonBackAction() {
         appController.showWorkshopEntriesView(workshop);
         ((Stage) buttonBack.getScene().getWindow()).close();
     }

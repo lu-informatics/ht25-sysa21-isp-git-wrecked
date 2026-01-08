@@ -75,7 +75,7 @@ public class InputServiceHistoryEntryViewVehicleController {
 
     
     @FXML
-    private void handleButtonApplyAction() {
+    public void handleButtonApplyAction() {
  
     LocalDate date = datePickerServiceDate.getValue();
     String problem = textFieldProblemDescription.getText().trim();
@@ -140,7 +140,7 @@ public class InputServiceHistoryEntryViewVehicleController {
 
     
     @FXML
-    private void handleButtonBackAction(ActionEvent event) {
+    public void handleButtonBackAction(ActionEvent event) {
             appController.showServiceHistoryEntryViewVehicle(vehicle);
             Stage stage=(Stage) buttonBack.getScene().getWindow();
             stage.close();

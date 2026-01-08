@@ -49,12 +49,12 @@ public class MainViewController {
     }
 
     @FXML
-    private void handleButtonVehiclesAction(ActionEvent event) {
+    public void handleButtonVehiclesAction(ActionEvent event) {
         appController.showVehicleView();
     }
 
     @FXML
-    private void handleButtonWorkshopsAction(ActionEvent event) {
+    public void handleButtonWorkshopsAction(ActionEvent event) {
         appController.showWorkshopView();
     }
     @FXML
