@@ -21,6 +21,7 @@ public class InputMaintenanceScheduleVehicleViewController {
     private AppModel appModel;
     private AppController appController;
     private Vehicle vehicle;
+    private MaintenanceSchedule maintenanceSchedule;
    
 
     public void setAppModel(AppModel appModel) {
@@ -33,6 +34,15 @@ public class InputMaintenanceScheduleVehicleViewController {
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
+    }
+
+    public void setMaintenanceSchedule(MaintenanceSchedule schedule) {
+        this.maintenanceSchedule = schedule;
+        if (schedule != null) {
+            textFieldWorkshop.setText(schedule.getWorkshop().getName());
+            datePicker.setValue(schedule.getDate());
+            textFieldDescription.setText(schedule.getDescription());
+        }
     }
 
     @FXML
@@ -49,37 +59,78 @@ public class InputMaintenanceScheduleVehicleViewController {
     private Label labelResponse;
     
     @FXML
-    public void handleButtonApplyAction(ActionEvent event) {
-        String workshop = textFieldWorkshop.getText().trim();
-        LocalDate date = datePicker.getValue();
-        String description = textFieldDescription.getText().trim();
+public void handleButtonApplyAction(ActionEvent event) {
+    String workshopName = textFieldWorkshop.getText().trim();
+    LocalDate date = datePicker.getValue();
+    String description = textFieldDescription.getText().trim();
 
-        if(workshop.isEmpty() || date==null || description.isEmpty()) {
-            labelResponse.setText("Please fill in all fields: workshop, date, and description.");
-            return;
-        }
-
-        Workshop foundWorkshop;
-
-        try{
-            foundWorkshop=appModel.getWorkshopRegister().findWorkshop(workshop);
-        }catch(IllegalArgumentException e){
-            labelResponse.setText(e.getMessage());
-            return;
-        }
-        
-        MaintenanceSchedule newSchedule = new MaintenanceSchedule(date, description);
-
-        vehicle.addMaintenanceSchedule(newSchedule);
-        newSchedule.setVehicle(vehicle);
-        newSchedule.setWorkshop(foundWorkshop);
-        foundWorkshop.addSchedule(newSchedule);
-        
-        appController.showMaintenenceViewVehicle(vehicle);
-        Stage stage=(Stage) buttonApply.getScene().getWindow();
-        stage.close();
-        //stänga fönstret efter apply button
+    if (workshopName.isEmpty()) {
+        labelResponse.setText("Workshop cannot be empty.");
+        return;
     }
+
+    if (description.isEmpty()) {
+        labelResponse.setText("Maintenance description cannot be empty.");
+        return;
+    }
+
+    if (date == null) {
+        labelResponse.setText("Maintenance date must be selected.");
+        return;
+    }
+
+    try {
+        Workshop foundWorkshop = appModel.getWorkshopRegister().findWorkshop(workshopName);
+
+        if (foundWorkshop == null) {
+            labelResponse.setText("Workshop not found.");
+            return;
+        }
+
+        if (maintenanceSchedule != null) {
+
+            Vehicle oldVehicle = maintenanceSchedule.getVehicle();
+            Workshop oldWorkshop = maintenanceSchedule.getWorkshop();
+
+            maintenanceSchedule.setDate(date);
+            maintenanceSchedule.setDescription(description);
+
+            
+            if (oldVehicle != vehicle) {
+                oldVehicle.removeMaintenanceSchedule();
+                vehicle.addMaintenanceSchedule(maintenanceSchedule);
+            }
+            if (oldWorkshop != foundWorkshop) {
+                oldWorkshop.removeSchedule(maintenanceSchedule);
+                foundWorkshop.addSchedule(maintenanceSchedule);
+            }
+
+            labelResponse.setText("Maintenance schedule updated successfully.");
+
+        }
+        
+        else {
+            MaintenanceSchedule newSchedule =
+                    new MaintenanceSchedule(date, description);
+
+            vehicle.addMaintenanceSchedule(newSchedule);
+            foundWorkshop.addSchedule(newSchedule);
+
+            labelResponse.setText("Maintenance schedule created successfully.");
+        }
+
+        appController.showMaintenenceViewVehicle(vehicle);
+
+        Stage stage = (Stage) buttonApply.getScene().getWindow();
+        stage.close();
+
+    } catch (NumberFormatException e) {
+        labelResponse.setText("Invalid input format.");
+    } catch (IllegalArgumentException e) {
+        labelResponse.setText(e.getMessage());
+    }
+}
+
     
     @FXML
         public void handleButtonBackAction(ActionEvent event) {

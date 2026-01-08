@@ -11,7 +11,6 @@ import javafx.scene.control.cell.PropertyValueFactory; //för att koppla getter 
 import javafx.event.ActionEvent;
 
 import java.time.LocalDate;
-
 import se.lu.ics.models.AppModel;
 import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.ServiceHistoryEntry;
@@ -59,6 +58,8 @@ public class ServiceHistoryEntryViewVehicleController {
     @FXML
     private MenuItem menuItemRemoveServiceHistory;
     @FXML
+    private MenuItem menuItemEdit;
+    @FXML
     private Button buttonBack;
     @FXML
     private Label labelErrorMessage;
@@ -88,6 +89,17 @@ public class ServiceHistoryEntryViewVehicleController {
         }
        
         appController.showInputServiceHistoryEntryViewVehicle(vehicle);
+        serviceHistoryTable.setItems(vehicle.getServiceHistory());
+    }
+
+    @FXML
+    public void handleMenuItemEditAction(ActionEvent event) {
+        ServiceHistoryEntry selectedEntry = serviceHistoryTable.getSelectionModel().getSelectedItem();
+        if (selectedEntry == null) {
+            labelErrorMessage.setText("Please select a service history entry to edit.");
+            return;
+        }
+        appController.showInputEditServiceHistoryEntryViewVehicle(vehicle, selectedEntry);
         serviceHistoryTable.setItems(vehicle.getServiceHistory());
     }
 

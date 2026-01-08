@@ -39,6 +39,7 @@
          </font></Label>
       <MenuButton fx:id="menuButtonManageMaintenance" layoutX="388.0" layoutY="154.0" mnemonicParsing="false" text="Manage maintenance">
         <items>
+            <MenuItem fx:id="menuItemEdit" mnemonicParsing="false" onAction="#handleMenuItemEditAction" text="Edit Maintenance" />
           <MenuItem fx:id="menuItemBook" mnemonicParsing="false" onAction="#handleMenuItemBookMaintenanceAction" text="Book Maintenance" />
           <MenuItem fx:id="menuItemCancel" mnemonicParsing="false" onAction="#handleMenuItemCancelMaintenanceAction" text="Cancel Maintenance" />
         </items>
