@@ -93,6 +93,7 @@ public class ServiceHistoryEntryWorkshopViewController {
     }
     try {
         workshop.removeService(selectedEntry);
+        selectedEntry.getVehicle().removeServiceHistoryEntry(selectedEntry);
         tableViewServiceHistory.refresh();
     }   
         catch (IllegalArgumentException e) {
