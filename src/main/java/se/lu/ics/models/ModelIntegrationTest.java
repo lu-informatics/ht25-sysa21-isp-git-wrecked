@@ -13,14 +13,13 @@ public class ModelIntegrationTest {
         Workshop workshop1 = new Workshop("AutoFix", true, "Bilvägen 1");
         Workshop workshop2 = new Workshop("CarCare", false, "Motorvägen 5");
 
-        MaintenanceSchedule schedule1 = new MaintenanceSchedule(LocalDate.of(2024, 7, 15), "Oil Change");
-        MaintenanceSchedule schedule2 = new MaintenanceSchedule(LocalDate.of(2024, 8, 20), "Tire Rotation");
-        MaintenanceSchedule schedule3 = new MaintenanceSchedule(LocalDate.of(2024, 9, 25), "Brake Inspection");
+        MaintenanceSchedule schedule1 = new MaintenanceSchedule(LocalDate.of(2026, 7, 15), "Oil Change");
+        MaintenanceSchedule schedule2 = new MaintenanceSchedule(LocalDate.of(2026, 8, 20), "Tire Rotation");
+        MaintenanceSchedule schedule3 = new MaintenanceSchedule(LocalDate.of(2026, 9, 25), "Brake Inspection");
 
-        ServiceHistoryEntry entry1 = new ServiceHistoryEntry("Brake issues", 250.0, LocalDate.of(2024, 6, 10), 1);
-        ServiceHistoryEntry entry2 = new ServiceHistoryEntry("Engine noise", 400.0, LocalDate.of(2024, 5, 5), 2);
-        ServiceHistoryEntry entry3 = new ServiceHistoryEntry("Flat tire", 100.0, LocalDate.of(2024, 4, 15), 1);
-
+        ServiceHistoryEntry entry1 = new ServiceHistoryEntry("Brake issues", 250.0, LocalDate.of(2026, 6, 10), 1);
+        ServiceHistoryEntry entry2 = new ServiceHistoryEntry("Engine noise", 400.0, LocalDate.of(2026, 5, 5), 2);
+        ServiceHistoryEntry entry3 = new ServiceHistoryEntry("Flat tire", 100.0, LocalDate.of(2026, 4, 15), 1);
         vehicleRegister.addVehicle(vehicle1);
         vehicleRegister.addVehicle(vehicle2);
         vehicleRegister.addVehicle(vehicle3);
@@ -131,7 +130,7 @@ public class ModelIntegrationTest {
         for (Vehicle v : vehicleRegister.getVehicles()) {
             System.out.println("Remaining vehicle: " + v.getName());
         }
-        workshopRegister.removeWorkshop(workshop2.getName());
+        workshopRegister.removeWorkshop(workshop2);
         for (Workshop w : workshopRegister.getWorkshops()) {
             System.out.println("Remaining workshop: " + w.getName());
         }
@@ -141,7 +140,7 @@ public class ModelIntegrationTest {
             System.out.println(
                     "Remaining service entry for vehicle " + vehicle1.getName() + ": " + e.getProblemDescription());
         }
-        vehicle2.removeMaintenanceSchedule();
+        vehicle2.removeMaintenanceSchedule(schedule2);
         System.out.println("Maintenance schedule after removal:" + vehicle2.getMaintenanceSchedule());
 
         System.out.println(
