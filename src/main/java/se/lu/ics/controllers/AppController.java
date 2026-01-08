@@ -90,6 +90,27 @@ public class AppController {
         }
     }
 
+    public void showInputEditMaintenanceScheduleVehicle(Vehicle vehicle, MaintenanceSchedule schedule) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputMaintenanceScheduleVehicleView.fxml"));
+            Parent root = loader.load();
+
+            InputMaintenanceScheduleVehicleViewController controller = loader.getController();
+            controller.setAppController(this);
+            controller.setAppModel(appModel);
+            controller.setVehicle(vehicle);
+            controller.setMaintenanceSchedule(schedule);
+
+            Stage stage = new Stage();
+            stage.initOwner(primaryStage);
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void showServiceHistoryEntryViewVehicle(Vehicle selectedVehicle) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ServiceHistoryEntryViewVehicle.fxml"));
@@ -102,6 +123,28 @@ public class AppController {
 
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showInputEditServiceHistoryEntryViewVehicle(Vehicle vehicle, ServiceHistoryEntry entry) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputServiceHistoryEntryViewVehicle.fxml"));
+            Parent root = loader.load();
+
+            InputServiceHistoryEntryViewVehicleController controller = loader.getController();
+            controller.setAppController(this);
+            controller.setAppModel(appModel);
+            controller.setVehicle(vehicle);
+            controller.setServiceHistoryEntry(entry);
+        
+
+            Stage stage = new Stage();
+            stage.initOwner(primaryStage);
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
 
         } catch (Exception e) {
             e.printStackTrace();

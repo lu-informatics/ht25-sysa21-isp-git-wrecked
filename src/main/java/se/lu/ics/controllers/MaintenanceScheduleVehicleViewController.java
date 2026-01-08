@@ -34,6 +34,8 @@ public class MaintenanceScheduleVehicleViewController {
     @FXML
     private MenuItem menuItemCancel;
     @FXML
+    private MenuItem menuItemEdit;
+    @FXML
     private Label labelShowDate;
     @FXML
     private Label labelShowWorkshop;
@@ -90,6 +92,22 @@ public class MaintenanceScheduleVehicleViewController {
        
         appController.showInputMaintenanceScheduleVehicleView(vehicle);
        
+        loadMaintenanceSchedule();
+        updateMostExpensiveWorkshop();
+    }
+
+    @FXML
+    public void handleMenuItemEditMaintenanceAction(ActionEvent event) {
+        if (vehicle == null) {
+            labelResponse.setText("Vehicle not set.");
+            return;
+        }
+        MaintenanceSchedule schedule = vehicle.getMaintenanceSchedule();
+        if (schedule == null) {
+            labelResponse.setText("No maintenance schedule to edit.");
+            return;
+        }
+        appController.showInputEditMaintenanceScheduleVehicle(vehicle, schedule);
         loadMaintenanceSchedule();
         updateMostExpensiveWorkshop();
     }

@@ -76,67 +76,115 @@ public class InputServiceHistoryEntryViewVehicleController {
     
     @FXML
     public void handleButtonApplyAction() {
- 
+
     LocalDate date = datePickerServiceDate.getValue();
     String problem = textFieldProblemDescription.getText().trim();
     String costText = textFieldCost.getText().trim();
     String partsText = textFieldPartsReplaced.getText().trim();
-    String activitiesText = textFieldServiceActivities.getText().trim(); 
-    String workshopText = textFieldWorkshop.getText().trim();
+    String workshopName = textFieldWorkshop.getText().trim();
+    serviceHistoryTable.refresh();
 
-    if (date == null || problem.isEmpty() || costText.isEmpty() || partsText.isEmpty() || workshopText.isEmpty()) {
-        showError("Fill in date, problem, cost, parts replaced, and workshop.");
+     
+    if (date == null) {
+        showError("Service date must be selected.");
+        return;
+    }
+
+    if (problem.isEmpty()) {
+        showError("Problem description cannot be empty.");
+        return;
+    }
+
+    if (costText.isEmpty()) {
+        showError("Cost cannot be empty.");
+        return;
+    }
+
+    if (partsText.isEmpty()) {
+        showError("Parts replaced value cannot be empty.");
+        return;
+    }
+
+    if (workshopName.isEmpty()) {
+        showError("A workshop must be selected.");
         return;
     }
 
     double cost;
     int parts;
+
     try {
         cost = Double.parseDouble(costText);
+        if (cost < 0) {
+            showError("Cost cannot be negative.");
+            return;
+        }
     } catch (NumberFormatException e) {
-        showError("Cost must be a number.");
+        showError("Cost must be a valid number.");
         return;
     }
 
     try {
         parts = Integer.parseInt(partsText);
+        if (parts < 0) {
+            showError("Parts replaced cannot be negative.");
+            return;
+        }
     } catch (NumberFormatException e) {
         showError("Parts replaced must be a whole number.");
         return;
     }
-    ServiceHistoryEntry newEntry = new ServiceHistoryEntry();
-    newEntry.setDate(date);
-    newEntry.setProblemDescription(problem);
-    newEntry.setCost(cost);
-    newEntry.setPartsReplaced(parts);
-    Workshop w;
+
+    
     try {
-        w = appModel.getWorkshopRegister().findWorkshop(workshopText);
+        Workshop selectedWorkshop =
+                appModel.getWorkshopRegister().findWorkshop(workshopName);
+
+        if (selectedWorkshop == null) {
+            showError("Workshop not found.");
+            return;
+        }
+
+        ServiceHistoryEntry entry;
+
+        if (serviceHistoryEntry == null) {
+            entry = new ServiceHistoryEntry(problem, cost, date, parts);
+
+            vehicle.addServiceHistoryEntry(entry);
+            selectedWorkshop.addService(entry);
+
+        }
+        else {
+            entry = serviceHistoryEntry;
+
+            entry.setDate(date);
+            entry.setProblemDescription(problem);
+            entry.setCost(cost);
+            entry.setPartsReplaced(parts);
+
+            Vehicle oldVehicle = entry.getVehicle();
+            if (oldVehicle != vehicle) {
+                oldVehicle.removeServiceHistoryEntry(entry);
+                vehicle.addServiceHistoryEntry(entry);
+            }
+
+            Workshop oldWorkshop = entry.getWorkshop();
+            if (oldWorkshop != selectedWorkshop) {
+                oldWorkshop.removeService(entry);
+                selectedWorkshop.addService(entry);
+            }
+        }
+
+        showError("Service history entry saved successfully!");
+        Stage stage = (Stage) buttonApply.getScene().getWindow();
+        stage.close();
+        
     } catch (IllegalArgumentException e) {
         showError(e.getMessage());
-        return;
     }
+}
 
-    newEntry.setWorkshop(w);
 
-    newEntry.setVehicle(vehicle);
-    vehicle.addServiceHistoryEntry(newEntry);
-    w.addService(newEntry);
-
-    if (!activitiesText.isEmpty()) {
-    for (String a : activitiesText.split(",")) {
-        String trimmed = a.trim();
-        if (!trimmed.isEmpty()) newEntry.addServiceActivity(trimmed);
-    }
-    }
-    if (workshopText.isEmpty()) {
-    showError("Enter Workshop Name.");
-    return;
-    }
-  
-    Stage stage = (Stage) buttonApply.getScene().getWindow();
-    stage.close();
-    }
 
     
     @FXML
