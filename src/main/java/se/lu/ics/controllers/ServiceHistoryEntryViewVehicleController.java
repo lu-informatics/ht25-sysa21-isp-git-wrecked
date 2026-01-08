@@ -103,9 +103,6 @@ public class ServiceHistoryEntryViewVehicleController {
             System.out.println("Please select a service history entry to remove.");
         }
     }
-    private void clearServiceHistoryTable() {
-        serviceHistoryTable.getItems().clear();
-    }
 
     @FXML
     private void handleButtonBackAction() {

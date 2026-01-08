@@ -81,7 +81,7 @@ public class WorkshopViewController {
         Workshop selectedWorkshop = workshopTable.getSelectionModel().getSelectedItem();
         if (selectedWorkshop != null) {
             try {
-                appModel.getWorkshopRegister().removeWorkshop(selectedWorkshop.getName());
+                appModel.getWorkshopRegister().removeWorkshop(selectedWorkshop);
                 updateTable();
             } catch (IllegalArgumentException e) {
                 labelErrorMessage.setText(e.getMessage());
