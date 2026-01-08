@@ -140,7 +140,7 @@ public class ModelIntegrationTest {
             System.out.println(
                     "Remaining service entry for vehicle " + vehicle1.getName() + ": " + e.getProblemDescription());
         }
-        vehicle2.removeMaintenanceSchedule(schedule2);
+        vehicle2.removeMaintenanceSchedule();
         System.out.println("Maintenance schedule after removal:" + vehicle2.getMaintenanceSchedule());
 
         System.out.println(

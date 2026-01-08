@@ -104,9 +104,6 @@ public class ServiceHistoryEntryViewVehicleController {
             }
         } 
     }
-    private void clearServiceHistoryTable() { //Behövs denna?
-        serviceHistoryTable.getItems().clear();
-    }
 
     @FXML
     private void handleButtonBackAction() {

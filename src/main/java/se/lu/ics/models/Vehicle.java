@@ -107,13 +107,11 @@ public class Vehicle {
         this.maintenanceSchedule = schedule;
     }
 
-    public void removeMaintenanceSchedule(MaintenanceSchedule schedule) { 
-        if (this.maintenanceSchedule != null) {
-            throw new IllegalArgumentException("No maintenance schedule to remove.");}
-
-        else {
-            this.maintenanceSchedule = null;
+    public void removeMaintenanceSchedule() {
+        if (this.maintenanceSchedule == null) {
+            throw new IllegalArgumentException("No maintenance schedule to remove.");
         }
+        this.maintenanceSchedule = null;
     }
 
     public ObservableList<ServiceHistoryEntry> getServiceHistory() {

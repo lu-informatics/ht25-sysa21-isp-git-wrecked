@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 
 public class VehicleRegister {
     private ObservableList<Vehicle> vehicles;
-    private ServiceHistoryEntry serviceHistory;
 
     public VehicleRegister() {
         this.vehicles = FXCollections.observableArrayList();

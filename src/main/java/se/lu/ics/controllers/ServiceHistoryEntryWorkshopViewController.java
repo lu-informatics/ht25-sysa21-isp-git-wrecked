@@ -14,14 +14,12 @@ import java.time.LocalDate;
 import se.lu.ics.models.AppModel;
 import se.lu.ics.models.Workshop;
 import se.lu.ics.models.ServiceHistoryEntry;
-import se.lu.ics.models.Vehicle;
 
 
 public class ServiceHistoryEntryWorkshopViewController {
     private AppModel appModel;
     private AppController appController;
     private Workshop workshop;
-    private ServiceHistoryEntry serviceHistoryEntry;
 
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
@@ -35,9 +33,6 @@ public class ServiceHistoryEntryWorkshopViewController {
         tableViewServiceHistory.setItems(workshop.getServices());
         tableViewServiceHistory.refresh();
     }      
-    public void setServiceHistoryEntry(ServiceHistoryEntry serviceHistoryEntry) {
-       this.serviceHistoryEntry = serviceHistoryEntry;
-    }
 
     @FXML
     private Label workshopLabel;
