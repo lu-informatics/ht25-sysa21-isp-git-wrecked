@@ -82,6 +82,7 @@ public class InputServiceHistoryEntryViewVehicleController {
     String costText = textFieldCost.getText().trim();
     String partsText = textFieldPartsReplaced.getText().trim();
     String workshopName = textFieldWorkshop.getText().trim();
+    String activitiesText = textFieldServiceActivities.getText().trim();
      
     if (date == null) {
         showError("Service date must be selected.");
@@ -152,6 +153,10 @@ public class InputServiceHistoryEntryViewVehicleController {
             selectedWorkshop.addService(entry);
 
             entry.setWorkshop(selectedWorkshop);
+
+            if (!activitiesText.isEmpty()) {
+                entry.addServiceActivity(activitiesText);
+            }
 
         }
         else {
