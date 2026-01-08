@@ -60,7 +60,7 @@ public class VehicleViewController {
         columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
         columnCapacity.setCellValueFactory(new PropertyValueFactory<>("capacity"));
         columnLocation.setCellValueFactory(new PropertyValueFactory<>("location"));
-        columnAvailable.setCellValueFactory(new PropertyValueFactory<>("isAvailable"));
+        columnAvailable.setCellValueFactory(new PropertyValueFactory<>("available"));
         columnType.setCellValueFactory(new PropertyValueFactory<>("type"));
 
         updateTable();
