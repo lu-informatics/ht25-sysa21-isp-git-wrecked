@@ -43,16 +43,13 @@ public class Vehicle {
 
     }
 
-    public void setVin(int vin) {
-        this.vin = vin;
-    }
-
     public int getVin() {
         return vin;
     }
 
     public void setLocation(String location) {
         this.location = location;
+        throw new IllegalArgumentException("Location must have letters or numbers")
     }
 
     public String getLocation() {
@@ -61,6 +58,9 @@ public class Vehicle {
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
+            if (capacity <= 0) {
+                throw new IllegalArgumentException("Capacity must be greater than zero");
+            }
     }
 
     public int getCapacity() {
@@ -69,7 +69,10 @@ public class Vehicle {
 
     public void setName(String name) {
         this.name = name;
-    }
+            if (name == null || name.isEmpty()) {
+                throw new IllegalArgumentException("Name cannot be empty");
+            }
+                }
 
     public String getName() {
         return name;
@@ -88,15 +91,29 @@ public class Vehicle {
     }
 
     public void removeServiceHistoryEntry(ServiceHistoryEntry entry) {
+        if (serviceHistory.isEmpty() || entry == null) {
+            throw new IllegalArgumentException("No service history entries to remove.");
+        }
+        else {
         serviceHistory.remove(entry);
+        }
+
     }
 
     public void addMaintenanceSchedule(MaintenanceSchedule schedule) {
+        if (this.maintenanceSchedule != null) {
+            throw new IllegalArgumentException("Maintenance schedule already exists.");
+        }
         this.maintenanceSchedule = schedule;
     }
 
-    public void removeMaintenanceSchedule() { 
-        this.maintenanceSchedule = null;
+    public void removeMaintenanceSchedule(MaintenanceSchedule schedule) { 
+        if (this.maintenanceSchedule != null) {
+            throw new IllegalArgumentException("No maintenance schedule to remove.");}
+
+        else {
+            this.maintenanceSchedule = null;
+        }
     }
 
     public ObservableList<ServiceHistoryEntry> getServiceHistory() {

@@ -29,27 +29,28 @@ public class WorkshopRegister {
             throw new IllegalArgumentException("No workshop with this name exists.");
         }
 
-        String inputName= name.trim();
+        String inputName = name.trim();
 
-        for (Workshop workshop : workshops) {
-            String workshopN=workshop.getName();
+        for (Workshop tempWorkshop : workshops) {
+            String workshopN=tempWorkshop.getName();
 
             if (workshopN != null && workshopN.equalsIgnoreCase(inputName)) {
-                return workshop;
+                return tempWorkshop;
             } 
         }
         throw new IllegalArgumentException("No workshop with this name exists.");
     }
 
-    public void removeWorkshop(String name) { //BOrde dessa verkligen ha String name som parameter?
+    public void removeWorkshop(Workshop workshop) { 
         for (int i = 0; i < workshops.size(); i++) {
             Workshop w = workshops.get(i);
 
-            if (w.getName().equalsIgnoreCase(name)) {
+            if (w.getName().equalsIgnoreCase(workshop.getName())) {
                 workshops.remove(i);
                 return;
             }
         }
+        
         throw new IllegalArgumentException("No workshop with this name exists. Try again!");
     }
     // bäst med i loop för att ta bort objekt inne i en loop, ger exception
