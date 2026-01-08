@@ -75,7 +75,7 @@ public class InputVehicleViewController {
     }
 
     @FXML
-    private void handleButtonApplyAction(ActionEvent event) {
+    public void handleButtonApplyAction(ActionEvent event) {
 
         String name = textFieldName.getText();
         VehicleType type = comboBoxVehicleType.getValue();
@@ -114,14 +114,14 @@ public class InputVehicleViewController {
     }
 
     @FXML
-    private void handleButtonResetAction(ActionEvent event) {
+    public void handleButtonResetAction(ActionEvent event) {
         textFieldName.clear();
         textFieldCapacity.clear();
         textFieldLocation.clear();
     }
 
     @FXML
-    private void handleButtonBackAction(ActionEvent event) {
+    public void handleButtonBackAction(ActionEvent event) {
         appController.showVehicleView();
     }
 

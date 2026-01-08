@@ -49,7 +49,7 @@ public class InputMaintenanceScheduleVehicleViewController {
     private Label labelResponse;
     
     @FXML
-    private void handleButtonApplyAction(ActionEvent event) {
+    public void handleButtonApplyAction(ActionEvent event) {
         String workshop = textFieldWorkshop.getText().trim();
         LocalDate date = datePicker.getValue();
         String description = textFieldDescription.getText().trim();
@@ -82,7 +82,7 @@ public class InputMaintenanceScheduleVehicleViewController {
     }
     
     @FXML
-        private void handleButtonBackAction(ActionEvent event) {
+        public void handleButtonBackAction(ActionEvent event) {
             appController.showMaintenenceViewVehicle(vehicle);
             Stage stage=(Stage) buttonBack.getScene().getWindow();
             stage.close();

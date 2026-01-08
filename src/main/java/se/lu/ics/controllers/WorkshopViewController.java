@@ -71,7 +71,7 @@ public class WorkshopViewController {
     private Button backToMainMenuButton;
 
     @FXML
-    private void handleMenuItemAddWorkshopAction(ActionEvent event) {
+    public void handleMenuItemAddWorkshopAction(ActionEvent event) {
         appController.showInputWorkshopView(null);
 
     }
@@ -104,12 +104,12 @@ public class WorkshopViewController {
 
 
     @FXML
-    private void handleButtonBackToMainMenuAction(ActionEvent event) {
+    public void handleButtonBackToMainMenuAction(ActionEvent event) {
         appController.showMainView();
     }
 
     @FXML
-    private void handleTextSearchAction(ActionEvent event) {
+    public void handleTextSearchAction(ActionEvent event) {
         String searchText = textSearch.getText().toLowerCase();
         ObservableList<Workshop> filteredWorkshops = FXCollections.observableArrayList();
 

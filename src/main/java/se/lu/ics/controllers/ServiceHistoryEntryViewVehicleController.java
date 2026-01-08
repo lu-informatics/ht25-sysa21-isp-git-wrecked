@@ -81,7 +81,7 @@ public class ServiceHistoryEntryViewVehicleController {
     }
 
     @FXML
-    private void handleMenuItemAddServiceHistoryAction() {
+    public void handleMenuItemAddServiceHistoryAction() {
          if(vehicle==null){
             labelErrorMessage.setText("Vehicle not set.");
             return;
@@ -106,7 +106,7 @@ public class ServiceHistoryEntryViewVehicleController {
     }
 
     @FXML
-    private void handleButtonBackAction() {
+    public void handleButtonBackAction() {
         appController.showVehicleView();
     }
 
