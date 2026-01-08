@@ -109,7 +109,7 @@ public class ServiceHistoryEntryViewVehicleController {
         if (selectedEntry != null) {
             try {
                 vehicle.removeServiceHistoryEntry(selectedEntry);
-                serviceHistoryTable.getItems().setAll(vehicle.getServiceHistory());
+                selectedEntry.getWorkshop().removeService(selectedEntry);
             } catch (IllegalArgumentException e) {
                 labelErrorMessage.setText(e.getMessage());
                 return;
