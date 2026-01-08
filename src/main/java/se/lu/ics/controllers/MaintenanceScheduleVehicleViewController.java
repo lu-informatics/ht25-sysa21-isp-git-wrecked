@@ -109,6 +109,7 @@ public class MaintenanceScheduleVehicleViewController {
                     labelResponse.setText("No maintenance schedule to cancel.");
             } else {
             vehicle.removeMaintenanceSchedule();
+            schedule.getWorkshop().removeSchedule(schedule);
             labelResponse.setText("Maintenance schedule cancelled.");
             updateMostExpensiveWorkshop();
             clearMaintenanceLabels();

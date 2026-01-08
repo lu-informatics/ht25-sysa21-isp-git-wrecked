@@ -99,6 +99,8 @@ import java.time.LocalDate;
 
         try {
                 workshop.removeSchedule(schedule);
+                schedule.getVehicle().removeMaintenanceSchedule();
+                labelResponse.setText("Maintenance schedule cancelled.");
             } catch (IllegalArgumentException e) {
                 labelResponse.setText(e.getMessage());
             }
