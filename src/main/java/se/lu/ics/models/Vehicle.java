@@ -49,7 +49,7 @@ public class Vehicle {
 
     public void setLocation(String location) {
         this.location = location;
-        throw new IllegalArgumentException("Location must have letters or numbers")
+        throw new IllegalArgumentException("Location must have letters or numbers");
     }
 
     public String getLocation() {
