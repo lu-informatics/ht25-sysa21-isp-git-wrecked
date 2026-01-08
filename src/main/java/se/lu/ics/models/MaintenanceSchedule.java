@@ -9,6 +9,12 @@ public class MaintenanceSchedule {
     private Vehicle vehicle;
 
     public MaintenanceSchedule(LocalDate date, String description) {
+        if (date == null || date.isBefore(LocalDate.now())) {
+            throw new IllegalArgumentException("Date cannot be empty or in the past");
+        }
+        if (description == null || description.isEmpty()) {
+            throw new IllegalArgumentException("Description cannot be empty");
+        }
         this.localDate = date;
         this.description = description;
     }
@@ -40,6 +46,9 @@ public class MaintenanceSchedule {
     }
 
     public void setWorkshop(Workshop workshop) {
+        if (workshop == null) {
+            throw new IllegalArgumentException("Workshop cannot be null");
+        }
         this.workshop = workshop;
     }
 
@@ -48,6 +57,9 @@ public class MaintenanceSchedule {
     }
 
     public void setVehicle(Vehicle vehicle) {
+        if (vehicle == null) {
+            throw new IllegalArgumentException("Vehicle cannot be null");
+        }
         this.vehicle = vehicle;
     }
 
