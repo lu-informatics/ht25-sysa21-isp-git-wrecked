@@ -95,6 +95,9 @@ public class Workshop {
         this.services.remove(service);
     }
     
-    
+    @Override
+    public String toString() {
+        return String.valueOf(name);
+    }
 
 }
