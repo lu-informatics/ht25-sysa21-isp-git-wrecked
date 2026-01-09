@@ -49,6 +49,8 @@ public class ServiceHistoryEntryWorkshopViewController {
     @FXML
     private TableColumn<ServiceHistoryEntry, Integer> columnPartsReplaced;
     @FXML
+    private TableColumn<ServiceHistoryEntry, String> tableColumnServiceActivity;
+    @FXML   
     private TextField textFieldSearch;
     @FXML
     private MenuItem menuItemAddServiceHistory;
@@ -68,6 +70,8 @@ public class ServiceHistoryEntryWorkshopViewController {
         columnProblemDescription.setCellValueFactory(new PropertyValueFactory<>("problemDescription"));
         columnCost.setCellValueFactory(new PropertyValueFactory<>("cost"));
         columnPartsReplaced.setCellValueFactory(new PropertyValueFactory<>("partsReplaced"));
+        tableColumnServiceActivity.setCellValueFactory(new PropertyValueFactory<>("serviceActivities"));
+
         tableViewServiceHistory.refresh();
     }
     

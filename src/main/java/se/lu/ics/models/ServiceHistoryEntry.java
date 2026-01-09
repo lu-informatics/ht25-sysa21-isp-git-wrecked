@@ -144,6 +144,12 @@ public class ServiceHistoryEntry {
     public int getVin(){
         return vehicle.getVin();
     }
+    public String getWorkshopName () {
+        if (workshop == null) {
+            return "";
+        }
+        return workshop.getName();
+    }
 }
 
 
