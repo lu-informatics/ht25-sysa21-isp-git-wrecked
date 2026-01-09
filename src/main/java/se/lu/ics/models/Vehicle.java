@@ -88,9 +88,6 @@ public class Vehicle {
     }
 
     public void addServiceHistoryEntry(ServiceHistoryEntry entry) {
-        if (serviceHistory.contains(entry)) {
-            throw new IllegalArgumentException("Service history entry already exists.");
-        }
         serviceHistory.add(entry);
 
         if (getTotalCost() > 100000) {
