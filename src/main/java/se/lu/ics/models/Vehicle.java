@@ -120,10 +120,19 @@ public class Vehicle {
     public void setAvailable(boolean isAvailable) {
         this.isAvailable = isAvailable;
     }
+    
 
     public boolean isAvailable() {
         return isAvailable;
     }
+    public String getAvailableString() {
+    if (isAvailable) {
+        return "Yes";
+    } else {
+        return "No";
+    }
+}
+
 
     public void setType(VehicleType type) {
         this.type = type;
