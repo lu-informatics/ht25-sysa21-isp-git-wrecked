@@ -92,8 +92,7 @@ public class InputMaintenanceWorkshopViewController {
         
             if (maintenanceSchedule == null) {
                 schedule = new MaintenanceSchedule(date, description);
-                workshop.addSchedule(schedule);
-                vehicle.addMaintenanceSchedule(schedule);
+                workshop.addSchedule(schedule);               
                 schedule.setVehicle(foundVehicle);
                 labelResponse.setText("Maintenance schedule added successfully.");
             } else {

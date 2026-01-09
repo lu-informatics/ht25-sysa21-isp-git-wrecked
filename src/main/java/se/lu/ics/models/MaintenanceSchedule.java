@@ -49,7 +49,16 @@ public class MaintenanceSchedule {
         if (workshop == null) {
             throw new IllegalArgumentException("Workshop cannot be null");
         }
+        if (this.workshop == workshop) {
+            return;
+        }
+        if (this.workshop != null) {
+            this.workshop.removeSchedule(this);
+        }
         this.workshop = workshop;
+        if (workshop != null) {
+            workshop.addSchedule(this);
+        }
     }
 
     public Vehicle getVehicle() {
@@ -60,7 +69,16 @@ public class MaintenanceSchedule {
         if (vehicle == null) {
             throw new IllegalArgumentException("Vehicle cannot be null");
         }
-        this.vehicle = vehicle;
+        if (this.vehicle == vehicle) {
+            return;
+        }
+        if (this.vehicle != null) {
+            this.vehicle.removeMaintenanceSchedule(this);
+        }
+            this.vehicle = vehicle;
+            if (vehicle != null) {
+            vehicle.setMaintenanceSchedule(this);
+        }
     }
 
     public int getVin(){

@@ -126,7 +126,7 @@ public class MaintenanceScheduleVehicleViewController {
                     labelShowDate.setText("No date.");
                     labelResponse.setText("No maintenance schedule to cancel.");
             } else {
-            vehicle.removeMaintenanceSchedule();
+            vehicle.removeMaintenanceSchedule(schedule);
             schedule.getWorkshop().removeSchedule(schedule);
             labelResponse.setText("Maintenance schedule cancelled.");
             updateMostExpensiveWorkshop();

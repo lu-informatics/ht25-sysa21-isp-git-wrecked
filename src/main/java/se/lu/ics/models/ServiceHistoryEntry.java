@@ -103,7 +103,18 @@ public class ServiceHistoryEntry {
     }
 
     public void setWorkshop(Workshop workshop) {
-        this.workshop = workshop;
+        
+        if (this.workshop == workshop) {
+            return;
+        }
+        if (this.workshop != null) {
+            this.workshop.removeService(this);
+           
+        }
+            this.workshop = workshop;
+            if (workshop != null) {
+            workshop.addService(this);
+        }
     }
 
     public Vehicle getVehicle() {
@@ -111,7 +122,16 @@ public class ServiceHistoryEntry {
     }
 
     public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
+        if (this.vehicle == vehicle) {
+            return;
+        }
+        if (this.vehicle != null) {
+            this.vehicle.removeServiceHistoryEntry(this);
+        }
+            this.vehicle = vehicle;
+            if (vehicle != null) {
+            vehicle.addServiceHistoryEntry(this);
+        }
     }
 
     public String getVehicleString () {

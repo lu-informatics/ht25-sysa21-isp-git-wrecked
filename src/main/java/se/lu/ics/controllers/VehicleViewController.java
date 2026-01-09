@@ -82,7 +82,7 @@ public class VehicleViewController {
         } else {
             labelResponse.setText("Please select a vehicle to edit.");
         }
-        workshopTable.refresh();
+        
     }
 
     @FXML
