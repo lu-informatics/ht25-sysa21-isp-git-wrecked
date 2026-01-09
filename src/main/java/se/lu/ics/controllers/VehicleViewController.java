@@ -12,7 +12,6 @@ import javafx.scene.control.Button;
 
 import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.VehicleType;
-import se.lu.ics.models.Workshop;
 import se.lu.ics.models.AppModel;
 
 import javafx.event.ActionEvent;
@@ -34,7 +33,7 @@ public class VehicleViewController {
     @FXML
     private TableColumn<Vehicle, String> columnLocation;
     @FXML
-    private TableColumn<Vehicle, Boolean> columnAvailable;
+    private TableColumn<Vehicle, String> columnAvailable;
     @FXML
     private TableColumn<Vehicle, VehicleType> columnType;
     @FXML
@@ -62,7 +61,7 @@ public class VehicleViewController {
         columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
         columnCapacity.setCellValueFactory(new PropertyValueFactory<>("capacity"));
         columnLocation.setCellValueFactory(new PropertyValueFactory<>("location"));
-        columnAvailable.setCellValueFactory(new PropertyValueFactory<>("available"));
+        columnAvailable.setCellValueFactory(new PropertyValueFactory<>("availableString"));
         columnType.setCellValueFactory(new PropertyValueFactory<>("type"));
 
         tableVehicles.refresh();
