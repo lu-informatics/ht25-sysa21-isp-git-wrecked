@@ -19,6 +19,7 @@ public class InputMaintenanceWorkshopViewController {
     private AppController appController;
     private Workshop workshop;
     private MaintenanceSchedule maintenanceSchedule;
+    private Vehicle vehicle;
 
      public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
@@ -87,27 +88,20 @@ public class InputMaintenanceWorkshopViewController {
                 labelResponse.setText("Vehicle with VIN " + vehicleVin + " not found.");
                 return;
             }
-
-            if (maintenanceSchedule != null) {
-                Vehicle oldVehicle = maintenanceSchedule.getVehicle();
-                if (oldVehicle != null && oldVehicle != foundVehicle) {
-                    oldVehicle.removeMaintenanceSchedule();
-                }
-                maintenanceSchedule.setDate(date);
-                maintenanceSchedule.setDescription(description);
-
-                foundVehicle.addMaintenanceSchedule(maintenanceSchedule);
-                maintenanceSchedule.setVehicle(foundVehicle);
-                maintenanceSchedule.setWorkshop(workshop);
-                
-                labelResponse.setText("Maintenance schedule updated successfully!");
+            MaintenanceSchedule schedule;
+        
+            if (maintenanceSchedule == null) {
+                schedule = new MaintenanceSchedule(date, description);
+                workshop.addSchedule(schedule);
+                vehicle.addMaintenanceSchedule(schedule);
+                schedule.setVehicle(foundVehicle);
+                labelResponse.setText("Maintenance schedule added successfully.");
             } else {
-                MaintenanceSchedule newSchedule = new MaintenanceSchedule(date, description);
-                newSchedule.setVehicle(foundVehicle);
-                newSchedule.setWorkshop(workshop);
-                foundVehicle.addMaintenanceSchedule(newSchedule);
-                workshop.getSchedules().add(newSchedule);
-                labelResponse.setText("Maintenance schedule created successfully!");
+                schedule = maintenanceSchedule;
+                schedule.setDate(date);
+                schedule.setDescription(description);
+                schedule.setVehicle(foundVehicle);
+                labelResponse.setText("Maintenance schedule updated successfully.");
             }
 
             appController.showWorkshopSchedulesView(workshop);

@@ -148,36 +148,16 @@ public class InputServiceHistoryEntryViewVehicleController {
 
         if (serviceHistoryEntry == null) {
             entry = new ServiceHistoryEntry(problem, cost, date, parts);
-
             vehicle.addServiceHistoryEntry(entry);
             selectedWorkshop.addService(entry);
-
             entry.setWorkshop(selectedWorkshop);
-
-            if (!activitiesText.isEmpty()) {
-                entry.addServiceActivity(activitiesText);
-            }
-
-        }
-        else {
+        } else {
             entry = serviceHistoryEntry;
-
-            entry.setDate(date);
             entry.setProblemDescription(problem);
             entry.setCost(cost);
+            entry.setDate(date);
             entry.setPartsReplaced(parts);
-
-            Vehicle oldVehicle = entry.getVehicle();
-            if (oldVehicle != vehicle) {
-                oldVehicle.removeServiceHistoryEntry(entry);
-                vehicle.addServiceHistoryEntry(entry);
-            }
-
-            Workshop oldWorkshop = entry.getWorkshop();
-            if (oldWorkshop != selectedWorkshop) {
-                oldWorkshop.removeService(entry);
-                selectedWorkshop.addService(entry);
-            }
+            entry.setWorkshop(selectedWorkshop);
         }
 
         showError("Service history entry saved successfully!");
