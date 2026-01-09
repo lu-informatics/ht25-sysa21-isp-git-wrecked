@@ -152,7 +152,6 @@ public class InputServiceHistoryEntryWorkshopViewController {
         if (serviceHistoryEntry == null) {
             entry = new ServiceHistoryEntry(problem, cost, date, parts);   
             vehicle.addServiceHistoryEntry(entry);
-            workshop.addService(entry);
             entry.setVehicle(vehicle);
         }
 

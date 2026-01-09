@@ -83,8 +83,14 @@ public class Vehicle {
     public MaintenanceSchedule getMaintenanceSchedule() {
         return maintenanceSchedule;
     }
+    public void setMaintenanceSchedule(MaintenanceSchedule maintenanceSchedule) {
+        this.maintenanceSchedule = maintenanceSchedule;
+    }
 
     public void addServiceHistoryEntry(ServiceHistoryEntry entry) {
+        if (serviceHistory.contains(entry)) {
+            throw new IllegalArgumentException("Service history entry already exists.");
+        }
         serviceHistory.add(entry);
 
         if (getTotalCost() > 100000) {
@@ -102,14 +108,8 @@ public class Vehicle {
 
     }
 
-    public void addMaintenanceSchedule(MaintenanceSchedule schedule) {
-        if (this.maintenanceSchedule != null) {
-            throw new IllegalArgumentException("Maintenance schedule already exists.");
-        }
-        this.maintenanceSchedule = schedule;
-    }
 
-    public void removeMaintenanceSchedule() {
+    public void removeMaintenanceSchedule(MaintenanceSchedule schedule) {
         if (this.maintenanceSchedule == null) {
             throw new IllegalArgumentException("No maintenance schedule to remove.");
         }

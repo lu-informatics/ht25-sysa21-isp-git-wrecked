@@ -91,8 +91,7 @@ public class InputMaintenanceScheduleVehicleViewController {
 
         if (maintenanceSchedule == null) {
             schedule = new MaintenanceSchedule(date, description);
-            vehicle.addMaintenanceSchedule(schedule);
-            foundWorkshop.addSchedule(schedule);
+            vehicle.setMaintenanceSchedule(schedule);
             schedule.setWorkshop(foundWorkshop);
             
 

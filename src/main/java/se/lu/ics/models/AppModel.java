@@ -59,13 +59,9 @@ public class AppModel {
       ServiceHistoryEntry entry2 = new ServiceHistoryEntry("Engine noise", 400.0, LocalDate.of(2026, 5, 5), 2);
       ServiceHistoryEntry entry3 = new ServiceHistoryEntry("Flat tire", 100.0, LocalDate.of(2026, 4, 15), 1);
       
-      vehicle1.addServiceHistoryEntry(entry1);
-      vehicle1.addServiceHistoryEntry(entry2);
-      vehicle1.addServiceHistoryEntry(entry3);
+      
 
-      workshop1.addService(entry1);
-      workshop2.addService(entry2);
-      workshop3.addService(entry3);
+      
 
       // Skapar service activities och stoppar dem listan som tillhör Service History Entry 1
       String serviceActivities1 = "Bytt bromsar";
@@ -85,13 +81,9 @@ public class AppModel {
       entry3.setVehicle(vehicle1);
       
       MaintenanceSchedule schedule1 = new MaintenanceSchedule(LocalDate.of(2026, 7, 1), "Regular maintenance");
-      vehicle1.addMaintenanceSchedule(schedule1);
-      workshop1.addSchedule(schedule1);
       schedule1.setVehicle(vehicle1);
       schedule1.setWorkshop(workshop1);
       MaintenanceSchedule schedule2 = new MaintenanceSchedule(LocalDate.of(2026, 8, 15), "Engine check-up");
-      vehicle2.addMaintenanceSchedule(schedule2);
-      workshop2.addSchedule(schedule2);
       schedule2.setVehicle(vehicle2);
       schedule2.setWorkshop(workshop2);
    }
