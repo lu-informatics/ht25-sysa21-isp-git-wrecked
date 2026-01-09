@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 
 import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.VehicleType;
+import se.lu.ics.models.Workshop;
 import se.lu.ics.models.AppModel;
 
 import javafx.event.ActionEvent;
@@ -20,6 +21,7 @@ public class VehicleViewController {
 
     private AppModel appModel;
     private AppController appController;
+    
 
     @FXML
     private TableView<Vehicle> tableVehicles;
@@ -63,12 +65,12 @@ public class VehicleViewController {
         columnAvailable.setCellValueFactory(new PropertyValueFactory<>("available"));
         columnType.setCellValueFactory(new PropertyValueFactory<>("type"));
 
-        updateTable();
+        tableVehicles.refresh();
     }
 
     @FXML
     public void handleButtonVehicleAddAction(ActionEvent event) {
-        appController.showInputVehicleView(null);
+        appController.showInputVehicleView();
     }
 
     @FXML
@@ -76,10 +78,11 @@ public class VehicleViewController {
         Vehicle selectedVehicle = tableVehicles.getSelectionModel().getSelectedItem();
 
         if (selectedVehicle != null) {
-            appController.showInputVehicleView(selectedVehicle);
+            appController.showEditInputVehicleView(selectedVehicle);
         } else {
             labelResponse.setText("Please select a vehicle to edit.");
         }
+        workshopTable.refresh();
     }
 
     @FXML

@@ -52,7 +52,7 @@ public class MaintenanceScheduleVehicleViewController {
     @FXML
     private Button buttonBack;
    
-    //koppla tidigare fönster vehicle till detta. 
+   
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
         labelVehicleVin.setText(vehicle.getName() +" " + vehicle.getVin());

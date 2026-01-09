@@ -70,12 +70,7 @@ public class ServiceHistoryEntryWorkshopViewController {
         columnPartsReplaced.setCellValueFactory(new PropertyValueFactory<>("partsReplaced"));
         tableViewServiceHistory.refresh();
     }
-     public void initData(Workshop workshop) {
-        this.workshop = workshop;
-
-        workshopLabel.setText(workshop.getName());
-        tableViewServiceHistory.getItems().setAll(workshop.getServices());
-    }
+    
 
     @FXML
     public void handleMenuItemAddServiceHistoryAction(ActionEvent event) {

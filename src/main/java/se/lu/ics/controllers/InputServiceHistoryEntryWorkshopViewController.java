@@ -93,6 +93,7 @@ public class InputServiceHistoryEntryWorkshopViewController {
     String costText = textFieldCost.getText().trim();
     String partsText = textFieldPartsReplaced.getText().trim();
     Vehicle vehicle = comboBoxVehicle.getValue();
+    
 
     // Validate all fields
     if (date == null) {
@@ -149,25 +150,27 @@ public class InputServiceHistoryEntryWorkshopViewController {
         ServiceHistoryEntry entry;
 
         if (serviceHistoryEntry == null) {
-            entry = new ServiceHistoryEntry();   
-        } else {
-            entry = serviceHistoryEntry;         
+            entry = new ServiceHistoryEntry(problem, cost, date, parts);   
+            vehicle.addServiceHistoryEntry(entry);
+            workshop.addService(entry);
+            entry.setVehicle(vehicle);
         }
 
-        entry.setDate(date);
-        entry.setProblemDescription(problem);
-        entry.setCost(cost);
-        entry.setPartsReplaced(parts);
-        entry.setWorkshop(workshop);
-        entry.setVehicle(vehicle);
 
-        if (serviceHistoryEntry == null) {
-            workshop.getServices().add(entry);   
-        }
+         else { 
+            entry = serviceHistoryEntry; } 
+            
+            entry.setDate(date);
+            entry.setProblemDescription(problem);
+            entry.setCost(cost);
+            entry.setPartsReplaced(parts);
+            entry.setVehicle(vehicle);
 
         showError("Service history entry saved successfully!");
         Stage stage = (Stage) buttonApply.getScene().getWindow();
         stage.close();
+        
+        
 
     } catch (IllegalArgumentException e) {
         showError("Error: " + e.getMessage());

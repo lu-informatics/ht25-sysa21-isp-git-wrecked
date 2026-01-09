@@ -72,7 +72,7 @@ public class WorkshopViewController {
 
     @FXML
     public void handleMenuItemAddWorkshopAction(ActionEvent event) {
-        appController.showInputWorkshopView(null);
+        appController.showInputWorkshopView();
 
     }
 
@@ -96,7 +96,7 @@ public class WorkshopViewController {
         Workshop editWorkshop = workshopTable.getSelectionModel().getSelectedItem();
 
         if (editWorkshop != null) {
-            appController.showInputWorkshopView(editWorkshop);
+            appController.showEditInputWorkshopView(editWorkshop);
         } else {
             labelErrorMessage.setText("Please select a workshop to edit.");
         }
@@ -143,7 +143,8 @@ public class WorkshopViewController {
         tableColumnType.setCellValueFactory(new PropertyValueFactory<>("type"));
         tableColumnServiceEntries.setCellValueFactory(new PropertyValueFactory<>("serviceCount"));
 
-        updateTable();
+        
+        workshopTable.refresh();
     }
 
     @FXML

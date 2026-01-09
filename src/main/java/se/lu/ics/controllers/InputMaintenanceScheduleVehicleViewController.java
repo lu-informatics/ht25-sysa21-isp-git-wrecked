@@ -22,6 +22,7 @@ public class InputMaintenanceScheduleVehicleViewController {
     private AppController appController;
     private Vehicle vehicle;
     private MaintenanceSchedule maintenanceSchedule;
+    private Workshop workshop;
    
 
     public void setAppModel(AppModel appModel) {
@@ -59,7 +60,7 @@ public class InputMaintenanceScheduleVehicleViewController {
     private Label labelResponse;
     
     @FXML
-public void handleButtonApplyAction(ActionEvent event) {
+    public void handleButtonApplyAction(ActionEvent event) {
     String workshopName = textFieldWorkshop.getText().trim();
     LocalDate date = datePicker.getValue();
     String description = textFieldDescription.getText().trim();
@@ -86,39 +87,21 @@ public void handleButtonApplyAction(ActionEvent event) {
             labelResponse.setText("Workshop not found.");
             return;
         }
+        MaintenanceSchedule schedule;
 
-        if (maintenanceSchedule != null) {
-
-            Vehicle oldVehicle = maintenanceSchedule.getVehicle();
-            Workshop oldWorkshop = maintenanceSchedule.getWorkshop();
-
-            maintenanceSchedule.setDate(date);
-            maintenanceSchedule.setDescription(description);
-
+        if (maintenanceSchedule == null) {
+            schedule = new MaintenanceSchedule(date, description);
+            vehicle.addMaintenanceSchedule(schedule);
+            foundWorkshop.addSchedule(schedule);
+            schedule.setWorkshop(foundWorkshop);
             
-            if (oldVehicle != vehicle) {
-                oldVehicle.removeMaintenanceSchedule();
-                vehicle.addMaintenanceSchedule(maintenanceSchedule);
-            }
-            if (oldWorkshop != foundWorkshop) {
-                oldWorkshop.removeSchedule(maintenanceSchedule);
-                foundWorkshop.addSchedule(maintenanceSchedule);
-            }
 
-            labelResponse.setText("Maintenance schedule updated successfully.");
-
+        } else {
+            schedule = maintenanceSchedule;
+            schedule.setDate(date);
+            schedule.setDescription(description);
+            schedule.setWorkshop(foundWorkshop);
         }
-        
-        else {
-            MaintenanceSchedule newSchedule =
-                    new MaintenanceSchedule(date, description);
-
-            vehicle.addMaintenanceSchedule(newSchedule);
-            foundWorkshop.addSchedule(newSchedule);
-
-            labelResponse.setText("Maintenance schedule created successfully.");
-        }
-
         appController.showMaintenenceViewVehicle(vehicle);
 
         Stage stage = (Stage) buttonApply.getScene().getWindow();

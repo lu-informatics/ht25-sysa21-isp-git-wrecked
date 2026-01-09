@@ -96,12 +96,12 @@ public class InputVehicleViewController {
         }
 
         if (vehicle == null) {
-            // att add new vehicle
+            
             boolean available = radioButtonAvailable.isSelected();
             Vehicle newVehicle = new Vehicle(location, capacity, available, type, name);
             appModel.getVehicleRegister().addVehicle(newVehicle);
         } else {
-            // att edit existing vehicle
+            
             vehicle.setName(name);
             vehicle.setType(type);
             vehicle.setCapacity(capacity);

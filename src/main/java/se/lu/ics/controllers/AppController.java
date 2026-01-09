@@ -53,7 +53,7 @@ public class AppController {
         }
     }
 
-    public void showInputVehicleView(Vehicle selectedVehicle) {
+    public void showInputVehicleView() {
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputVehicleView.fxml"));
@@ -62,16 +62,53 @@ public class AppController {
             InputVehicleViewController controller = loader.getController();
             controller.setAppController(this);
             controller.setAppModel(appModel);
-            controller.setVehicle(selectedVehicle);
+            
 
             primaryStage.setScene(new Scene(root));
-            primaryStage.show();
+            primaryStage.showAndWait();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    public void showEditInputWorkshopView(Workshop workshop) {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputWorkshopView.fxml"));
+            Parent root = loader.load();
+
+            InputWorkshopviewController controller = loader.getController();
+            controller.setAppController(this);
+            controller.setAppModel(appModel);
+            controller.setWorkshop(workshop);
+
+            primaryStage.setScene(new Scene(root));
+            primaryStage.showAndWait();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void showEditInputVehicleView(Vehicle vehicle) {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputVehicleView.fxml"));
+            Parent root = loader.load();
+
+            InputVehicleViewController controller = loader.getController();
+            controller.setAppController(this);
+            controller.setAppModel(appModel);
+            controller.setVehicle(vehicle);
+
+            primaryStage.setScene(new Scene(root));
+            primaryStage.showAndWait();
+
+        } catch (Exception e) {
+            e.printStackTrace(); 
+
+        }
+    }
     public void showMaintenenceViewVehicle(Vehicle selectedVehicle) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MaintenenceViewVehicle.fxml"));
@@ -169,7 +206,7 @@ public class AppController {
 
     }
 
-    public void showInputWorkshopView(Workshop selectedWorkshop) {
+    public void showInputWorkshopView() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputWorkshopView.fxml"));
             Parent root = loader.load();
@@ -177,10 +214,10 @@ public class AppController {
             InputWorkshopviewController inputWorkshopController = loader.getController();
             inputWorkshopController.setAppController(this);
             inputWorkshopController.setAppModel(appModel);
-            inputWorkshopController.setWorkshop(selectedWorkshop);
+            
 
             primaryStage.setScene(new Scene(root));
-            primaryStage.show();
+            primaryStage.showAndWait();
 
         } catch (Exception e) {
             e.printStackTrace();

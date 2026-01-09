@@ -101,6 +101,7 @@ public class ServiceHistoryEntryViewVehicleController {
         }
         appController.showInputEditServiceHistoryEntryViewVehicle(vehicle, selectedEntry);
         serviceHistoryTable.setItems(vehicle.getServiceHistory());
+        serviceHistoryTable.refresh();
     }
 
     @FXML
