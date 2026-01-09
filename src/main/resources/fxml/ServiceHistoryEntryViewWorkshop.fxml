@@ -30,7 +30,8 @@
           <TableColumn fx:id="columnCost" prefWidth="68.0" text="Cost" />
             <TableColumn fx:id="columnPartsReplaced" prefWidth="71.5" text="Parts" />
           <TableColumn fx:id="columnDate" prefWidth="115.5" text="Date" />
-            <TableColumn fx:id="columnProblemDescription" prefWidth="254.0" text="Description" />
+            <TableColumn fx:id="columnProblemDescription" minWidth="0.0" prefWidth="140.0" text="Description" />
+            <TableColumn fx:id="tableColumnServiceActivity" prefWidth="114.0" text="Service Activity" />
         </columns>
       </TableView>
      <Label layoutX="14.0" layoutY="105.0" prefHeight="17.0" prefWidth="133.0" text="Service history for:">

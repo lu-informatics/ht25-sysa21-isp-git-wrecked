@@ -151,18 +151,22 @@ public class InputServiceHistoryEntryWorkshopViewController {
 
         if (serviceHistoryEntry == null) {
             entry = new ServiceHistoryEntry(problem, cost, date, parts);   
-            vehicle.addServiceHistoryEntry(entry);
-            entry.setVehicle(vehicle);
+            
         }
 
 
          else { 
-            entry = serviceHistoryEntry; } 
+            entry = serviceHistoryEntry;  
             
             entry.setDate(date);
             entry.setProblemDescription(problem);
             entry.setCost(cost);
             entry.setPartsReplaced(parts);
+            entry.setVehicle(vehicle);
+            
+        }
+            entry.addServiceActivity(partsText);
+            entry.setWorkshop(workshop);
             entry.setVehicle(vehicle);
 
         showError("Service history entry saved successfully!");

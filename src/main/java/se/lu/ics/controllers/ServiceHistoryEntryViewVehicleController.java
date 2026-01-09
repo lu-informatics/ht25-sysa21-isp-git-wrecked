@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import se.lu.ics.models.AppModel;
 import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.ServiceHistoryEntry;
+import se.lu.ics.models.Workshop;
 
 public class ServiceHistoryEntryViewVehicleController {
     private AppModel appModel;
@@ -70,7 +71,7 @@ public class ServiceHistoryEntryViewVehicleController {
         problemDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("problemDescription"));
         costColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
         partsReplacedColumn.setCellValueFactory(new PropertyValueFactory<>("partsReplaced"));
-        workshopColumn.setCellValueFactory(new PropertyValueFactory<>("workshop"));
+        workshopColumn.setCellValueFactory(new PropertyValueFactory<>("workshopName"));
         serviceActivitiesColumn.setCellValueFactory(new PropertyValueFactory<>("serviceActivities"));
         serviceHistoryTable.refresh();
         }

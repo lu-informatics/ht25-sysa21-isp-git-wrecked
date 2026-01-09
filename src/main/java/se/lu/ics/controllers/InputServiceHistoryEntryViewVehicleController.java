@@ -148,8 +148,7 @@ public class InputServiceHistoryEntryViewVehicleController {
 
         if (serviceHistoryEntry == null) {
             entry = new ServiceHistoryEntry(problem, cost, date, parts);
-            vehicle.addServiceHistoryEntry(entry);
-            entry.setWorkshop(selectedWorkshop);
+            
         } else {
             entry = serviceHistoryEntry;
             entry.setProblemDescription(problem);
@@ -157,8 +156,12 @@ public class InputServiceHistoryEntryViewVehicleController {
             entry.setDate(date);
             entry.setPartsReplaced(parts);
             entry.setWorkshop(selectedWorkshop);
+            
         }
-
+            entry.setVehicle(vehicle);
+            entry.setWorkshop(selectedWorkshop);
+            entry.addServiceActivity(activitiesText);
+            
         showError("Service history entry saved successfully!");
         Stage stage = (Stage) buttonApply.getScene().getWindow();
         stage.close();

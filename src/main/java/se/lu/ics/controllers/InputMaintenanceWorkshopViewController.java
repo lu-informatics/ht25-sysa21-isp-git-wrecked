@@ -92,8 +92,7 @@ public class InputMaintenanceWorkshopViewController {
         
             if (maintenanceSchedule == null) {
                 schedule = new MaintenanceSchedule(date, description);
-                workshop.addSchedule(schedule);               
-                schedule.setVehicle(foundVehicle);
+                
                 labelResponse.setText("Maintenance schedule added successfully.");
             } else {
                 schedule = maintenanceSchedule;
@@ -101,7 +100,9 @@ public class InputMaintenanceWorkshopViewController {
                 schedule.setDescription(description);
                 schedule.setVehicle(foundVehicle);
                 labelResponse.setText("Maintenance schedule updated successfully.");
-            }
+            }   
+                schedule.setWorkshop(workshop);               
+                schedule.setVehicle(foundVehicle);
 
             appController.showWorkshopSchedulesView(workshop);
             Stage stage = (Stage) buttonApply.getScene().getWindow();
