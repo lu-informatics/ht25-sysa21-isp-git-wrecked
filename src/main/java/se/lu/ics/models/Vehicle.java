@@ -114,7 +114,7 @@ public class Vehicle {
     }
 
     public ObservableList<ServiceHistoryEntry> getServiceHistory() {
-        return FXCollections.unmodifiableObservableList(serviceHistory);
+        return serviceHistory;
     }
 
     public void setAvailable(boolean isAvailable) {
