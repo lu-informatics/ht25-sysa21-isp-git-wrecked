@@ -3,7 +3,7 @@ import se.lu.ics.models.AppModel;
 import se.lu.ics.models.MaintenanceSchedule;
 import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.Workshop;
-
+import javafx.scene.control.ComboBox;
 import java.time.LocalDate;
 
 import javafx.event.ActionEvent;
@@ -31,15 +31,16 @@ public class InputMaintenanceWorkshopViewController {
 
      public void setWorkshop(Workshop workshop) {
         this.workshop = workshop;
+        comboBoxVehicle.setItems(appModel.getVehicleRegister().getVehicles());
     }
 
     public void setMaintenanceSchedule(MaintenanceSchedule selectedSchedule) {
         this.maintenanceSchedule = selectedSchedule;
 
         if (maintenanceSchedule != null) {
-            textFieldVehicle.setText(String.valueOf(maintenanceSchedule.getVin()));
             textFieldDescription.setText(maintenanceSchedule.getDescription());
             datePicker.setValue(maintenanceSchedule.getDate());
+            comboBoxVehicle.setValue(maintenanceSchedule.getVehicle());
         }
     }
 
@@ -57,15 +58,18 @@ public class InputMaintenanceWorkshopViewController {
     private Button buttonReset;
     @FXML
     private Label labelResponse;
+    @FXML 
+    private ComboBox <Vehicle> comboBoxVehicle;
 
     @FXML
     public void handleButtonApplyAction(ActionEvent event) {
-        String vehicleVinStr = textFieldVehicle.getText().trim();
         String description = textFieldDescription.getText().trim();
         LocalDate date = datePicker.getValue();
+        Vehicle vehicle = comboBoxVehicle.getValue();
+       
+        
 
-        // Validate all fields
-        if (vehicleVinStr.isEmpty()) {
+        if (vehicle == null) {
             labelResponse.setText("Vehicle VIN cannot be empty.");
             return;
         }
@@ -79,19 +83,19 @@ public class InputMaintenanceWorkshopViewController {
             labelResponse.setText("Maintenance date must be selected.");
             return;
         }
+        
 
         try {
-            int vehicleVin = Integer.parseInt(vehicleVinStr);
-            Vehicle foundVehicle = appModel.getVehicleRegister().findVehicle(vehicleVin);
+            Vehicle foundVehicle = appModel.getVehicleRegister().findVehicle(comboBoxVehicle.getValue().getVin());
 
             if (foundVehicle == null) {
-                labelResponse.setText("Vehicle with VIN " + vehicleVin + " not found.");
+                labelResponse.setText("Vehicle with VIN " + comboBoxVehicle.getValue().getVin() + " not found.");
                 return;
             }
             MaintenanceSchedule schedule;
         
             if (maintenanceSchedule == null) {
-                schedule = new MaintenanceSchedule(date, description);
+                schedule = new MaintenanceSchedule (date, description);
                 
                 labelResponse.setText("Maintenance schedule added successfully.");
             } else {
@@ -127,7 +131,7 @@ public class InputMaintenanceWorkshopViewController {
     public void handleButtonResetAction(ActionEvent event) {
         datePicker.setValue(null);
         textFieldDescription.clear();
-        textFieldVehicle.clear();
+        comboBoxVehicle.setValue(null);
         labelResponse.setText("All fields have been cleared.");
     }
 
