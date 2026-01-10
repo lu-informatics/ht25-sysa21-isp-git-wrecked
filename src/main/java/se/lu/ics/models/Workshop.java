@@ -99,5 +99,13 @@ public class Workshop {
     public String toString() {
         return String.valueOf(name);
     }
+    public double getTotalServiceCost () {
+        double total = 0.0;
+
+        for (ServiceHistoryEntry service : services) {
+            total += service.getCost();
+        }
+        return total;
+    }
 
 }

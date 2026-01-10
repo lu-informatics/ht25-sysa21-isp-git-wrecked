@@ -34,10 +34,10 @@ public class AppModel {
       Vehicle vehicle9 = new Vehicle("Jönköping", 1400, false, VehicleType.MEDIUM_TRUCK, "Scania P280");
       Vehicle vehicle10 = new Vehicle("Linköping", 2300, true, VehicleType.LARGE_TRUCK, "Volvo FH16");
 
-      Workshop workshop1 = new Workshop("Workshop 1", true, "Address 1");
-      Workshop workshop2 = new Workshop("Workshop 2", false, "Address 2");
-      Workshop workshop3 = new Workshop("Workshop 3", true, "Address 3");
-      Workshop workshop4 = new Workshop("Workshop 4", true, "Address 4");
+      Workshop workshop1 = new Workshop("Robins Workshop", true, "Jubelgatan 1");
+      Workshop workshop2 = new Workshop("Bens Motorhouse", false, "PepparGatan 19");
+      Workshop workshop3 = new Workshop("Wheel spin", true, "Åstoropsvägen 7");
+      Workshop workshop4 = new Workshop("Handy hands", true, "KarlaTors väg 3");
 
       vehicleRegister.addVehicle(vehicle1);
       vehicleRegister.addVehicle(vehicle2);

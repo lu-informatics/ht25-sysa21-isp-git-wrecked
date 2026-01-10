@@ -38,7 +38,10 @@
          <font>
             <Font size="15.0" />
          </font></Label>
-      <Label fx:id="workshopLabel" layoutX="140.0" layoutY="106.0" prefHeight="17.0" prefWidth="150.0" text=" " />
+      <Label fx:id="workshopLabel" layoutX="147.0" layoutY="105.0" prefHeight="17.0" prefWidth="150.0" text=" ">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
       <MenuButton fx:id="menuButtonOptions" layoutX="15.0" layoutY="363.0" mnemonicParsing="false" text="Options">
         <items>
             <MenuItem fx:id="menuItemEdit" mnemonicParsing="false" onAction="#handleMenuItemEditAction" text="Edit Service Entry" />
@@ -48,5 +51,15 @@
       </MenuButton>
       <Button fx:id="buttonBack" layoutX="547.0" layoutY="363.0" mnemonicParsing="false" onAction="#handleButtonBackAction" text="Back" />
       <Label fx:id="labelErrorMessage" layoutX="114.0" layoutY="367.0" prefHeight="17.0" prefWidth="315.0" />
+      <Label fx:id="labelTotalServiceCost" layoutX="320.0" layoutY="107.0" prefHeight="17.0" prefWidth="133.0" text="Total Service cost =">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelCost" layoutX="453.0" layoutY="107.0" prefHeight="21.0" prefWidth="133.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
