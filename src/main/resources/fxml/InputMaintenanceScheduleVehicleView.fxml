@@ -12,7 +12,7 @@
       <TextField fx:id="textFieldDescription" layoutX="101.0" layoutY="73.0" promptText="Description..." />
       <TextField fx:id="textFieldWorkshop" layoutX="101.0" layoutY="147.0" promptText="Workshop..." />
       <Button fx:id="buttonApply" layoutX="197.0" layoutY="191.0" mnemonicParsing="false" onAction="#handleButtonApplyAction" prefHeight="25.0" prefWidth="64.0" text="Apply" />
-      <Label fx:id="labelResponse" alignment="CENTER" layoutX="8.0" layoutY="23.0" prefHeight="17.0" prefWidth="347.0" style="-fx-alignment: CENTER;" />
+      <Label fx:id="labelResponse" alignment="CENTER" layoutX="8.0" layoutY="10.0" prefHeight="17.0" prefWidth="345.0" style="-fx-alignment: CENTER;" textFill="RED" />
       <Button fx:id="buttonBack" layoutX="101.0" layoutY="191.0" mnemonicParsing="false" onAction="#handleButtonBackAction" prefHeight="26.0" prefWidth="64.0" text="Back" />
       <DatePicker fx:id="datePicker" layoutX="101.0" layoutY="111.0" prefHeight="26.0" prefWidth="160.0" promptText="Date..." />
    </children>

@@ -13,7 +13,7 @@
       <TextField fx:id="textFieldVehicle" layoutX="68.0" layoutY="141.0" prefHeight="26.0" prefWidth="218.0" promptText="Vehicle(VIN)..." />
       <Button fx:id="buttonApply" layoutX="222.0" layoutY="185.0" mnemonicParsing="false" onAction="#handleButtonApplyAction" prefHeight="25.0" prefWidth="64.0" text="Apply" />
       <Button fx:id="buttonBack" layoutX="68.0" layoutY="185.0" mnemonicParsing="false" onAction="#handleButtonBackAction" prefHeight="25.0" prefWidth="64.0" text="Back" />
-      <Label fx:id="labelResponse" alignment="CENTER" layoutX="6.0" layoutY="14.0" prefHeight="17.0" prefWidth="349.0" style="-fx-alignment: CENTER;" />
+      <Label fx:id="labelResponse" alignment="CENTER" layoutX="6.0" layoutY="10.0" prefHeight="17.0" prefWidth="349.0" style="-fx-alignment: CENTER;" textFill="RED" />
       <DatePicker fx:id="datePicker" layoutX="68.0" layoutY="100.0" prefHeight="26.0" prefWidth="218.0" promptText="Date..." />
       <Button fx:id="buttonReset" layoutX="145.0" layoutY="185.0" mnemonicParsing="false" onAction="#handleButtonResetAction" prefHeight="25.0" prefWidth="64.0" text="Reset" />
    </children>
