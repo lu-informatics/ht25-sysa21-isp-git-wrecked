@@ -8,6 +8,7 @@ import se.lu.ics.models.Workshop;
 import java.time.LocalDate;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.ComboBox;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -35,19 +36,20 @@ public class InputMaintenanceScheduleVehicleViewController {
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
+        comboBoxWorkshop.setItems(appModel.getWorkshopRegister().getWorkshops());
     }
 
     public void setMaintenanceSchedule(MaintenanceSchedule schedule) {
         this.maintenanceSchedule = schedule;
         if (schedule != null) {
-            textFieldWorkshop.setText(schedule.getWorkshop().getName());
+            comboBoxWorkshop.setValue(schedule.getWorkshop());
             datePicker.setValue(schedule.getDate());
             textFieldDescription.setText(schedule.getDescription());
         }
     }
 
-    @FXML
-    private TextField textFieldWorkshop;
+    @FXML 
+    private ComboBox <Workshop> comboBoxWorkshop;
     @FXML
     private DatePicker datePicker;
     @FXML
@@ -61,11 +63,11 @@ public class InputMaintenanceScheduleVehicleViewController {
     
     @FXML
     public void handleButtonApplyAction(ActionEvent event) {
-    String workshopName = textFieldWorkshop.getText().trim();
     LocalDate date = datePicker.getValue();
     String description = textFieldDescription.getText().trim();
+    Workshop workshop = comboBoxWorkshop.getValue();
 
-    if (workshopName.isEmpty()) {
+    if (comboBoxWorkshop.getValue() == null) {
         labelResponse.setText("Workshop cannot be empty.");
         return;
     }
@@ -81,7 +83,7 @@ public class InputMaintenanceScheduleVehicleViewController {
     }
 
     try {
-        Workshop foundWorkshop = appModel.getWorkshopRegister().findWorkshop(workshopName);
+        Workshop foundWorkshop = appModel.getWorkshopRegister().findWorkshop(comboBoxWorkshop.getValue().getName());
 
         if (foundWorkshop == null) {
             labelResponse.setText("Workshop not found.");

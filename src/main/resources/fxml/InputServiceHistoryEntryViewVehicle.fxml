@@ -19,7 +19,7 @@
             <TextField fx:id="textFieldPartsReplaced" promptText="Parts Replaced..." />
             <TextField fx:id="textFieldCost" promptText="Cost..." />
             <TextField fx:id="textFieldServiceActivities" promptText="Service Activities..." />
-            <TextField fx:id="textFieldWorkshop" promptText="Workshop..." />
+            <ComboBox fx:id="comboBoxWorkshop" prefWidth="150.0" promptText="Select Workshop" />
          </children>
       </VBox>
       <HBox layoutX="75.0" layoutY="323.0" prefHeight="26.0" prefWidth="150.0" spacing="20.0">

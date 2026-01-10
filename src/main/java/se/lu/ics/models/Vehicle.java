@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class Vehicle {
+public class Vehicle  {
     private int vin;
+    private Vehicle vehicle;
     private String location;
     private int capacity;
     private boolean isAvailable;
@@ -169,11 +170,9 @@ public class Vehicle {
         }
         return workshops;
     }
+ 
 
-    @Override
-    public String toString() {
-        return String.valueOf(vin);
-    }
+    
 
     public double getVehicleTotalServiceCost() {
         double total = 0.0;
@@ -183,5 +182,4 @@ public class Vehicle {
         }
         return total;
     }
-
 }

@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-
+import javafx.scene.control.ComboBox;
 
 
 public class InputServiceHistoryEntryViewVehicleController {
@@ -36,6 +36,7 @@ public class InputServiceHistoryEntryViewVehicleController {
     }
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
+        comboBoxWorkshop.setItems(appModel.getWorkshopRegister().getWorkshops());
     }
     public void setServiceHistoryEntry(ServiceHistoryEntry selectedEntry) {
         this.serviceHistoryEntry = selectedEntry;
@@ -46,7 +47,7 @@ public class InputServiceHistoryEntryViewVehicleController {
             textFieldCost.setText(String.valueOf(selectedEntry.getCost()));
             textFieldPartsReplaced.setText(String.valueOf(selectedEntry.getPartsReplaced()));
             textFieldServiceActivities.setText(String.join(", ", selectedEntry.getServiceActivities()));
-            textFieldWorkshop.setText(selectedEntry.getWorkshop().getName());
+            comboBoxWorkshop.setValue(selectedEntry.getWorkshop());
         }
     }
 
@@ -74,6 +75,8 @@ public class InputServiceHistoryEntryViewVehicleController {
     private Button buttonBack;
     @FXML
     private Label labelResponse;
+    @FXML
+    private ComboBox <Workshop> comboBoxWorkshop;
 
     
     @FXML
@@ -83,7 +86,7 @@ public class InputServiceHistoryEntryViewVehicleController {
     String problem = textFieldProblemDescription.getText().trim();
     String costText = textFieldCost.getText().trim();
     String partsText = textFieldPartsReplaced.getText().trim();
-    String workshopName = textFieldWorkshop.getText().trim();
+    Workshop workshop = comboBoxWorkshop.getValue();
     String activitiesText = textFieldServiceActivities.getText().trim();
      
     if (date == null) {
@@ -106,12 +109,16 @@ public class InputServiceHistoryEntryViewVehicleController {
         return;
     }
 
-    if (workshopName.isEmpty()) {
+    if (workshop == null) {
         showError("A workshop must be selected.");
         return;
     }
     if (activitiesText.isEmpty() || !activitiesText.matches("[a-zA-Z, ]+")) {
         showError("Service activities must be filled with words");
+        return;
+    }
+    if (comboBoxWorkshop.getValue() == null) {
+        showError("A workshop must be selected.");
         return;
     }
 
@@ -143,7 +150,7 @@ public class InputServiceHistoryEntryViewVehicleController {
     
     try {
         Workshop selectedWorkshop =
-                appModel.getWorkshopRegister().findWorkshop(workshopName);
+                appModel.getWorkshopRegister().findWorkshop(workshop.getName());
 
         if (selectedWorkshop == null) {
             showError("Workshop not found.");

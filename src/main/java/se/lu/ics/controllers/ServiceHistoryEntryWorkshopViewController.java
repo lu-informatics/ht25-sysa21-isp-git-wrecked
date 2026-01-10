@@ -68,7 +68,7 @@ public class ServiceHistoryEntryWorkshopViewController {
 
     @FXML
     private void initialize() {
-        columnVehicle.setCellValueFactory(new PropertyValueFactory<>("vin"));
+        columnVehicle.setCellValueFactory(new PropertyValueFactory<>("vehicleString"));
         columnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         columnProblemDescription.setCellValueFactory(new PropertyValueFactory<>("problemDescription"));
         columnCost.setCellValueFactory(new PropertyValueFactory<>("cost"));
