@@ -175,4 +175,13 @@ public class Vehicle {
         return String.valueOf(vin);
     }
 
+    public double getVehicleTotalServiceCost() {
+        double total = 0.0;
+
+        for (ServiceHistoryEntry entry : serviceHistory) {
+            total += entry.getCost();
+        }
+        return total;
+    }
+
 }

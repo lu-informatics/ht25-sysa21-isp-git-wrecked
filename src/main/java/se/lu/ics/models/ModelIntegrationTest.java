@@ -27,9 +27,9 @@ public class ModelIntegrationTest {
         workshopRegister.addWorkshop(workshop1);
         workshopRegister.addWorkshop(workshop2);
 
-        vehicle1.addMaintenanceSchedule(schedule1);
-        vehicle2.addMaintenanceSchedule(schedule2);
-        vehicle3.addMaintenanceSchedule(schedule3);
+        vehicle1.setMaintenanceSchedule(schedule1);
+        vehicle2.setMaintenanceSchedule(schedule2);
+        vehicle3.setMaintenanceSchedule(schedule3);
 
         vehicle1.addServiceHistoryEntry(entry1);
         vehicle1.addServiceHistoryEntry(entry2);
@@ -140,8 +140,7 @@ public class ModelIntegrationTest {
             System.out.println(
                     "Remaining service entry for vehicle " + vehicle1.getName() + ": " + e.getProblemDescription());
         }
-        vehicle2.removeMaintenanceSchedule();
-        System.out.println("Maintenance schedule after removal:" + vehicle2.getMaintenanceSchedule());
+        
 
         System.out.println(
                 "The most expensive service is: " + vehicleRegister.getMostExpensiveService().getProblemDescription());

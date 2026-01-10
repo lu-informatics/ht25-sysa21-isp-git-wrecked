@@ -31,6 +31,7 @@ public class ServiceHistoryEntryViewVehicleController {
         this.vehicle = vehicle;
         vehicleLabel.setText(vehicle.getName() + " " + vehicle.getVin());
         serviceHistoryTable.setItems(vehicle.getServiceHistory());
+        labelCost.setText(String.format("%.2f", vehicle.getVehicleTotalServiceCost()));
     }
     public Vehicle getVehicle() {
         return vehicle;
@@ -64,7 +65,8 @@ public class ServiceHistoryEntryViewVehicleController {
     private Button buttonBack;
     @FXML
     private Label labelErrorMessage;
-
+    @FXML
+    private Label labelCost;
     @FXML
     private void initialize() { // kan göra detta under med lambdas men vet nt om det är överkurs
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -91,6 +93,8 @@ public class ServiceHistoryEntryViewVehicleController {
        
         appController.showInputServiceHistoryEntryViewVehicle(vehicle);
         serviceHistoryTable.setItems(vehicle.getServiceHistory());
+        serviceHistoryTable.refresh();
+        labelCost.setText(String.format("%.2f", vehicle.getVehicleTotalServiceCost()));
     }
 
     @FXML
@@ -103,6 +107,7 @@ public class ServiceHistoryEntryViewVehicleController {
         appController.showInputEditServiceHistoryEntryViewVehicle(vehicle, selectedEntry);
         serviceHistoryTable.setItems(vehicle.getServiceHistory());
         serviceHistoryTable.refresh();
+        labelCost.setText(String.format("%.2f", vehicle.getVehicleTotalServiceCost()));
     }
 
     @FXML

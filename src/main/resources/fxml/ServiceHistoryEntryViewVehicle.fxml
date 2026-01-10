@@ -41,7 +41,10 @@
          <font>
             <Font size="15.0" />
          </font></Label>
-      <Label fx:id="vehicleLabel" layoutX="140.0" layoutY="106.0" prefHeight="17.0" prefWidth="126.0" text=" " AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="120.0" />
+      <Label fx:id="vehicleLabel" layoutX="183.0" layoutY="120.0" prefHeight="17.0" prefWidth="126.0" text=" " AnchorPane.leftAnchor="183.0" AnchorPane.topAnchor="120.0">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
       <MenuButton fx:id="menuButtonOptions" layoutX="8.0" layoutY="362.0" mnemonicParsing="false" text="Options" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="50.0">
         <items>
             <MenuItem fx:id="menuItemEdit" mnemonicParsing="false" onAction="#handleMenuItemEditAction" text="Edit service history" />
@@ -51,5 +54,15 @@
       </MenuButton>
        <Button fx:id="buttonBack" layoutX="547.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleButtonBackAction" text="Back" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="50.0" />
        <Label fx:id="labelErrorMessage" layoutX="293.0" layoutY="346.0" prefHeight="17.0" prefWidth="312.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="150.0" />
+      <Label fx:id="labelTotalServiceCost" layoutX="792.0" layoutY="120.0" prefHeight="21.0" prefWidth="145.0" text="Total Service Cost =">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelCost" layoutX="937.0" layoutY="120.0" prefHeight="17.0" prefWidth="145.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

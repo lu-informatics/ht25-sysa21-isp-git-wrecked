@@ -32,10 +32,13 @@ public class ServiceHistoryEntryWorkshopViewController {
         workshopLabel.setText(workshop.getName());
         tableViewServiceHistory.setItems(workshop.getServices());
         tableViewServiceHistory.refresh();
+        labelCost.setText(String.format("%.2f", workshop.getTotalServiceCost()));
     }      
 
     @FXML
     private Label workshopLabel;
+    @FXML 
+    private Label labelCost;
     @FXML
     private TableView<ServiceHistoryEntry> tableViewServiceHistory;
     @FXML
@@ -81,6 +84,7 @@ public class ServiceHistoryEntryWorkshopViewController {
     
         appController.showInputServiceHistoryEntryViewWorkshop(workshop);
         tableViewServiceHistory.refresh();
+        labelCost.setText(String.format("%.2f", workshop.getTotalServiceCost()));
     }
 
     @FXML
@@ -112,6 +116,7 @@ public class ServiceHistoryEntryWorkshopViewController {
     }
     appController.showInputEditServiceHistoryEntryViewWorkshop(workshop, selectedEntry);
     tableViewServiceHistory.refresh();
+    labelCost.setText(String.format("%.2f", workshop.getTotalServiceCost()));
     }
 
 

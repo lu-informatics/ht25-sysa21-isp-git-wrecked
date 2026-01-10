@@ -47,6 +47,8 @@ public class InputServiceHistoryEntryWorkshopViewController {
             textFieldCost.setText(String.valueOf(serviceHistoryEntry.getCost()));
             textFieldPartsReplaced.setText(String.valueOf(serviceHistoryEntry.getPartsReplaced()));
             comboBoxVehicle.setValue(serviceHistoryEntry.getVehicle());
+            textFieldServiceActivities.setText(String.join(", ", serviceHistoryEntry.getServiceActivities()));
+            
         }
     }
 
@@ -78,6 +80,8 @@ public class InputServiceHistoryEntryWorkshopViewController {
 
     @FXML
     private Label labelResponse;
+    @FXML
+    private TextField textFieldServiceActivities;
 
     
     @FXML
@@ -86,8 +90,10 @@ public class InputServiceHistoryEntryWorkshopViewController {
         textFieldProblemDescription.clear();
         textFieldCost.clear();
         textFieldPartsReplaced.clear();
-        comboBoxVehicle.setValue(null);
+        comboBoxVehicle.setValue(null);    
+        textFieldServiceActivities.clear();
     }
+    
     @FXML
     public void handleButtonApplyAction() {
 
@@ -96,33 +102,40 @@ public class InputServiceHistoryEntryWorkshopViewController {
     String costText = textFieldCost.getText().trim();
     String partsText = textFieldPartsReplaced.getText().trim();
     Vehicle vehicle = comboBoxVehicle.getValue();
+    String activitiesText = textFieldServiceActivities.getText().trim();
+
     
 
     // Validate all fields
     if (date == null) {
-        showError("Service date must be selected.");
+        labelResponse.setText("Service date must be selected.");
         return;
     }
 
     if (problem.isEmpty()) {
-        showError("Problem description cannot be empty.");
+        labelResponse.setText("Problem description cannot be empty.");
         return;
     }
 
     if (costText.isEmpty()) {
-        showError("Cost cannot be empty.");
+        labelResponse.setText("Cost cannot be empty.");
         return;
     }
 
     if (partsText.isEmpty()) {
-        showError("Parts replaced value cannot be empty.");
+        labelResponse.setText("Parts replaced value cannot be empty.");
         return;
     }
 
     if (vehicle == null) {
-        showError("A vehicle must be selected.");
+        labelResponse.setText("A vehicle must be selected.");
         return;
     }
+    if (activitiesText.isEmpty() || !activitiesText.matches("[a-zA-Z, ]+")) {
+        labelResponse.setText("Service activities must be filled with words.");
+        return;
+    }
+
 
     double cost;
     int parts;
@@ -130,22 +143,22 @@ public class InputServiceHistoryEntryWorkshopViewController {
     try {
         cost = Double.parseDouble(costText);
         if (cost < 0) {
-            showError("Cost cannot be negative.");
+            labelResponse.setText("Cost cannot be negative.");
             return;
         }
     } catch (NumberFormatException e) {
-        showError("Cost must be a valid number.");
+        labelResponse.setText("Cost must be a valid number.");
         return;
     }
 
     try {
         parts = Integer.parseInt(partsText);
         if (parts < 0) {
-            showError("Parts replaced cannot be negative.");
+            labelResponse.setText("Parts replaced cannot be negative.");
             return;
         }
     } catch (NumberFormatException e) {
-        showError("Parts replaced must be a whole number.");
+        labelResponse.setText("Parts replaced must be a whole number.");
         return;
     }
 
@@ -171,17 +184,16 @@ public class InputServiceHistoryEntryWorkshopViewController {
             entry.addServiceActivity(partsText);
             entry.setWorkshop(workshop);
             entry.setVehicle(vehicle);
-
-        showError("Service history entry saved successfully!");
+;       labelResponse.setText("Service history entry saved successfully.");
         Stage stage = (Stage) buttonApply.getScene().getWindow();
         stage.close();
         
         
 
     } catch (IllegalArgumentException e) {
-        showError("Error: " + e.getMessage());
+        labelResponse.setText("Error: " + e.getMessage());
     } catch (Exception e) {
-        showError("An unexpected error occurred: " + e.getMessage());
+        labelResponse.setText("An unexpected error occurred: " + e.getMessage());
     }
 }
 
@@ -192,9 +204,7 @@ public class InputServiceHistoryEntryWorkshopViewController {
         ((Stage) buttonBack.getScene().getWindow()).close();
     }
 
-    private void showError(String message) {
-        labelResponse.setText(message);
-    }
+    
 
     
 
