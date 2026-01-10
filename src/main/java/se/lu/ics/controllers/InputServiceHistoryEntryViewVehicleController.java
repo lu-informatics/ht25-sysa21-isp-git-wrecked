@@ -13,7 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 
 
 
@@ -72,6 +72,8 @@ public class InputServiceHistoryEntryViewVehicleController {
     private Button buttonApply;
     @FXML
     private Button buttonBack;
+    @FXML
+    private Label labelResponse;
 
     
     @FXML
@@ -181,12 +183,7 @@ public class InputServiceHistoryEntryViewVehicleController {
             stage.close();
      }
     private void showError(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Input Error");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    
+        labelResponse.setText(message);
     }
 }
 

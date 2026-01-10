@@ -13,7 +13,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 
 public class InputServiceHistoryEntryWorkshopViewController {
 
@@ -75,6 +75,9 @@ public class InputServiceHistoryEntryWorkshopViewController {
 
     @FXML
     private Button buttonReset;
+
+    @FXML
+    private Label labelResponse;
 
     
     @FXML
@@ -190,11 +193,7 @@ public class InputServiceHistoryEntryWorkshopViewController {
     }
 
     private void showError(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Input Error");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+        labelResponse.setText(message);
     }
 
     

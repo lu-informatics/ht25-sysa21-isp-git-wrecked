@@ -17,6 +17,7 @@
    </fx:define>
    
    <children>
+      <Label fx:id="labelResponse" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="380.0" style="-fx-alignment: CENTER;" textFill="RED" />
 
       <VBox layoutX="100.0" layoutY="74.0" prefHeight="200.0" prefWidth="200.0" spacing="30.0" AnchorPane.bottomAnchor="159.0" AnchorPane.topAnchor="100.0">
          <children>
@@ -40,7 +41,6 @@
                   <Button fx:id="buttonApply" mnemonicParsing="false" onAction="#handleButtonApplyAction" text="Apply" />
                </children>
             </HBox>
-            <Label fx:id="labelResponse" prefHeight="17.0" prefWidth="201.0" textFill="RED" />
          </children>
       </VBox>
    </children>

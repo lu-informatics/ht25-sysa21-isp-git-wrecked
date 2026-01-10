@@ -42,7 +42,9 @@ public class ServiceHistoryEntry {
         if (activity == null || activity.isEmpty()) {
             throw new IllegalArgumentException("Activity cannot be empty");
         }
+        this.serviceActivities.clear();
         this.serviceActivities.add(activity);
+
     }
 
     public void removeServiceActivity(String activity) {
