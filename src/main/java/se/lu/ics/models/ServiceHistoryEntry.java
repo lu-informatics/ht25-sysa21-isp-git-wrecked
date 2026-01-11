@@ -31,11 +31,18 @@ public class ServiceHistoryEntry {
             throw new IllegalArgumentException("Date cannot be empty");
         }
 
+        if (partsReplaced < 0) {
+            throw new IllegalArgumentException("Parts replaced cannot be negative");
+        }
+
+        
+
         this.problemDescription = problemDescription;
         this.cost = cost;
         this.localDate = serviceDate;
         this.partsReplaced = partsReplaced;
         this.serviceActivities = FXCollections.observableArrayList();
+        
     }
 
     public void addServiceActivity(String activity) {
