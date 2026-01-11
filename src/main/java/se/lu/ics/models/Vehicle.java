@@ -94,6 +94,11 @@ public class Vehicle  {
         if (getTotalCost() > 100000) {
             throw new IllegalStateException("WARNING - Total cost exceeds 100000");
         }
+        if (getPartsReplaced() > 100) {
+            this.setAvailable(false);
+            throw new IllegalStateException("WARNING - Parts replaced exceeds 100");
+        }
+        
     }
 
     public void removeServiceHistoryEntry(ServiceHistoryEntry entry) {
