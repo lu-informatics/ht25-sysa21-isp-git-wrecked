@@ -16,5 +16,6 @@
       <Button fx:id="buttonBack" layoutX="101.0" layoutY="191.0" mnemonicParsing="false" onAction="#handleButtonBackAction" prefHeight="26.0" prefWidth="64.0" text="Back" />
       <DatePicker fx:id="datePicker" layoutX="101.0" layoutY="111.0" prefHeight="26.0" prefWidth="160.0" promptText="Date..." />
       <ComboBox fx:id="comboBoxWorkshop" layoutX="101.0" layoutY="148.0" prefHeight="25.0" prefWidth="160.0" promptText="Select Workshop..." />
+      <Button fx:id= "buttonReset" layoutX="149.0" layoutY="231.0" mnemonicParsing="false" onAction="#handleButtonResetAction" prefHeight="25.0" prefWidth="64.0" text="Reset" />
    </children>
 </AnchorPane>

@@ -60,6 +60,8 @@ public class InputMaintenanceScheduleVehicleViewController {
     private Button buttonBack;
     @FXML
     private Label labelResponse;
+    @FXML
+    private Button buttonReset;
     
     @FXML
     public void handleButtonApplyAction(ActionEvent event) {
@@ -124,8 +126,14 @@ public class InputMaintenanceScheduleVehicleViewController {
     
     @FXML
         public void handleButtonBackAction(ActionEvent event) {
-            appController.showMaintenenceViewVehicle(vehicle);
             Stage stage=(Stage) buttonBack.getScene().getWindow();
             stage.close();
         }
+
+    @FXML
+    public void handleButtonResetAction(ActionEvent event) {
+        datePicker.setValue(null);
+        textFieldDescription.clear();
+        comboBoxWorkshop.setValue(null);
+    }
 }
