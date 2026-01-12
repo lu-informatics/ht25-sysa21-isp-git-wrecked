@@ -98,7 +98,7 @@ public class ServiceHistoryEntryViewVehicleController {
         appController.showInputServiceHistoryEntryViewVehicle(vehicle);
         serviceHistoryTable.setItems(vehicle.getServiceHistory());
         serviceHistoryTable.refresh();
-        labelCost.setText(String.format("%.2f", vehicle.getVehicleTotalServiceCost()));
+        labelCost.setText(String.format("%.2f", vehicle.getVehicleTotalServiceCost())); //ändra format grejen
     }
 
     @FXML

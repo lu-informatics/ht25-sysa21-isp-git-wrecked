@@ -113,7 +113,7 @@ public class InputServiceHistoryEntryViewVehicleController {
         showError("A workshop must be selected.");
         return;
     }
-    if (activitiesText.isEmpty() || !activitiesText.matches("[a-zA-Z, ]+")) {
+    if (activitiesText.isEmpty() || !activitiesText.matches("[a-öA-Ö, ]+")) {
         showError("Service activities must be filled with words");
         return;
     }

@@ -131,7 +131,7 @@ public class InputServiceHistoryEntryWorkshopViewController {
         labelResponse.setText("A vehicle must be selected.");
         return;
     }
-    if (activitiesText.isEmpty() || !activitiesText.matches("[a-zA-Z, ]+")) {
+    if (activitiesText.isEmpty() || !activitiesText.matches("[a-öA-Ö, ]+")) {
         labelResponse.setText("Service activities must be filled with words.");
         return;
     }
