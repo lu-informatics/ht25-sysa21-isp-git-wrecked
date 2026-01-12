@@ -46,19 +46,30 @@ public class MaintenanceSchedule {
     }
 
     public void setWorkshop(Workshop workshop) {
+
         if (workshop == null) {
             throw new IllegalArgumentException("Workshop cannot be null");
         }
+
+        if (vehicle != null
+            && vehicle.getType() == VehicleType.LARGE_TRUCK
+            && workshop.getIsInternal()) {
+
+            throw new IllegalStateException(
+            "Large trucks cannot be serviced at internal workshops."
+            );
+        }
+
         if (this.workshop == workshop) {
             return;
         }
+
         if (this.workshop != null) {
             this.workshop.removeSchedule(this);
         }
+
         this.workshop = workshop;
-        if (workshop != null) {
-            workshop.addSchedule(this);
-        }
+        workshop.addSchedule(this);
     }
 
     public Vehicle getVehicle() {

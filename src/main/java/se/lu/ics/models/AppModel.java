@@ -37,7 +37,7 @@ public class AppModel {
       Workshop workshop1 = new Workshop("Robins Workshop", true, "Jubelgatan 1");
       Workshop workshop2 = new Workshop("Bens Motorhouse", false, "PepparGatan 19");
       Workshop workshop3 = new Workshop("Wheel spin", true, "Åstoropsvägen 7");
-      Workshop workshop4 = new Workshop("Handy hands", true, "KarlaTors väg 3");
+      Workshop workshop4 = new Workshop("Handy hands", false, "KarlaTors väg 3");
 
       vehicleRegister.addVehicle(vehicle1);
       vehicleRegister.addVehicle(vehicle2);
@@ -73,12 +73,12 @@ public class AppModel {
       entry2.addServiceActivity(serviceActivities3);
 
       entry1.setWorkshop(workshop1);
-      entry2.setWorkshop(workshop2);
-      entry3.setWorkshop(workshop3);
+      entry2.setWorkshop(workshop3);
+      entry3.setWorkshop(workshop2);
 
       entry1.setVehicle(vehicle1);
       entry2.setVehicle(vehicle1);
-      entry3.setVehicle(vehicle1);
+      entry3.setVehicle(vehicle2);
       
       MaintenanceSchedule schedule1 = new MaintenanceSchedule(LocalDate.of(2026, 7, 1), "Regular maintenance");
       schedule1.setVehicle(vehicle1);

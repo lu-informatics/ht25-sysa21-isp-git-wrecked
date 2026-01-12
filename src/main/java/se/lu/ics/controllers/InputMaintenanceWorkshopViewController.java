@@ -102,11 +102,9 @@ public class InputMaintenanceWorkshopViewController {
                 schedule = maintenanceSchedule;
                 schedule.setDate(date);
                 schedule.setDescription(description);
-                schedule.setVehicle(foundVehicle);
-                labelResponse.setText("Maintenance schedule updated successfully.");
             }   
-                schedule.setWorkshop(workshop);               
                 schedule.setVehicle(foundVehicle);
+                schedule.setWorkshop(workshop);               
 
             appController.showWorkshopSchedulesView(workshop);
             Stage stage = (Stage) buttonApply.getScene().getWindow();
@@ -116,9 +114,11 @@ public class InputMaintenanceWorkshopViewController {
             labelResponse.setText("Invalid VIN format. Please enter a valid number.");
         } catch (IllegalArgumentException e) {
             labelResponse.setText("Error: " + e.getMessage());
+        } catch (IllegalStateException e) {
+            labelResponse.setText(e.getMessage());
         } catch (Exception e) {
             labelResponse.setText("An unexpected error occurred: " + e.getMessage());
-        }
+        } 
     }
 
      @FXML

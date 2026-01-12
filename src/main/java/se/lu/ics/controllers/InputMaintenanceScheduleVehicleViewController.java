@@ -101,19 +101,20 @@ public class InputMaintenanceScheduleVehicleViewController {
             schedule = maintenanceSchedule;
             schedule.setDate(date);
             schedule.setDescription(description);
-            schedule.setWorkshop(foundWorkshop);
         }   
-            vehicle.setMaintenanceSchedule(schedule);
+            schedule.setVehicle(vehicle);
             schedule.setWorkshop(foundWorkshop);
             
-        appController.showMaintenenceViewVehicle(vehicle);
+            appController.showMaintenenceViewVehicle(vehicle);
 
-        Stage stage = (Stage) buttonApply.getScene().getWindow();
-        stage.close();
+            Stage stage = (Stage) buttonApply.getScene().getWindow();
+            stage.close();
 
     } catch (NumberFormatException e) {
         labelResponse.setText("Invalid input format.");
     } catch (IllegalArgumentException e) {
+        labelResponse.setText(e.getMessage());
+    } catch (IllegalStateException e) {
         labelResponse.setText(e.getMessage());
     }
 }
