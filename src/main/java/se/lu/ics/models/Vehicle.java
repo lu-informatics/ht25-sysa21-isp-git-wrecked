@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import se.lu.ics.controllers.ServiceHistoryEntryViewVehicleController;
 
 public class Vehicle  {
     private int vin;
@@ -16,6 +17,7 @@ public class Vehicle  {
     private MaintenanceSchedule maintenanceSchedule;
     private ObservableList<ServiceHistoryEntry> serviceHistory;
     private static int counter = 1;
+    private ServiceHistoryEntryViewVehicleController serviceHistoryTable;
 
     public Vehicle(String location, int capacity, boolean isAvailable, VehicleType type, String name) {
         this.vin = counter++;
@@ -90,17 +92,7 @@ public class Vehicle  {
 
     public void addServiceHistoryEntry(ServiceHistoryEntry entry) {
         serviceHistory.add(entry);
-
-        if (getTotalCost() > 100000) {
-            throw new IllegalStateException("WARNING - Total cost exceeds 100000");
-        }
-        if (getPartsReplaced() > 100) {
-            this.setAvailable(false);
-            throw new IllegalStateException("WARNING - Parts replaced exceeds 100");
-        }
-        
     }
-
     public void removeServiceHistoryEntry(ServiceHistoryEntry entry) {
         if (serviceHistory.isEmpty() || entry == null) {
             throw new IllegalArgumentException("No service history entries to remove.");
@@ -108,7 +100,17 @@ public class Vehicle  {
         else {
         serviceHistory.remove(entry);
         }
+        refreshAvailability();
+        }
 
+    
+
+    public void refreshAvailability() {
+        if (getPartsReplaced() >= 100 || getTotalCost() >= 100000) {
+            setAvailable(false);
+        } else {
+            setAvailable(true);
+        }
     }
 
 
@@ -130,6 +132,8 @@ public class Vehicle  {
 
     public boolean isAvailable() {
         return isAvailable;
+
+        
     }
     public String getAvailableString() {
     if (isAvailable) {
@@ -154,6 +158,8 @@ public class Vehicle  {
             partsReplaced += entry.getPartsReplaced();
         }
         return partsReplaced;
+
+
     }
 
     public double getTotalCost() {

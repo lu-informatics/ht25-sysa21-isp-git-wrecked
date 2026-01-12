@@ -32,6 +32,7 @@ public class ServiceHistoryEntryViewVehicleController {
         vehicleLabel.setText(vehicle.getName() + " " + vehicle.getVin());
         serviceHistoryTable.setItems(vehicle.getServiceHistory());
         labelCost.setText(String.format("%.2f", vehicle.getVehicleTotalServiceCost()));
+        serviceHistoryTable.refresh();
     }
     public Vehicle getVehicle() {
         return vehicle;
@@ -77,17 +78,20 @@ public class ServiceHistoryEntryViewVehicleController {
         serviceActivitiesColumn.setCellValueFactory(new PropertyValueFactory<>("serviceActivities"));
         serviceHistoryTable.refresh();
         }
-    public void initData(Vehicle vehicle) {
-        this.vehicle = vehicle;
-
-        vehicleLabel.setText(vehicle.getName() + "" + vehicle.getVin());
-        serviceHistoryTable.getItems().setAll(vehicle.getServiceHistory());
-    }
 
     @FXML
     public void handleMenuItemAddServiceHistoryAction() {
          if(vehicle==null){
             labelErrorMessage.setText("Vehicle not set.");
+            return;
+        }
+
+        if (vehicle.getPartsReplaced() >= 100) {
+            labelErrorMessage.setText("Cannot add service history entry. Vehicle marked as unavailable due to excessive parts replaced.");
+            return;
+        }
+        if (vehicle.getTotalCost() >= 100000) {
+            labelErrorMessage.setText("Cannot add service history entry. Vehicle marked as unavailable due to excessive total cost.");
             return;
         }
        
@@ -107,6 +111,8 @@ public class ServiceHistoryEntryViewVehicleController {
         appController.showInputEditServiceHistoryEntryViewVehicle(vehicle, selectedEntry);
         serviceHistoryTable.setItems(vehicle.getServiceHistory());
         serviceHistoryTable.refresh();
+        
+
         labelCost.setText(String.format("%.2f", vehicle.getVehicleTotalServiceCost()));
     }
 
@@ -122,11 +128,13 @@ public class ServiceHistoryEntryViewVehicleController {
                 return;
             }
         } 
+        serviceHistoryTable.refresh();
     }
 
     @FXML
     public void handleButtonBackAction() {
         appController.showVehicleView();
+
     }
 
     
