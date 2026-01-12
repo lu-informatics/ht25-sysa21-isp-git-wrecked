@@ -46,7 +46,7 @@ public class InputServiceHistoryEntryViewVehicleController {
             textFieldProblemDescription.setText(selectedEntry.getProblemDescription());
             textFieldCost.setText(String.valueOf(selectedEntry.getCost()));
             textFieldPartsReplaced.setText(String.valueOf(selectedEntry.getPartsReplaced()));
-            textFieldServiceActivities.setText(String.join(", ", selectedEntry.getServiceActivities()));
+            textFieldServiceActivities.setText(selectedEntry.getServiceActivities());
             comboBoxWorkshop.setValue(selectedEntry.getWorkshop());
         }
     }
@@ -130,20 +130,20 @@ public class InputServiceHistoryEntryViewVehicleController {
     ServiceHistoryEntry entry;
 
     if (serviceHistoryEntry == null) {
-        entry = new ServiceHistoryEntry(problem, cost, date, parts);
+        entry = new ServiceHistoryEntry(problem, cost, date, parts, activitiesText);
     } else {
         entry = serviceHistoryEntry;
         entry.setProblemDescription(problem);
         entry.setCost(cost);
         entry.setDate(date);
         entry.setPartsReplaced(parts);
+        entry.setServiceActivity(activitiesText);
         
 
     }
 
         entry.setVehicle(vehicle);
         entry.setWorkshop(workshop);
-        entry.addServiceActivity(activitiesText);
         vehicle.refreshAvailability();
 
 

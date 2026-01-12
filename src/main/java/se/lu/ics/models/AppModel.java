@@ -55,22 +55,17 @@ public class AppModel {
       workshopRegister.addWorkshop(workshop3);
       workshopRegister.addWorkshop(workshop4);
 
-      ServiceHistoryEntry entry1 = new ServiceHistoryEntry("Brake issues", 250.0, LocalDate.of(2026, 6, 10), 1);
-      ServiceHistoryEntry entry2 = new ServiceHistoryEntry("Engine noise", 400.0, LocalDate.of(2026, 5, 5), 2);
-      ServiceHistoryEntry entry3 = new ServiceHistoryEntry("Flat tire", 100.0, LocalDate.of(2026, 4, 15), 1);
+      ServiceHistoryEntry entry1 = new ServiceHistoryEntry("Brake issues", 250.0, LocalDate.of(2026, 6, 10), 1, "Bytt bromsar");
+      ServiceHistoryEntry entry2 = new ServiceHistoryEntry("Engine noise", 400.0, LocalDate.of(2026, 5, 5), 2, "Fixat motorljud");
+      ServiceHistoryEntry entry3 = new ServiceHistoryEntry("Flat tire", 100.0, LocalDate.of(2026, 4, 15), 1, "Bytt däck");
       
       
 
       
 
       // Skapar service activities och stoppar dem listan som tillhör Service History Entry 1
-      String serviceActivities1 = "Bytt bromsar";
-      String serviceActivities2 = "Fixat motorljud";
-      String serviceActivities3 = "Bytt däck";
+   
 
-      entry1.addServiceActivity(serviceActivities1);
-      entry1.addServiceActivity(serviceActivities2);
-      entry2.addServiceActivity(serviceActivities3);
 
       entry1.setWorkshop(workshop1);
       entry2.setWorkshop(workshop3);
