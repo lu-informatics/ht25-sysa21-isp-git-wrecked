@@ -58,7 +58,7 @@
         <TableView fx:id="tableViewServiceHistory" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="160.0">
 
             <columns>
-                <TableColumn fx:id="columnVehicle" text="VIN" />
+                <TableColumn fx:id="columnVehicle" text="VIN - Name" />
                 <TableColumn fx:id="columnDate" text="Date" />
                 <TableColumn fx:id="columnProblemDescription" text="Description" />
                 <TableColumn fx:id="columnCost" text="Cost" />

@@ -49,6 +49,10 @@ public class Vehicle  {
     public int getVin() {
         return vin;
     }
+    @Override
+    public String toString() {
+        return vin + " - " + name;
+    }
 
     public void setLocation(String location) {
         if (location == null || location.isEmpty()) {
@@ -193,4 +197,5 @@ public class Vehicle  {
         }
         return total;
     }
+    
 }

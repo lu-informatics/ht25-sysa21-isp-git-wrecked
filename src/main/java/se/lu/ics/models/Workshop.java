@@ -97,7 +97,7 @@ public class Workshop {
     
     @Override
     public String toString() {
-        return String.valueOf(name);
+        return name;
     }
     public double getTotalServiceCost () {
         double total = 0.0;

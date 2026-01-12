@@ -143,16 +143,7 @@ public class ServiceHistoryEntry {
         }
     }
 
-    public String getVehicleString () {
-        if (vehicle == null) {
-            return "";
-        }
-        
-        return String.valueOf(vehicle.getVin());
-    }
-    public int getVin(){
-        return vehicle.getVin();
-    }
+    
     public String getWorkshopName () {
         if (workshop == null) {
             return "";
