@@ -19,7 +19,6 @@ public class InputMaintenanceScheduleWorkshopViewController {
     private AppController appController;
     private Workshop workshop;
     private MaintenanceSchedule maintenanceSchedule;
-    private Vehicle vehicle;
 
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
@@ -48,8 +47,6 @@ public class InputMaintenanceScheduleWorkshopViewController {
     private DatePicker datePicker;
     @FXML
     private TextField textFieldDescription;
-    @FXML
-    private TextField textFieldVehicle;
     @FXML
     private Button buttonApply;
     @FXML
