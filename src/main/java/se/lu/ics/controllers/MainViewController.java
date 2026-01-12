@@ -68,7 +68,7 @@ public class MainViewController {
 
     private void updateAverageMaintenanceCost() {
         double avarageCost = appModel.getVehicleRegister().calculateAvarageCost();
-        labelAverageMaintenanceCost.setText(String.valueOf(avarageCost) + " kr");
+        labelAverageMaintenanceCost.setText(String.format("%.2f kr", avarageCost));
 
     }
 

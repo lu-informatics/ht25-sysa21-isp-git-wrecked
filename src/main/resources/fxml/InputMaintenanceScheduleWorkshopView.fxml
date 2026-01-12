@@ -12,7 +12,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="307.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.lu.ics.controllers.InputMaintenanceScheduleWorkshopViewController">
 
    <children>
-      <Label fx:id="labelResponse" alignment="CENTER" layoutX="15.0" layoutY="47.0" prefHeight="17.0" prefWidth="331.0" />
+      <Label fx:id="labelResponse" alignment="CENTER" layoutX="15.0" layoutY="47.0" prefHeight="17.0" prefWidth="331.0" textFill="RED" />
       <VBox layoutX="102.0" layoutY="82.0" prefHeight="101.0" prefWidth="150.0" spacing="10.0" AnchorPane.leftAnchor="102.0" AnchorPane.topAnchor="82.0">
          <children>
             <TextField fx:id="textFieldDescription" promptText="Description..." />
@@ -23,7 +23,7 @@
       <HBox layoutX="66.0" layoutY="208.0" prefHeight="28.0" prefWidth="221.0" spacing="22.0">
          <children>
             <Button fx:id="buttonBack" mnemonicParsing="false" onAction="#handleButtonBackAction" prefHeight="26.0" prefWidth="64.0" text="Back" />
-            <Button fx:id="buttonReset" mnemonicParsing="false" onAction="#handleButtonResetAction" text="Reset" />
+            <Button fx:id="buttonReset" mnemonicParsing="false" onAction="#handleButtonResetAction" prefHeight="26.0" prefWidth="64.0" text="Reset" />
             <Button fx:id="buttonApply" mnemonicParsing="false" onAction="#handleButtonApplyAction" prefHeight="26.0" prefWidth="64.0" text="Apply" />
          </children>
       </HBox>

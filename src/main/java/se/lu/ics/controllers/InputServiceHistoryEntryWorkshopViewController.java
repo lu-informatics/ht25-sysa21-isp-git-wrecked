@@ -172,7 +172,8 @@ public class InputServiceHistoryEntryWorkshopViewController {
             }
             entry.setWorkshop(workshop);
             entry.setVehicle(vehicle);
-            ;
+            vehicle.refreshAvailability();
+            
             labelResponse.setText("Service history entry saved successfully.");
             Stage stage = (Stage) buttonApply.getScene().getWindow();
             stage.close();
