@@ -104,6 +104,8 @@ public class InputMaintenanceScheduleVehicleViewController {
         }   
             schedule.setVehicle(vehicle);
             schedule.setWorkshop(foundWorkshop);
+            vehicle.setMaintenanceSchedule(schedule);
+
             
             appController.showMaintenenceViewVehicle(vehicle);
 
