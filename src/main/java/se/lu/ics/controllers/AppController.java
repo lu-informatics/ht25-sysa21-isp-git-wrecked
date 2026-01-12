@@ -66,7 +66,7 @@ public class AppController {
             Stage stage = new Stage();
             stage.initOwner(primaryStage);
             stage.setScene(new Scene(root));
-            stage.showAndWait();
+            stage.show();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -220,9 +220,10 @@ public class AppController {
             inputWorkshopController.setAppController(this);
             inputWorkshopController.setAppModel(appModel);
             
-
-            primaryStage.setScene(new Scene(root));
-            primaryStage.showAndWait();
+            Stage stage = new Stage();
+            stage.initOwner(primaryStage);
+            stage.setScene(new Scene(root));
+            stage.show();
 
         } catch (Exception e) {
             e.printStackTrace();

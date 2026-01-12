@@ -75,6 +75,8 @@ public class InputServiceHistoryEntryViewVehicleController {
     @FXML
     private Label labelResponse;
     @FXML
+    private Button buttonReset;
+    @FXML
     private ComboBox <Workshop> comboBoxWorkshop;
 
     
@@ -162,12 +164,20 @@ public class InputServiceHistoryEntryViewVehicleController {
     
     @FXML
     public void handleButtonBackAction(ActionEvent event) {
-            appController.showServiceHistoryEntryViewVehicle(vehicle);
             Stage stage=(Stage) buttonBack.getScene().getWindow();
             stage.close();
      }
     private void showError(String message) {
         labelResponse.setText(message);
+    }
+    @FXML
+    public void handleButtonResetAction(ActionEvent event) {
+        datePickerServiceDate.setValue(null);
+        textFieldProblemDescription.clear();
+        textFieldCost.clear();
+        textFieldPartsReplaced.clear();
+        textFieldServiceActivities.clear();
+        comboBoxWorkshop.setValue(null);
     }
 }
 
