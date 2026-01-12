@@ -16,7 +16,7 @@ import java.time.LocalDate;
 public class MaintenanceScheduleVehicleViewController {
     private AppModel appModel;
     private AppController appController;
-    private Vehicle vehicle; // varför ha? för hämta värdet av vehicle med get?
+    private Vehicle vehicle; 
 
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;

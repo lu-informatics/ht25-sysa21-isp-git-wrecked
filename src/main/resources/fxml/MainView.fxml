@@ -13,7 +13,7 @@
 
 <BorderPane prefHeight="700" prefWidth="1100" style="-fx-background-color: #DCEFFB;;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.lu.ics.controllers.MainViewController">
 
-    <!-- ================= TOP BAR ================= -->
+    
     <top>
         <HBox alignment="CENTER_LEFT" prefHeight="143.0" prefWidth="1100.0" spacing="12" style="-fx-background-color: #0A2A43;">
             <padding>
