@@ -109,7 +109,7 @@ public class InputMaintenanceScheduleVehicleViewController {
             vehicle.setMaintenanceSchedule(schedule);
 
             
-            appController.showMaintenenceViewVehicle(vehicle);
+            appController.showMaintenanceScheduleVehicleView(vehicle);
 
             Stage stage = (Stage) buttonApply.getScene().getWindow();
             stage.close();
@@ -126,6 +126,7 @@ public class InputMaintenanceScheduleVehicleViewController {
     
     @FXML
         public void handleButtonBackAction(ActionEvent event) {
+            appController.showMaintenanceScheduleVehicleView(vehicle);
             Stage stage=(Stage) buttonBack.getScene().getWindow();
             stage.close();
         }

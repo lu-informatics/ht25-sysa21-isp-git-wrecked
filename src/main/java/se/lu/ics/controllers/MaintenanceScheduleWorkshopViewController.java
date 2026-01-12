@@ -14,7 +14,7 @@ import se.lu.ics.models.MaintenanceSchedule;
 import se.lu.ics.models.Workshop;
 import java.time.LocalDate;
 
-    public class MaintenanceScheduleViewControllerWorkshop {
+    public class MaintenanceScheduleWorkshopViewController {
 
     private AppModel appModel;
     private AppController appController;
@@ -73,7 +73,7 @@ import java.time.LocalDate;
 
     @FXML
     public void handleMenuItemAddMaintenanceAction(ActionEvent event) {
-        appController.showInputMaintenanceWorkshopView(workshop, null);
+        appController.showInputMaintenanceScheduleWorkshopView(workshop, null);
         updateTableView();
     }
 
@@ -84,7 +84,7 @@ import java.time.LocalDate;
             labelResponse.setText("Please select a maintenance schedule to edit.");
             return;
         }
-        appController.showInputMaintenanceWorkshopView(workshop, selectedSchedule);
+        appController.showInputMaintenanceScheduleWorkshopView(workshop, selectedSchedule);
         updateTableView();
     }
     

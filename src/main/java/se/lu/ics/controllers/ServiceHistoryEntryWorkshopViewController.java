@@ -82,7 +82,7 @@ public class ServiceHistoryEntryWorkshopViewController {
     @FXML
     public void handleMenuItemAddServiceHistoryAction(ActionEvent event) {
     
-        appController.showInputServiceHistoryEntryViewWorkshop(workshop);
+        appController.showInputServiceHistoryEntryWorkshopView(workshop);
         tableViewServiceHistory.refresh();
         labelCost.setText(String.valueOf(workshop.getTotalServiceCost()));
     }
@@ -115,7 +115,7 @@ public class ServiceHistoryEntryWorkshopViewController {
         labelErrorMessage.setText("Please select a service history entry to edit.");
         return;
     }
-    appController.showInputEditServiceHistoryEntryViewWorkshop(workshop, selectedEntry);
+    appController.showInputEditServiceHistoryEntryWorkshopView(workshop, selectedEntry);
     tableViewServiceHistory.refresh();
     labelCost.setText(String.valueOf(workshop.getTotalServiceCost()));
     }

@@ -4,7 +4,7 @@ package se.lu.ics.models;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import se.lu.ics.controllers.ServiceHistoryEntryViewVehicleController;
+import se.lu.ics.controllers.ServiceHistoryEntryVehicleViewController;
 
 public class Vehicle  {
     private int vin;
@@ -17,7 +17,7 @@ public class Vehicle  {
     private MaintenanceSchedule maintenanceSchedule;
     private ObservableList<ServiceHistoryEntry> serviceHistory;
     private static int counter = 1;
-    private ServiceHistoryEntryViewVehicleController serviceHistoryTable;
+    private ServiceHistoryEntryVehicleViewController serviceHistoryTable;
 
     public Vehicle(String location, int capacity, boolean isAvailable, VehicleType type, String name) {
         this.vin = counter++;

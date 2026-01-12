@@ -138,7 +138,7 @@ public class VehicleViewController {
             return;
         }
 
-        appController.showMaintenenceViewVehicle(selectedVehicle);
+        appController.showMaintenanceScheduleVehicleView(selectedVehicle);
     }
 
     @FXML
@@ -150,7 +150,7 @@ public class VehicleViewController {
             return;
         }
 
-        appController.showServiceHistoryEntryViewVehicle(selectedVehicle);
+        appController.showServiceHistoryEntryVehicleView(selectedVehicle);
     }
 
     @FXML

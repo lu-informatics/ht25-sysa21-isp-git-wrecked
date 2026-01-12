@@ -16,7 +16,7 @@ import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.ServiceHistoryEntry;
 import se.lu.ics.models.Workshop;
 
-public class ServiceHistoryEntryViewVehicleController {
+public class ServiceHistoryEntryVehicleViewController {
     private AppModel appModel;
     private AppController appController;
     private Vehicle vehicle;
@@ -95,7 +95,7 @@ public class ServiceHistoryEntryViewVehicleController {
             return;
         }
        
-        appController.showInputServiceHistoryEntryViewVehicle(vehicle);
+        appController.showInputServiceHistoryEntryVehicleView(vehicle);
         serviceHistoryTable.setItems(vehicle.getServiceHistory());
         serviceHistoryTable.refresh();
         labelCost.setText(String.valueOf(vehicle.getTotalCost()));
@@ -108,7 +108,7 @@ public class ServiceHistoryEntryViewVehicleController {
             labelErrorMessage.setText("Please select a service history entry to edit.");
             return;
         }
-        appController.showInputEditServiceHistoryEntryViewVehicle(vehicle, selectedEntry);
+        appController.showInputEditServiceHistoryEntryVehicleView(vehicle, selectedEntry);
         serviceHistoryTable.setItems(vehicle.getServiceHistory());
         serviceHistoryTable.refresh();
         labelCost.setText(String.valueOf(vehicle.getTotalCost()));

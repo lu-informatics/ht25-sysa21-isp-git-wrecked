@@ -107,7 +107,7 @@ public class MaintenanceScheduleVehicleViewController {
             labelResponse.setText("No maintenance schedule to edit.");
             return;
         }
-        appController.showInputEditMaintenanceScheduleVehicle(vehicle, schedule);
+        appController.showInputEditMaintenanceScheduleVehicleView(vehicle, schedule);
         loadMaintenanceSchedule();
         updateMostExpensiveWorkshop();
     }

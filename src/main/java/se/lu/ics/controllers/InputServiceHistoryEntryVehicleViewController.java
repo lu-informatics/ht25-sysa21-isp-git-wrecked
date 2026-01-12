@@ -17,7 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ComboBox;
 
 
-public class InputServiceHistoryEntryViewVehicleController {
+public class InputServiceHistoryEntryVehicleViewController {
 
     private AppModel appModel;
     private AppController appController;
@@ -152,7 +152,7 @@ public class InputServiceHistoryEntryViewVehicleController {
     return;
 
 }    
-    appController.showServiceHistoryEntryViewVehicle(vehicle);
+    appController.showServiceHistoryEntryVehicleView(vehicle);
     Stage stage = (Stage) buttonApply.getScene().getWindow();   
     stage.close();
 
