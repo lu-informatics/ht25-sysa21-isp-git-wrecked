@@ -87,7 +87,7 @@ public class InputServiceHistoryEntryViewVehicleController {
     String costText = textFieldCost.getText().trim();
     String partsText = textFieldPartsReplaced.getText().trim();
     Workshop workshop = comboBoxWorkshop.getValue();
-    String activitiesText = textFieldServiceActivities.getText().trim();
+    String activitiesText = textFieldServiceActivities.getText();
      
     if (date == null) {
         showError("Service date must be selected.");
@@ -168,7 +168,6 @@ public class InputServiceHistoryEntryViewVehicleController {
             entry.setCost(cost);
             entry.setDate(date);
             entry.setPartsReplaced(parts);
-            entry.setWorkshop(selectedWorkshop);
             
         }
             entry.setVehicle(vehicle);
