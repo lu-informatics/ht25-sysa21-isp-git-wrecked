@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -32,7 +34,29 @@
    <center>
       <AnchorPane style="-fx-background-color: #DCEFFB;">
          <children>
-            <TableView fx:id="tableVehicles" layoutY="66.0" prefHeight="181.0" prefWidth="600.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="66.0">
+            <HBox alignment="CENTER_LEFT" spacing="10.0" layoutX="1.0" layoutY="476.0">
+   <children>
+      <MenuButton fx:id="menuButtonOptions" text="Options">
+         <items>
+            <MenuItem fx:id="menuItemEdit" mnemonicParsing="false"
+                      onAction="#handleMenuItemEditAction" text="Edit Vehicle" />
+            <MenuItem fx:id="menuItemAddVehicle"
+                      onAction="#handleMenuItemAddVehicleAction" text="Add Vehicle" />
+            <MenuItem fx:id="menuItemRemoveVehicle"
+                      onAction="#handleMenuItemRemoveVehicleAction" text="Remove Vehicle" />
+         </items>
+      </MenuButton>
+
+      <Label fx:id="labelFindVehicle" text="Press ENTER to seach" />
+
+      <TextField fx:id="textFieldVehicleSearch"
+                 onAction="#handleTextFieldVehicleSearchAction"
+                 prefHeight="26.0" prefWidth="150.0"
+                 promptText="VIN..." />
+   </children>
+</HBox>
+
+            <TableView fx:id="tableVehicles" layoutY="66.0" prefHeight="181.0" prefWidth="600.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
               <columns>
                 <TableColumn fx:id="columnVin" editable="false" prefWidth="75.0" text="VIN" />
                 <TableColumn fx:id="columnName" prefWidth="75.0" text="Name" />
@@ -45,18 +69,9 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <HBox alignment="CENTER_RIGHT" prefHeight="51.0" prefWidth="524.0" spacing="10.0" AnchorPane.rightAnchor="0.0">
-               <children>
-                  <Button fx:id="buttonVehicleAdd" mnemonicParsing="false" onAction="#handleButtonVehicleAddAction" prefHeight="26.0" prefWidth="62.0" text="Add" />
-                  <Button fx:id="ButtonVehicleEdit" mnemonicParsing="false" onAction="#handleButtonVehicleEditAction" text="Edit" />
-                  <Button fx:id="buttonVehicleRemove" mnemonicParsing="false" onAction="#handleButtonVehicleRemoveAction" text="Remove" />
-                  <Label fx:id="labelFindVehicle" text="Press ENTER to seach" />
-                  <TextField fx:id="textFieldVehicleSearch" onAction="#handleTextFieldVehicleSearchAction" promptText="VIN..." />
-               </children>
-            </HBox>
-            <Label fx:id="labelVehicles" layoutX="1.0" layoutY="15.0" prefHeight="29.0" prefWidth="101.0" text="Vehicles:">
+            <Label fx:id="labelVehicles" layoutX="1.0" layoutY="15.0" prefHeight="29.0" prefWidth="101.0" text="Vehicles">
                <font>
-                  <Font size="24.0" />
+                  <Font size="16.0" />
                </font>
             </Label>
             <Label fx:id="labelResponse" layoutX="493.0" layoutY="43.0" prefHeight="17.0" prefWidth="314.0" textFill="RED" />
@@ -74,11 +89,11 @@
          <children>
             <HBox alignment="CENTER_RIGHT" layoutX="422.0" layoutY="12.0" prefHeight="26.0" prefWidth="347.0" spacing="10.0" AnchorPane.rightAnchor="50.0">
                <children>
-                  <Button fx:id="buttonViewMaintenanceSchedule" mnemonicParsing="false" onAction="#handleButtonViewMaintenanceScheduleAction" text="View Maintenance Schedule" />
-                  <Button fx:id="buttonViewServiceHistory" mnemonicParsing="false" onAction="#handleButtonViewServiceHistoryAction" text="View Service History" />
+                  <Button fx:id="buttonViewMaintenanceSchedule" layoutX="686.0" layoutY="483.0" mnemonicParsing="false" onAction="#handleButtonViewMaintenanceScheduleAction" text="View Maintenance Schedule" />
+                  <Button fx:id="buttonViewServiceHistory" layoutX="869.0" layoutY="483.0" mnemonicParsing="false" onAction="#handleButtonViewServiceHistoryAction" text="View Service History" />
                </children>
             </HBox>
-            <Button fx:id="buttonBack" layoutX="38.0" layoutY="12.0" mnemonicParsing="false" onAction="#handleButtonBackAction" text="Back" AnchorPane.leftAnchor="50.0" />
+            <Button fx:id="buttonBack" layoutX="38.0" layoutY="12.0" mnemonicParsing="false" onAction="#handleButtonBackAction" text="Back to main menu" AnchorPane.leftAnchor="50.0" />
          </children>
       </AnchorPane>
    </bottom>
