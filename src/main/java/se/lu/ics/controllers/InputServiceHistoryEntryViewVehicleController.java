@@ -51,9 +51,8 @@ public class InputServiceHistoryEntryViewVehicleController {
         }
     }
 
-    public void setWorkshop(Workshop workshop) {
-        this.workshop = workshop;
-    }
+    
+    
 
 
 
