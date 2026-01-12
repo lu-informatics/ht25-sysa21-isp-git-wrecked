@@ -24,7 +24,7 @@
       </VBox>
       <HBox layoutX="35.0" layoutY="323.0" prefHeight="26.0" prefWidth="190.0" spacing="20.0" AnchorPane.leftAnchor="55.0">
          <children>
-            <Button fx:id="buttonBack" mnemonicParsing="false" onAction="#handleButtonBackAction" prefHeight="26.0" prefWidth="63.0" text="Back" />
+            <Button fx:id="buttonBack" mnemonicParsing="false" onAction="#handleButtonBackAction" prefHeight="25.0" prefWidth="64.0" text="Back" />
             <Button fx:id="buttonApply" mnemonicParsing="false" onAction="#handleButtonApplyAction" prefHeight="25.0" prefWidth="64.0" text="Apply" />
             <Button fx:id="buttonReset" mnemonicParsing="false" onAction="#handleButtonResetAction" prefHeight="25.0" prefWidth="64.0" text="Reset" />
          </children>
