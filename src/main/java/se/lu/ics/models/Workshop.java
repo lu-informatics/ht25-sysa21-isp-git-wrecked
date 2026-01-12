@@ -36,15 +36,30 @@ public class Workshop {
     }
 
     public void setIsInternal(boolean isInternal) {
-        this.isInternal = isInternal;
+
+    if (isInternal) {
+
+        for (MaintenanceSchedule schedule : schedules) {
+            Vehicle vehicle = schedule.getVehicle();
+
+            if (vehicle != null &&
+                vehicle.getType() == VehicleType.LARGE_TRUCK) {
+
+                throw new IllegalStateException("Internal workshops cannot service large trucks.");
+            }
+        }
     }
+
+    this.isInternal = isInternal;
+}
+
 
     public boolean getIsInternal() {
         return isInternal;
     }
 
     public String getType() {
-        return isInternal ? "Internal" : "External";
+        return isInternal ? "Internal" : "External"; //KIKA
     }
 
     public void setAddress(String address) {

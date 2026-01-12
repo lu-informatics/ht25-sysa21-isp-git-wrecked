@@ -9,6 +9,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import se.lu.ics.models.AppModel;
+import se.lu.ics.models.MaintenanceSchedule;
 import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.VehicleType;
 import javafx.stage.Stage;
@@ -116,6 +117,11 @@ public class InputVehicleViewController {
             stage.close();
         } catch (IllegalArgumentException e) {
             labelResponse.setText(e.getMessage());
+            return;
+        }
+        catch (IllegalStateException e) {
+            labelResponse.setText(e.getMessage());
+            return;
         }
     }
 
