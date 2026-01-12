@@ -75,14 +75,14 @@
                     </children>
                 </HBox>
 
-            <Label fx:id="labelErrorMessage" alignment="CENTER_RIGHT" layoutX="727.0" layoutY="473.0" prefHeight="17.0" prefWidth="332.0" textFill="RED" AnchorPane.bottomAnchor="63.0" AnchorPane.rightAnchor="0.0" />
+            <Label fx:id="labelErrorMessage" layoutX="394.0" layoutY="479.0" prefHeight="20.0" prefWidth="582.0" textFill="RED" />
 
             </children>
         </AnchorPane>
     </center>
 
     <bottom>
-        <AnchorPane prefHeight="50.0" prefWidth="665.0" style="-fx-background-color: #DCEFFB;" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="79.0" prefWidth="1100.0" style="-fx-background-color: #DCEFFB;" BorderPane.alignment="CENTER">
             <children>
             <HBox alignment="CENTER_RIGHT" layoutX="422.0" layoutY="12.0" prefHeight="26.0" prefWidth="347.0" spacing="10.0" AnchorPane.rightAnchor="50.0">
                <children>

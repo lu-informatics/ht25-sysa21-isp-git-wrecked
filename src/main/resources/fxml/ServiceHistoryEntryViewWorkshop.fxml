@@ -19,7 +19,10 @@
         <!-- HEADER -->
         <Pane prefHeight="96.0" style="-fx-background-color: #0A2A43;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label layoutX="109.0" layoutY="40.0" text="VikingExpress Fleet Management System" textFill="WHITE" />
+                <Label layoutX="109.0" layoutY="40.0" text="VikingExpress Fleet Management System" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
                 <ImageView fitHeight="77.0" fitWidth="105.0" layoutX="14.0" layoutY="10.0" preserveRatio="true">
                     <image>
                         <Image url="@../VikingExpressTransparent.png" />
@@ -35,7 +38,7 @@
             </font>
         </Label>
 
-        <Label fx:id="workshopLabel" AnchorPane.leftAnchor="183.0" AnchorPane.topAnchor="120.0">
+        <Label fx:id="workshopLabel" layoutX="181.0" layoutY="121.0" prefHeight="19.0" prefWidth="659.0" AnchorPane.leftAnchor="181.0" AnchorPane.topAnchor="121.0">
             <font>
                 <Font size="15.0" />
             </font>
@@ -72,7 +75,7 @@
         </TableView>
 
         <!-- OPTIONS -->
-        <MenuButton fx:id="menuButtonOptions" text="Options" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="50.0">
+        <MenuButton fx:id="menuButtonOptions" layoutX="969.0" layoutY="653.0" text="Options" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="969.0">
             <items>
                 <MenuItem fx:id="menuItemEdit" onAction="#handleMenuItemEditAction" text="Edit Service Entry" />
                 <MenuItem fx:id="menuItemAddServiceHistory" onAction="#handleMenuItemAddServiceHistoryAction" text="Add Service Entry" />
@@ -81,10 +84,10 @@
         </MenuButton>
 
         <!-- BACK BUTTON -->
-        <Button fx:id="buttonBack" onAction="#handleButtonBackAction" text="Back" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="50.0" />
+        <Button fx:id="buttonBack" layoutX="51.0" layoutY="652.0" onAction="#handleButtonBackAction" text="Back" AnchorPane.bottomAnchor="22.0" AnchorPane.rightAnchor="1004.5" />
 
         <!-- ERROR MESSAGE -->
-        <Label fx:id="labelErrorMessage" prefWidth="400.0" textFill="RED" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="150.0" />
+        <Label fx:id="labelErrorMessage" layoutX="135.0" layoutY="656.0" prefHeight="17.0" prefWidth="782.0" textFill="RED" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="135.0" />
 
     </children>
 </AnchorPane>

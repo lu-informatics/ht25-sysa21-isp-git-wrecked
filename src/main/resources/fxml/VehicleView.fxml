@@ -68,7 +68,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="labelResponse" alignment="CENTER_RIGHT" layoutX="686.0" layoutY="473.0" prefHeight="17.0" prefWidth="314.0" textFill="RED" AnchorPane.bottomAnchor="63.0" AnchorPane.rightAnchor="0.0" />
+            <Label fx:id="labelResponse" layoutX="446.0" layoutY="476.0" prefHeight="22.0" prefWidth="549.0" textFill="RED" />
          </children>
       </AnchorPane>
    </center>
@@ -79,7 +79,7 @@
       <Pane prefHeight="203.0" prefWidth="50.0" style="-fx-background-color: #DCEFFB;" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
-      <AnchorPane prefHeight="50.0" prefWidth="665.0" style="-fx-background-color: #DCEFFB;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="79.0" prefWidth="665.0" style="-fx-background-color: #DCEFFB;" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER_RIGHT" layoutX="422.0" layoutY="12.0" prefHeight="26.0" prefWidth="347.0" spacing="10.0" AnchorPane.rightAnchor="50.0">
                <children>
