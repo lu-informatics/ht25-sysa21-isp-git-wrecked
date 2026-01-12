@@ -112,6 +112,8 @@ public class InputVehicleViewController {
         }
 
         appController.showVehicleView();
+        Stage stage = (Stage) buttonApply.getScene().getWindow();
+        stage.close();
     } catch (IllegalArgumentException e) {
         labelResponse.setText(e.getMessage());
     }

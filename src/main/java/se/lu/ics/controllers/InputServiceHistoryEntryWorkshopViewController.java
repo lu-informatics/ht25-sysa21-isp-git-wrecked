@@ -102,7 +102,7 @@ public class InputServiceHistoryEntryWorkshopViewController {
     String costText = textFieldCost.getText().trim();
     String partsText = textFieldPartsReplaced.getText().trim();
     Vehicle vehicle = comboBoxVehicle.getValue();
-    String activitiesText = textFieldServiceActivities.getText().trim();
+    String activitiesText = textFieldServiceActivities.getText();
 
     
 

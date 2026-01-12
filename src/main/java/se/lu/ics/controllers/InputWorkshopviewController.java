@@ -112,10 +112,11 @@ public class InputWorkshopviewController {
             workshop.setName(name);
             workshop.setAddress(address);
             workshop.setIsInternal(isInternal);
-            labelErrorMessage.setText("Workshop updated successfully!");
         }
 
         appController.showWorkshopView();
+        Stage stage = (Stage) buttonApply.getScene().getWindow();   
+        stage.close();
 
     } catch (IllegalArgumentException e) {
         labelErrorMessage.setText("Error: " + e.getMessage());
