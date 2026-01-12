@@ -74,7 +74,7 @@ public class ServiceHistoryEntryViewVehicleController {
         problemDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("problemDescription"));
         costColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
         partsReplacedColumn.setCellValueFactory(new PropertyValueFactory<>("partsReplaced"));
-        workshopColumn.setCellValueFactory(new PropertyValueFactory<>("workshopName"));
+        workshopColumn.setCellValueFactory(new PropertyValueFactory<>("workshop"));
         serviceActivitiesColumn.setCellValueFactory(new PropertyValueFactory<>("serviceActivities"));
         serviceHistoryTable.refresh();
         }
