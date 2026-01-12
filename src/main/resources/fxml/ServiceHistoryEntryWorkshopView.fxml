@@ -45,7 +45,7 @@
         </Label>
 
         <!-- TOTAL COST -->
-        <Label fx:id="labelTotalServiceCost" text="Total Service Cost =" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="120.0">
+        <Label fx:id="labelTotalServiceCost" text="Total Service Cost (kr) =" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="120.0">
             <font>
                 <Font size="15.0" />
             </font>
