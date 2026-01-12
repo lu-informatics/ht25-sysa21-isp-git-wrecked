@@ -32,7 +32,7 @@ public class ServiceHistoryEntryWorkshopViewController {
         workshopLabel.setText(workshop.getName());
         tableViewServiceHistory.setItems(workshop.getServices());
         tableViewServiceHistory.refresh();
-        labelCost.setText(String.format("%.2f", workshop.getTotalServiceCost()));
+        labelCost.setText(String.valueOf(workshop.getTotalServiceCost()));
     }      
 
     @FXML
@@ -84,7 +84,7 @@ public class ServiceHistoryEntryWorkshopViewController {
     
         appController.showInputServiceHistoryEntryWorkshopView(workshop);
         tableViewServiceHistory.refresh();
-        labelCost.setText(String.format("%.2f", workshop.getTotalServiceCost()));
+        labelCost.setText(String.valueOf(workshop.getTotalServiceCost()));
     }
 
     @FXML
@@ -97,6 +97,7 @@ public class ServiceHistoryEntryWorkshopViewController {
     try {
         workshop.removeService(selectedEntry);
         selectedEntry.getVehicle().removeServiceHistoryEntry(selectedEntry);
+        labelCost.setText(String.valueOf(workshop.getTotalServiceCost()));
         tableViewServiceHistory.refresh();
     }   
         catch (IllegalArgumentException e) {
@@ -116,7 +117,7 @@ public class ServiceHistoryEntryWorkshopViewController {
     }
     appController.showInputEditServiceHistoryEntryWorkshopView(workshop, selectedEntry);
     tableViewServiceHistory.refresh();
-    labelCost.setText(String.format("%.2f", workshop.getTotalServiceCost()));
+    labelCost.setText(String.valueOf(workshop.getTotalServiceCost()));
     }
 
 

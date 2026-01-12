@@ -11,6 +11,7 @@ import javafx.scene.control.RadioButton;
 import se.lu.ics.models.AppModel;
 import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.VehicleType;
+import javafx.stage.Stage;
 
 public class InputVehicleViewController {
 
@@ -111,6 +112,8 @@ public class InputVehicleViewController {
         }
 
         appController.showVehicleView();
+        Stage stage = (Stage) buttonApply.getScene().getWindow();
+        stage.close();
     } catch (IllegalArgumentException e) {
         labelResponse.setText(e.getMessage());
     }
@@ -126,6 +129,8 @@ public class InputVehicleViewController {
     @FXML
     public void handleButtonBackAction(ActionEvent event) {
         appController.showVehicleView();
+        Stage stage = (Stage) buttonBack.getScene().getWindow();
+        stage.close();
     }
 
 }

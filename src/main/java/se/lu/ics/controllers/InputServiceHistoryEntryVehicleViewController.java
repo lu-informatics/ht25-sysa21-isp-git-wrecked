@@ -46,7 +46,7 @@ public class InputServiceHistoryEntryVehicleViewController {
             textFieldProblemDescription.setText(selectedEntry.getProblemDescription());
             textFieldCost.setText(String.valueOf(selectedEntry.getCost()));
             textFieldPartsReplaced.setText(String.valueOf(selectedEntry.getPartsReplaced()));
-            textFieldServiceActivities.setText(String.join(", ", selectedEntry.getServiceActivities()));
+            textFieldServiceActivities.setText(selectedEntry.getServiceActivities());
             comboBoxWorkshop.setValue(selectedEntry.getWorkshop());
         }
     }
@@ -74,6 +74,8 @@ public class InputServiceHistoryEntryVehicleViewController {
     private Button buttonBack;
     @FXML
     private Label labelResponse;
+    @FXML
+    private Button buttonReset;
     @FXML
     private ComboBox <Workshop> comboBoxWorkshop;
 
@@ -128,20 +130,20 @@ public class InputServiceHistoryEntryVehicleViewController {
     ServiceHistoryEntry entry;
 
     if (serviceHistoryEntry == null) {
-        entry = new ServiceHistoryEntry(problem, cost, date, parts);
+        entry = new ServiceHistoryEntry(problem, cost, date, parts, activitiesText);
     } else {
         entry = serviceHistoryEntry;
         entry.setProblemDescription(problem);
         entry.setCost(cost);
         entry.setDate(date);
         entry.setPartsReplaced(parts);
+        entry.setServiceActivity(activitiesText);
         
 
     }
 
         entry.setVehicle(vehicle);
         entry.setWorkshop(workshop);
-        entry.addServiceActivity(activitiesText);
         vehicle.refreshAvailability();
 
 
@@ -162,12 +164,20 @@ public class InputServiceHistoryEntryVehicleViewController {
     
     @FXML
     public void handleButtonBackAction(ActionEvent event) {
-            appController.showServiceHistoryEntryVehicleView(vehicle);
             Stage stage=(Stage) buttonBack.getScene().getWindow();
             stage.close();
      }
     private void showError(String message) {
         labelResponse.setText(message);
+    }
+    @FXML
+    public void handleButtonResetAction(ActionEvent event) {
+        datePickerServiceDate.setValue(null);
+        textFieldProblemDescription.clear();
+        textFieldCost.clear();
+        textFieldPartsReplaced.clear();
+        textFieldServiceActivities.clear();
+        comboBoxWorkshop.setValue(null);
     }
 }
 

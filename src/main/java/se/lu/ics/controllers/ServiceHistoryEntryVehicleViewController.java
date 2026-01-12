@@ -31,7 +31,7 @@ public class ServiceHistoryEntryVehicleViewController {
         this.vehicle = vehicle;
         vehicleLabel.setText(vehicle.getName() + " " + vehicle.getVin());
         serviceHistoryTable.setItems(vehicle.getServiceHistory());
-        labelCost.setText(String.format("%.2f", vehicle.getVehicleTotalServiceCost()));
+        labelCost.setText(String.valueOf(vehicle.getVehicleTotalServiceCost()));
         serviceHistoryTable.refresh();
     }
     public Vehicle getVehicle() {
@@ -98,7 +98,7 @@ public class ServiceHistoryEntryVehicleViewController {
         appController.showInputServiceHistoryEntryVehicleView(vehicle);
         serviceHistoryTable.setItems(vehicle.getServiceHistory());
         serviceHistoryTable.refresh();
-        labelCost.setText(String.format("%.2f", vehicle.getVehicleTotalServiceCost())); //ändra format grejen
+        labelCost.setText(String.valueOf(vehicle.getTotalCost()));
     }
 
     @FXML
@@ -111,9 +111,7 @@ public class ServiceHistoryEntryVehicleViewController {
         appController.showInputEditServiceHistoryEntryVehicleView(vehicle, selectedEntry);
         serviceHistoryTable.setItems(vehicle.getServiceHistory());
         serviceHistoryTable.refresh();
-        
-
-        labelCost.setText(String.format("%.2f", vehicle.getVehicleTotalServiceCost()));
+        labelCost.setText(String.valueOf(vehicle.getTotalCost()));
     }
 
     @FXML
@@ -123,11 +121,15 @@ public class ServiceHistoryEntryVehicleViewController {
             try {
                 vehicle.removeServiceHistoryEntry(selectedEntry);
                 selectedEntry.getWorkshop().removeService(selectedEntry);
+                labelCost.setText(String.valueOf(vehicle.getTotalCost()));
             } catch (IllegalArgumentException e) {
                 labelErrorMessage.setText(e.getMessage());
                 return;
             }
-        } 
+        }else{
+            labelErrorMessage.setText("Please select a service history entry to remove.");
+            return;
+        }
         serviceHistoryTable.refresh();
     }
 

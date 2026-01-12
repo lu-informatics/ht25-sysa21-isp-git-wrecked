@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import se.lu.ics.models.Workshop;
 import se.lu.ics.models.AppModel;
+import javafx.stage.Stage;
 
 
 
@@ -70,6 +71,8 @@ public class InputWorkshopviewController {
     @FXML
     public void handleButtonBackAction() {
         appController.showWorkshopView();
+        Stage stage = (Stage) buttonBack.getScene().getWindow();
+        stage.close();
     }
     @FXML
     public void handleButtonApplyAction() {
@@ -109,10 +112,11 @@ public class InputWorkshopviewController {
             workshop.setName(name);
             workshop.setAddress(address);
             workshop.setIsInternal(isInternal);
-            labelErrorMessage.setText("Workshop updated successfully!");
         }
 
         appController.showWorkshopView();
+        Stage stage = (Stage) buttonApply.getScene().getWindow();   
+        stage.close();
 
     } catch (IllegalArgumentException e) {
         labelErrorMessage.setText("Error: " + e.getMessage());

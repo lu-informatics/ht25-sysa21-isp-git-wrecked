@@ -24,7 +24,7 @@
 
                 <TextField fx:id="textFieldPartsReplaced" promptText="Parts Replaced..." />
 
-                <TextField fx:id="textFieldCost" promptText="Cost..." />
+                <TextField fx:id="textFieldCost" promptText="Cost (kr)..." />
             <TextField fx:id="textFieldServiceActivities" promptText="Service Activities..." />
       
                 
@@ -33,7 +33,7 @@
             </children>
         </VBox>
 
-        <HBox layoutX="42.0" layoutY="289.0" prefHeight="25.0" prefWidth="216.0" spacing="20.0">
+        <HBox layoutX="42.0" layoutY="301.0" prefHeight="25.0" prefWidth="216.0" spacing="20.0">
 
             <children>
                 <Button fx:id="buttonBack" mnemonicParsing="false" onAction="#handleButtonBackAction" prefHeight="26.0" prefWidth="65.0" text="Back" />

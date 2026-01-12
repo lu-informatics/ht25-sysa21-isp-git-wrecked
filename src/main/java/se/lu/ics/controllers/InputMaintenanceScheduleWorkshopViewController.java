@@ -1,4 +1,4 @@
-package se.lu.ics.controllers;
+gipackage se.lu.ics.controllers;
 import se.lu.ics.models.AppModel;
 import se.lu.ics.models.MaintenanceSchedule;
 import se.lu.ics.models.Vehicle;
@@ -124,7 +124,6 @@ public class InputMaintenanceScheduleWorkshopViewController {
 
      @FXML
     public void handleButtonBackAction(ActionEvent event) {
-            appController.showMaintenanceScheduleWorkshopView(workshop);
             Stage stage=(Stage) buttonBack.getScene().getWindow();
             stage.close();
         }

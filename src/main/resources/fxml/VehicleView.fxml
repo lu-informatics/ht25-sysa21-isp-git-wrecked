@@ -34,7 +34,7 @@
    <center>
       <AnchorPane style="-fx-background-color: #DCEFFB;">
          <children>
-            <HBox alignment="CENTER_LEFT" layoutX="1.0" layoutY="476.0" spacing="10.0">
+            <HBox alignment="CENTER_LEFT" layoutX="1.0" layoutY="476.0" spacing="10.0" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="1.0">
    <children>
       <MenuButton fx:id="menuButtonOptions" text="Options">
          <items>
@@ -55,7 +55,7 @@
                 <TableColumn fx:id="columnVin" editable="false" prefWidth="75.0" text="VIN" />
                 <TableColumn fx:id="columnName" prefWidth="75.0" text="Name" />
                   <TableColumn fx:id="columnType" prefWidth="75.0" text="Type" />
-                  <TableColumn fx:id="columnCapacity" prefWidth="75.0" text="Capacity" />
+                  <TableColumn fx:id="columnCapacity" prefWidth="75.0" text="Capacity (kg)" />
                   <TableColumn fx:id="columnAvailable" prefWidth="75.0" text="Availible" />
                   <TableColumn fx:id="columnLocation" prefWidth="75.0" text="Location" />
               </columns>
@@ -68,7 +68,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="labelResponse" layoutX="686.0" layoutY="473.0" prefHeight="17.0" prefWidth="314.0" textFill="RED" />
+            <Label fx:id="labelResponse" alignment="CENTER_RIGHT" layoutX="446.0" layoutY="476.0" prefHeight="22.0" prefWidth="549.0" textFill="RED" AnchorPane.bottomAnchor="55.0" />
          </children>
       </AnchorPane>
    </center>
@@ -79,7 +79,7 @@
       <Pane prefHeight="203.0" prefWidth="50.0" style="-fx-background-color: #DCEFFB;" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
-      <AnchorPane prefHeight="50.0" prefWidth="665.0" style="-fx-background-color: #DCEFFB;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="79.0" prefWidth="665.0" style="-fx-background-color: #DCEFFB;" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER_RIGHT" layoutX="422.0" layoutY="12.0" prefHeight="26.0" prefWidth="347.0" spacing="10.0" AnchorPane.rightAnchor="50.0">
                <children>

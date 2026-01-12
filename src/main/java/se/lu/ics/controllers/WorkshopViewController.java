@@ -131,9 +131,6 @@ public class WorkshopViewController {
         } else {
             labelErrorMessage.setText("Please select a workshop to view its Service History");
         }
-
-
-
     }
 
     @FXML

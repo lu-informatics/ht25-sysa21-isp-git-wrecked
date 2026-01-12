@@ -47,7 +47,7 @@ public class InputServiceHistoryEntryWorkshopViewController {
             textFieldCost.setText(String.valueOf(serviceHistoryEntry.getCost()));
             textFieldPartsReplaced.setText(String.valueOf(serviceHistoryEntry.getPartsReplaced()));
             comboBoxVehicle.setValue(serviceHistoryEntry.getVehicle());
-            textFieldServiceActivities.setText(String.join(", ", serviceHistoryEntry.getServiceActivities()));
+            textFieldServiceActivities.setText(serviceHistoryEntry.getServiceActivities());
             
         }
     }
@@ -102,7 +102,7 @@ public class InputServiceHistoryEntryWorkshopViewController {
     String costText = textFieldCost.getText().trim();
     String partsText = textFieldPartsReplaced.getText().trim();
     Vehicle vehicle = comboBoxVehicle.getValue();
-    String activitiesText = textFieldServiceActivities.getText().trim();
+    String activitiesText = textFieldServiceActivities.getText();
 
     
 
@@ -166,7 +166,7 @@ public class InputServiceHistoryEntryWorkshopViewController {
         ServiceHistoryEntry entry;
 
         if (serviceHistoryEntry == null) {
-            entry = new ServiceHistoryEntry(problem, cost, date, parts);   
+            entry = new ServiceHistoryEntry(problem, cost, date, parts, activitiesText);   
             
         }
 
@@ -179,9 +179,8 @@ public class InputServiceHistoryEntryWorkshopViewController {
             entry.setCost(cost);
             entry.setPartsReplaced(parts);
             entry.setVehicle(vehicle);
-            
+            entry.setServiceActivity(activitiesText);
         }
-            entry.addServiceActivity(partsText);
             entry.setWorkshop(workshop);
             entry.setVehicle(vehicle);
 ;       labelResponse.setText("Service history entry saved successfully.");
@@ -200,8 +199,8 @@ public class InputServiceHistoryEntryWorkshopViewController {
 
     @FXML
     public void handleButtonBackAction() {
-        appController.showServiceHistoryEntryWorkshopView(workshop);
-        ((Stage) buttonBack.getScene().getWindow()).close();
+        Stage stage = (Stage) buttonBack.getScene().getWindow();
+        stage.close();
     }
 
     
