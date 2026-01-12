@@ -1,4 +1,4 @@
-gipackage se.lu.ics.controllers;
+package se.lu.ics.controllers;
 import se.lu.ics.models.AppModel;
 import se.lu.ics.models.MaintenanceSchedule;
 import se.lu.ics.models.Vehicle;
