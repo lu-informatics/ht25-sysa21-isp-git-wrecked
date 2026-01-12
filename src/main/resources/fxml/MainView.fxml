@@ -32,16 +32,16 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="buttonVehicles" layoutX="100.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleButtonVehiclesAction" prefHeight="120.0" prefWidth="400.0" text="Vehicles">
+            <Button fx:id="buttonVehicles" layoutX="100.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleButtonVehiclesAction" prefHeight="120.0" prefWidth="400.0" text="Vehicles" AnchorPane.leftAnchor="125.0">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font></Button>
-            <Button fx:id="buttonWorkshops" layoutX="100.0" layoutY="250.0" mnemonicParsing="false" onAction="#handleButtonWorkshopsAction" prefHeight="120.0" prefWidth="400.0" text="Workshop">
+            <Button fx:id="buttonWorkshops" layoutX="100.0" layoutY="250.0" mnemonicParsing="false" onAction="#handleButtonWorkshopsAction" prefHeight="120.0" prefWidth="400.0" text="Workshop" AnchorPane.leftAnchor="125.0">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <VBox layoutX="650.0" layoutY="180.0" prefHeight="120.0" prefWidth="300.0" spacing="8.0" style="-fx-border-color: #0A2A43; -fx-background-color: white; -fx-background-radius: 14; -fx-border-radius: 14;">
+            <VBox layoutX="650.0" layoutY="180.0" prefHeight="120.0" prefWidth="300.0" spacing="8.0" style="-fx-border-color: #0A2A43; -fx-background-color: white; -fx-background-radius: 14; -fx-border-radius: 14;" AnchorPane.rightAnchor="150.0">
                <children>
                   <HBox prefHeight="28.0" prefWidth="344.0" style="-fx-border-radius: 14;">
                      <children>
@@ -83,7 +83,7 @@
                   <HBox prefHeight="31.0" prefWidth="271.0" />
                </children>
             </VBox>
-            <VBox layoutX="650.0" layoutY="45.0" prefHeight="77.0" prefWidth="300.0" style="-fx-background-color: white; -fx-border-color: #0A2A43; -fx-background-radius: 14; -fx-border-radius: 14; -fx-background-radius: 14;">
+            <VBox layoutX="650.0" layoutY="45.0" prefHeight="77.0" prefWidth="300.0" style="-fx-background-color: white; -fx-border-color: #0A2A43; -fx-background-radius: 14; -fx-border-radius: 14; -fx-background-radius: 14;" AnchorPane.rightAnchor="150.0">
                <children>
                   <HBox prefHeight="38.0" prefWidth="280.0">
                      <children>
@@ -104,7 +104,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox layoutX="650.0" layoutY="354.0" prefHeight="77.0" prefWidth="300.0" style="-fx-background-color: white; -fx-border-color: #0A2A43; -fx-background-radius: 14; -fx-border-radius: 14;">
+            <VBox layoutX="650.0" layoutY="354.0" prefHeight="77.0" prefWidth="300.0" style="-fx-background-color: white; -fx-border-color: #0A2A43; -fx-background-radius: 14; -fx-border-radius: 14;" AnchorPane.rightAnchor="150.0">
                <children>
                   <HBox layoutX="650.0" layoutY="300.0" prefHeight="36.0" prefWidth="294.0" style="-fx-background-color: #0A2A43; -fx-border-radius: 14; -fx-background-radius: 14;">
                      <children>

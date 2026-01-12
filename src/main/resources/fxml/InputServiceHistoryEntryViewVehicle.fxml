@@ -17,7 +17,7 @@
             <DatePicker fx:id="datePickerServiceDate" />
             <TextField fx:id="textFieldProblemDescription" promptText="Problem Description..." />
             <TextField fx:id="textFieldPartsReplaced" promptText="Parts Replaced..." />
-            <TextField fx:id="textFieldCost" promptText="Cost..." />
+            <TextField fx:id="textFieldCost" promptText="Cost (kr)..." />
             <TextField fx:id="textFieldServiceActivities" promptText="Service Activities..." />
             <ComboBox fx:id="comboBoxWorkshop" prefWidth="150.0" promptText="Select Workshop" />
          </children>

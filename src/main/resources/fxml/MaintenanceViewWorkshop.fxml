@@ -72,7 +72,7 @@
         <Button fx:id="buttonBack" onAction="#handleButtonBackAction" text="Back" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="50.0" />
 
         <!-- RESPONSE / ERROR MESSAGE (bottom-center-ish) -->
-        <Label fx:id="labelResponse" prefWidth="500.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="200.0" />
+        <Label fx:id="labelResponse" prefWidth="500.0" textFill="RED" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="200.0" />
 
     </children>
 </AnchorPane>

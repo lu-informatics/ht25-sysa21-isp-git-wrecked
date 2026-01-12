@@ -24,7 +24,7 @@
 
                 <TextField fx:id="textFieldPartsReplaced" promptText="Parts Replaced..." />
 
-                <TextField fx:id="textFieldCost" promptText="Cost..." />
+                <TextField fx:id="textFieldCost" promptText="Cost (kr)..." />
             <TextField fx:id="textFieldServiceActivities" promptText="Service Activities..." />
       
                 

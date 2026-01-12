@@ -61,7 +61,7 @@
                 <TableColumn fx:id="columnVehicle" text="VIN - Name" />
                 <TableColumn fx:id="columnDate" text="Date" />
                 <TableColumn fx:id="columnProblemDescription" text="Description" />
-                <TableColumn fx:id="columnCost" text="Cost" />
+                <TableColumn fx:id="columnCost" text="Cost (kr)" />
                 <TableColumn fx:id="columnPartsReplaced" text="Parts" />
                 <TableColumn fx:id="tableColumnServiceActivity" text="Service Activity" />
             </columns>
@@ -84,7 +84,7 @@
         <Button fx:id="buttonBack" onAction="#handleButtonBackAction" text="Back" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="50.0" />
 
         <!-- ERROR MESSAGE -->
-        <Label fx:id="labelErrorMessage" prefWidth="400.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="150.0" />
+        <Label fx:id="labelErrorMessage" prefWidth="400.0" textFill="RED" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="150.0" />
 
     </children>
 </AnchorPane>
