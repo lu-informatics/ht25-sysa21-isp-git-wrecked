@@ -14,7 +14,7 @@ import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 
-public class InputMaintenanceWorkshopViewController {
+public class InputMaintenanceScheduleWorkshopViewController {
     private AppModel appModel;
     private AppController appController;
     private Workshop workshop;
@@ -107,7 +107,7 @@ public class InputMaintenanceWorkshopViewController {
                 schedule.setWorkshop(workshop);
                 foundVehicle.setMaintenanceSchedule(schedule);               
 
-            appController.showWorkshopSchedulesView(workshop);
+            appController.showMaintenanceScheduleWorkshopView(workshop);
             Stage stage = (Stage) buttonApply.getScene().getWindow();
             stage.close();
 
@@ -124,7 +124,7 @@ public class InputMaintenanceWorkshopViewController {
 
      @FXML
     public void handleButtonBackAction(ActionEvent event) {
-            appController.showWorkshopSchedulesView(workshop);
+            appController.showMaintenanceScheduleWorkshopView(workshop);
             Stage stage=(Stage) buttonBack.getScene().getWindow();
             stage.close();
         }

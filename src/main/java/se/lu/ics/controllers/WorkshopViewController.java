@@ -127,7 +127,7 @@ public class WorkshopViewController {
     public void handleButtonViewServiceHistoryAction(ActionEvent event) {
         Workshop selectedWorkshop = workshopTable.getSelectionModel().getSelectedItem();
         if (selectedWorkshop != null) {
-        appController.showWorkshopEntriesView(selectedWorkshop);
+        appController.showServiceHistoryEntryWorkshopView(selectedWorkshop);
         } else {
             labelErrorMessage.setText("Please select a workshop to view its Service History");
         }
@@ -151,7 +151,7 @@ public class WorkshopViewController {
     public void handleButtonViewSchedulesAction(ActionEvent event) {
         Workshop selectedWorkshop = workshopTable.getSelectionModel().getSelectedItem();
         if (selectedWorkshop != null) {
-            appController.showWorkshopSchedulesView(selectedWorkshop);
+            appController.showMaintenanceScheduleWorkshopView(selectedWorkshop);
         } else {
             labelErrorMessage.setText("Please select a workshop to view its Maintenance Schedules");
         }

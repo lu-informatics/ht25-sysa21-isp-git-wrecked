@@ -200,7 +200,7 @@ public class InputServiceHistoryEntryWorkshopViewController {
 
     @FXML
     public void handleButtonBackAction() {
-        appController.showWorkshopEntriesView(workshop);
+        appController.showServiceHistoryEntryWorkshopView(workshop);
         ((Stage) buttonBack.getScene().getWindow()).close();
     }
 
