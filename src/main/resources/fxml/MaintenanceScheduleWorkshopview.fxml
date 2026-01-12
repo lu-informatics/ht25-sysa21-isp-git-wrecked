@@ -16,7 +16,7 @@
 
     <children>
 
-        <!-- HEADER -->
+        
         <Pane prefHeight="96.0" style="-fx-background-color: #0A2A43;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <Label layoutX="109.0" layoutY="40.0" text="VikingExpress Fleet Management System" textFill="WHITE">
@@ -32,7 +32,7 @@
             </children>
         </Pane>
 
-        <!-- TITLE -->
+        
         <Label text="Maintenance schedules for workshop:" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="120.0">
             <font>
                 <Font size="15.0" />
@@ -45,7 +45,7 @@
             </font>
         </Label>
 
-        <!-- TABLE -->
+        
         <TableView fx:id="tableMaintenanceSchedules" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="160.0">
 
             <columns>
@@ -59,7 +59,7 @@
             </columnResizePolicy>
         </TableView>
 
-        <!-- OPTIONS (bottom-left) -->
+        
         <MenuButton fx:id="menuButtonManageMaintenance" layoutX="913.0" layoutY="653.0" text="Manage schedules" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="913.0">
             <items>
                 <MenuItem fx:id="menuItemAdd" mnemonicParsing="false" onAction="#handleMenuItemAddMaintenanceAction" text="Add Maintenance" />
@@ -68,10 +68,10 @@
             </items>
         </MenuButton>
 
-        <!-- BACK BUTTON (bottom-right) -->
+        
         <Button fx:id="buttonBack" layoutX="51.0" layoutY="654.0" onAction="#handleButtonBackAction" text="Back" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="1004.5" />
 
-        <!-- RESPONSE / ERROR MESSAGE (bottom-center-ish) -->
+        
         <Label fx:id="labelResponse" layoutX="124.0" layoutY="658.0" prefHeight="17.0" prefWidth="765.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="124.0" />
 
     </children>

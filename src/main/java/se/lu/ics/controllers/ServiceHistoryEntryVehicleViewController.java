@@ -51,7 +51,7 @@ public class ServiceHistoryEntryVehicleViewController {
     @FXML
     private TableColumn<ServiceHistoryEntry, Double> costColumn;
     @FXML
-    private TableColumn<ServiceHistoryEntry, Integer> partsReplacedColumn; // ska det vara integer iställer för int?
+    private TableColumn<ServiceHistoryEntry, Integer> partsReplacedColumn; 
     @FXML
     private TableColumn<ServiceHistoryEntry, String> workshopColumn;
     @FXML
@@ -72,7 +72,7 @@ public class ServiceHistoryEntryVehicleViewController {
     private Label labelCost;
 
     @FXML
-    private void initialize() { // kan göra detta under med lambdas men vet nt om det är överkurs
+    private void initialize() { 
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         problemDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("problemDescription"));
         costColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
