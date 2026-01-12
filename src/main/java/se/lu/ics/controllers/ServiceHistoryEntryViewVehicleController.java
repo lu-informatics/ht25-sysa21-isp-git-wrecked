@@ -127,7 +127,10 @@ public class ServiceHistoryEntryViewVehicleController {
                 labelErrorMessage.setText(e.getMessage());
                 return;
             }
-        } 
+        }else{
+            labelErrorMessage.setText("Please select a service history entry to remove.");
+            return;
+        }
         serviceHistoryTable.refresh();
     }
 
