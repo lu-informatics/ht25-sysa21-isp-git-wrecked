@@ -59,7 +59,7 @@
 
                 </TableView>
 
-                <HBox alignment="CENTER_LEFT" spacing="10.0" layoutX="1.0" layoutY="476.0">
+                <HBox alignment="CENTER_LEFT" layoutX="1.0" layoutY="476.0" spacing="10.0">
                     <children>
                         <MenuButton text="Options">
                          <items>
@@ -75,7 +75,7 @@
                     </children>
                 </HBox>
 
-            <Label fx:id="labelErrorMessage" layoutX="272.0" layoutY="487.0" prefHeight="17.0" prefWidth="343.0" />
+            <Label fx:id="labelErrorMessage" layoutX="727.0" layoutY="473.0" prefHeight="17.0" prefWidth="332.0" textFill="RED" />
 
             </children>
         </AnchorPane>

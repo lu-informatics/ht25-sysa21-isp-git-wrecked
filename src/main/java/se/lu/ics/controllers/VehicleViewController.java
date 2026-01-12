@@ -83,7 +83,7 @@ public class VehicleViewController {
         if (selectedVehicle != null) {
             appController.showEditInputVehicleView(selectedVehicle);
         } else {
-            labelResponse.setText("Please select a vehicle to edit.");
+            labelResponse.setText("Please select a vehicle to edit");
         }
         
     }
@@ -99,7 +99,7 @@ public class VehicleViewController {
                 labelResponse.setText(e.getMessage());
             }
         } else {
-            labelResponse.setText("Please select a vehicle to remove.");
+            labelResponse.setText("Please select a vehicle to remove");
         }
     }
 
@@ -122,7 +122,7 @@ public class VehicleViewController {
             tableVehicles.scrollTo(foundVehicle);
 
         } catch (NumberFormatException e) {
-            labelResponse.setText("Please enter a valid VIN number.");
+            labelResponse.setText("Please enter a valid VIN number");
         } catch (IllegalArgumentException e) {
             labelResponse.setText(e.getMessage());
         }
@@ -134,7 +134,7 @@ public class VehicleViewController {
         Vehicle selectedVehicle = tableVehicles.getSelectionModel().getSelectedItem();
 
         if (selectedVehicle == null) {
-            labelResponse.setText("Please select a vehicle to view its maintenance schedule.");
+            labelResponse.setText("Please select a vehicle to view its maintenance schedule");
             return;
         }
 
@@ -146,7 +146,7 @@ public class VehicleViewController {
         Vehicle selectedVehicle = tableVehicles.getSelectionModel().getSelectedItem();
 
         if (selectedVehicle == null) {
-            labelResponse.setText("Please select a vehicle to view its service history.");
+            labelResponse.setText("Please select a vehicle to view its service history");
             return;
         }
 
