@@ -4,9 +4,7 @@ import se.lu.ics.models.AppModel;
 import se.lu.ics.models.MaintenanceSchedule;
 import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.Workshop;
-
 import java.time.LocalDate;
-
 import javafx.event.ActionEvent;
 import javafx.scene.control.ComboBox;
 import javafx.fxml.FXML;
@@ -16,15 +14,12 @@ import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 
-
 public class InputMaintenanceScheduleVehicleViewController {
 
     private AppModel appModel;
     private AppController appController;
     private Vehicle vehicle;
     private MaintenanceSchedule maintenanceSchedule;
-
-   
 
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
@@ -48,8 +43,8 @@ public class InputMaintenanceScheduleVehicleViewController {
         }
     }
 
-    @FXML 
-    private ComboBox <Workshop> comboBoxWorkshop;
+    @FXML
+    private ComboBox<Workshop> comboBoxWorkshop;
     @FXML
     private DatePicker datePicker;
     @FXML
@@ -62,74 +57,69 @@ public class InputMaintenanceScheduleVehicleViewController {
     private Label labelResponse;
     @FXML
     private Button buttonReset;
-    
+
     @FXML
     public void handleButtonApplyAction(ActionEvent event) {
-    LocalDate date = datePicker.getValue();
-    String description = textFieldDescription.getText().trim();
-    Workshop workshopChoice = comboBoxWorkshop.getValue();
+        LocalDate date = datePicker.getValue();
+        String description = textFieldDescription.getText().trim();
+        Workshop workshopChoice = comboBoxWorkshop.getValue();
 
-    if (comboBoxWorkshop.getValue() == null) {
-        labelResponse.setText("Workshop cannot be empty.");
-        return;
-    }
-
-    if (description.isEmpty()) {
-        labelResponse.setText("Maintenance description cannot be empty.");
-        return;
-    }
-
-    if (date == null) {
-        labelResponse.setText("Maintenance date must be selected.");
-        return;
-    }
-
-    try {
-        Workshop foundWorkshop = appModel.getWorkshopRegister().findWorkshop(comboBoxWorkshop.getValue().getName());
-
-        if (foundWorkshop == null) {
-            labelResponse.setText("Workshop not found.");
+        if (comboBoxWorkshop.getValue() == null) {
+            labelResponse.setText("Workshop cannot be empty.");
             return;
         }
-        MaintenanceSchedule schedule;
 
-        if (maintenanceSchedule == null) {
-            schedule = new MaintenanceSchedule(date, description);
-            
-            
-            
+        if (description.isEmpty()) {
+            labelResponse.setText("Maintenance description cannot be empty.");
+            return;
+        }
 
-        } else {
-            schedule = maintenanceSchedule;
-            schedule.setDate(date);
-            schedule.setDescription(description);
-        }   
+        if (date == null) {
+            labelResponse.setText("Maintenance date must be selected.");
+            return;
+        }
+
+        try {
+            Workshop foundWorkshop = appModel.getWorkshopRegister().findWorkshop(comboBoxWorkshop.getValue().getName());
+
+            if (foundWorkshop == null) {
+                labelResponse.setText("Workshop not found.");
+                return;
+            }
+            MaintenanceSchedule schedule;
+
+            if (maintenanceSchedule == null) {
+                schedule = new MaintenanceSchedule(date, description);
+
+            } else {
+                schedule = maintenanceSchedule;
+                schedule.setDate(date);
+                schedule.setDescription(description);
+            }
             schedule.setVehicle(vehicle);
             schedule.setWorkshop(workshopChoice);
             vehicle.setMaintenanceSchedule(schedule);
 
-            
             appController.showMaintenanceScheduleVehicleView(vehicle);
 
             Stage stage = (Stage) buttonApply.getScene().getWindow();
             stage.close();
 
-    } catch (NumberFormatException e) {
-        labelResponse.setText("Invalid input format.");
-    } catch (IllegalArgumentException e) {
-        labelResponse.setText(e.getMessage());
-    } catch (IllegalStateException e) {
-        labelResponse.setText(e.getMessage());
-    }
-}
-
-    
-    @FXML
-        public void handleButtonBackAction(ActionEvent event) {
-            appController.showMaintenanceScheduleVehicleView(vehicle);
-            Stage stage=(Stage) buttonBack.getScene().getWindow();
-            stage.close();
+        } catch (NumberFormatException e) {
+            labelResponse.setText("Invalid input format.");
+        } catch (IllegalArgumentException e) {
+            labelResponse.setText(e.getMessage());
+        } catch (IllegalStateException e) {
+            labelResponse.setText(e.getMessage());
         }
+    }
+
+    @FXML
+    public void handleButtonBackAction(ActionEvent event) {
+        appController.showMaintenanceScheduleVehicleView(vehicle);
+        Stage stage = (Stage) buttonBack.getScene().getWindow();
+        stage.close();
+    }
 
     @FXML
     public void handleButtonResetAction(ActionEvent event) {

@@ -9,8 +9,6 @@ import se.lu.ics.models.Workshop;
 import se.lu.ics.models.AppModel;
 import javafx.stage.Stage;
 
-
-
 public class InputWorkshopviewController {
     private AppModel appModel;
     private AppController appController;
@@ -22,7 +20,6 @@ public class InputWorkshopviewController {
     private TextField textFieldWorkshopName;
     @FXML
     private TextField textFieldWorkshopAddress;
-    
     @FXML
     private RadioButton radioButtonInternal;
     @FXML
@@ -33,9 +30,6 @@ public class InputWorkshopviewController {
     private Button buttonReset;
     @FXML
     private Button buttonBack;
-
-
-   
 
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
@@ -74,58 +68,55 @@ public class InputWorkshopviewController {
         Stage stage = (Stage) buttonBack.getScene().getWindow();
         stage.close();
     }
+
     @FXML
     public void handleButtonApplyAction() {
 
-    String name = textFieldWorkshopName.getText().trim();
-    String address = textFieldWorkshopAddress.getText().trim();
-    boolean isInternal;
+        String name = textFieldWorkshopName.getText().trim();
+        String address = textFieldWorkshopAddress.getText().trim();
+        boolean isInternal;
 
-    
-    if (name.isEmpty()) {
-        labelErrorMessage.setText("Workshop name cannot be empty.");
-        return;
-    }
-
-    if (address.isEmpty()) {
-        labelErrorMessage.setText("Workshop address cannot be empty.");
-        return;
-    }
-
-    if (radioButtonInternal.isSelected()) {
-        isInternal = true;
-    } else if (radioButtonExternal.isSelected()) {
-        isInternal = false;
-    } else {
-        labelErrorMessage.setText("Please select if the workshop is internal or external.");
-        return;
-    }
-
-    try {
-
-        if (workshop == null) {
-            Workshop newWorkshop = new Workshop(name, isInternal, address);
-            appModel.getWorkshopRegister().addWorkshop(newWorkshop);
-            labelErrorMessage.setText("Workshop created successfully!");
-        } else {
-            
-            workshop.setName(name);
-            workshop.setAddress(address);
-            workshop.setIsInternal(isInternal);
+        if (name.isEmpty()) {
+            labelErrorMessage.setText("Workshop name cannot be empty.");
+            return;
         }
 
-        appController.showWorkshopView();
-        Stage stage = (Stage) buttonApply.getScene().getWindow();   
-        stage.close();
+        if (address.isEmpty()) {
+            labelErrorMessage.setText("Workshop address cannot be empty.");
+            return;
+        }
 
-    } catch (IllegalArgumentException e) {
-        labelErrorMessage.setText("Error: " + e.getMessage());
-    } catch (Exception e) {
-        labelErrorMessage.setText("An unexpected error occurred: " + e.getMessage());
+        if (radioButtonInternal.isSelected()) {
+            isInternal = true;
+        } else if (radioButtonExternal.isSelected()) {
+            isInternal = false;
+        } else {
+            labelErrorMessage.setText("Please select if the workshop is internal or external.");
+            return;
+        }
+
+        try {
+
+            if (workshop == null) {
+                Workshop newWorkshop = new Workshop(name, isInternal, address);
+                appModel.getWorkshopRegister().addWorkshop(newWorkshop);
+                labelErrorMessage.setText("Workshop created successfully!");
+            } else {
+
+                workshop.setName(name);
+                workshop.setAddress(address);
+                workshop.setIsInternal(isInternal);
+            }
+
+            appController.showWorkshopView();
+            Stage stage = (Stage) buttonApply.getScene().getWindow();
+            stage.close();
+
+        } catch (IllegalArgumentException e) {
+            labelErrorMessage.setText("Error: " + e.getMessage());
+        } catch (Exception e) {
+            labelErrorMessage.setText("An unexpected error occurred: " + e.getMessage());
+        }
     }
+
 }
-
-    }
-
-
-

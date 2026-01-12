@@ -2,7 +2,6 @@ package se.lu.ics.controllers;
 
 import se.lu.ics.models.AppModel;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -14,11 +13,11 @@ import se.lu.ics.models.MaintenanceSchedule;
 import se.lu.ics.models.Workshop;
 import java.time.LocalDate;
 
-    public class MaintenanceScheduleWorkshopViewController {
+public class MaintenanceScheduleWorkshopViewController {
 
     private AppModel appModel;
     private AppController appController;
-    private Workshop workshop; 
+    private Workshop workshop;
 
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
@@ -40,7 +39,7 @@ import java.time.LocalDate;
     @FXML
     private MenuItem menuItemCancel;
     @FXML
-    private TableView <MaintenanceSchedule> tableMaintenanceSchedules;
+    private TableView<MaintenanceSchedule> tableMaintenanceSchedules;
     @FXML
     private TableColumn<MaintenanceSchedule, Number> tableColumnVehicle;
     @FXML
@@ -50,22 +49,23 @@ import java.time.LocalDate;
     @FXML
     private Label labelWorkshop;
 
-    //koppla tidigare fönster vehicle till detta. 
-    public void setWorkshop(Workshop workshop ) {
-        this.workshop= workshop;
+    // koppla tidigare fönster vehicle till detta.
+    public void setWorkshop(Workshop workshop) {
+        this.workshop = workshop;
         labelWorkshop.setText(workshop.getName());
         updateTableView();
     }
+
     @FXML
-    public void initialize(){
-        
+    public void initialize() {
+
         tableColumnVehicle.setCellValueFactory(new PropertyValueFactory<>("vin"));
         tableColumnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         tableColumnDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         updateTableView();
     }
 
-    private void updateTableView(){
+    private void updateTableView() {
         if (workshop != null && tableMaintenanceSchedules != null) {
             tableMaintenanceSchedules.setItems(workshop.getSchedules());
         }
@@ -87,23 +87,23 @@ import java.time.LocalDate;
         appController.showInputMaintenanceScheduleWorkshopView(workshop, selectedSchedule);
         updateTableView();
     }
-    
+
     @FXML
     public void handleMenuItemCancelMaintenanceAction(ActionEvent event) {
 
         MaintenanceSchedule schedule = tableMaintenanceSchedules.getSelectionModel().getSelectedItem();
-        if(schedule == null) {
+        if (schedule == null) {
             labelResponse.setText("Please select a maintenance schedule to cancel.");
             return;
         }
 
         try {
-                workshop.removeSchedule(schedule);
-                schedule.getVehicle().removeMaintenanceSchedule(schedule);
-                labelResponse.setText("Maintenance schedule cancelled.");
-            } catch (IllegalArgumentException e) {
-                labelResponse.setText(e.getMessage());
-            }
+            workshop.removeSchedule(schedule);
+            schedule.getVehicle().removeMaintenanceSchedule(schedule);
+            labelResponse.setText("Maintenance schedule cancelled.");
+        } catch (IllegalArgumentException e) {
+            labelResponse.setText(e.getMessage());
+        }
         updateTableView();
     }
 

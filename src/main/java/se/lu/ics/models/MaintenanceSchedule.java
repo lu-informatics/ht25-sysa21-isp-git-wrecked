@@ -52,12 +52,11 @@ public class MaintenanceSchedule {
         }
 
         if (vehicle != null
-            && vehicle.getType() == VehicleType.LARGE_TRUCK
-            && workshop.getIsInternal()) {
+                && vehicle.getType() == VehicleType.LARGE_TRUCK
+                && workshop.getIsInternal()) {
 
             throw new IllegalStateException(
-            "Large trucks cannot be serviced at internal workshops."
-            );
+                    "Large trucks cannot be serviced at internal workshops.");
         }
 
         if (this.workshop == workshop) {
@@ -81,10 +80,9 @@ public class MaintenanceSchedule {
             throw new IllegalArgumentException("Vehicle cannot be null");
         }
         this.vehicle = vehicle;
-}
+    }
 
-
-    public int getVin(){
+    public int getVin() {
         return vehicle.getVin();
     }
 }

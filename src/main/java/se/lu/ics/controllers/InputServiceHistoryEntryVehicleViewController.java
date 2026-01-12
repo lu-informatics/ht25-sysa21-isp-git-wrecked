@@ -4,9 +4,7 @@ import se.lu.ics.models.AppModel;
 import se.lu.ics.models.ServiceHistoryEntry;
 import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.Workshop;
-
 import java.time.LocalDate;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,7 +14,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ComboBox;
 
-
 public class InputServiceHistoryEntryVehicleViewController {
 
     private AppModel appModel;
@@ -24,8 +21,6 @@ public class InputServiceHistoryEntryVehicleViewController {
     private Vehicle vehicle;
     private ServiceHistoryEntry serviceHistoryEntry;
     private Workshop workshop;
-    //som varaibler för kunna använda samma objekt i flera controllers
-    // lägger in vehicle objekt, inte variabel av vehicle
 
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
@@ -34,10 +29,12 @@ public class InputServiceHistoryEntryVehicleViewController {
     public void setAppController(AppController appController) {
         this.appController = appController;
     }
+
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
         comboBoxWorkshop.setItems(appModel.getWorkshopRegister().getWorkshops());
     }
+
     public void setServiceHistoryEntry(ServiceHistoryEntry selectedEntry) {
         this.serviceHistoryEntry = selectedEntry;
 
@@ -51,22 +48,17 @@ public class InputServiceHistoryEntryVehicleViewController {
         }
     }
 
-    
-    
-
-
-
-    @FXML 
+    @FXML
     private TextField textFieldProblemDescription;
-    @FXML 
+    @FXML
     private TextField textFieldCost;
-    @FXML 
+    @FXML
     private TextField textFieldPartsReplaced;
-    @FXML 
+    @FXML
     private DatePicker datePickerServiceDate;
     @FXML
     private TextField textFieldServiceActivities;
-    @FXML 
+    @FXML
     private TextField textFieldWorkshop;
     @FXML
     private Button buttonApply;
@@ -77,99 +69,93 @@ public class InputServiceHistoryEntryVehicleViewController {
     @FXML
     private Button buttonReset;
     @FXML
-    private ComboBox <Workshop> comboBoxWorkshop;
+    private ComboBox<Workshop> comboBoxWorkshop;
 
-    
     @FXML
     public void handleButtonApplyAction() {
-        
-    LocalDate date = datePickerServiceDate.getValue();
-    String problem = textFieldProblemDescription.getText().trim();
-    String costText = textFieldCost.getText().trim();
-    String partsText = textFieldPartsReplaced.getText().trim();
-    Workshop workshop = comboBoxWorkshop.getValue();
-    String activitiesText = textFieldServiceActivities.getText();
-     
-    if (date == null) {
-        showError("Service date must be selected.");
-        return;
-    }
 
-    if (problem.isEmpty()) {
-        showError("Problem description cannot be empty.");
-        return;
-    }
+        LocalDate date = datePickerServiceDate.getValue();
+        String problem = textFieldProblemDescription.getText().trim();
+        String costText = textFieldCost.getText().trim();
+        String partsText = textFieldPartsReplaced.getText().trim();
+        Workshop workshop = comboBoxWorkshop.getValue();
+        String activitiesText = textFieldServiceActivities.getText();
 
-    if (costText.isEmpty()) {
-        showError("Cost cannot be empty.");
-        return;
-    }
+        if (date == null) {
+            showError("Service date must be selected.");
+            return;
+        }
 
-    if (partsText.isEmpty()) {
-        showError("Parts replaced value cannot be empty.");
-        return;
-    }
+        if (problem.isEmpty()) {
+            showError("Problem description cannot be empty.");
+            return;
+        }
 
-    if (workshop == null) {
-        showError("A workshop must be selected.");
-        return;
-    }
-    if (activitiesText.isEmpty() || !activitiesText.matches("[a-öA-Ö, ]+")) {
-        showError("Service activities must be filled with words");
-        return;
-    }
-    if (comboBoxWorkshop.getValue() == null) {
-        showError("A workshop must be selected.");
-        return; }
-    
+        if (costText.isEmpty()) {
+            showError("Cost cannot be empty.");
+            return;
+        }
 
-    try {
-    double cost = Double.parseDouble(costText);
-    int parts = Integer.parseInt(partsText);
+        if (partsText.isEmpty()) {
+            showError("Parts replaced value cannot be empty.");
+            return;
+        }
 
-    ServiceHistoryEntry entry;
+        if (workshop == null) {
+            showError("A workshop must be selected.");
+            return;
+        }
+        if (activitiesText.isEmpty() || !activitiesText.matches("[a-öA-Ö, ]+")) {
+            showError("Service activities must be filled with words");
+            return;
+        }
+        if (comboBoxWorkshop.getValue() == null) {
+            showError("A workshop must be selected.");
+            return;
+        }
 
-    if (serviceHistoryEntry == null) {
-        entry = new ServiceHistoryEntry(problem, cost, date, parts, activitiesText);
-    } else {
-        entry = serviceHistoryEntry;
-        entry.setProblemDescription(problem);
-        entry.setCost(cost);
-        entry.setDate(date);
-        entry.setPartsReplaced(parts);
-        entry.setServiceActivity(activitiesText);
-        
+        try {
+            double cost = Double.parseDouble(costText);
+            int parts = Integer.parseInt(partsText);
 
-    }
+            ServiceHistoryEntry entry;
 
-        entry.setVehicle(vehicle);
-        entry.setWorkshop(workshop);
-        vehicle.refreshAvailability();
+            if (serviceHistoryEntry == null) {
+                entry = new ServiceHistoryEntry(problem, cost, date, parts, activitiesText);
+            } else {
+                entry = serviceHistoryEntry;
+                entry.setProblemDescription(problem);
+                entry.setCost(cost);
+                entry.setDate(date);
+                entry.setPartsReplaced(parts);
+                entry.setServiceActivity(activitiesText);
 
+            }
 
-}    catch (NumberFormatException e) {
-    showError("Cost and parts must be numeric values.");
-    return;
+            entry.setVehicle(vehicle);
+            entry.setWorkshop(workshop);
+            vehicle.refreshAvailability();
 
-}    
-    appController.showServiceHistoryEntryVehicleView(vehicle);
-    Stage stage = (Stage) buttonApply.getScene().getWindow();   
-    stage.close();
+        } catch (NumberFormatException e) {
+            showError("Cost and parts must be numeric values.");
+            return;
+        }
+        appController.showServiceHistoryEntryVehicleView(vehicle);
+        Stage stage = (Stage) buttonApply.getScene().getWindow();
+        stage.close();
 
     }
 
-
-
-
-    
     @FXML
     public void handleButtonBackAction(ActionEvent event) {
-            Stage stage=(Stage) buttonBack.getScene().getWindow();
-            stage.close();
-     }
+        Stage stage = (Stage) buttonBack.getScene().getWindow();
+        stage.close();
+    }
+
     private void showError(String message) {
         labelResponse.setText(message);
     }
+
     @FXML
     public void handleButtonResetAction(ActionEvent event) {
         datePickerServiceDate.setValue(null);
@@ -180,7 +166,3 @@ public class InputServiceHistoryEntryVehicleViewController {
         comboBoxWorkshop.setValue(null);
     }
 }
-
-
-    
-

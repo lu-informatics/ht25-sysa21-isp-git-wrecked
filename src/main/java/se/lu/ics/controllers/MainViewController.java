@@ -1,12 +1,10 @@
 package se.lu.ics.controllers;
 
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-
 import se.lu.ics.models.AppModel;
 import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.ServiceHistoryEntry;
@@ -18,22 +16,16 @@ public class MainViewController {
 
     @FXML
     private TextField vinTextField;
-
     @FXML
     private Button buttonVehicles;
-
     @FXML
     private Button buttonWorkshops;
-
     @FXML
     private Label labelMaintenanceJob;
-
     @FXML
     private Label labelVehicle;
-
     @FXML
     private Label labelWorkshop;
-
 
     // button labels textfields osv. alla knappar för metoderna def.
 
@@ -57,39 +49,43 @@ public class MainViewController {
     public void handleButtonWorkshopsAction(ActionEvent event) {
         appController.showWorkshopView();
     }
+
     @FXML
     private Label labelMostExpensiveWorkshop;
 
     private void updateMostExpensiveWorkshop() {
         Workshop w = appModel.getWorkshopRegister().getMostExpensiveWorkshop();
 
-        if(w != null){
-        labelMostExpensiveWorkshop.setText(w.getName());
+        if (w != null) {
+            labelMostExpensiveWorkshop.setText(w.getName());
         } else {
             labelMostExpensiveWorkshop.setText("No workshops with service history.");
         }
     }
+
     @FXML
     private Label labelAverageMaintenanceCost;
 
     private void updateAverageMaintenanceCost() {
-        double avarageCost= appModel.getVehicleRegister().calculateAvarageCost();
+        double avarageCost = appModel.getVehicleRegister().calculateAvarageCost();
         labelAverageMaintenanceCost.setText(String.valueOf(avarageCost) + " kr");
-    
+
     }
+
     private void updateMostExpensiveMaintenanceJob() {
         ServiceHistoryEntry mostExpensiveJob = appModel.getVehicleRegister().getMostExpensiveService();
 
-        if(mostExpensiveJob==null){
+        if (mostExpensiveJob == null) {
             labelMaintenanceJob.setText("No maintenance jobs available.");
             labelVehicle.setText("");
             labelWorkshop.setText("");
-        return;
+            return;
         }
-       Vehicle vehicleForMost = appModel.getVehicleRegister().getVehicleForServiceEntry(mostExpensiveJob);
+        Vehicle vehicleForMost = appModel.getVehicleRegister().getVehicleForServiceEntry(mostExpensiveJob);
 
         labelMaintenanceJob.setText("Most expensive job: " + mostExpensiveJob.getProblemDescription());
         labelVehicle.setText("Vehicle: " + vehicleForMost.getName() + "  " + vehicleForMost.getVin());
-        labelWorkshop.setText("Workshop: " + (mostExpensiveJob.getWorkshop() != null ? mostExpensiveJob.getWorkshop().getName() : "Unknown"));
+        labelWorkshop.setText("Workshop: "
+                + (mostExpensiveJob.getWorkshop() != null ? mostExpensiveJob.getWorkshop().getName() : "Unknown"));
     }
 }

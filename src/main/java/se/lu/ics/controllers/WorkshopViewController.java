@@ -102,7 +102,6 @@ public class WorkshopViewController {
         }
     }
 
-
     @FXML
     public void handleButtonBackToMainMenuAction(ActionEvent event) {
         appController.showMainView();
@@ -159,6 +158,4 @@ public class WorkshopViewController {
             workshopTable.setItems(appModel.getWorkshopRegister().getWorkshops());
         }
     }
-    
-
 }

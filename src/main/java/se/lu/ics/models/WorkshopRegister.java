@@ -25,23 +25,23 @@ public class WorkshopRegister {
     }
 
     public Workshop findWorkshop(String name) {
-        if(name==null){
+        if (name == null) {
             throw new IllegalArgumentException("No workshop with this name exists.");
         }
 
         String inputName = name.trim();
 
         for (Workshop tempWorkshop : workshops) {
-            String workshopN=tempWorkshop.getName();
+            String workshopN = tempWorkshop.getName();
 
             if (workshopN != null && workshopN.equalsIgnoreCase(inputName)) {
                 return tempWorkshop;
-            } 
+            }
         }
         throw new IllegalArgumentException("No workshop with this name exists.");
     }
 
-    public void removeWorkshop(Workshop workshop) { 
+    public void removeWorkshop(Workshop workshop) {
         for (int i = 0; i < workshops.size(); i++) {
             Workshop w = workshops.get(i);
 
@@ -50,7 +50,7 @@ public class WorkshopRegister {
                 return;
             }
         }
-        
+
         throw new IllegalArgumentException("No workshop with this name exists. Try again!");
     }
     // bäst med i loop för att ta bort objekt inne i en loop, ger exception

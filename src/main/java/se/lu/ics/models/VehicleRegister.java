@@ -10,7 +10,6 @@ public class VehicleRegister {
         this.vehicles = FXCollections.observableArrayList();
     }
 
-
     public void addVehicle(Vehicle vehicle) {
         if (vehicles.contains(vehicle)) {
             throw new IllegalArgumentException("The vehicle already exists.");
@@ -47,7 +46,6 @@ public class VehicleRegister {
     public ObservableList<Vehicle> getVehicles() {
         return FXCollections.unmodifiableObservableList(this.vehicles);
     }
-
 
     public String printAllMaintenanceSchedules() {
         if (vehicles.isEmpty()) {
@@ -99,6 +97,7 @@ public class VehicleRegister {
         }
         return mostExpensive;
     }
+
     public Vehicle getVehicleForServiceEntry(ServiceHistoryEntry entry) {
         if (entry == null) {
             throw new IllegalArgumentException("Service history entry cannot be null.");

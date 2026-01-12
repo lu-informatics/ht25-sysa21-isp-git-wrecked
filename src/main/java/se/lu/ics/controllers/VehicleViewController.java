@@ -1,28 +1,23 @@
 package se.lu.ics.controllers;
 
 import javafx.fxml.FXML;
-
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
-
 import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.VehicleType;
 import se.lu.ics.models.AppModel;
-
 import javafx.event.ActionEvent;
 
 public class VehicleViewController {
 
     private AppModel appModel;
     private AppController appController;
-    
 
     @FXML
     private TableView<Vehicle> tableVehicles;
@@ -85,7 +80,7 @@ public class VehicleViewController {
         } else {
             labelResponse.setText("Please select a vehicle to edit");
         }
-        
+
     }
 
     @FXML

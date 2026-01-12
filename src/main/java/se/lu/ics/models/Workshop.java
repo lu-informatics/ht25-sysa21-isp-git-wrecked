@@ -86,19 +86,21 @@ public class Workshop {
     public void removeSchedule(MaintenanceSchedule schedule) {
         this.schedules.remove(schedule);
     }
+
     public int getServiceCount() {
         return services.size();
     }
-    
+
     public void removeService(ServiceHistoryEntry service) {
         this.services.remove(service);
     }
-    
+
     @Override
     public String toString() {
         return name;
     }
-    public double getTotalServiceCost () {
+
+    public double getTotalServiceCost() {
         double total = 0.0;
 
         for (ServiceHistoryEntry service : services) {

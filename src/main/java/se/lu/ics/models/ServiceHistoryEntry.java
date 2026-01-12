@@ -12,10 +12,11 @@ public class ServiceHistoryEntry {
     private Vehicle vehicle;
 
     public ServiceHistoryEntry() {
-       
+
     }
 
-    public ServiceHistoryEntry(String problemDescription, double cost, LocalDate serviceDate, int partsReplaced, String serviceActivities) {
+    public ServiceHistoryEntry(String problemDescription, double cost, LocalDate serviceDate, int partsReplaced,
+            String serviceActivities) {
 
         if (cost < 0) {
             throw new IllegalArgumentException("Cost cannot be negative");
@@ -35,14 +36,12 @@ public class ServiceHistoryEntry {
             throw new IllegalArgumentException("Service activities cannot be empty");
         }
 
-        
-
         this.problemDescription = problemDescription;
         this.cost = cost;
         this.localDate = serviceDate;
         this.partsReplaced = partsReplaced;
         this.serviceActivities = serviceActivities;
-        
+
     }
 
     public void setServiceActivity(String activity) {
@@ -103,16 +102,16 @@ public class ServiceHistoryEntry {
     }
 
     public void setWorkshop(Workshop workshop) {
-        
+
         if (this.workshop == workshop) {
             return;
         }
         if (this.workshop != null) {
             this.workshop.removeService(this);
-           
+
         }
-            this.workshop = workshop;
-            if (workshop != null) {
+        this.workshop = workshop;
+        if (workshop != null) {
             workshop.addService(this);
         }
     }
@@ -128,19 +127,16 @@ public class ServiceHistoryEntry {
         if (this.vehicle != null) {
             this.vehicle.removeServiceHistoryEntry(this);
         }
-            this.vehicle = vehicle;
-            if (vehicle != null) {
+        this.vehicle = vehicle;
+        if (vehicle != null) {
             vehicle.addServiceHistoryEntry(this);
         }
     }
 
-    
-    public String getWorkshopName () {
+    public String getWorkshopName() {
         if (workshop == null) {
             return "";
         }
         return workshop.getName();
     }
 }
-
-

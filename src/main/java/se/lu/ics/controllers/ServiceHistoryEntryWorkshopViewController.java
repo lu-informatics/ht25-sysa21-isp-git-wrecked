@@ -10,11 +10,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.cell.PropertyValueFactory;
 import java.time.LocalDate;
-
 import se.lu.ics.models.AppModel;
 import se.lu.ics.models.Workshop;
 import se.lu.ics.models.ServiceHistoryEntry;
-
 
 public class ServiceHistoryEntryWorkshopViewController {
     private AppModel appModel;
@@ -24,20 +22,22 @@ public class ServiceHistoryEntryWorkshopViewController {
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
     }
+
     public void setAppController(AppController appController) {
         this.appController = appController;
     }
+
     public void setWorkshop(Workshop workshop) {
         this.workshop = workshop;
         workshopLabel.setText(workshop.getName());
         tableViewServiceHistory.setItems(workshop.getServices());
         tableViewServiceHistory.refresh();
         labelCost.setText(String.valueOf(workshop.getTotalServiceCost()));
-    }      
+    }
 
     @FXML
     private Label workshopLabel;
-    @FXML 
+    @FXML
     private Label labelCost;
     @FXML
     private TableView<ServiceHistoryEntry> tableViewServiceHistory;
@@ -53,7 +53,7 @@ public class ServiceHistoryEntryWorkshopViewController {
     private TableColumn<ServiceHistoryEntry, Integer> columnPartsReplaced;
     @FXML
     private TableColumn<ServiceHistoryEntry, String> tableColumnServiceActivity;
-    @FXML   
+    @FXML
     private TextField textFieldSearch;
     @FXML
     private MenuItem menuItemAddServiceHistory;
@@ -77,54 +77,50 @@ public class ServiceHistoryEntryWorkshopViewController {
 
         tableViewServiceHistory.refresh();
     }
-    
 
     @FXML
     public void handleMenuItemAddServiceHistoryAction(ActionEvent event) {
-    
+
         appController.showInputServiceHistoryEntryWorkshopView(workshop);
         tableViewServiceHistory.refresh();
         labelCost.setText(String.valueOf(workshop.getTotalServiceCost()));
     }
 
     @FXML
-     public void handleMenuItemRemoveServiceHistoryAction(ActionEvent event) {
-    ServiceHistoryEntry selectedEntry = tableViewServiceHistory.getSelectionModel().getSelectedItem();
-    if (selectedEntry == null) {
-        labelErrorMessage.setText("Please select a service history entry to remove.");
-        return;
+    public void handleMenuItemRemoveServiceHistoryAction(ActionEvent event) {
+        ServiceHistoryEntry selectedEntry = tableViewServiceHistory.getSelectionModel().getSelectedItem();
+        if (selectedEntry == null) {
+            labelErrorMessage.setText("Please select a service history entry to remove.");
+            return;
+        }
+        try {
+            workshop.removeService(selectedEntry);
+            selectedEntry.getVehicle().removeServiceHistoryEntry(selectedEntry);
+            labelCost.setText(String.valueOf(workshop.getTotalServiceCost()));
+            tableViewServiceHistory.refresh();
+        } catch (IllegalArgumentException e) {
+            labelErrorMessage.setText(e.getMessage());
+            return;
+        }
+
     }
-    try {
-        workshop.removeService(selectedEntry);
-        selectedEntry.getVehicle().removeServiceHistoryEntry(selectedEntry);
-        labelCost.setText(String.valueOf(workshop.getTotalServiceCost()));
-        tableViewServiceHistory.refresh();
-    }   
-        catch (IllegalArgumentException e) {
-        labelErrorMessage.setText(e.getMessage());
-        return;
-    }
-    
-    
-}
 
     @FXML
     public void handleMenuItemEditAction(ActionEvent event) {
-    ServiceHistoryEntry selectedEntry = tableViewServiceHistory.getSelectionModel().getSelectedItem();
-    if (selectedEntry == null) {
-        labelErrorMessage.setText("Please select a service history entry to edit.");
-        return;
+        ServiceHistoryEntry selectedEntry = tableViewServiceHistory.getSelectionModel().getSelectedItem();
+        if (selectedEntry == null) {
+            labelErrorMessage.setText("Please select a service history entry to edit.");
+            return;
+        }
+        appController.showInputEditServiceHistoryEntryWorkshopView(workshop, selectedEntry);
+        tableViewServiceHistory.refresh();
+        labelCost.setText(String.valueOf(workshop.getTotalServiceCost()));
     }
-    appController.showInputEditServiceHistoryEntryWorkshopView(workshop, selectedEntry);
-    tableViewServiceHistory.refresh();
-    labelCost.setText(String.valueOf(workshop.getTotalServiceCost()));
-    }
-
 
     @FXML
     public void handleButtonBackAction() {
         appController.showWorkshopView();
-    
+
     }
-    
+
 }
