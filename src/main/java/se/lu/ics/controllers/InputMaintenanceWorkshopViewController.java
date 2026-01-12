@@ -104,7 +104,8 @@ public class InputMaintenanceWorkshopViewController {
                 schedule.setDescription(description);
             }   
                 schedule.setVehicle(foundVehicle);
-                schedule.setWorkshop(workshop);               
+                schedule.setWorkshop(workshop);
+                foundVehicle.setMaintenanceSchedule(schedule);               
 
             appController.showWorkshopSchedulesView(workshop);
             Stage stage = (Stage) buttonApply.getScene().getWindow();

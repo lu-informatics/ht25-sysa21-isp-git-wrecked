@@ -80,17 +80,9 @@ public class MaintenanceSchedule {
         if (vehicle == null) {
             throw new IllegalArgumentException("Vehicle cannot be null");
         }
-        if (this.vehicle == vehicle) {
-            return;
-        }
-        if (this.vehicle != null) {
-            this.vehicle.removeMaintenanceSchedule(this);
-        }
-            this.vehicle = vehicle;
-            if (vehicle != null) {
-            vehicle.setMaintenanceSchedule(this);
-        }
-    }
+        this.vehicle = vehicle;
+}
+
 
     public int getVin(){
         return vehicle.getVin();
