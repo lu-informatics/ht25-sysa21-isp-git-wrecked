@@ -79,6 +79,9 @@ public class MaintenanceSchedule {
         if (vehicle == null) {
             throw new IllegalArgumentException("Vehicle cannot be null");
         }
+        if(vehicle.getMaintenanceSchedule() != null && vehicle.getMaintenanceSchedule() != this) {
+            throw new IllegalStateException("Vehicle is already assigned to another schedule.");
+        }
         this.vehicle = vehicle;
     }
 
