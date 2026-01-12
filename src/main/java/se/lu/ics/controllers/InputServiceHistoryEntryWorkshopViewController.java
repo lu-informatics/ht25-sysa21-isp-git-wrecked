@@ -47,7 +47,7 @@ public class InputServiceHistoryEntryWorkshopViewController {
             textFieldCost.setText(String.valueOf(serviceHistoryEntry.getCost()));
             textFieldPartsReplaced.setText(String.valueOf(serviceHistoryEntry.getPartsReplaced()));
             comboBoxVehicle.setValue(serviceHistoryEntry.getVehicle());
-            textFieldServiceActivities.setText(String.join(", ", serviceHistoryEntry.getServiceActivities()));
+            textFieldServiceActivities.setText(serviceHistoryEntry.getServiceActivities());
             
         }
     }
@@ -166,7 +166,7 @@ public class InputServiceHistoryEntryWorkshopViewController {
         ServiceHistoryEntry entry;
 
         if (serviceHistoryEntry == null) {
-            entry = new ServiceHistoryEntry(problem, cost, date, parts);   
+            entry = new ServiceHistoryEntry(problem, cost, date, parts, activitiesText);   
             
         }
 
@@ -179,9 +179,8 @@ public class InputServiceHistoryEntryWorkshopViewController {
             entry.setCost(cost);
             entry.setPartsReplaced(parts);
             entry.setVehicle(vehicle);
-            
+            entry.setServiceActivity(activitiesText);
         }
-            entry.addServiceActivity(activitiesText);
             entry.setWorkshop(workshop);
             entry.setVehicle(vehicle);
 ;       labelResponse.setText("Service history entry saved successfully.");

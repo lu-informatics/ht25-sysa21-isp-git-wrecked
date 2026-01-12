@@ -10,15 +10,15 @@ public class ServiceHistoryEntry {
     private double cost;
     private int partsReplaced;
     private LocalDate localDate;
-    private ObservableList<String> serviceActivities;
+    private String serviceActivities;
     private Workshop workshop;
     private Vehicle vehicle;
 
     public ServiceHistoryEntry() {
-        this.serviceActivities = FXCollections.observableArrayList();
+       
     }
 
-    public ServiceHistoryEntry(String problemDescription, double cost, LocalDate serviceDate, int partsReplaced) {
+    public ServiceHistoryEntry(String problemDescription, double cost, LocalDate serviceDate, int partsReplaced, String serviceActivities) {
 
         if (cost < 0) {
             throw new IllegalArgumentException("Cost cannot be negative");
@@ -34,6 +34,9 @@ public class ServiceHistoryEntry {
         if (partsReplaced < 0) {
             throw new IllegalArgumentException("Parts replaced cannot be negative");
         }
+        if (serviceActivities == null) {
+            throw new IllegalArgumentException("Service activities cannot be empty");
+        }
 
         
 
@@ -41,28 +44,19 @@ public class ServiceHistoryEntry {
         this.cost = cost;
         this.localDate = serviceDate;
         this.partsReplaced = partsReplaced;
-        this.serviceActivities = FXCollections.observableArrayList();
+        this.serviceActivities = serviceActivities;
         
     }
 
-    public void addServiceActivity(String activity) {
-        if (activity == null || activity.isEmpty()) {
-            throw new IllegalArgumentException("Activity cannot be empty");
-        }
-        this.serviceActivities.clear();
-        this.serviceActivities.add(activity);
-
-    }
-
-    public void removeServiceActivity(String activity) {
+    public void setServiceActivity(String activity) {
 
         if (activity == null || activity.isEmpty()) {
             throw new IllegalArgumentException("Activity cannot be empty");
         }
-        this.serviceActivities.remove(activity);
+        this.serviceActivities = activity;
     }
 
-    public ObservableList<String> getServiceActivities() {
+    public String getServiceActivities() {
         return serviceActivities;
     }
 
