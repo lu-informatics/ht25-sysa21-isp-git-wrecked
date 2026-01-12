@@ -32,7 +32,7 @@ public class ServiceHistoryEntryWorkshopViewController {
         workshopLabel.setText(workshop.getName());
         tableViewServiceHistory.setItems(workshop.getServices());
         tableViewServiceHistory.refresh();
-        labelCost.setText(String.format("%.2f", workshop.getTotalServiceCost()));
+        labelCost.setText(String.valueOf(workshop.getTotalServiceCost()));
     }      
 
     @FXML

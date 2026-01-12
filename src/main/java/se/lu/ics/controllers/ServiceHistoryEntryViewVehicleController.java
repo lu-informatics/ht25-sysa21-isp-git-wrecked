@@ -31,7 +31,7 @@ public class ServiceHistoryEntryViewVehicleController {
         this.vehicle = vehicle;
         vehicleLabel.setText(vehicle.getName() + " " + vehicle.getVin());
         serviceHistoryTable.setItems(vehicle.getServiceHistory());
-        labelCost.setText(String.format("%.2f", vehicle.getVehicleTotalServiceCost()));
+        labelCost.setText(String.valueOf(vehicle.getVehicleTotalServiceCost()));
         serviceHistoryTable.refresh();
     }
     public Vehicle getVehicle() {
