@@ -98,7 +98,7 @@ public class ServiceHistoryEntryViewVehicleController {
         appController.showInputServiceHistoryEntryViewVehicle(vehicle);
         serviceHistoryTable.setItems(vehicle.getServiceHistory());
         serviceHistoryTable.refresh();
-        labelCost.setText(String.format("%.2f", vehicle.getVehicleTotalServiceCost())); //ändra format grejen
+        labelCost.setText(String.valueOf(vehicle.getTotalCost()));
     }
 
     @FXML
@@ -111,9 +111,7 @@ public class ServiceHistoryEntryViewVehicleController {
         appController.showInputEditServiceHistoryEntryViewVehicle(vehicle, selectedEntry);
         serviceHistoryTable.setItems(vehicle.getServiceHistory());
         serviceHistoryTable.refresh();
-        
-
-        labelCost.setText(String.format("%.2f", vehicle.getVehicleTotalServiceCost()));
+        labelCost.setText(String.valueOf(vehicle.getTotalCost()));
     }
 
     @FXML
@@ -123,6 +121,7 @@ public class ServiceHistoryEntryViewVehicleController {
             try {
                 vehicle.removeServiceHistoryEntry(selectedEntry);
                 selectedEntry.getWorkshop().removeService(selectedEntry);
+                labelCost.setText(String.valueOf(vehicle.getTotalCost()));
             } catch (IllegalArgumentException e) {
                 labelErrorMessage.setText(e.getMessage());
                 return;
