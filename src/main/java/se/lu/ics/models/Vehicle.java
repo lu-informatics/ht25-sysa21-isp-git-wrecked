@@ -1,12 +1,10 @@
 package se.lu.ics.models;
 
-
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import se.lu.ics.controllers.ServiceHistoryEntryVehicleViewController;
 
-public class Vehicle  {
+public class Vehicle {
     private int vin;
     private String location;
     private int capacity;
@@ -41,12 +39,12 @@ public class Vehicle  {
         if (type == null) {
             throw new IllegalArgumentException("Vehicle type cannot be empty");
         }
-
     }
 
     public int getVin() {
         return vin;
     }
+
     @Override
     public String toString() {
         return vin + " - " + name;
@@ -65,9 +63,9 @@ public class Vehicle  {
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
-            if (capacity <= 0) {
-                throw new IllegalArgumentException("Capacity must be greater than zero");
-            }
+        if (capacity <= 0) {
+            throw new IllegalArgumentException("Capacity must be greater than zero");
+        }
     }
 
     public int getCapacity() {
@@ -76,10 +74,10 @@ public class Vehicle  {
 
     public void setName(String name) {
         this.name = name;
-            if (name == null || name.isEmpty()) {
-                throw new IllegalArgumentException("Name cannot be empty");
-            }
-                }
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be empty");
+        }
+    }
 
     public String getName() {
         return name;
@@ -88,6 +86,7 @@ public class Vehicle  {
     public MaintenanceSchedule getMaintenanceSchedule() {
         return maintenanceSchedule;
     }
+
     public void setMaintenanceSchedule(MaintenanceSchedule maintenanceSchedule) {
         this.maintenanceSchedule = maintenanceSchedule;
     }
@@ -95,17 +94,15 @@ public class Vehicle  {
     public void addServiceHistoryEntry(ServiceHistoryEntry entry) {
         serviceHistory.add(entry);
     }
+
     public void removeServiceHistoryEntry(ServiceHistoryEntry entry) {
         if (serviceHistory.isEmpty() || entry == null) {
             throw new IllegalArgumentException("No service history entries to remove.");
-        }
-        else {
-        serviceHistory.remove(entry);
+        } else {
+            serviceHistory.remove(entry);
         }
         refreshAvailability();
-        }
-
-    
+    }
 
     public void refreshAvailability() {
         if (getPartsReplaced() >= 100 || getTotalCost() >= 100000) {
@@ -114,7 +111,6 @@ public class Vehicle  {
             setAvailable(true);
         }
     }
-
 
     public void removeMaintenanceSchedule(MaintenanceSchedule schedule) {
         if (this.maintenanceSchedule == null) {
@@ -130,21 +126,19 @@ public class Vehicle  {
     public void setAvailable(boolean isAvailable) {
         this.isAvailable = isAvailable;
     }
-    
 
     public boolean isAvailable() {
         return isAvailable;
 
-        
     }
-    public String getAvailableString() {
-    if (isAvailable) {
-        return "Yes";
-    } else {
-        return "No";
-    }
-}
 
+    public String getAvailableString() {
+        if (isAvailable) {
+            return "Yes";
+        } else {
+            return "No";
+        }
+    }
 
     public void setType(VehicleType type) {
         this.type = type;
@@ -160,8 +154,6 @@ public class Vehicle  {
             partsReplaced += entry.getPartsReplaced();
         }
         return partsReplaced;
-
-
     }
 
     public double getTotalCost() {
@@ -173,7 +165,7 @@ public class Vehicle  {
     }
 
     public ObservableList<Workshop> listEveryWorkshop() {
-       ObservableList<Workshop> workshops = FXCollections.observableArrayList();
+        ObservableList<Workshop> workshops = FXCollections.observableArrayList();
 
         for (ServiceHistoryEntry entry : serviceHistory) {
             Workshop w = entry.getWorkshop();
@@ -181,11 +173,8 @@ public class Vehicle  {
                 workshops.add(w);
             }
         }
-        return workshops; 
+        return workshops;
     }
- 
-
-    
 
     public double getVehicleTotalServiceCost() {
         double total = 0.0;
@@ -195,5 +184,5 @@ public class Vehicle  {
         }
         return total;
     }
-    
+
 }

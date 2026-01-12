@@ -4,9 +4,7 @@ import se.lu.ics.models.AppModel;
 import se.lu.ics.models.ServiceHistoryEntry;
 import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.Workshop;
-
 import java.time.LocalDate;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -21,8 +19,6 @@ public class InputServiceHistoryEntryWorkshopViewController {
     private AppController appController;
     private Workshop workshop;
     private ServiceHistoryEntry serviceHistoryEntry;
-
-
 
     public void setAppModel(AppModel appModel) {
         this.appModel = appModel;
@@ -48,11 +44,9 @@ public class InputServiceHistoryEntryWorkshopViewController {
             textFieldPartsReplaced.setText(String.valueOf(serviceHistoryEntry.getPartsReplaced()));
             comboBoxVehicle.setValue(serviceHistoryEntry.getVehicle());
             textFieldServiceActivities.setText(serviceHistoryEntry.getServiceActivities());
-            
+
         }
     }
-
-    
 
     @FXML
     private DatePicker datePickerServiceDate;
@@ -83,119 +77,112 @@ public class InputServiceHistoryEntryWorkshopViewController {
     @FXML
     private TextField textFieldServiceActivities;
 
-    
     @FXML
     public void handleButtonResetAction() {
         datePickerServiceDate.setValue(null);
         textFieldProblemDescription.clear();
         textFieldCost.clear();
         textFieldPartsReplaced.clear();
-        comboBoxVehicle.setValue(null);    
+        comboBoxVehicle.setValue(null);
         textFieldServiceActivities.clear();
     }
-    
+
     @FXML
     public void handleButtonApplyAction() {
 
-    LocalDate date = datePickerServiceDate.getValue();
-    String problem = textFieldProblemDescription.getText().trim();
-    String costText = textFieldCost.getText().trim();
-    String partsText = textFieldPartsReplaced.getText().trim();
-    Vehicle vehicle = comboBoxVehicle.getValue();
-    String activitiesText = textFieldServiceActivities.getText();
+        LocalDate date = datePickerServiceDate.getValue();
+        String problem = textFieldProblemDescription.getText().trim();
+        String costText = textFieldCost.getText().trim();
+        String partsText = textFieldPartsReplaced.getText().trim();
+        Vehicle vehicle = comboBoxVehicle.getValue();
+        String activitiesText = textFieldServiceActivities.getText();
 
-    
-
-    // Validate all fields
-    if (date == null) {
-        labelResponse.setText("Service date must be selected.");
-        return;
-    }
-
-    if (problem.isEmpty()) {
-        labelResponse.setText("Problem description cannot be empty.");
-        return;
-    }
-
-    if (costText.isEmpty()) {
-        labelResponse.setText("Cost cannot be empty.");
-        return;
-    }
-
-    if (partsText.isEmpty()) {
-        labelResponse.setText("Parts replaced value cannot be empty.");
-        return;
-    }
-
-    if (vehicle == null) {
-        labelResponse.setText("A vehicle must be selected.");
-        return;
-    }
-    if (activitiesText.isEmpty() || !activitiesText.matches("[a-öA-Ö, ]+")) {
-        labelResponse.setText("Service activities must be filled with words.");
-        return;
-    }
-
-
-    double cost;
-    int parts;
-
-    try {
-        cost = Double.parseDouble(costText);
-        if (cost < 0) {
-            labelResponse.setText("Cost cannot be negative.");
+        // Validate all fields
+        if (date == null) {
+            labelResponse.setText("Service date must be selected.");
             return;
         }
-    } catch (NumberFormatException e) {
-        labelResponse.setText("Cost must be a valid number.");
-        return;
-    }
 
-    try {
-        parts = Integer.parseInt(partsText);
-        if (parts < 0) {
-            labelResponse.setText("Parts replaced cannot be negative.");
+        if (problem.isEmpty()) {
+            labelResponse.setText("Problem description cannot be empty.");
             return;
         }
-    } catch (NumberFormatException e) {
-        labelResponse.setText("Parts replaced must be a whole number.");
-        return;
-    }
 
-    try {
-        ServiceHistoryEntry entry;
-
-        if (serviceHistoryEntry == null) {
-            entry = new ServiceHistoryEntry(problem, cost, date, parts, activitiesText);   
-            
+        if (costText.isEmpty()) {
+            labelResponse.setText("Cost cannot be empty.");
+            return;
         }
 
-
-         else { 
-            entry = serviceHistoryEntry;  
-            
-            entry.setDate(date);
-            entry.setProblemDescription(problem);
-            entry.setCost(cost);
-            entry.setPartsReplaced(parts);
-            entry.setVehicle(vehicle);
-            entry.setServiceActivity(activitiesText);
+        if (partsText.isEmpty()) {
+            labelResponse.setText("Parts replaced value cannot be empty.");
+            return;
         }
+
+        if (vehicle == null) {
+            labelResponse.setText("A vehicle must be selected.");
+            return;
+        }
+        if (activitiesText.isEmpty() || !activitiesText.matches("[a-öA-Ö, ]+")) {
+            labelResponse.setText("Service activities must be filled with words.");
+            return;
+        }
+
+        double cost;
+        int parts;
+
+        try {
+            cost = Double.parseDouble(costText);
+            if (cost < 0) {
+                labelResponse.setText("Cost cannot be negative.");
+                return;
+            }
+        } catch (NumberFormatException e) {
+            labelResponse.setText("Cost must be a valid number.");
+            return;
+        }
+
+        try {
+            parts = Integer.parseInt(partsText);
+            if (parts < 0) {
+                labelResponse.setText("Parts replaced cannot be negative.");
+                return;
+            }
+        } catch (NumberFormatException e) {
+            labelResponse.setText("Parts replaced must be a whole number.");
+            return;
+        }
+
+        try {
+            ServiceHistoryEntry entry;
+
+            if (serviceHistoryEntry == null) {
+                entry = new ServiceHistoryEntry(problem, cost, date, parts, activitiesText);
+
+            }
+
+            else {
+                entry = serviceHistoryEntry;
+
+                entry.setDate(date);
+                entry.setProblemDescription(problem);
+                entry.setCost(cost);
+                entry.setPartsReplaced(parts);
+                entry.setVehicle(vehicle);
+                entry.setServiceActivity(activitiesText);
+            }
             entry.setWorkshop(workshop);
             entry.setVehicle(vehicle);
-;       labelResponse.setText("Service history entry saved successfully.");
-        Stage stage = (Stage) buttonApply.getScene().getWindow();
-        stage.close();
-        
-        
+            ;
+            labelResponse.setText("Service history entry saved successfully.");
+            Stage stage = (Stage) buttonApply.getScene().getWindow();
+            stage.close();
 
-    } catch (IllegalArgumentException e) {
-        labelResponse.setText("Error: " + e.getMessage());
-    } catch (Exception e) {
-        labelResponse.setText("An unexpected error occurred: " + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            labelResponse.setText("Error: " + e.getMessage());
+        } catch (Exception e) {
+            labelResponse.setText("An unexpected error occurred: " + e.getMessage());
+        }
     }
-}
-
 
     @FXML
     public void handleButtonBackAction() {
@@ -203,10 +190,4 @@ public class InputServiceHistoryEntryWorkshopViewController {
         stage.close();
     }
 
-    
-
-    
-
 }
-
-

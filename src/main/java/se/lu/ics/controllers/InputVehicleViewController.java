@@ -96,27 +96,27 @@ public class InputVehicleViewController {
             return;
         }
         try {
-        if (vehicle == null) {
-            
-            boolean available = radioButtonAvailable.isSelected();
-            Vehicle newVehicle = new Vehicle(location, capacity, available, type, name);
-            appModel.getVehicleRegister().addVehicle(newVehicle);
-        } else {
-            
-            vehicle.setName(name);
-            vehicle.setType(type);
-            vehicle.setCapacity(capacity);
-            vehicle.setLocation(location);
-            vehicle.setAvailable(radioButtonAvailable.isSelected());
+            if (vehicle == null) {
 
+                boolean available = radioButtonAvailable.isSelected();
+                Vehicle newVehicle = new Vehicle(location, capacity, available, type, name);
+                appModel.getVehicleRegister().addVehicle(newVehicle);
+            } else {
+
+                vehicle.setName(name);
+                vehicle.setType(type);
+                vehicle.setCapacity(capacity);
+                vehicle.setLocation(location);
+                vehicle.setAvailable(radioButtonAvailable.isSelected());
+
+            }
+
+            appController.showVehicleView();
+            Stage stage = (Stage) buttonApply.getScene().getWindow();
+            stage.close();
+        } catch (IllegalArgumentException e) {
+            labelResponse.setText(e.getMessage());
         }
-
-        appController.showVehicleView();
-        Stage stage = (Stage) buttonApply.getScene().getWindow();
-        stage.close();
-    } catch (IllegalArgumentException e) {
-        labelResponse.setText(e.getMessage());
-    }
     }
 
     @FXML

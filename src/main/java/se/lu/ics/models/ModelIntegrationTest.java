@@ -17,9 +17,12 @@ public class ModelIntegrationTest {
         MaintenanceSchedule schedule2 = new MaintenanceSchedule(LocalDate.of(2026, 8, 20), "Tire Rotation");
         MaintenanceSchedule schedule3 = new MaintenanceSchedule(LocalDate.of(2026, 9, 25), "Brake Inspection");
 
-        ServiceHistoryEntry entry1 = new ServiceHistoryEntry("Brake issues", 250.0, LocalDate.of(2026, 6, 10), 1, "Replaced brake pads");
-        ServiceHistoryEntry entry2 = new ServiceHistoryEntry("Engine noise", 400.0, LocalDate.of(2026, 5, 5), 2, "Fixed engine noise");
-        ServiceHistoryEntry entry3 = new ServiceHistoryEntry("Flat tire", 100.0, LocalDate.of(2026, 4, 15), 1, "Replaced tire");
+        ServiceHistoryEntry entry1 = new ServiceHistoryEntry("Brake issues", 250.0, LocalDate.of(2026, 6, 10), 1,
+                "Replaced brake pads");
+        ServiceHistoryEntry entry2 = new ServiceHistoryEntry("Engine noise", 400.0, LocalDate.of(2026, 5, 5), 2,
+                "Fixed engine noise");
+        ServiceHistoryEntry entry3 = new ServiceHistoryEntry("Flat tire", 100.0, LocalDate.of(2026, 4, 15), 1,
+                "Replaced tire");
         vehicleRegister.addVehicle(vehicle1);
         vehicleRegister.addVehicle(vehicle2);
         vehicleRegister.addVehicle(vehicle3);
@@ -46,7 +49,6 @@ public class ModelIntegrationTest {
         schedule1.setWorkshop(workshop1);
         schedule2.setWorkshop(workshop2);
         schedule3.setWorkshop(workshop1);
-
 
         entry1.setVehicle(vehicle1);
         entry2.setVehicle(vehicle2);
@@ -99,7 +101,7 @@ public class ModelIntegrationTest {
             System.out.println("Service Entry for vehicle " + vehicle1.getName() + ": " + en.getProblemDescription()
                     + " is carried out by workshop " + workshop1.getName());
         }
-       
+
         System.out.println("Parts replaced during services:");
         for (ServiceHistoryEntry entr : vehicle2.getServiceHistory()) {
             System.out.println(entr.getPartsReplaced());
@@ -131,7 +133,6 @@ public class ModelIntegrationTest {
             System.out.println(
                     "Remaining service entry for vehicle " + vehicle1.getName() + ": " + e.getProblemDescription());
         }
-        
 
         System.out.println(
                 "The most expensive service is: " + vehicleRegister.getMostExpensiveService().getProblemDescription());
