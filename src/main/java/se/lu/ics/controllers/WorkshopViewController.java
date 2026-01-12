@@ -129,7 +129,7 @@ public class WorkshopViewController {
         if (selectedWorkshop != null) {
         appController.showWorkshopEntriesView(selectedWorkshop);
         } else {
-            labelErrorMessage.setText("Please select a workshop to view its entries.");
+            labelErrorMessage.setText("Please select a workshop to view its Service History");
         }
 
 
@@ -153,7 +153,7 @@ public class WorkshopViewController {
         if (selectedWorkshop != null) {
             appController.showWorkshopSchedulesView(selectedWorkshop);
         } else {
-            labelErrorMessage.setText("Please select a workshop to view its schedules.");
+            labelErrorMessage.setText("Please select a workshop to view its Maintenance Schedules");
         }
 
     }

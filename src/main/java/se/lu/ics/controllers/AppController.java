@@ -63,9 +63,10 @@ public class AppController {
             controller.setAppController(this);
             controller.setAppModel(appModel);
             
-
-            primaryStage.setScene(new Scene(root));
-            primaryStage.showAndWait();
+            Stage stage = new Stage();
+            stage.initOwner(primaryStage);
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -83,8 +84,10 @@ public class AppController {
             controller.setAppModel(appModel);
             controller.setWorkshop(workshop);
 
-            primaryStage.setScene(new Scene(root));
-            primaryStage.showAndWait();
+            Stage stage = new Stage();
+            stage.initOwner(primaryStage);
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -101,7 +104,9 @@ public class AppController {
             controller.setAppModel(appModel);
             controller.setVehicle(vehicle);
 
-            primaryStage.setScene(new Scene(root));
+            Stage stage = new Stage();
+            stage.initOwner(primaryStage);
+            stage.setScene(new Scene(root));
             primaryStage.showAndWait();
 
         } catch (Exception e) {
