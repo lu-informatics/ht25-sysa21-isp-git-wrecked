@@ -112,11 +112,16 @@ public class InputWorkshopviewController {
             Stage stage = (Stage) buttonApply.getScene().getWindow();
             stage.close();
 
-        } catch (IllegalArgumentException e) {
+        } 
+        catch (IllegalStateException e) {
+            labelErrorMessage.setText(e.getMessage());
+        }
+        catch (IllegalArgumentException e) {
             labelErrorMessage.setText("Error: " + e.getMessage());
         } catch (Exception e) {
             labelErrorMessage.setText("An unexpected error occurred: " + e.getMessage());
         }
+        
     }
 
 }

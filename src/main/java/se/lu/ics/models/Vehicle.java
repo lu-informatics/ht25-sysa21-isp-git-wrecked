@@ -141,8 +141,22 @@ public class Vehicle {
     }
 
     public void setType(VehicleType type) {
-        this.type = type;
+
+    if (type == VehicleType.LARGE_TRUCK) {
+
+        if (maintenanceSchedule != null) {
+            Workshop workshop = maintenanceSchedule.getWorkshop();
+
+            if (workshop != null && workshop.getIsInternal()) {
+                throw new IllegalStateException("Large trucks cannot be serviced at internal workshops."
+                );
+            }
+        }
     }
+
+    this.type = type;
+}
+
 
     public VehicleType getType() {
         return type;

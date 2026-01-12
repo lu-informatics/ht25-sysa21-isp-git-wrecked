@@ -76,8 +76,10 @@ public class AppModel {
       MaintenanceSchedule schedule1 = new MaintenanceSchedule(LocalDate.of(2026, 7, 1), "Regular maintenance");
       schedule1.setVehicle(vehicle1);
       schedule1.setWorkshop(workshop1);
+      vehicle1.setMaintenanceSchedule(schedule1);
       MaintenanceSchedule schedule2 = new MaintenanceSchedule(LocalDate.of(2026, 8, 15), "Engine check-up");
       schedule2.setVehicle(vehicle2);
       schedule2.setWorkshop(workshop2);
+      vehicle2.setMaintenanceSchedule(schedule2);
    }
 }
