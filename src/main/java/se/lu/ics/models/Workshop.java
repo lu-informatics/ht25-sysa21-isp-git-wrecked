@@ -1,6 +1,5 @@
 package se.lu.ics.models;
 
-
 import javafx.collections.ObservableList;
 
 public class Workshop {

@@ -8,7 +8,6 @@ import se.lu.ics.controllers.ServiceHistoryEntryVehicleViewController;
 
 public class Vehicle  {
     private int vin;
-    private Vehicle vehicle;
     private String location;
     private int capacity;
     private boolean isAvailable;
@@ -17,7 +16,6 @@ public class Vehicle  {
     private MaintenanceSchedule maintenanceSchedule;
     private ObservableList<ServiceHistoryEntry> serviceHistory;
     private static int counter = 1;
-    private ServiceHistoryEntryVehicleViewController serviceHistoryTable;
 
     public Vehicle(String location, int capacity, boolean isAvailable, VehicleType type, String name) {
         this.vin = counter++;
