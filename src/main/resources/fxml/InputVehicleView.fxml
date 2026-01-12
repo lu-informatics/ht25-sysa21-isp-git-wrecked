@@ -23,7 +23,7 @@
          <children>
             <TextField fx:id="textFieldName" promptText="Name..." />
             <ComboBox fx:id="comboBoxVehicleType" prefHeight="26.0" prefWidth="198.0" promptText="Type" />
-            <TextField fx:id="textFieldCapacity" promptText="Capacity..." />
+            <TextField fx:id="textFieldCapacity" promptText="Capacity (kg)..." />
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <RadioButton fx:id="radioButtonAvailable" mnemonicParsing="false" text="Available">

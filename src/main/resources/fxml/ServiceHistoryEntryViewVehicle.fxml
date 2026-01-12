@@ -31,7 +31,7 @@
         <columns>
           <TableColumn fx:id="dateColumn" prefWidth="86.0" text="Date" />
           <TableColumn fx:id="problemDescriptionColumn" prefWidth="120.0" text="Problem description" />
-            <TableColumn fx:id="costColumn" prefWidth="86.0" text="Cost" />
+            <TableColumn fx:id="costColumn" prefWidth="86.0" text="Cost (kr)" />
             <TableColumn fx:id="partsReplacedColumn" prefWidth="103.0" text="Parts replaced" />
             <TableColumn fx:id="workshopColumn" prefWidth="92.0" text="Workshop" />
             <TableColumn fx:id="serviceActivitiesColumn" prefWidth="97.0" text="Service activities" />

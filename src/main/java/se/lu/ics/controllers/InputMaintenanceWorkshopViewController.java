@@ -124,7 +124,6 @@ public class InputMaintenanceWorkshopViewController {
 
      @FXML
     public void handleButtonBackAction(ActionEvent event) {
-            appController.showWorkshopSchedulesView(workshop);
             Stage stage=(Stage) buttonBack.getScene().getWindow();
             stage.close();
         }

@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import se.lu.ics.models.Workshop;
 import se.lu.ics.models.AppModel;
+import javafx.stage.Stage;
 
 
 
@@ -70,6 +71,8 @@ public class InputWorkshopviewController {
     @FXML
     public void handleButtonBackAction() {
         appController.showWorkshopView();
+        Stage stage = (Stage) buttonBack.getScene().getWindow();
+        stage.close();
     }
     @FXML
     public void handleButtonApplyAction() {

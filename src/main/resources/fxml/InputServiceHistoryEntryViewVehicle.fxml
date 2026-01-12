@@ -17,7 +17,7 @@
             <DatePicker fx:id="datePickerServiceDate" />
             <TextField fx:id="textFieldProblemDescription" promptText="Problem Description..." />
             <TextField fx:id="textFieldPartsReplaced" promptText="Parts Replaced..." />
-            <TextField fx:id="textFieldCost" promptText="Cost..." />
+            <TextField fx:id="textFieldCost" promptText="Cost (kr)..." />
             <TextField fx:id="textFieldServiceActivities" promptText="Service Activities..." />
             <ComboBox fx:id="comboBoxWorkshop" prefWidth="150.0" promptText="Select Workshop" />
          </children>
@@ -26,6 +26,7 @@
          <children>
             <Button fx:id="buttonBack" mnemonicParsing="false" onAction="#handleButtonBackAction" prefHeight="26.0" prefWidth="63.0" text="Back" />
             <Button fx:id="buttonApply" mnemonicParsing="false" onAction="#handleButtonApplyAction" prefHeight="25.0" prefWidth="64.0" text="Apply" />
+            <Button fx:id= "buttonReset" mnemonicParsing="false" onAction="#handleButtonResetAction" prefHeight="25.0" prefWidth="64.0" text="Reset" />
          </children>
       </HBox>
    </children>

@@ -59,7 +59,7 @@
 
                 </TableView>
 
-                <HBox alignment="CENTER_LEFT" layoutX="1.0" layoutY="476.0" spacing="10.0">
+                <HBox alignment="CENTER_LEFT" layoutX="1.0" layoutY="476.0" spacing="10.0" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="1.0">
                     <children>
                         <MenuButton text="Options">
                          <items>
