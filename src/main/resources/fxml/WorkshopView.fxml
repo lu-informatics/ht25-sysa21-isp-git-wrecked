@@ -75,7 +75,7 @@
                     </children>
                 </HBox>
 
-            <Label fx:id="labelErrorMessage" layoutX="394.0" layoutY="479.0" prefHeight="20.0" prefWidth="582.0" textFill="RED" />
+            <Label fx:id="labelErrorMessage" alignment="CENTER_RIGHT" layoutX="394.0" layoutY="479.0" prefHeight="20.0" prefWidth="582.0" textFill="RED" AnchorPane.bottomAnchor="55.0" AnchorPane.rightAnchor="0.0" />
 
             </children>
         </AnchorPane>
