@@ -33,7 +33,17 @@ public class ServiceHistoryEntryVehicleViewController {
         vehicleLabel.setText(vehicle.getName() + " " + vehicle.getVin());
         serviceHistoryTable.setItems(vehicle.getServiceHistory());
         labelCost.setText(String.valueOf(vehicle.getVehicleTotalServiceCost()));
+
+        if (vehicle.getPartsReplaced() >= 100) {
+            labelErrorMessage.setText(
+                    "Vehicle marked as unavailable due to excessive parts replaced.");
+        }
+        if (vehicle.getTotalCost() >= 100000) {
+            labelErrorMessage.setText(
+                    "Vehicle marked as unavailable due to excessive total cost.");
+        }
         serviceHistoryTable.refresh();
+
     }
 
     public Vehicle getVehicle() {
@@ -72,7 +82,7 @@ public class ServiceHistoryEntryVehicleViewController {
     private Label labelCost;
 
     @FXML
-    private void initialize() { // kan göra detta under med lambdas men vet nt om det är överkurs
+    private void initialize() { 
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         problemDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("problemDescription"));
         costColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
@@ -135,7 +145,17 @@ public class ServiceHistoryEntryVehicleViewController {
             labelErrorMessage.setText("Please select a service history entry to remove.");
             return;
         }
+        if (vehicle.getPartsReplaced() >= 100) {
+            labelErrorMessage.setText(
+                    "Vehicle marked as unavailable due to excessive parts replaced.");
+        }
+        if (vehicle.getTotalCost() >= 100000) {
+            labelErrorMessage.setText(
+                    "Vehicle marked as unavailable due to excessive total cost.");
+        }
         serviceHistoryTable.refresh();
+        
+        
     }
 
     @FXML
