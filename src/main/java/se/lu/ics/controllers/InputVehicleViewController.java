@@ -91,10 +91,10 @@ public class InputVehicleViewController {
         try {
             capacity = Integer.parseInt(capacityStr);
         } catch (NumberFormatException e) {
-            labelResponse.setText("Capacity must be a valid number.");
+            labelResponse.setText("Capacity must be a number.");
             return;
         }
-
+        try {
         if (vehicle == null) {
             
             boolean available = radioButtonAvailable.isSelected();
@@ -111,6 +111,9 @@ public class InputVehicleViewController {
         }
 
         appController.showVehicleView();
+    } catch (IllegalArgumentException e) {
+        labelResponse.setText(e.getMessage());
+    }
     }
 
     @FXML

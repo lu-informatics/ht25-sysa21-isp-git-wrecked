@@ -8,7 +8,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 
 import se.lu.ics.models.Vehicle;
 import se.lu.ics.models.VehicleType;
@@ -37,15 +39,17 @@ public class VehicleViewController {
     @FXML
     private TableColumn<Vehicle, VehicleType> columnType;
     @FXML
-    private Button buttonVehicleAdd;
+    private MenuButton menuButtonOptions;
     @FXML
-    private Button buttonVehicleRemove;
+    private MenuItem menuItemEdit;
     @FXML
-    private Button buttonVehicleEdit;
+    private MenuItem menuItemAddVehicle;
     @FXML
-    private Button buttonVehicleSearch;
+    private MenuItem menuItemRemoveVehicle;
     @FXML
     private TextField textFieldVehicleSearch;
+    @FXML
+    private Label labelFindVehicle;
     @FXML
     private Label labelResponse;
     @FXML
@@ -68,12 +72,12 @@ public class VehicleViewController {
     }
 
     @FXML
-    public void handleButtonVehicleAddAction(ActionEvent event) {
+    public void handleMenuItemAddVehicleAction(ActionEvent event) {
         appController.showInputVehicleView();
     }
 
     @FXML
-    public void handleButtonVehicleEditAction(ActionEvent event) {
+    public void handleMenuItemEditAction(ActionEvent event) {
         Vehicle selectedVehicle = tableVehicles.getSelectionModel().getSelectedItem();
 
         if (selectedVehicle != null) {
@@ -85,7 +89,7 @@ public class VehicleViewController {
     }
 
     @FXML
-    public void handleButtonVehicleRemoveAction(ActionEvent event) {
+    public void handleMenuItemRemoveVehicleAction(ActionEvent event) {
         Vehicle selectedVehicle = tableVehicles.getSelectionModel().getSelectedItem();
         if (selectedVehicle != null) {
             try {

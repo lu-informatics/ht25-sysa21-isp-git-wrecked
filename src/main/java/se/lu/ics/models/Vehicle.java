@@ -1,6 +1,6 @@
 package se.lu.ics.models;
 
-import java.util.ArrayList;
+
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -164,8 +164,8 @@ public class Vehicle  {
         return totalCost;
     }
 
-    public ArrayList<Workshop> listEveryWorkshop() {
-        ArrayList<Workshop> workshops = new ArrayList<>();
+    public ObservableList<Workshop> listEveryWorkshop() {
+       ObservableList<Workshop> workshops = FXCollections.observableArrayList();
 
         for (ServiceHistoryEntry entry : serviceHistory) {
             Workshop w = entry.getWorkshop();
@@ -173,7 +173,7 @@ public class Vehicle  {
                 workshops.add(w);
             }
         }
-        return workshops;
+        return workshops; 
     }
  
 

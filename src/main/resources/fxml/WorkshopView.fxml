@@ -59,19 +59,22 @@
 
                 </TableView>
 
-                <HBox alignment="CENTER_LEFT" spacing="10.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" />
+                <HBox alignment="CENTER_LEFT" spacing="10.0" layoutX="1.0" layoutY="476.0">
+                    <children>
+                        <MenuButton text="Options">
+                         <items>
+                            <MenuItem fx:id="menuItemEdit" mnemonicParsing="false" onAction="#handleMenuItemEditAction" text="Edit Workshop" />
+                            <MenuItem fx:id="menuItemAddWorkshop" onAction="#handleMenuItemAddWorkshopAction" text="Add Workshop" />
+                            <MenuItem fx:id="menuItemRemoveWorkshop" onAction="#handleMenuItemRemoveWorkshopAction" text="Remove Workshop" />
+                         </items>
+                      </MenuButton>
 
-                 <TextField fx:id="textSearch" layoutY="482.0" onAction="#handleTextSearchAction" prefHeight="26.0" prefWidth="150.0" promptText="Search workshop..." />
+                        <Label fx:id="labelFindVehicle" text="Press ENTER to seach" />
 
-                 <MenuButton layoutX="167.0" layoutY="483.0" text="Options">
-                     <items>
-                  <MenuItem fx:id="menuItemEdit" mnemonicParsing="false" onAction="#handleMenuItemEditAction" text="Edit Workshop" />
-                         <MenuItem fx:id="menuItemAddWorkshop" onAction="#handleMenuItemAddWorkshopAction" text="Add Workshop" />
-                         <MenuItem fx:id="menuItemRemoveWorkshop" onAction="#handleMenuItemRemoveWorkshopAction" text="Remove Workshop" /> 
-                     </items>
-                 </MenuButton>
-                  <Button fx:id="buttonViewEntries" layoutX="933.0" layoutY="483.0" onAction="#handleButtonViewEntriesAction" prefHeight="25.0" prefWidth="101.0" text="View entries" />
-            <Button fx:id="buttonViewSchedules" layoutX="810.0" layoutY="483.0" mnemonicParsing="false" onAction="#handleButtonViewSchedulesAction" prefHeight="25.0" prefWidth="101.0" text="View schedules" />
+                        <TextField fx:id="textSearch" onAction="#handleTextSearchAction" prefHeight="26.0" prefWidth="150.0" promptText="Search workshop..." />
+                    </children>
+                </HBox>
+
             <Label fx:id="labelErrorMessage" layoutX="272.0" layoutY="487.0" prefHeight="17.0" prefWidth="343.0" />
 
             </children>
@@ -81,7 +84,12 @@
     <bottom>
         <AnchorPane prefHeight="50.0" prefWidth="665.0" style="-fx-background-color: #DCEFFB;" BorderPane.alignment="CENTER">
             <children>
-
+            <HBox alignment="CENTER_RIGHT" layoutX="422.0" layoutY="12.0" prefHeight="26.0" prefWidth="347.0" spacing="10.0" AnchorPane.rightAnchor="50.0">
+               <children>
+                  <Button fx:id="buttonViewSchedule" layoutX="686.0" layoutY="483.0" mnemonicParsing="false" onAction="#handleButtonViewSchedulesAction" text="View Maintenance Schedule" />
+                  <Button fx:id="buttonViewEntries" layoutX="869.0" layoutY="483.0" mnemonicParsing="false" onAction="#handleButtonViewServiceHistoryAction" text="View Service History" />
+               </children>
+            </HBox>
                 <Button fx:id="backToMainMenuButton" layoutX="38.0" layoutY="12.0" onAction="#handleButtonBackToMainMenuAction" text="Back to main menu" AnchorPane.leftAnchor="50.0" />
 
                 <HBox alignment="CENTER_RIGHT" spacing="10.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="12.0" />

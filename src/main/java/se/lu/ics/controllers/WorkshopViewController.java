@@ -124,7 +124,7 @@ public class WorkshopViewController {
     }
 
     @FXML
-    public void handleButtonViewEntriesAction(ActionEvent event) {
+    public void handleButtonViewServiceHistoryAction(ActionEvent event) {
         Workshop selectedWorkshop = workshopTable.getSelectionModel().getSelectedItem();
         if (selectedWorkshop != null) {
         appController.showWorkshopEntriesView(selectedWorkshop);
