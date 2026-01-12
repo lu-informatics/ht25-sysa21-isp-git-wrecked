@@ -23,7 +23,7 @@ public class InputMaintenanceScheduleVehicleViewController {
     private AppController appController;
     private Vehicle vehicle;
     private MaintenanceSchedule maintenanceSchedule;
-    private Workshop workshop;
+
    
 
     public void setAppModel(AppModel appModel) {
@@ -67,7 +67,7 @@ public class InputMaintenanceScheduleVehicleViewController {
     public void handleButtonApplyAction(ActionEvent event) {
     LocalDate date = datePicker.getValue();
     String description = textFieldDescription.getText().trim();
-    Workshop workshop = comboBoxWorkshop.getValue();
+    Workshop workshopChoice = comboBoxWorkshop.getValue();
 
     if (comboBoxWorkshop.getValue() == null) {
         labelResponse.setText("Workshop cannot be empty.");
@@ -105,7 +105,7 @@ public class InputMaintenanceScheduleVehicleViewController {
             schedule.setDescription(description);
         }   
             schedule.setVehicle(vehicle);
-            schedule.setWorkshop(foundWorkshop);
+            schedule.setWorkshop(workshopChoice);
             vehicle.setMaintenanceSchedule(schedule);
 
             
