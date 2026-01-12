@@ -81,7 +81,7 @@ public class InputServiceHistoryEntryViewVehicleController {
     
     @FXML
     public void handleButtonApplyAction() {
-
+        
     LocalDate date = datePickerServiceDate.getValue();
     String problem = textFieldProblemDescription.getText().trim();
     String costText = textFieldCost.getText().trim();
@@ -119,69 +119,44 @@ public class InputServiceHistoryEntryViewVehicleController {
     }
     if (comboBoxWorkshop.getValue() == null) {
         showError("A workshop must be selected.");
-        return;
-    }
-
-    double cost;
-    int parts;
-
-    try {
-        cost = Double.parseDouble(costText);
-        if (cost < 0) {
-            showError("Cost cannot be negative.");
-            return;
-        }
-    } catch (NumberFormatException e) {
-        showError("Cost must be a valid number.");
-        return;
-    }
-
-    try {
-        parts = Integer.parseInt(partsText);
-        if (parts < 0) {
-            showError("Parts replaced cannot be negative.");
-            return;
-        }
-    } catch (NumberFormatException e) {
-        showError("Parts replaced must be a whole number.");
-        return;
-    }
-
+        return; }
     
+
     try {
-        Workshop selectedWorkshop =
-                appModel.getWorkshopRegister().findWorkshop(workshop.getName());
+    double cost = Double.parseDouble(costText);
+    int parts = Integer.parseInt(partsText);
 
-        if (selectedWorkshop == null) {
-            showError("Workshop not found.");
-            return;
-        }
+    ServiceHistoryEntry entry;
 
-        ServiceHistoryEntry entry;
-
-        if (serviceHistoryEntry == null) {
-            entry = new ServiceHistoryEntry(problem, cost, date, parts);
-            
-        } else {
-            entry = serviceHistoryEntry;
-            entry.setProblemDescription(problem);
-            entry.setCost(cost);
-            entry.setDate(date);
-            entry.setPartsReplaced(parts);
-            
-        }
-            entry.setVehicle(vehicle);
-            entry.setWorkshop(selectedWorkshop);
-            entry.addServiceActivity(activitiesText);
-            
-        showError("Service history entry saved successfully!");
-        Stage stage = (Stage) buttonApply.getScene().getWindow();
-        stage.close();
+    if (serviceHistoryEntry == null) {
+        entry = new ServiceHistoryEntry(problem, cost, date, parts);
+    } else {
+        entry = serviceHistoryEntry;
+        entry.setProblemDescription(problem);
+        entry.setCost(cost);
+        entry.setDate(date);
+        entry.setPartsReplaced(parts);
         
-    } catch (IllegalArgumentException e) {
-        showError(e.getMessage());
+
     }
-}
+
+        entry.setVehicle(vehicle);
+        entry.setWorkshop(workshop);
+        entry.addServiceActivity(activitiesText);
+        vehicle.refreshAvailability();
+
+
+}    catch (NumberFormatException e) {
+    showError("Cost and parts must be numeric values.");
+    return;
+
+}    
+    appController.showServiceHistoryEntryViewVehicle(vehicle);
+    Stage stage = (Stage) buttonApply.getScene().getWindow();   
+    stage.close();
+
+    }
+
 
 
 
@@ -196,4 +171,7 @@ public class InputServiceHistoryEntryViewVehicleController {
         labelResponse.setText(message);
     }
 }
+
+
+    
 
