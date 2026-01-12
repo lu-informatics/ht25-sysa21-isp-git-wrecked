@@ -1,9 +1,6 @@
 package se.lu.ics.models;
 
-
 import java.time.LocalDate;
-import javafx.collections.ObservableList;
-import javafx.collections.FXCollections;
 
 public class ServiceHistoryEntry {
     private String problemDescription;
