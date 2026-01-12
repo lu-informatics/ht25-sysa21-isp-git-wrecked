@@ -181,7 +181,7 @@ public class InputServiceHistoryEntryWorkshopViewController {
             entry.setVehicle(vehicle);
             
         }
-            entry.addServiceActivity(partsText);
+            entry.addServiceActivity(activitiesText);
             entry.setWorkshop(workshop);
             entry.setVehicle(vehicle);
 ;       labelResponse.setText("Service history entry saved successfully.");
